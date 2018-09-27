@@ -6,7 +6,8 @@
 
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [org.clojure/clojurescript "1.10.339"]
-                 [reagent "0.8.1"]]
+                 [reagent "0.8.1"]
+                 [funcool/tubax "0.2.0"]]
 
   :plugins [[lein-cljsbuild "1.1.5"]
             [lein-figwheel "0.5.16"]]
@@ -19,6 +20,8 @@
 
   :resource-paths ["public"]
 
+  :repl-options {:nrepl-middleware [cider.piggieback/wrap-cljs-repl]}
+  
   :figwheel {:http-server-root "."
              :nrepl-port 7002
              :nrepl-middleware [cider.piggieback/wrap-cljs-repl]
@@ -52,4 +55,6 @@
                    :dependencies [[binaryage/devtools "0.9.10"]
                                   [figwheel-sidecar "0.5.16"]
                                   [nrepl "0.4.4"]
-                                  [cider/piggieback "0.3.8"]]}})
+                                  [cider/piggieback "0.3.8"]
+                                  [org.clojure/tools.nrepl "0.2.13"]]
+                   :plugins [[cider/cider-nrepl "0.18.0"]]}})
