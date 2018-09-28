@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic.css');
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -34,6 +35,10 @@ a:hover {
   margin-left: 10px;
   margin-right: 10px;
   float: left;
+}
+
+.container-children > img {
+  padding-top: 20px;
 }
 
 .container-children > .error-handler {

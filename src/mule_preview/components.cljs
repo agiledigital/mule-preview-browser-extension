@@ -26,6 +26,7 @@
        (into [] (concat [:div {:class "container-children"}] children))])
 
 (defn mule-container [name children]
+  (let [interposed-children (interpose [:img {:src "img/arrow-right-2x.png"}] children)]
     [:div {:class "container"} 
       [:span {:class "container-title"} name]
-       (into [] (concat [:div {:class "container-children"}] children))])
+       (into [] (concat [:div {:class "container-children"}] interposed-children))]))
