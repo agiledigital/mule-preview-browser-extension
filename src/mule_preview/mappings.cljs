@@ -1,4 +1,12 @@
-(ns mule-preview.core)
+(ns mule-preview.mappings)
+
+(def container-list
+  #{"flow" "sub-flow" "scatter-gather" "async" "batch:job" 
+   "batch:step" "batch:commit" "ee:cache" "catch-exception-strategy"
+   "choice" "choice-exception-strategy" "foreach"
+   "composite-source" "enricher" "poll" "request-reply"
+   "round-robin" "transactional" "until-successful"})
+
 
 ; TODO: scripting:component can be multiple icons based on attributes
 
@@ -24,7 +32,6 @@
    "exception-type-filter" "Filter-48x32.png"
    "expression-filter" "Filter-48x32.png"
    "filter" "Filter-48x32.png"
-   "idempotent-message-filter" "Filter-48x32.png"
    "message-filter" "Filter-48x32.png"
    "message-property-filter" "Filter-48x32.png"
    "not-filter" "Filter-48x32.png"
@@ -107,7 +114,6 @@
    "flow-ref" "flow-reference-48x32.png"
    "scripting:component" "groovy-component-48x32.png"
    "scripting:transformer" "groovy-transformer-48x32.png"
-   "http:*" "http_connector_50x34.png"
    "idempotent-message-filter" "idempotent-48x32.png"
    "imap:*" "imap-endpoint-48x32.png"
    "jetty:*" "jetty-endpoint-48x32.png"
@@ -117,16 +123,13 @@
    "oauth2:*" "oauth_invalidate_50x34.png"
    "poll" "poll-scope-48x32.png"
    "pop3:*" "pop3-endpoint-48x32.png"
-   "request-reply" "req-reply-48x32.png"
    "request-reply" "request-reply-48x32.png"
    "resequencer" "resequencer-48x32.png"
    "rmi:*" "rmi-endpoint-48x32.png"
    "round-robin" "round-robin-48x32.png"
-   "scatter-gather" "scatter-gather-48x32.png"
    "servlet:*" "servlet-endpoint-48x32.png"
    "ssl:*" "ssl-endpoint-48x32.png"
    "tcp:*" "tcp-endpoint-48x32.png"
-   "transactional" "transactional-scope48x32.png"
    "udp:*" "udp-endpoint-48x32.png"
    "until-successful" "until-successful-48x32.png"
    "validation:*" "validation-component-48x32.png"

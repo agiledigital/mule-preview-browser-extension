@@ -7,7 +7,8 @@
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [org.clojure/clojurescript "1.10.339"]
                  [reagent "0.8.1"]
-                 [funcool/tubax "0.2.0"]]
+                 [funcool/tubax "0.2.0"]
+                 [cljs-ajax "0.7.4"]]
 
   :plugins [[lein-cljsbuild "1.1.5"]
             [lein-figwheel "0.5.16"]]

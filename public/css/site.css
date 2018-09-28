@@ -32,3 +32,8 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+.container {
+  border: 1px solid gray;
+  padding: 20px;
+}
