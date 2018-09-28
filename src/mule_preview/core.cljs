@@ -10,6 +10,7 @@
 (defn handle-xml-fetch-success [response]
   (let [parsed-xml (xml->clj (str response))
         transformed-components (first (transform-xml-to-components parsed-xml))]
+    (prn parsed-xml)
     (prn transformed-components)
     (reset! mule-components transformed-components)))
 

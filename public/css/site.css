@@ -26,15 +26,18 @@ a:hover {
 }
 
 .container-children {
-  display: flex;
   padding: 10px;
-  flex-direction: row;
   align-items: center;
 }
 
 .container-children > * {
   margin-left: 10px;
   margin-right: 10px;
+  float: left;
+}
+
+.container-children > .error-handler {
+  clear: left;
 }
 
 .component {

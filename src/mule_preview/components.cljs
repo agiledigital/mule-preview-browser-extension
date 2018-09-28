@@ -20,6 +20,11 @@
    [:img {:src (name-to-img-url name)}]
    [:div description]])
 
+(defn mule-error-handler [name children]
+    [:div {:class "container error-handler"} 
+      [:span {:class "container-title"} name]
+       (into [] (concat [:div {:class "container-children"}] children))])
+
 (defn mule-container [name children]
     [:div {:class "container"} 
       [:span {:class "container-title"} name]

@@ -7,6 +7,9 @@
    "composite-source" "enricher" "poll" "request-reply"
    "round-robin" "transactional" "until-successful"})
 
+(def error-handler-list
+  #{"catch-exception-strategy" "choice-exception-strategy" "exception-strategy"
+    "rollback-exception-strategy"})
 
 ; TODO: scripting:component can be multiple icons based on attributes
 
