@@ -9,7 +9,9 @@
 (defn mule-component [name description]
   [:div {:class "component"}
    [:img {:src (name-to-img-url name)}]
-   [:span description]])
+   [:div description]])
 
 (defn mule-container [name children]
-  (into [] (concat [:div {:class "container"} [:span name]] children)))
+    [:div {:class "container"} 
+      [:span {:class "container-title"} name]
+       (into [] (concat [:div {:class "container-children"}] children))])

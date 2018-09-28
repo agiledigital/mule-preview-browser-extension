@@ -12,6 +12,7 @@
 (defn- transform-tag [node]
   (let [tag-name (name (node :tag))
         description (get-description node)]
+    (prn "Visiting: " tag-name)
     (if (contains? container-list tag-name)
         (mule-container description (node :content))
         (mule-component tag-name description))))

@@ -1,7 +1,7 @@
 (ns mule-preview.mappings)
 
 (def container-list
-  #{"flow" "sub-flow" "scatter-gather" "async" "batch:job" 
+  #{"mule" "flow" "sub-flow" "scatter-gather" "async" "batch:job" 
    "batch:step" "batch:commit" "ee:cache" "catch-exception-strategy"
    "choice" "choice-exception-strategy" "foreach"
    "composite-source" "enricher" "poll" "request-reply"

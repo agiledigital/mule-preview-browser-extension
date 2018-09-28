@@ -16,7 +16,7 @@
 (defn handle-xml-fetch-error [{:keys [status status-text]}]
   (.log js/console (str "something bad happened: " status " " status-text)))
 
-(GET "/example_xml/simple-example.xml" {:handler handle-xml-fetch-success
+(GET "/example_xml/nice-example.xml" {:handler handle-xml-fetch-success
                                       :error-handler handle-xml-fetch-error})
 
 ;; -------------------------
@@ -24,7 +24,7 @@
 
 (defn home-page []
   [:div [:h2 "Here why don't you just have some Mules?"]
-   @mule-components])
+   [:div {:class "root-component"} @mule-components]])
 
 ;; -------------------------
 ;; Initialize app

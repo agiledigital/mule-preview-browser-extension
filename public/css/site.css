@@ -1,27 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500');
+
 body {
-  font-family: 'Helvetica Neue', Verdana, Helvetica, Arial, sans-serif;
-  max-width: 600px;
-  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
   padding-top: 72px;
-  -webkit-font-smoothing: antialiased;
-  font-size: 1.125em;
-  color: #333;
-  line-height: 1.5em;
-}
-
-h1, h2, h3 {
-  color: #000;
-}
-h1 {
-  font-size: 2.5em
-}
-
-h2 {
-  font-size: 2em
-}
-
-h3 {
-  font-size: 1.5em
+  font-weight: 400;
 }
 
 a {
@@ -33,7 +15,36 @@ a:hover {
   text-decoration: underline;
 }
 
+.root-component {
+  padding: 20px;
+}
+
 .container {
   border: 1px solid gray;
-  padding: 20px;
+  float: left;
+  padding: 5px;
+}
+
+.container-children {
+  display: flex;
+  padding: 10px;
+  flex-direction: row;
+  align-items: center;
+}
+
+.container-children > * {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.component {
+  font-size: 12px;
+  text-align: center;
+  width: 90px;
+  max-width: 90px;
+}
+
+.container-title {
+  font-size: 14px;
+  font-weight: 500;
 }
