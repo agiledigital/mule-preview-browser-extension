@@ -5,13 +5,15 @@ A project to take a Mule configuration XML file and render the flows in HTML.
 It uses Clojurescript to transform the XML into a React virtual DOM
 using the Reagent bindings library.
 
-This was the result of a single Fedex day at Agile Digital.
+This was the result of a single [Fedex day](http://www.theenterprisearchitect.eu/blog/2013/07/23/10-reasons-organize-fedex-day/) at [Agile Digital](https://agiledigital.com.au/).
 I will hopefully work on it to improve it.
 
 The eventual goal is to embed this in a Bitbucket Server plugin so we can preview
 Mule files directly in the browser. A visual diff would also be helpful.
 
-![Example screenshot showing rendered flows](/NoxHarmonium/mule-preview/raw/master/doc/example.PNG "Example screenshot showing rendered flows")
+![Example screenshot showing rendered flows](https://raw.githubusercontent.com/NoxHarmonium/mule-preview/master/doc/example.PNG "Example screenshot showing rendered flows")
+
+As you can see, there are still a lot of styling issues but the basic concept is there.
 
 ### Development mode
 
