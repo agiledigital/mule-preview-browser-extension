@@ -15,6 +15,9 @@
   (let [normalised-name (normalise-name name)]
     (str "img/icons/" (get element-to-icon-map normalised-name "generic-component-48x32.png"))))
 
+(def arrow-component
+  [:img {:src "img/arrow-right-2x.png"}])
+
 (defn mule-component [name description]
   [:div {:class "component"}
    [:img {:src (name-to-img-url name)}]
@@ -26,7 +29,7 @@
        (into [] (concat [:div {:class "container-children"}] children))])
 
 (defn mule-container [name children]
-  (let [interposed-children (interpose [:img {:src "img/arrow-right-2x.png"}] children)]
+  (let [interposed-children (interpose arrow-component children)]
     [:div {:class "container"} 
       [:span {:class "container-title"} name]
        (into [] (concat [:div {:class "container-children"}] interposed-children))]))
