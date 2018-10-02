@@ -11,6 +11,7 @@ I will hopefully work on it to improve it.
 The eventual goal is to embed this in a Bitbucket Server plugin so we can preview
 Mule files directly in the browser. A visual diff would also be helpful.
 
+![Example screenshot showing rendered flows](doc/example.png "Example screenshot showing rendered flows")
 
 ### Development mode
 
