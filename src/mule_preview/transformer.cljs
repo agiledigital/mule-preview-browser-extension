@@ -14,19 +14,16 @@
         description (get-description node)
         is-error-handler (contains? error-handler-list tag-name)
         is-container (contains? container-list tag-name)]
-    (prn "tag name" tag-name)
     (cond
       is-error-handler (mule-error-handler description (node :content))
       is-container (mule-container description (node :content))
       :else  (mule-component tag-name description))))
 
 (defn- transform-fn [node]
-  ; (prn "Visiting " node)
   (if (contains? node :tag)
-    (let [tag-name (node :tag)]
-      (cond
-        (= :mule tag-name) (node :content)
-        :else (transform-tag node)))
+    (let [tag-name (node :tag)
+          transformed-tag (transform-tag node)]
+      transformed-tag)
     node))
 
 (defn transform-xml-to-components [xml]
