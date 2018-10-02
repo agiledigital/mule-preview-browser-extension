@@ -2,6 +2,8 @@
 
 (def root-container "mule")
 
+(def error-handler-container-list #{"flow"})
+
 (def vertical-container-list
   #{"scatter-gather" "choice" "composite-source" "round-robin"})
 
@@ -11,7 +13,7 @@
     "enricher" "poll" "request-reply" "transactional" 
     "until-successful" "when" "otherwise" "processor-chain"})
 
-(def error-handler-list
+(def error-handler-component-list
   #{"catch-exception-strategy" "choice-exception-strategy" 
     "exception-strategy" "rollback-exception-strategy"})
 
