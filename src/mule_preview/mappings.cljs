@@ -1,16 +1,19 @@
 (ns mule-preview.mappings)
 
-(def container-list
-  #{"mule" "flow" "sub-flow" "scatter-gather" "async" "batch:job" 
-   "batch:step" "batch:commit" "ee:cache" "catch-exception-strategy"
-   "choice" "choice-exception-strategy" "foreach"
-   "composite-source" "enricher" "poll" "request-reply"
-   "round-robin" "transactional" "until-successful",
-   "when", "otherwise"})
+(def root-container "mule")
+
+(def vertical-container-list
+  #{"scatter-gather" "choice" "composite-source" "round-robin"})
+
+(def horizontal-container-list
+  #{"flow" "sub-flow" "async" "batch:job"
+    "batch:step" "batch:commit" "ee:cache" "foreach"
+    "enricher" "poll" "request-reply" "transactional" 
+    "until-successful" "when" "otherwise" "processor-chain"})
 
 (def error-handler-list
-  #{"catch-exception-strategy" "choice-exception-strategy" "exception-strategy"
-    "rollback-exception-strategy"})
+  #{"catch-exception-strategy" "choice-exception-strategy" 
+    "exception-strategy" "rollback-exception-strategy"})
 
 ; TODO: scripting:component can be multiple icons based on attributes
 

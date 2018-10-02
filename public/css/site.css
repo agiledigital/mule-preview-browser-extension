@@ -22,27 +22,54 @@ a:hover {
 
 .container {
   border: 1px solid gray;
-  float: left;
   padding: 5px;
 }
 
-.container-children {
-  padding: 10px;
-  align-items: center;
+.container.root {
+  border: none;
 }
 
-.container-children > * {
-  margin-left: 10px;
-  margin-right: 10px;
-  float: left;
+.container.horizontal > .container-inner > .container-children {
+  flex-direction: row;
+}
+
+.container.vertical > .container-inner > .container-children {
+  flex-direction: column; 
+  align-items: flex-start;
+}
+
+.container.horizontal > .container-inner > .container-children > * {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.container.vertical > .container-inner > .container-children > * {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.container-inner {
+  display: flex;
+}
+
+.icon {
+  width: 48px;
+  height: 32px;
+}
+
+.container-image {
+  align-self: center;
+}
+
+.container-children {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  justify-content: flex-start
 }
 
 .container-children > img {
   padding-top: 20px;
-}
-
-.container-children > .error-handler {
-  clear: left;
 }
 
 .component {
@@ -50,9 +77,18 @@ a:hover {
   text-align: center;
   width: 90px;
   max-width: 90px;
+  padding: 5px;
 }
 
 .container-title {
   font-size: 14px;
   font-weight: 500;
+}
+
+.container.vertical > .container-inner > .container-children > .flow-arrow {
+  display: none;
+}
+
+.hidden {
+  display: none;
 }

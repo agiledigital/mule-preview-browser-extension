@@ -10,8 +10,6 @@
 (defn handle-xml-fetch-success [response]
   (let [parsed-xml (xml->clj (str response))
         transformed-components (transform-xml-to-components parsed-xml)]
-    (prn parsed-xml)
-    (prn transformed-components)
     (reset! mule-components transformed-components)))
 
 (defn handle-xml-fetch-error [{:keys [status status-text]}]
@@ -23,9 +21,8 @@
 ;; -------------------------
 ;; Views
 
-(defn home-page []
-  [:div [:h2 "Here why don't you just have some Mules?"]
-   [:div {:class "root-component"} @mule-components]])
+(defn home-page [] 
+  [:div {:class "root-component"} @mule-components])
 
 ;; -------------------------
 ;; Initialize app
