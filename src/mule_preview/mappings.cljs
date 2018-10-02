@@ -5,7 +5,8 @@
    "batch:step" "batch:commit" "ee:cache" "catch-exception-strategy"
    "choice" "choice-exception-strategy" "foreach"
    "composite-source" "enricher" "poll" "request-reply"
-   "round-robin" "transactional" "until-successful"})
+   "round-robin" "transactional" "until-successful",
+   "when", "otherwise"})
 
 (def error-handler-list
   #{"catch-exception-strategy" "choice-exception-strategy" "exception-strategy"
