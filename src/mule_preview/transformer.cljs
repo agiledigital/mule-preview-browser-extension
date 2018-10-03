@@ -54,8 +54,7 @@
 
 (defn- transform-fn [node]
   (if (contains? node :tag)
-    (let [tag-name (node :tag)
-          transformed-tag (transform-tag node)]
+    (let [transformed-tag (transform-tag node)]
       transformed-tag)
     node))
 
