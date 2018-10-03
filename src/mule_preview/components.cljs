@@ -13,13 +13,15 @@
        (str first-component ":*")
        first-component)))
 
-(defn- name-to-img-url 
-  [name default-value]
+(defn- name-to-img-url [name default-value]
     (let [normalised-name (normalise-name name)
           filename (get element-to-icon-map normalised-name default-value)]
       (if-not (nil? filename)
         (str "img/icons/" filename)
         nil)))
+
+(defn- name-to-css-class [name]
+  (str "mule-" name))
 
 (defn- image
   ([url] (image url ""))
@@ -41,11 +43,12 @@
       [:div description]]))
 
 (defn mule-container [name description children css-class]
-  (let [img-url (name-to-img-url name nil)
+  (let [generated-css-class (name-to-css-class name)
+        img-url (name-to-img-url name nil)
         interposed-children (interpose arrow children)
         image-component (image img-url "icon container-image")
         child-container-component (child-container interposed-children)]
-    [:div {:class ["container", css-class]} 
+    [:div {:class ["container", generated-css-class, css-class]} 
       [:div {:class "container-title"} description]
       [:div {:class "container-inner"}  
         image-component

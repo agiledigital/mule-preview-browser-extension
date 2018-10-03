@@ -21,8 +21,8 @@ a:hover {
 }
 
 .container {
-  border: 1px solid gray;
   padding: 5px;
+  border: 1px solid gray;
 }
 
 .container.root {
@@ -31,6 +31,37 @@ a:hover {
 
 .container.horizontal > .container-inner > .container-children {
   flex-direction: row;
+}
+
+.mule-flow, .mule-sub-flow, .mule-foreach {
+  border-top: 2px solid blue;
+}
+
+.error-handler {
+  border-top: 2px solid red;
+}
+
+.mule-scatter-gather > .container-inner > .container-children > .mule-processor-chain,
+.mule-scatter-gather > .container-inner > .container-children > .mule-processor-chain > .container-inner > .container-children {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mule-scatter-gather > .container-inner > .container-children > .mule-processor-chain > .container-title {
+  display: none;
+}
+
+.mule-psuedo,
+.mule-when,
+.mule-otherwise {
+  border: none;
+}
+
+.mule-choice > .container-inner > .container-children,
+.mule-scatter-gather > .container-inner > .container-children {
+  border-left: 2px solid #ffd200;
+  margin-left: 20px;
 }
 
 .container.vertical > .container-inner > .container-children {
@@ -59,6 +90,7 @@ a:hover {
 
 .container-image {
   align-self: center;
+  margin-left: 20px;
 }
 
 .container-children {

@@ -33,8 +33,8 @@
         content (node :content)
         {error-handlers true regular-components false} 
           (group-by is-error-handler content)
-        wrapped-content [(mule-container "" "" regular-components "horizontal")
-                         (mule-container "" "" error-handlers "horizontal")]]
+        wrapped-content [(mule-container "psuedo" "" regular-components "horizontal")
+                         (mule-container "psuedo" "" error-handlers "horizontal")]]
       (mule-container tag-name description wrapped-content "vertical")))
 
 (defn- transform-tag [node]
