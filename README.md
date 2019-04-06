@@ -36,8 +36,7 @@ Then in the repl run the following command
 ```
 
 Figwheel will automatically push cljs changes to the browser.
-Once Figwheel starts up, you should be able to open the `public/index.html` page in the browser.
-
+Once Figwheel starts up, you should be able to open the `http://localhost:3449` page in a browser.
 
 ### Building for production
 
@@ -45,3 +44,91 @@ Once Figwheel starts up, you should be able to open the `public/index.html` page
 lein clean
 lein package
 ```
+
+### Extracting Mule Stuff Notes
+
+### Mapping extraction tool
+
+I have written a command line tool to extract a map of widget element names, to widget icons/categories.
+It outputs JSON which can be read in by the client to render widgets correctly.
+
+    $ lein run -m mule-preview.tools.mapping-generator.main -- -h
+
+    This is a tool for extracting information and icons for Mule widgets.
+
+    Usage: program-name [options]
+
+    Options:
+    -d, --anypoint-dir DIR                        Anypoint Studio Directory
+    -o, --output FILE       public/mappings.json  Path where the generated mapping file will be written to
+    -v                                            Verbosity level
+    -h, --help
+
+For example:
+
+    lein run -m mule-preview.tools.mapping-generator.main -- -d /mnt/c/Tools/AnypointStudio/plugins/ -o public/mappings.cli.json
+
+#### Getting list of possible widget types
+
+Examine the "org/mule/tooling/ui/modules/core/widgets/attributes.xsd" file
+which is stored in the "org.mule.tooling.ui.modules.core\_\*.jar" plugin.
+
+You can see the possible element types for a widget:
+
+- connector
+- endpoint
+- multi-source
+- wizard
+- global
+- pattern
+- scope
+- global-filter
+- global-transformer
+- global-cloud-connector
+- global-endpoint
+- filter
+- transformer
+- component
+- flow
+- router
+- cloud-connector
+- nested
+
+There are some widget element types that I can't find in that schema file
+but I have worked them out manually:
+
+- container
+
+#### Extracting widget information
+
+Plugins are stored in the "plugins" directory underneath the
+Anypoint Studio installation directory.
+
+Some plugins are in jar files, and others are extracted already.
+
+Search each "plugin.xml" file for an element that looks like the following:
+
+    <extension point="org.mule.tooling.core.contribution">
+
+For each of the contribution/externalContribution elements
+examine the XML file specified by the `path` attribute.
+
+In this XML Under the root element look for one more more of the
+possible widget element types (see above).
+
+For each of those elements:
+
+- The 'localId' attriubute is the xml element name
+- 'image' is the widget image
+
+#### New style widget icons and frames
+
+The jar file "org.mule.tooling.ui.theme.light\_\*.jar" under the plugins
+directory contains new style icons for all the widgets in plugins.
+
+It also contains frames to go around the new style icons which are located at
+"icons/categories/\*.png". The name of these categories match the above widget types
+(e.g. filter).
+
+You can simply overwrite the images associated with the above widgets
+with the ones from the light theme. The filenames should be the same.

@@ -1,6 +1,6 @@
-(ns mule-preview.core
+(ns mule-preview.client.core
   (:require
-   [mule-preview.transformer :refer [transform-xml-to-components]]
+   [mule-preview.client.transformer :refer [transform-xml-to-components]]
    [reagent.core :as r]
    [ajax.core :refer [GET]]
    [tubax.core :refer [xml->clj]]))
@@ -21,7 +21,7 @@
 ;; -------------------------
 ;; Views
 
-(defn home-page [] 
+(defn home-page []
   [:div {:class "root-component"} @mule-components])
 
 ;; -------------------------

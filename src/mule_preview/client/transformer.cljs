@@ -1,26 +1,26 @@
-(ns mule-preview.transformer
-  (:require 
-    [clojure.walk :refer [prewalk]]
-    [mule-preview.mappings :refer [root-container horizontal-container-list 
-                                   vertical-container-list error-handler-component-list
-                                   error-handler-container-list]]
-    [mule-preview.components :refer [mule-component mule-container]]))
+(ns mule-preview.client.transformer
+  (:require
+   [clojure.walk :refer [prewalk]]
+   [mule-preview.client.mappings :refer [root-container horizontal-container-list
+                                         vertical-container-list error-handler-component-list
+                                         error-handler-container-list]]
+   [mule-preview.client.components :refer [mule-component mule-container]]))
 
 (defn- get-tag [node]
   (name (node :tag)))
 
-(defn- is-error-handler [node] 
+(defn- is-error-handler [node]
   (let [tag (get-tag node)
         result (contains? error-handler-component-list tag)]
     result))
 
 (defn- get-description [node]
- (let [doc-name (get-in node [:attributes :doc:name])
-       name (get-in node [:attributes :name])]
-   (or doc-name name)))
+  (let [doc-name (get-in node [:attributes :doc:name])
+        name (get-in node [:attributes :name])]
+    (or doc-name name)))
 
 (defn- create-mule-component [node tag-name]
-   (let [description (get-description node)]
+  (let [description (get-description node)]
     (mule-component tag-name description)))
 
 (defn- create-mule-container-component [node tag-name css-class]
@@ -31,11 +31,11 @@
 (defn- process-error-container [node tag-name]
   (let [description (get-description node)
         content (node :content)
-        {error-handlers true regular-components false} 
-          (group-by is-error-handler content)
+        {error-handlers true regular-components false}
+        (group-by is-error-handler content)
         wrapped-content [(mule-container "psuedo" "" regular-components "horizontal")
                          (mule-container "psuedo" "" error-handlers "horizontal")]]
-      (mule-container tag-name description wrapped-content "vertical")))
+    (mule-container tag-name description wrapped-content "vertical")))
 
 (defn- transform-tag [node]
   (let [tag-name (get-tag node)
@@ -59,4 +59,4 @@
     node))
 
 (defn transform-xml-to-components [xml]
-    (prewalk transform-fn xml))
+  (prewalk transform-fn xml))

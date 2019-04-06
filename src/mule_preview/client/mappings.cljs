@@ -1,4 +1,4 @@
-(ns mule-preview.mappings)
+(ns mule-preview.client.mappings)
 
 (def root-container "mule")
 
@@ -10,18 +10,17 @@
 (def horizontal-container-list
   #{"flow" "sub-flow" "async" "batch:job"
     "batch:step" "batch:commit" "ee:cache" "foreach"
-    "enricher" "poll" "request-reply" "transactional" 
+    "enricher" "poll" "request-reply" "transactional"
     "until-successful" "when" "otherwise" "processor-chain"})
 
 (def error-handler-component-list
-  #{"catch-exception-strategy" "choice-exception-strategy" 
+  #{"catch-exception-strategy" "choice-exception-strategy"
     "exception-strategy" "rollback-exception-strategy"})
 
 ; TODO: scripting:component can be multiple icons based on attributes
 
-(def element-to-icon-map 
-  {
-   "ajax:*" "AJAX-Endpoint-48x32.png"
+(def element-to-icon-map
+  {"ajax:*" "AJAX-Endpoint-48x32.png"
    "scatter-gather" "AllRouter-48x32.png"
    "async" "Async-48x32.png"
    "batch:execute" "BatchExecute-48x32.png"
@@ -137,5 +136,4 @@
    "udp:*" "udp-endpoint-48x32.png"
    "until-successful" "until-successful-48x32.png"
    "validation:*" "validation-component-48x32.png"
-   "wmq:*" "wmq-endpoint-48x32.png"
-  })
+   "wmq:*" "wmq-endpoint-48x32.png"})
