@@ -47,7 +47,7 @@ lein package
 
 ### Extracting Mule Stuff Notes
 
-### Mapping extraction tool
+#### Mapping extraction tool
 
 I have written a command line tool to extract a map of widget element names, to widget icons/categories.
 It outputs JSON which can be read in by the client to render widgets correctly.
@@ -56,7 +56,7 @@ It outputs JSON which can be read in by the client to render widgets correctly.
 
     This is a tool for extracting information and icons for Mule widgets.
 
-    Usage: program-name [options]
+    Usage: mapping-generator [options]
 
     Options:
     -d, --anypoint-dir DIR                        Anypoint Studio Directory
@@ -67,6 +67,27 @@ It outputs JSON which can be read in by the client to render widgets correctly.
 For example:
 
     lein run -m mule-preview.tools.mapping-generator.main -- -d /mnt/c/Tools/AnypointStudio/plugins/ -o public/mappings.cli.json
+
+#### Image extraction tool
+
+I have written a command line to extract all the images (icons) associated with widgets
+and dump the into a directory
+
+    $ lein run -m mule-preview.tools.image-extractor.main -- -h
+
+    This is a tool for extracting icons for Mule widgets.
+
+    Usage: image-extractor [options]
+
+    Options:
+    -d, --anypoint-dir DIR              Anypoint Studio Directory
+    -o, --output FOLDER     public/img  Path where the images will be copied to
+    -v                                  Verbosity level
+    -h, --help
+
+For example:
+
+    lein run -m mule-preview.tools.image-extractor.main -- -d /mnt/c/Tools/AnypointStudio/plugins/ -o public/img/icons/
 
 #### Getting list of possible widget types
 

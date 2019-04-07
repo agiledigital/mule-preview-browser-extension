@@ -1,8 +1,8 @@
-(ns mule-preview.tools.mapping-generator.main
+(ns mule-preview.tools.image-extractor.main
   (:require [clojure.java.io :as io]
             [clojure.string :as string]
             [clojure.tools.cli :refer [parse-opts]]
-            [mule-preview.tools.mapping-generator.generation :as g])
+            [mule-preview.tools.image-extractor.copying :as c])
   (:gen-class))
 
 ; Command line processing
@@ -10,8 +10,9 @@
 (def cli-options
   [["-d" "--anypoint-dir DIR" "Anypoint Studio Directory"
     :validate [#(.isDirectory (io/file %)) "Must be a directory that exists"]]
-   ["-o" "--output FILE" "Path where the generated mapping file will be written to"
-    :default "public/mappings.json"]
+   ["-o" "--output FOLDER" "Path where the images will be copied to"
+    :default "public/img"
+    :validate [#(.isDirectory (io/file %)) "Must be a directory that exists"]]
    ["-v" nil "Verbosity level"
     :id :verbosity
     :default 0
@@ -19,9 +20,9 @@
    ["-h" "--help"]])
 
 (defn usage [options-summary]
-  (->> ["This is a tool for extracting mapping JSON files for Mule widgets."
+  (->> ["This is a tool for extracting icons for Mule widgets."
         ""
-        "Usage: mapping-generator [options]"
+        "Usage: image-extractor [options]"
         ""
         "Options:"
         options-summary
@@ -57,4 +58,4 @@
   (let [{:keys [options exit-message ok?]} (validate-args args)]
     (if exit-message
       (exit (if ok? 0 1) exit-message)
-      (g/scan-directory-for-plugins (:anypoint-dir options) (:output options)))))
+      (c/scan-directory-for-plugins (:anypoint-dir options) (:output options)))))
