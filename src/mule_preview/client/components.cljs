@@ -4,7 +4,8 @@
    [clojure.string :refer [split]]
    [mule-preview.client.mappings :refer [element-to-icon-map]]))
 
-(def default-component-image "generic-component-48x32.png")
+(def default-component-mapping {:image "UnknownNode-48x32.png"})
+(def default-category-image "org.mule.tooling.ui.modules.core.miscellaneous.large.png")
 
 (defn- pluralise
   "Pluralise a given string value"
@@ -18,10 +19,10 @@
       (str first-component ":*")
       first-component)))
 
-(defn- name-to-category-url [name default-value]
-  (let [mapping (get element-to-icon-map (keyword name) default-value)
+(defn- name-to-category-url [name default-image]
+  (let [mapping (get element-to-icon-map (keyword name))
         category (:category mapping)
-        filename (str "org.mule.tooling.category." (pluralise category) ".large.png")]
+        filename (if (some? category) (str "org.mule.tooling.category." (pluralise category) ".large.png") default-image)]
     (if-not (nil? filename)
       (str "img/icons/" filename)
       nil)))
@@ -51,8 +52,8 @@
   (image "img/arrow-right-2x.png" "flow-arrow"))
 
 (defn mule-component [name description]
-  (let [img-url (name-to-img-url name default-component-image)
-        category-url (name-to-category-url name default-component-image)]
+  (let [img-url (name-to-img-url name default-component-mapping)
+        category-url (name-to-category-url name default-category-image)]
     [:div {:class ["component" name]}
      (image category-url "icon")
      (image img-url "icon")

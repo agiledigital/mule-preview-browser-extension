@@ -18,4 +18,9 @@
   #{"catch-exception-strategy" "choice-exception-strategy"
     "exception-strategy" "rollback-exception-strategy"})
 
+(def icon-categories
+  #{"cloudconnectors" "core" "endpoints" "filters"
+    "flowControl" "munit" "scopes" "transformers"
+    "core.exceptions" "core.miscellaneous"})
+
 (def element-to-icon-map (m/get-data "src/mule_preview/client/mappings.json"))

@@ -75,7 +75,7 @@ It outputs JSON which can be read in by the client to render widgets correctly.
 
 For example:
 
-    lein run -m mule-preview.tools.mapping-generator.main -- -d /mnt/c/Tools/AnypointStudio/plugins/ -o public/mappings.cli.json
+    lein run -m mule-preview.tools.mapping-generator.main -- -d /mnt/c/Tools/AnypointStudio/plugins/ -o src/mule_preview/client/mappings.json
 
 #### Image extraction tool
 
@@ -146,6 +146,9 @@ You can see the possible element types for a widget:
 - scope
 - transformer
 - wizard
+
+I removed nested from the list because it duplicates other widgets
+with the same tag name.
 
 ##### Additional possible widget types
 
