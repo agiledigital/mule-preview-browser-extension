@@ -6,6 +6,11 @@
 
 (def default-component-image "generic-component-48x32.png")
 
+(defn- pluralise
+  "Pluralise a given string value"
+  [string]
+  (str string "s"))
+
 (defn- normalise-name [name]
   (let [split-name (split name #":")
         first-component (first split-name)]
@@ -13,9 +18,18 @@
       (str first-component ":*")
       first-component)))
 
+(defn- name-to-category-url [name default-value]
+  (let [mapping (get element-to-icon-map (keyword name) default-value)
+        category (:category mapping)
+        filename (str "org.mule.tooling.category." (pluralise category) ".large.png")]
+    (if-not (nil? filename)
+      (str "img/icons/" filename)
+      nil)))
+
+
 (defn- name-to-img-url [name default-value]
-  (let [normalised-name (normalise-name name)
-        filename (get element-to-icon-map normalised-name default-value)]
+  (let [mapping (get element-to-icon-map (keyword name) default-value)
+        filename (:image mapping)]
     (if-not (nil? filename)
       (str "img/icons/" filename)
       nil)))
@@ -37,8 +51,10 @@
   (image "img/arrow-right-2x.png" "flow-arrow"))
 
 (defn mule-component [name description]
-  (let [img-url (name-to-img-url name default-component-image)]
-    [:div {:class "component"}
+  (let [img-url (name-to-img-url name default-component-image)
+        category-url (name-to-category-url name default-component-image)]
+    [:div {:class ["component" name]}
+     (image category-url "icon")
      (image img-url "icon")
      [:div description]]))
 

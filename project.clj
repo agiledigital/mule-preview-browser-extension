@@ -23,7 +23,8 @@
 
   :resource-paths ["public"]
 
-  :repl-options {:nrepl-middleware [cider.piggieback/wrap-cljs-repl]}
+  :repl-options {:nrepl-middleware [cider.piggieback/wrap-cljs-repl]
+                 :timeout 120000}
 
   :figwheel {:http-server-root "."
              :nrepl-port 7002

@@ -1,4 +1,4 @@
-(ns ^:figwheel-no-load mule-preview.dev
+(ns ^:figwheel-no-load mule-preview.client.dev
   (:require
    [mule-preview.client.core :as core]
    [devtools.core :as devtools]))

@@ -14,24 +14,29 @@
 (def mule-widget-tags
   "A list of tags names that indicate an extractable Mule widget
    The main list was extracted from Mule schema files but some were added manually"
-  #{:connector
+  #{:cloud-connector
+    :cloud-connector-message-source
+    :component
+    :composite
+    :connector
+    :container
     :endpoint
-    :multi-source
-    :wizard
+    :filter
+    :flow
     :global
-    :pattern
-    :scope
-    :global-filter
-    :global-transformer
     :global-cloud-connector
     :global-endpoint
-    :filter
-    :transformer
-    :widget
-    :flow
+    :global-filter
+    :global-transformer
+    :graphical-container
+    :multi-source
+    :nested
+    :nested-container
+    :pattern
     :router
-    :cloud-connector
-    :nested})
+    :scope
+    :transformer
+    :wizard})
 
 (def mule-widget-xpaths
   "XPath expressions for finding extensions in the plugin.xml that indicate extractable widget definitions"
@@ -74,7 +79,7 @@
 
 (defn filename [path]
   "Returns the filename of of a given path"
-  (.getName (io/file path)))
+  (if (some? path) (.getName (io/file path)) nil))
 
 ; Reader functions
 

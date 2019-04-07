@@ -29,11 +29,13 @@ a:hover {
   border: none;
 }
 
-.container.horizontal > .container-inner > .container-children {
+.container.horizontal>.container-inner>.container-children {
   flex-direction: row;
 }
 
-.mule-flow, .mule-sub-flow, .mule-foreach {
+.mule-flow,
+.mule-sub-flow,
+.mule-foreach {
   border-top: 2px solid blue;
 }
 
@@ -41,14 +43,14 @@ a:hover {
   border-top: 2px solid red;
 }
 
-.mule-scatter-gather > .container-inner > .container-children > .mule-processor-chain,
-.mule-scatter-gather > .container-inner > .container-children > .mule-processor-chain > .container-inner > .container-children {
+.mule-scatter-gather>.container-inner>.container-children>.mule-processor-chain,
+.mule-scatter-gather>.container-inner>.container-children>.mule-processor-chain>.container-inner>.container-children {
   border: none;
   padding: 0;
   margin: 0;
 }
 
-.mule-scatter-gather > .container-inner > .container-children > .mule-processor-chain > .container-title {
+.mule-scatter-gather>.container-inner>.container-children>.mule-processor-chain>.container-title {
   display: none;
 }
 
@@ -58,23 +60,23 @@ a:hover {
   border: none;
 }
 
-.mule-choice > .container-inner > .container-children,
-.mule-scatter-gather > .container-inner > .container-children {
+.mule-choice>.container-inner>.container-children,
+.mule-scatter-gather>.container-inner>.container-children {
   border-left: 2px solid #ffd200;
   margin-left: 20px;
 }
 
-.container.vertical > .container-inner > .container-children {
-  flex-direction: column; 
+.container.vertical>.container-inner>.container-children {
+  flex-direction: column;
   align-items: flex-start;
 }
 
-.container.horizontal > .container-inner > .container-children > * {
+.container.horizontal>.container-inner>.container-children>* {
   margin-left: 5px;
   margin-right: 5px;
 }
 
-.container.vertical > .container-inner > .container-children > * {
+.container.vertical>.container-inner>.container-children>* {
   margin-top: 5px;
   margin-bottom: 5px;
 }
@@ -83,10 +85,7 @@ a:hover {
   display: flex;
 }
 
-.icon {
-  width: 48px;
-  height: 32px;
-}
+.icon {}
 
 .container-image {
   align-self: center;
@@ -100,7 +99,7 @@ a:hover {
   justify-content: flex-start
 }
 
-.container-children > img {
+.container-children>img {
   padding-top: 20px;
 }
 
@@ -117,7 +116,7 @@ a:hover {
   font-weight: 500;
 }
 
-.container.vertical > .container-inner > .container-children > .flow-arrow {
+.container.vertical>.container-inner>.container-children>.flow-arrow {
   display: none;
 }
 

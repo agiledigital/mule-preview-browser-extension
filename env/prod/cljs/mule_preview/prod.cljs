@@ -1,4 +1,4 @@
-(ns mule-preview.prod
+(ns mule-preview.client.prod
   (:require
    [mule-preview.client.core :as core]))
 

@@ -10,12 +10,22 @@
   (:use [mule-preview.tools.shared])
   (:gen-class))
 
-(defn element-name [prefix, widget]
+(defn element-name [prefix widget attribute-name]
   "Determines the element name for the mapping file
    Elements from the core namespace are not prefixed in Mule"
   (string/join ":"
                (filter some? [(if (= prefix "core") nil prefix)
-                              (-> widget :attrs :localId)])))
+                              (-> widget :attrs attribute-name)])))
+
+(defn element-names [prefix widget]
+  "Determines the element name for the mapping file
+   Elements from the core namespace are not prefixed in Mule"
+  (let [possible-names [:inboundLocalName :localId :outboundLocalName :localName]]
+    (map #(element-name prefix widget %) possible-names)))
+
+(defn associate-with-element-names [prefix widget]
+  (let [element-names (element-names prefix widget)]
+    (map #(assoc {} :element-name % :widget widget) element-names)))
 
 (defn extract-mapping-from-subpath [plugin-path sub-path read-fn]
   "Given a path to a plugin, extract the mapping for a particular sub path of the plugin
@@ -24,11 +34,12 @@
         parsed-xml (xml-string-to-xml target-file-contents)
         prefix (-> parsed-xml :attrs :prefix)
         widgets (:content parsed-xml)
-        filtered-widgets (filter #(mule-widget-tags (:tag %)) widgets)]
+        filtered-widgets (filter #(mule-widget-tags (:tag %)) widgets)
+        element-names-map (map #(associate-with-element-names prefix %) filtered-widgets)]
     (map #(assoc {}
-                 (element-name prefix %)
-                 {:image (-> % :attrs :image)
-                  :category (-> % :tag)}) filtered-widgets)))
+                 (:element-name %)
+                 {:image (filename (-> % :widget :attrs :image))
+                  :category (-> % :widget :tag)}) (flatten element-names-map))))
 
 (defn extract-mappings-from-subpaths [plugin-path sub-paths read-fn]
   "Given a path to a plugin, extract the mapping for a list of sub paths

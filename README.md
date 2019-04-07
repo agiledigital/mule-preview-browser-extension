@@ -19,19 +19,19 @@ As you can see, there are still a lot of styling issues but the basic concept is
 
 To start the Figwheel compiler, navigate to the project folder and run the following command in the terminal:
 
-```
+```bash
 lein figwheel
 ```
 
 To start with nREPL (if you are connecting in with CIDER or Calva for VS Code) run the following command in the terminal:
 
-```
+```bash
 lein repl
 ```
 
 Then in the repl run the following command
 
-```
+```bash
 (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl)
 ```
 
@@ -40,7 +40,7 @@ Once Figwheel starts up, you should be able to open the `http://localhost:3449` 
 
 ### Building for production
 
-```
+```bash
 lein clean
 lein package
 ```
@@ -51,7 +51,7 @@ lein package
 
 The easiest way to get started is to use `setup.sh`.
 
-    $ ./setup.sh <Anypoint Studio Plugins Directory>
+    ./setup.sh <Anypoint Studio Plugins Directory>
 
 This will call all the below tools with the options required to setup
 the project properly.
@@ -75,7 +75,7 @@ It outputs JSON which can be read in by the client to render widgets correctly.
 
 For example:
 
-    $ lein run -m mule-preview.tools.mapping-generator.main -- -d /mnt/c/Tools/AnypointStudio/plugins/ -o public/mappings.cli.json
+    lein run -m mule-preview.tools.mapping-generator.main -- -d /mnt/c/Tools/AnypointStudio/plugins/ -o public/mappings.cli.json
 
 #### Image extraction tool
 
@@ -96,7 +96,7 @@ and dump the into a directory
 
 For example:
 
-    $ lein run -m mule-preview.tools.image-extractor.main -- -d /mnt/c/Tools/AnypointStudio/plugins/ -o public/img/icons/
+    lein run -m mule-preview.tools.image-extractor.main -- -d /mnt/c/Tools/AnypointStudio/plugins/ -o public/img/icons/
 
 #### Light theme
 
@@ -119,7 +119,7 @@ To apply the light theme over the plugin images use the tool.
 
 For example:
 
-    $ lein run -m mule-preview.tools.light-theme-applier.main -- -d /mnt/c/Tools/AnypointStudio/plugins/ -o public/img/icons
+    lein run -m mule-preview.tools.light-theme-applier.main -- -d /mnt/c/Tools/AnypointStudio/plugins/ -o public/img/icons
 
 #### Getting list of possible widget types
 
@@ -128,29 +128,62 @@ which is stored in the "org.mule.tooling.ui.modules.core\_\*.jar" plugin.
 
 You can see the possible element types for a widget:
 
+- cloud-connector
+- component
 - connector
 - endpoint
-- multi-source
-- wizard
+- filter
+- flow
 - global
-- pattern
-- scope
-- global-filter
-- global-transformer
 - global-cloud-connector
 - global-endpoint
-- filter
-- transformer
-- component
-- flow
-- router
-- cloud-connector
+- global-filter
+- global-transformer
+- multi-source
 - nested
+- pattern
+- router
+- scope
+- transformer
+- wizard
 
-There are some widget element types that I can't find in that schema file
-but I have worked them out manually:
+##### Additional possible widget types
 
+There are some widget element types that are not in the schema.
+You can find them in the plugin.xml files under the
+"org.mule.tooling.core.contributionhandler" extension point.
+
+To extract custom defined widget types from plugins that are
+not defined in the "http://www.mulesoft.org/schema/mule/tooling.attributes") namespace,
+you can use this tool.
+
+Currently there isn't many so you can manually examine the output
+and update "mule-widget-tags" in "shared.clj" manually.
+
+    $ lein run -m mule-preview.tools.widget-type-extractor.main -- -h
+
+    This is a tool for extracting widget type lists for Mule widgets.
+
+    Usage: widget-type-extractor [options]
+
+    Options:
+    -d, --anypoint-dir DIR                            Anypoint Studio Directory
+    -o, --output FILE       public/widget_types.json  Path where the widget list will be written to
+    -v                                                Verbosity level
+    -h, --help
+
+For example:
+
+    lein run -m mule-preview.tools.widget-type-extractor.main -- -d /mnt/c/Tools/AnypointStudio/plugins/ -o /tmp/widget-types.json
+
+I have extracted the following additional types using the widget type
+extractor:
+
+- cloud-connector-message-source
+- composite
 - container
+- graphical-container
+- nested-container
 
 #### Extracting widget information
 
