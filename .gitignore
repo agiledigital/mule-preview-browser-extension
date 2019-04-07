@@ -15,3 +15,4 @@ pom.xml.asc
 *.log
 /.env
 /public/img/icons/*.png
+src/mule_preview/client/mappings.json

@@ -45,7 +45,16 @@ lein clean
 lein package
 ```
 
-### Extracting Mule Stuff Notes
+### Extracting the Anypoint Studio Components
+
+#### Setup script
+
+The easiest way to get started is to use `setup.sh`.
+
+    $ ./setup.sh <Anypoint Studio Plugins Directory>
+
+This will call all the below tools with the options required to setup
+the project properly.
 
 #### Mapping extraction tool
 
@@ -66,7 +75,7 @@ It outputs JSON which can be read in by the client to render widgets correctly.
 
 For example:
 
-    lein run -m mule-preview.tools.mapping-generator.main -- -d /mnt/c/Tools/AnypointStudio/plugins/ -o public/mappings.cli.json
+    $ lein run -m mule-preview.tools.mapping-generator.main -- -d /mnt/c/Tools/AnypointStudio/plugins/ -o public/mappings.cli.json
 
 #### Image extraction tool
 
@@ -87,7 +96,30 @@ and dump the into a directory
 
 For example:
 
-    lein run -m mule-preview.tools.image-extractor.main -- -d /mnt/c/Tools/AnypointStudio/plugins/ -o public/img/icons/
+    $ lein run -m mule-preview.tools.image-extractor.main -- -d /mnt/c/Tools/AnypointStudio/plugins/ -o public/img/icons/
+
+#### Light theme
+
+The light theme plugin is a jar full of images with the same name as plugin images.
+They are meant to overwrite the plugins image file with the same name.
+
+To apply the light theme over the plugin images use the tool.
+
+    $ lein run -m mule-preview.tools.light-theme-applier.main -- -h
+
+    This is a tool for applying the light Mule widget theme.
+
+    Usage: light-theme-applier [options]
+
+    Options:
+    -d, --anypoint-dir DIR              Anypoint Studio Directory
+    -o, --output FOLDER     public/img  Path where the images will be copied to
+    -v                                  Verbosity level
+    -h, --help
+
+For example:
+
+    $ lein run -m mule-preview.tools.light-theme-applier.main -- -d /mnt/c/Tools/AnypointStudio/plugins/ -o public/img/icons
 
 #### Getting list of possible widget types
 
