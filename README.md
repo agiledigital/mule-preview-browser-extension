@@ -147,8 +147,11 @@ You can see the possible element types for a widget:
 - transformer
 - wizard
 
-I removed nested from the list because it duplicates other widgets
-with the same tag name.
+Nested are a special case, they usually duplicate existing components by name
+but define a version of it that can take children.
+For example, most if not all of the filter components have a "filter" entry
+and a nested entry. The images for the nested entry are mapped to the "nested-image"
+key so that they don't overwrite the normal component's images.
 
 ##### Additional possible widget types
 

@@ -39,11 +39,15 @@
     (mule-widget-tags tag)))
 
 (defn create-element-from-widget [widget]
-  (let [image  (filename (-> widget :widget :attrs :image))
+  (let [inner (:widget widget)
+        image  (filename (-> inner :attrs :image))
         element-name (:element-name widget)
-        tag (:tag widget)
-        category (extract-category-from-widget (-> widget :widget))]
-    {element-name {:image image :category category}}))
+        tag (:tag inner)
+        is-nested (#{:nested} tag)
+        category (extract-category-from-widget inner)
+        image-map (if is-nested {:nested-image image} {:image image})
+        category-map (if (some? category) {:category category} {})]
+    {element-name (merge image-map category-map)}))
 
 (defn extract-mapping-from-subpath [plugin-path sub-path read-fn]
   "Given a path to a plugin, extract the mapping for a particular sub path of the plugin
@@ -77,7 +81,7 @@
                                        :definitions (extract-widget-definition (read-fn % "plugin.xml"))) file-list)
     valid-definitions (filter #(not (empty? (:definitions %))) extracted-definitions)
     extracted-mapping (map #(extract-mappings-from-valid-definitions % read-fn) valid-definitions)]
-    (into {} (flatten extracted-mapping))))
+    (apply (partial merge-with merge) (flatten extracted-mapping))))
 
 (defn scan-directory-for-plugins [root-dir output-file]
   "Walks the given root dir looking for valid Mule widget plugins, which it will process into a merged map of widget definitions

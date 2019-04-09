@@ -27,9 +27,10 @@
       (str "img/icons/" filename)
       nil)))
 
-(defn- name-to-img-url [name default-value]
+(defn- name-to-img-url [name is-nested default-value]
   (let [mapping (get element-to-icon-map (keyword name) default-value)
-        filename (:image mapping)]
+        regular-filename (:image mapping)
+        filename (if is-nested (get mapping :nested-image regular-filename) regular-filename)]
     (if-not (nil? filename)
       (str "img/icons/" filename)
       nil)))
@@ -51,7 +52,7 @@
   (image "img/arrow-right-2x.png" "flow-arrow"))
 
 (defn mule-component [name description]
-  (let [img-url (name-to-img-url name default-component-mapping)
+  (let [img-url (name-to-img-url name false default-component-mapping)
         category-url (name-to-category-url name default-category-image)]
     [:div {:class ["component" name]}
      (image category-url "category-frame")
@@ -60,7 +61,7 @@
 
 (defn mule-container [name description children css-class]
   (let [generated-css-class (name-to-css-class name)
-        img-url (name-to-img-url name nil)
+        img-url (name-to-img-url name (some? children) nil)
         interposed-children (interpose arrow children)
         image-component (image img-url "icon container-image")
         child-container-component (child-container interposed-children)]

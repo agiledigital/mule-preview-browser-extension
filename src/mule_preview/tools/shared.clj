@@ -30,6 +30,7 @@
     :global-transformer
     :graphical-container
     :multi-source
+    :nested
     :pattern
     :router
     :scope
