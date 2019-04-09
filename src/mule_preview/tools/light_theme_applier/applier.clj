@@ -18,6 +18,7 @@
   "Locates the light theme plugin from an Anypoint Studio installation and applies
   it to the images that were extracted from widgets"
   (let [light-theme-plugin (find-light-theme root-dir)
-        files-to-apply (zu/list-files-from-zip-matching light-theme-plugin #".*\.png")]
-    (doall (map #(copy-file-to-output-dir light-theme-plugin % output-dir) files-to-apply))
+        files-to-apply (zu/list-files-from-zip-matching light-theme-plugin #".+\.png")
+        files-excluding-small-folder (filter #(not (re-matches #".+\/small\/.+" %)) files-to-apply)]
+    (doall (map #(copy-file-to-output-dir light-theme-plugin % output-dir) files-excluding-small-folder))
     (println "Successfully applied the light theme to [" output-dir "]")))

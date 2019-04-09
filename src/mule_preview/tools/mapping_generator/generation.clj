@@ -27,6 +27,24 @@
   (let [element-names (element-names prefix widget)]
     (map #(assoc {} :element-name % :widget widget) element-names)))
 
+(defn extract-category-from-widget [widget]
+  (let [tag (:tag widget)
+        attrs (:attrs widget)
+        mapped-category ((keyword tag) widget-category-map)]
+    (get attrs :paletteCategory mapped-category)))
+
+(defn is-valid-widget [widget]
+  (let [tag (:tag widget)
+        attrs (:attrs widget)]
+    (mule-widget-tags tag)))
+
+(defn create-element-from-widget [widget]
+  (let [image  (filename (-> widget :widget :attrs :image))
+        element-name (:element-name widget)
+        tag (:tag widget)
+        category (extract-category-from-widget (-> widget :widget))]
+    {element-name {:image image :category category}}))
+
 (defn extract-mapping-from-subpath [plugin-path sub-path read-fn]
   "Given a path to a plugin, extract the mapping for a particular sub path of the plugin
    Uses the given read-fn to extract the XML data"
@@ -34,12 +52,9 @@
         parsed-xml (xml-string-to-xml target-file-contents)
         prefix (-> parsed-xml :attrs :prefix)
         widgets (:content parsed-xml)
-        filtered-widgets (filter #(mule-widget-tags (:tag %)) widgets)
-        element-names-map (map #(associate-with-element-names prefix %) filtered-widgets)]
-    (map #(assoc {}
-                 (:element-name %)
-                 {:image (filename (-> % :widget :attrs :image))
-                  :category (-> % :widget :tag)}) (flatten element-names-map))))
+        filtered-widgets (filter is-valid-widget widgets)
+        element-names-map (flatten (map #(associate-with-element-names prefix %) filtered-widgets))]
+    (map create-element-from-widget element-names-map)))
 
 (defn extract-mappings-from-subpaths [plugin-path sub-paths read-fn]
   "Given a path to a plugin, extract the mapping for a list of sub paths

@@ -36,6 +36,32 @@
     :transformer
     :wizard})
 
+(def widget-category-map
+  "A map of widget tags to categories. The category is used to determine what frame to put around the icon.
+   This is only needed if the widget definition does not have a paletteCategory attribute.
+   E.g filters have a purple frame"
+  {:cloud-connector "org.mule.tooling.category.cloudconnectors"
+   :cloud-connector-message-source "org.mule.tooling.category.cloudconnectors"
+   :component "org.mule.tooling.category.core"
+   :composite "org.mule.tooling.category.core"
+   :connector "org.mule.tooling.category.endpoints"
+   :container "org.mule.tooling.category.scopes"
+   :endpoint "org.mule.tooling.category.endpoints"
+   :filter "org.mule.tooling.category.filters"
+   :flow "org.mule.tooling.category.flowControl"
+   :global "org.mule.tooling.category.core"
+   :global-cloud-connector "org.mule.tooling.category.cloudconnectors"
+   :global-endpoint "org.mule.tooling.category.endpoints"
+   :global-filter "org.mule.tooling.category.filters"
+   :global-transformer "org.mule.tooling.category.transformers"
+   :graphical-container "org.mule.tooling.category.scopes"
+   :multi-source "org.mule.tooling.category.endpoints"
+   :pattern "org.mule.tooling.category.core"
+   :router "org.mule.tooling.category.flowControl"
+   :scope "org.mule.tooling.category.scopes"
+   :transformer "org.mule.tooling.category.transformers"
+   :wizard "org.mule.tooling.category.scopes"})
+
 (def mule-widget-xpaths
   "XPath expressions for finding extensions in the plugin.xml that indicate extractable widget definitions"
   (string/join "|" ["//plugin/extension[@point='org.mule.tooling.core.contribution']/externalContribution"

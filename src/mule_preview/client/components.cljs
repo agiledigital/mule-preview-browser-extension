@@ -22,11 +22,10 @@
 (defn- name-to-category-url [name default-image]
   (let [mapping (get element-to-icon-map (keyword name))
         category (:category mapping)
-        filename (if (some? category) (str "org.mule.tooling.category." (pluralise category) ".large.png") default-image)]
+        filename (if (some? category) (str category ".large.png") default-image)]
     (if-not (nil? filename)
       (str "img/icons/" filename)
       nil)))
-
 
 (defn- name-to-img-url [name default-value]
   (let [mapping (get element-to-icon-map (keyword name) default-value)
@@ -55,9 +54,9 @@
   (let [img-url (name-to-img-url name default-component-mapping)
         category-url (name-to-category-url name default-category-image)]
     [:div {:class ["component" name]}
-     (image category-url "icon")
+     (image category-url "category-frame")
      (image img-url "icon")
-     [:div description]]))
+     [:div {:class "label"} description]]))
 
 (defn mule-container [name description children css-class]
   (let [generated-css-class (name-to-css-class name)

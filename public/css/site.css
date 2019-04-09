@@ -85,7 +85,19 @@ a:hover {
   display: flex;
 }
 
-.icon {}
+.category-frame {
+  width: 64px;
+  height: 64px;
+}
+
+.icon {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  left: 37px;
+  top: 24px;
+  object-fit: contain;
+}
 
 .container-image {
   align-self: center;
@@ -109,6 +121,11 @@ a:hover {
   width: 90px;
   max-width: 90px;
   padding: 5px;
+  position: relative;
+}
+
+.component>.label {
+  word-wrap: break-word;
 }
 
 .container-title {
