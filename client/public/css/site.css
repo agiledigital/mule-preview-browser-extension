@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic.css');
+
+body {
+  font-family: 'Roboto', sans-serif;
+  padding-top: 72px;
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+  color: #09f;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.root-component {
+  padding: 20px;
+}
+
+.container {
+  padding: 5px;
+  border: 1px solid gray;
+}
+
+.container.root {
+  border: none;
+}
+
+.container.horizontal>.container-inner>.container-children {
+  flex-direction: row;
+}
+
+.mule-flow,
+.mule-sub-flow,
+.mule-foreach {
+  border-top: 2px solid blue;
+}
+
+.error-handler {
+  border-top: 2px solid red;
+}
+
+.mule-scatter-gather>.container-inner>.container-children>.mule-processor-chain,
+.mule-scatter-gather>.container-inner>.container-children>.mule-processor-chain>.container-inner>.container-children {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mule-scatter-gather>.container-inner>.container-children>.mule-processor-chain>.container-title {
+  display: none;
+}
+
+.mule-psuedo,
+.mule-when,
+.mule-otherwise {
+  border: none;
+}
+
+.mule-choice>.container-inner>.container-children,
+.mule-scatter-gather>.container-inner>.container-children {
+  border-left: 2px solid #ffd200;
+  margin-left: 20px;
+}
+
+.container.vertical>.container-inner>.container-children {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.container.horizontal>.container-inner>.container-children>* {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.container.vertical>.container-inner>.container-children>* {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.container-inner {
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+
+.category-frame {
+  width: 64px;
+  height: 64px;
+}
+
+.icon {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  left: 37px;
+  top: 24px;
+  object-fit: contain;
+}
+
+.icon-container {
+  position: relative;
+  display: none;
+}
+
+.container-image {
+  align-self: center;
+  margin-left: 20px;
+  left: 0;
+  top: 20px;
+}
+
+.container-children {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  justify-content: flex-start
+}
+
+.container-children>img {
+  padding-top: 20px;
+}
+
+.component {
+  font-size: 12px;
+  text-align: center;
+  width: 90px;
+  max-width: 90px;
+  padding: 5px;
+  position: relative;
+}
+
+.component>.label {
+  word-wrap: break-word;
+}
+
+.container-title {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.container.vertical>.container-inner>.container-children>.flow-arrow {
+  display: none;
+}
+
+.container.vertical>.container-inner>.icon-container {
+  display: block;
+}
+
+.container.root>.container-inner>.icon-container,
+.container.mule-flow>.container-inner>.icon-container {
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
