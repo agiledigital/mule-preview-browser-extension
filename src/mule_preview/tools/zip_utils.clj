@@ -32,7 +32,7 @@
      (repeatedly #(get-next-zip-entry zip-stream)))
     (io/copy zip-stream output-stream)))
 
-(defn zip-contains-file [zip-file, filename]
+(defn zip-contains-file [zip-file filename]
   "Given a zip file and a filename (full path to file in zip) return if the filename exists in the zip file or not"
   (let [zip-file-definition (ZipFile. zip-file)
         entries (enumeration-seq (.entries zip-file-definition))

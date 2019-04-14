@@ -68,6 +68,10 @@
   (string/join "|" ["//plugin/extension[@point='org.mule.tooling.core.contribution']/externalContribution"
                     "//plugin/extension[@point='org.mule.tooling.core.contribution']/contribution"]))
 
+(def mule-module-xpath
+  "XPath expression for finding extensions in the plugin.xml that indicate module definitions"
+  "//plugin/extension[@point='org.mule.tooling.module']/module/*")
+
 (def jar-filename-regex
   "A regex used when searching for jar files to process"
   #".*\.jar")
@@ -91,6 +95,10 @@
 (defn extract-widget-definition [xml-string]
   "Extracts widget definitions from a string containing plugin XML"
   (xp/$x mule-widget-xpaths xml-string))
+
+(defn extract-module-definition [xml-string]
+  "Extracts module definitions from a string containing plugin XML"
+  (xp/$x mule-module-xpath xml-string))
 
 (defn extract-subpaths-from-definition [definition]
   "Given a plugin definition map, extract the path to the widget definition"
