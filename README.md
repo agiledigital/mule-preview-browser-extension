@@ -61,65 +61,27 @@ the project properly.
 I have written a command line tool to extract a map of widget element names, to widget icons/categories.
 It outputs JSON which can be read in by the client to render widgets correctly.
 
-    $ lein run -m mule-preview.tools.mapping-generator.main -- -h
+For example (in the tools directory):
 
-    This is a tool for extracting information and icons for Mule widgets.
-
-    Usage: mapping-generator [options]
-
-    Options:
-    -d, --anypoint-dir DIR                        Anypoint Studio Directory
-    -o, --output FILE       public/mappings.json  Path where the generated mapping file will be written to
-    -v                                            Verbosity level
-    -h, --help
-
-For example:
-
-    lein run -m mule-preview.tools.mapping-generator.main -- -d /mnt/c/Tools/AnypointStudio/plugins/ -o src/mule_preview/client/mappings.json
+    lein run -d /mnt/c/Tools/AnypointStudio/plugins/ -o ../client/src/mule_preview/client generate-mappings
 
 #### Image extraction tool
 
 I have written a command line to extract all the images (icons) associated with widgets
 and dump the into a directory
 
-    $ lein run -m mule-preview.tools.image-extractor.main -- -h
+For example (in the tools directory):
 
-    This is a tool for extracting icons for Mule widgets.
-
-    Usage: image-extractor [options]
-
-    Options:
-    -d, --anypoint-dir DIR              Anypoint Studio Directory
-    -o, --output FOLDER     public/img  Path where the images will be copied to
-    -v                                  Verbosity level
-    -h, --help
-
-For example:
-
-    lein run -m mule-preview.tools.image-extractor.main -- -d /mnt/c/Tools/AnypointStudio/plugins/ -o public/img/icons/
+    lein run -d /mnt/c/Tools/AnypointStudio/plugins/ -o ../client/public/img/icons/ extract-images
 
 #### Light theme
 
 The light theme plugin is a jar full of images with the same name as plugin images.
 They are meant to overwrite the plugins image file with the same name.
 
-To apply the light theme over the plugin images use the tool.
+For example (in the tools directory):
 
-    $ lein run -m mule-preview.tools.light-theme-applier.main -- -h
-
-    This is a tool for applying the light Mule widget theme.
-
-    Usage: light-theme-applier [options]
-
-    Options:
-    -d, --anypoint-dir DIR              Anypoint Studio Directory
-    -o, --output FOLDER     public/img  Path where the images will be copied to
-    -v                                  Verbosity level
-    -h, --help
-
-For example:
-
-    lein run -m mule-preview.tools.light-theme-applier.main -- -d /mnt/c/Tools/AnypointStudio/plugins/ -o public/img/icons
+    lein run -d /mnt/c/Tools/AnypointStudio/plugins/ -o ../client/public/img/icons apply-light-theme
 
 #### Getting list of possible widget types
 
@@ -166,21 +128,9 @@ you can use this tool.
 Currently there isn't many so you can manually examine the output
 and update "mule-widget-tags" in "shared.clj" manually.
 
-    $ lein run -m mule-preview.tools.widget-type-extractor.main -- -h
+For example (in the tools directory):
 
-    This is a tool for extracting widget type lists for Mule widgets.
-
-    Usage: widget-type-extractor [options]
-
-    Options:
-    -d, --anypoint-dir DIR                            Anypoint Studio Directory
-    -o, --output FILE       public/widget_types.json  Path where the widget list will be written to
-    -v                                                Verbosity level
-    -h, --help
-
-For example:
-
-    lein run -m mule-preview.tools.widget-type-extractor.main -- -d /mnt/c/Tools/AnypointStudio/plugins/ -o /tmp/widget-types.json
+    lein run -d /mnt/c/Tools/AnypointStudio/plugins/ -o /tmp/ extract-widget-types
 
 I have extracted the following additional types using the widget type
 extractor:

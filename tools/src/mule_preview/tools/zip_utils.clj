@@ -37,6 +37,7 @@
   (let [zip-file-definition (ZipFile. zip-file)
         entries (enumeration-seq (.entries zip-file-definition))
         names (map #(.getName %) entries)]
+    ; (println "Checking that " filename "is in" zip-file)
     (some #{filename} names)))
 
 (defn list-files-from-zip-matching [zip-file pattern]

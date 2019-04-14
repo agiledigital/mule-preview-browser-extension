@@ -28,10 +28,14 @@
     (map #(element-name prefix %) all-names)))
 
 (defn associate-with-element-names [prefix widget]
+  "A single widget may define several names. For example, endpoints can have an inbound and outbound name.
+   This method associates all the possible names a widget can have, with the widget definition."
   (let [element-names (element-names prefix widget)]
     (map #(assoc {} :element-name % :widget widget) element-names)))
 
 (defn extract-category-from-widget [widget]
+  "There are multiple ways that a category can be defined. Some widgets have the paletteCategory attribute,
+   others have the category attribute and some have neither, so the category must be inferred by it's tag name"
   (let [tag (:tag widget)
         attrs (:attrs widget)
         palette-category (:paletteCategory attrs)
@@ -40,11 +44,13 @@
     (or palette-category category mapped-category)))
 
 (defn is-valid-widget [widget]
+  "Determines whether the specified widget XML element represents a widget or not"
   (let [tag (:tag widget)
         attrs (:attrs widget)]
     (mule-widget-tags tag)))
 
 (defn create-element-from-widget [widget]
+  "Creates the actual mapping used by the client. It combines information from several places."
   (let [inner (:widget widget)
         image  (filename (-> inner :attrs :image))
         element-name (:element-name widget)
@@ -56,6 +62,7 @@
     {element-name (merge image-map category-map)}))
 
 (defn extract-mapping-from-elements [xml-elements prefix]
+  "Takes a list of candidate widget definitions and converts it to the mapping used by the client."
   (let [filtered-widgets (filter is-valid-widget xml-elements)
         element-names-map (flatten (map #(associate-with-element-names prefix %) filtered-widgets))]
     (map create-element-from-widget element-names-map)))
@@ -76,16 +83,19 @@
   (flatten (map #(extract-mapping-from-subpath plugin-path % read-fn) sub-paths)))
 
 (defn extract-mappings-from-valid-definitions [definition read-fn]
+  "Iterates over each path specified in the widget definition and processes it to extract the mapping."
   (extract-mappings-from-subpaths
    (:file definition)
    (map extract-subpaths-from-definition (:definitions definition))
    read-fn))
 
 (defn extract-mappings-from-plugin-modules [plugin-xml]
+  "Some widget definitions are in the plugin.xml file itself. This method generates the mapping for these widgets."
   (let [modules (extract-module-definition (:plugin-xml plugin-xml))]
     (extract-mapping-from-elements modules "core")))
 
 (defn extract-widget-definitions-from-plugin [plugin-xml]
+  "Extracts the widget definitions from a plugin XML file that are later used to create the mappings."
   (let [widget-definitions (extract-widget-definition (:plugin-xml plugin-xml))]
     {:file (:file plugin-xml)
      :definitions widget-definitions}))
@@ -102,10 +112,11 @@
     all-mappings (concat extracted-module-mappings extracted-mappings)]
     (apply (partial merge-with merge) (flatten all-mappings))))
 
-(defn scan-directory-for-plugins [root-dir output-file]
+(defn scan-directory-for-plugins [root-dir output-dir]
   "Walks the given root dir looking for valid Mule widget plugins, which it will process into a merged map of widget definitions
-and write them to a JSON file"
-  (let [raw-plugins (scan-for-files root-dir raw-filename-regex)
+   and write them to a JSON file"
+  (let [output-file (io/file output-dir "mappings.json")
+        raw-plugins (scan-for-files root-dir raw-filename-regex)
         jars (scan-for-files root-dir jar-filename-regex)
         jars-with-plugins (filter #(zu/zip-contains-file % "plugin.xml") jars)
         jar-scan-output (process-plugins jars-with-plugins zip-read-fn)

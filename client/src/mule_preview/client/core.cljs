@@ -15,8 +15,8 @@
 (defn handle-xml-fetch-error [{:keys [status status-text]}]
   (.log js/console (str "something bad happened: " status " " status-text)))
 
-(GET "/example_xml/nice-example.xml" {:handler handle-xml-fetch-success
-                                      :error-handler handle-xml-fetch-error})
+(GET "/example_xml/subscriber-master-index-api.xml" {:handler handle-xml-fetch-success
+                                                     :error-handler handle-xml-fetch-error})
 
 ;; -------------------------
 ;; Views

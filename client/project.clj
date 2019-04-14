@@ -8,9 +8,7 @@
                  [org.clojure/clojurescript "1.10.520"]
                  [reagent "0.8.1"]
                  [funcool/tubax "0.2.0"]
-                 [cljs-ajax "0.7.4"]
-                 [org.clojure/tools.cli "0.4.2"]
-                 [com.github.kyleburton/clj-xpath "1.4.11"]]
+                 [cljs-ajax "0.7.4"]]
 
   :plugins [[lein-cljsbuild "1.1.7"]
             [lein-figwheel "0.5.18"]]
