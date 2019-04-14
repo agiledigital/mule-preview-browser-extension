@@ -62,11 +62,13 @@
 (defn mule-container [name description children css-class]
   (let [generated-css-class (name-to-css-class name)
         img-url (name-to-img-url name (some? children) nil)
+        category-url (name-to-category-url name default-category-image)
         interposed-children (interpose arrow children)
-        image-component (image img-url "icon container-image")
         child-container-component (child-container interposed-children)]
-    [:div {:class ["container", generated-css-class, css-class]}
+    [:div {:class ["container" generated-css-class css-class]}
      [:div {:class "container-title"} description]
      [:div {:class "container-inner"}
-      image-component
+      [:div {:class "icon-container"}
+       (image category-url "category-frame")
+       (image img-url "icon container-image")]
       child-container-component]]))
