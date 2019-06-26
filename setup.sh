@@ -19,12 +19,14 @@ if [ ! -d "${ANYPOINT_STUDIO_INSTALLATION}" ]; then
     usage
 fi
 
+pushd tools
 echo "Leiningen takes a really long time to boot, so if the script looks like it's frozen, give it a few more minutes."
 echo "In the future I will build these tools into jars or something to make it quicker"
 echo ""
 echo "Generating mappings..."
-lein run -m mule-preview.tools.mapping-generator.main -- -d /mnt/c/Tools/AnypointStudio/plugins/ -o src/mule_preview/client/mappings.json
+lein run -- -d "${ANYPOINT_STUDIO_INSTALLATION}/plugins/" -o ../client/src/mule_preview/client generate-mappings
 echo "Extracting plugin images..."
-lein run -m mule-preview.tools.image-extractor.main -- -d /mnt/c/Tools/AnypointStudio/plugins/ -o public/img/icons
+lein run -- -d "${ANYPOINT_STUDIO_INSTALLATION}/plugins/" -o ../client/public/img/icons extract-images
 echo "Applying light theme..."
-lein run -m mule-preview.tools.light-theme-applier.main -- -d /mnt/c/Tools/AnypointStudio/plugins/ -o public/img/icons
+lein run -- -d "${ANYPOINT_STUDIO_INSTALLATION}/plugins/" -o ../client/public/img/icons apply-light-theme
+popd
