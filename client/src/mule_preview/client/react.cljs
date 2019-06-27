@@ -26,7 +26,6 @@
 
 (defn- transform-tag [node]
   (let [type (:type node)]
-    (println type)
     (case type
       :error-container (process-error-container node)
       :container (create-mule-container-component node)
