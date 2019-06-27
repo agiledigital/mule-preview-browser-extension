@@ -1,6 +1,5 @@
 (ns mule-preview.client.core
   (:require
-   [mule-preview.client.transformer :refer [transform-xml-to-components]]
    [reagent.core :as r]
    [tubax.core :refer [xml->clj]]
    [mule-preview.client.views.preview :refer [start-preview]]
@@ -11,21 +10,20 @@
 ;; -------------------------
 ;; Views
 
-(defn preview-view []
-  (start-preview "/example_xml/nice-example.xml" root-component)
+(defn view []
   [:div {:class "root-component"} @root-component])
 
-(defn diff-view []
-  (start-diff "/example_xml/nice-example.xml" 
-              "/example_xml/nice-example-diff.xml" 
-              root-component)
-  [:div {:class "root-component"} @root-component])
+; (start-diff "/example_xml/nice-example.xml"
+;             "/example_xml/nice-example-diff.xml"
+;             root-component)
+(start-preview "/example_xml/nice-example.xml" root-component)
+
 
 ;; -------------------------
 ;; Initialize app
 
 (defn mount-root []
-  (r/render [preview-view] (.getElementById js/document "app")))
+  (r/render [view] (.getElementById js/document "app")))
 
 (defn init! []
   (mount-root))

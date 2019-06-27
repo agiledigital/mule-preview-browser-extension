@@ -1,6 +1,7 @@
 (ns mule-preview.client.views.preview
   (:require
-   [mule-preview.client.transformer :refer [transform-xml-to-components]]
+   [mule-preview.client.react :refer [mast->react]]
+   [mule-preview.client.mast :refer [xml->mast]]
    [reagent.core :as r]
    [cljs.core.async :refer [<!]] 
    [cljs-http.client :as http]
@@ -9,7 +10,9 @@
 
 (defn- handle-xml-fetch-success [response root-component]
   (let [parsed-xml (xml->clj (str response))
-        transformed-components (transform-xml-to-components parsed-xml)]
+        mast (xml->mast parsed-xml)
+        transformed-components (mast->react mast)]
+    ; (cljs.pprint/pprint mast)
     (reset! root-component transformed-components)))
 
 (defn start-preview [url root-component]
