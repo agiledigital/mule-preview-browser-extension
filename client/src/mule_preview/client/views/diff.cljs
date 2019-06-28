@@ -2,7 +2,7 @@
   (:require
    [mule-preview.client.react :refer [mast->react]]
    [mule-preview.client.mast :refer [xml->mast augment-mast-with-diff]]
-   [mule-preview.client.diff-algorithms.deep-diff :refer [diff]]
+   [mule-preview.client.diff-algorithms.diff-dom :refer [diff]]
    [reagent.core :as r]
    [cljs.core.async :refer [<!]]
    [cljs-http.client :as http]
@@ -14,8 +14,13 @@
         parsed-xml-b (xml->clj (str response-b))
         mast-a (xml->mast parsed-xml-a)
         mast-b (xml->mast parsed-xml-b)
-        diff (diff mast-a mast-b)
-        augmented-mast (augment-mast-with-diff mast-a diff)
+        diff-output (diff mast-a mast-b)
+        ; _ (.dir js/console dom-a)
+        ; _ (.dir js/console dom-b)
+        ; _ (cljs.pprint/pprint mast-a)
+        _ (cljs.pprint/pprint (-> diff-output first :element :nodeName))
+        augmented-mast (augment-mast-with-diff mast-a diff-output)
+        ; _ (cljs.pprint/pprint augmented-mast)
         ; _ (cljs.pprint/pprint augmented-mast)
         transformed-components (mast->react augmented-mast)]
     (reset! root-component transformed-components)))

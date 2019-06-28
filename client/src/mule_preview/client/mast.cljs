@@ -2,6 +2,7 @@
  mule-preview.client.mast
   (:require
    [clojure.walk :refer [prewalk]]
+   [mule-preview.client.diff-algorithms.diff-dom :refer [dom-to-node]]
    [mule-preview.client.mappings :refer [root-container horizontal-container-list
                                          vertical-container-list error-handler-component-list
                                          error-handler-container-list]]))
@@ -35,6 +36,13 @@
       :content content 
       :attributes attributes}))
 
+(defn- create-mule-psuedo-container [content]
+  {:type :container
+   :tag-name "psuedo"
+   :description ""
+   :content content
+   :attributes #{:horizontal}})
+
 (defn- process-error-container [node tag-name attributes]
   (let [description (get-description node)
         content (node :content)
@@ -42,9 +50,8 @@
         (group-by is-error-handler content)]
     {:type :error-container 
      :tag-name tag-name 
-     :description description 
-     :regular-content regular-components 
-     :error-content error-handlers
+     :content [(create-mule-psuedo-container regular-components)
+               (create-mule-psuedo-container error-handlers)]
      :attributes attributes}))
 
 (defn- transform-tag [node]
@@ -71,179 +78,46 @@
 (defn xml->mast [xml]
   (prewalk transform-fn xml))
 
-
-; [
-;   {
-;     "kind": "E",
-;     "path": [
-;       "content",
-;       0,
-;       "regular-content",
-;       6,
-;       "type"
-;     ],
-;     "lhs": "component",
-;     "rhs": "container"
-;   },
-;   {
-;     "kind": "E",
-;     "path": [
-;       "content",
-;       0,
-;       "regular-content",
-;       6,
-;       "tag-name"
-;     ],
-;     "lhs": "set-payload",
-;     "rhs": "foreach"
-;   },
-;   {
-;     "kind": "E",
-;     "path": [
-;       "content",
-;       0,
-;       "regular-content",
-;       6,
-;       "description"
-;     ],
-;     "lhs": "Server Noodles",
-;     "rhs": "For Each"
-;   },
-;   {
-;     "kind": "A",
-;     "path": [
-;       "content",
-;       0,
-;       "regular-content",
-;       6,
-;       "attributes"
-;     ],
-;     "index": 0,
-;     "item": {
-;       "kind": "N",
-;       "rhs": "horizontal"
-;     }
-;   },
-;   {
-;     "kind": "N",
-;     "path": [
-;       "content",
-;       0,
-;       "regular-content",
-;       6,
-;       "content"
-;     ],
-;     "rhs": [
-;       {
-;         "type": "component",
-;         "tag-name": "flow-ref",
-;         "description": "example:/strain-overflow-noodle-requests",
-;         "attributes": []
-;       }
-;     ]
-;   },
-;   {
-;     "kind": "E",
-;     "path": [
-;       "content",
-;       0,
-;       "regular-content",
-;       5,
-;       "type"
-;     ],
-;     "lhs": "container",
-;     "rhs": "component"
-;   },
-;   {
-;     "kind": "E",
-;     "path": [
-;       "content",
-;       0,
-;       "regular-content",
-;       5,
-;       "tag-name"
-;     ],
-;     "lhs": "foreach",
-;     "rhs": "expression-filter"
-;   },
-;   {
-;     "kind": "E",
-;     "path": [
-;       "content",
-;       0,
-;       "regular-content",
-;       5,
-;       "description"
-;     ],
-;     "lhs": "For Each",
-;     "rhs": "Filter overheated plasma purges"
-;   },
-;   {
-;     "kind": "D",
-;     "path": [
-;       "content",
-;       0,
-;       "regular-content",
-;       5,
-;       "content"
-;     ],
-;     "lhs": [
-;       {
-;         "type": "component",
-;         "tag-name": "flow-ref",
-;         "description": "example:/strain-overflow-noodle-requests",
-;         "attributes": []
-;       }
-;     ]
-;   },
-;   {
-;     "kind": "A",
-;     "path": [
-;       "content",
-;       0,
-;       "regular-content",
-;       5,
-;       "attributes"
-;     ],
-;     "index": 0,
-;     "item": {
-;       "kind": "D",
-;       "lhs": "horizontal"
-;     }
-;   },
-;   {
-;     "kind": "E",
-;     "path": [
-;       "content",
-;       0,
-;       "regular-content",
-;       1,
-;       "description"
-;     ],
-;     "lhs": "Set Z level to 9000",
-;     "rhs": "Set Z level to 7000"
-;   }
-; ]
-
 (defn- prepare-path [path]
-  (let [parent-path (drop-last path)
-        keyworded-path (map #(if (string? %) (keyword %) %) parent-path)
-        vector-path (vec keyworded-path)]
-  (conj vector-path :attributes)))
+  (let [keyworded-path (map #(if (string? %) (keyword %) %) path)
+        interposed (interpose :content keyworded-path)
+        vector-path (vec interposed)]
+    (vec (conj interposed :content))))
+
+(defn insert [v i e] (vec (concat (take i v) [e] (drop i v))))
+
+(defn vec-remove
+  "remove elem in coll"
+  [coll pos]
+  (vec (concat (subvec coll 0 pos) (subvec coll (inc pos)))))
+
+(defn- add-element [mast route element]
+  (let [index (last route)
+        keyword-route (drop-last (prepare-path route))
+        original-element (dom-to-node element)
+        updated (update-in original-element [:attributes] #(conj % :added))]
+    (update-in mast keyword-route #(insert % index updated))))
+
+(defn- modify-element [mast route element name newValue]
+  (let [index (last route)
+        keyword-route (prepare-path route)
+        original-element (get-in mast keyword-route)
+        with-attributes (update-in original-element [:attributes] #(conj % :edited))
+        with-description (assoc-in with-attributes [(keyword name)] newValue)]
+    (assoc-in mast keyword-route with-description)))
+
+(defn- remove-element [mast route]
+  (let [index (last route)
+        keyword-route (drop-last (prepare-path route))]
+    (update-in mast keyword-route #(vec-remove (vec %) index))))
 
 (defn- apply-patch [mast patch]
- (let [{:keys [kind path]} patch
-       keyword-path (prepare-path path)]
-   (println kind keyword-path)
-   (case kind
-     "N" mast ; TODO
-     "D" mast ; TODO
-     "E" (let [augmented (update-in mast keyword-path #(conj % :edited))] 
-           (println "current" (get-in mast keyword-path))
-           (println "after" (get-in augmented keyword-path))
-           augmented)
-     "A" mast ; TODO
-     )))
+  (println patch)
+  (let [{:keys [action route element newValue name]} patch]
+    (case action
+      "addElement" (add-element mast route element)
+      "modifyAttribute" (modify-element mast route element name newValue)
+      "removeElement" (remove-element mast route))))
 
 (defn augment-mast-with-diff [mast diff]
-  (reduce apply-patch mast diff))
+    (reduce apply-patch mast diff))

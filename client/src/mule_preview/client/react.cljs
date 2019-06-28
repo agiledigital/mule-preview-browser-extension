@@ -19,9 +19,9 @@
     (mule-container tag-name description content (attributes-to-css attributes))))
 
 (defn- process-error-container [node]
-  (let [{:keys [tag-name description attributes regular-content error-content]} node
-        wrapped-content [(mule-container "psuedo" "" regular-content "horizontal")
-                         (mule-container "psuedo" "" error-content "horizontal")]]
+  (let [{:keys [tag-name description attributes content]} node
+        wrapped-content [(create-mule-container-component (first content))
+                         (create-mule-container-component (second content))]]
     (mule-container tag-name description wrapped-content (attributes-to-css attributes))))
 
 (defn- transform-tag [node]

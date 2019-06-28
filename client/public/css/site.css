@@ -163,3 +163,11 @@ a:hover {
 .edited {
   background-color: yellow;
 }
+
+.added {
+  background-color: green;
+}
+
+.removed {
+  background-color: red;
+}
