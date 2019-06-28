@@ -11,8 +11,8 @@
   (clojure.string/join " " (map name attributes)))
 
 (defn- create-mule-component [node]
-  (let [{:keys [tag-name description]} node]
-    (mule-component tag-name description)))
+  (let [{:keys [tag-name description attributes]} node]
+    (mule-component tag-name description (attributes-to-css attributes))))
 
 (defn- create-mule-container-component [node]
   (let [{:keys [tag-name description content attributes]} node]

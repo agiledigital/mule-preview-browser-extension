@@ -70,3 +70,180 @@
 
 (defn xml->mast [xml]
   (prewalk transform-fn xml))
+
+
+; [
+;   {
+;     "kind": "E",
+;     "path": [
+;       "content",
+;       0,
+;       "regular-content",
+;       6,
+;       "type"
+;     ],
+;     "lhs": "component",
+;     "rhs": "container"
+;   },
+;   {
+;     "kind": "E",
+;     "path": [
+;       "content",
+;       0,
+;       "regular-content",
+;       6,
+;       "tag-name"
+;     ],
+;     "lhs": "set-payload",
+;     "rhs": "foreach"
+;   },
+;   {
+;     "kind": "E",
+;     "path": [
+;       "content",
+;       0,
+;       "regular-content",
+;       6,
+;       "description"
+;     ],
+;     "lhs": "Server Noodles",
+;     "rhs": "For Each"
+;   },
+;   {
+;     "kind": "A",
+;     "path": [
+;       "content",
+;       0,
+;       "regular-content",
+;       6,
+;       "attributes"
+;     ],
+;     "index": 0,
+;     "item": {
+;       "kind": "N",
+;       "rhs": "horizontal"
+;     }
+;   },
+;   {
+;     "kind": "N",
+;     "path": [
+;       "content",
+;       0,
+;       "regular-content",
+;       6,
+;       "content"
+;     ],
+;     "rhs": [
+;       {
+;         "type": "component",
+;         "tag-name": "flow-ref",
+;         "description": "example:/strain-overflow-noodle-requests",
+;         "attributes": []
+;       }
+;     ]
+;   },
+;   {
+;     "kind": "E",
+;     "path": [
+;       "content",
+;       0,
+;       "regular-content",
+;       5,
+;       "type"
+;     ],
+;     "lhs": "container",
+;     "rhs": "component"
+;   },
+;   {
+;     "kind": "E",
+;     "path": [
+;       "content",
+;       0,
+;       "regular-content",
+;       5,
+;       "tag-name"
+;     ],
+;     "lhs": "foreach",
+;     "rhs": "expression-filter"
+;   },
+;   {
+;     "kind": "E",
+;     "path": [
+;       "content",
+;       0,
+;       "regular-content",
+;       5,
+;       "description"
+;     ],
+;     "lhs": "For Each",
+;     "rhs": "Filter overheated plasma purges"
+;   },
+;   {
+;     "kind": "D",
+;     "path": [
+;       "content",
+;       0,
+;       "regular-content",
+;       5,
+;       "content"
+;     ],
+;     "lhs": [
+;       {
+;         "type": "component",
+;         "tag-name": "flow-ref",
+;         "description": "example:/strain-overflow-noodle-requests",
+;         "attributes": []
+;       }
+;     ]
+;   },
+;   {
+;     "kind": "A",
+;     "path": [
+;       "content",
+;       0,
+;       "regular-content",
+;       5,
+;       "attributes"
+;     ],
+;     "index": 0,
+;     "item": {
+;       "kind": "D",
+;       "lhs": "horizontal"
+;     }
+;   },
+;   {
+;     "kind": "E",
+;     "path": [
+;       "content",
+;       0,
+;       "regular-content",
+;       1,
+;       "description"
+;     ],
+;     "lhs": "Set Z level to 9000",
+;     "rhs": "Set Z level to 7000"
+;   }
+; ]
+
+(defn- prepare-path [path]
+  (let [parent-path (drop-last path)
+        keyworded-path (map #(if (string? %) (keyword %) %) parent-path)
+        vector-path (vec keyworded-path)]
+  (conj vector-path :attributes)))
+
+(defn- apply-patch [mast patch]
+ (let [{:keys [kind path]} patch
+       keyword-path (prepare-path path)]
+   (println kind keyword-path)
+   (case kind
+     "N" mast ; TODO
+     "D" mast ; TODO
+     "E" (let [augmented (update-in mast keyword-path #(conj % :edited))] 
+           (println "current" (get-in mast keyword-path))
+           (println "after" (get-in augmented keyword-path))
+           augmented)
+     "A" mast ; TODO
+     )))
+
+(defn augment-mast-with-diff [mast diff]
+  (reduce apply-patch mast diff))
