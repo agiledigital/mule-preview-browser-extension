@@ -25,16 +25,18 @@
     {:type :component 
      :tag-name tag-name 
      :description description
+     :hash (hash (:attributes node))
      :attributes attributes}))
 
 (defn- create-mule-container-component [node tag-name attributes]
   (let [description (get-description node)
         content (node :content)]
-    {:type :container 
-      :tag-name tag-name 
-      :description description 
-      :content content 
-      :attributes attributes}))
+    {:type :container
+     :tag-name tag-name
+     :description description
+     :hash (hash (:attributes node))
+     :content content
+     :attributes attributes}))
 
 (defn- create-mule-psuedo-container [content]
   {:type :container
@@ -91,33 +93,94 @@
   [coll pos]
   (vec (concat (subvec coll 0 pos) (subvec coll (inc pos)))))
 
-(defn- add-element [mast route element]
+(defn- insert-removal [route original-element removal-map]
+  (let [index (last route)
+        parent (drop-last route)
+        interposed-route (interpose :children parent)]
+    (println "interposed-route" interposed-route "index" index "removal-map" removal-map)
+    (update-in removal-map interposed-route
+               (fn [coll]
+                 (println "coll" coll)
+                 (assoc coll index { :element original-element :children {}})))))
+
+; fix removal map to work with nested dicts properly
+
+(defn map-values [f map]
+  (into {} (for [[k v] map] [k (f v)])))
+
+(defn- shift-element [insert-index removed-index]
+  (if (< insert-index removed-index) (inc removed-index) removed-index))
+
+(defn shift-removal [route removal-map]
+  (let [index (last route)
+        parent (drop-last route)
+        interposed-route (interpose :children parent)]
+    (println "interposed-route" interposed-route "index" index "removal-map" removal-map)
+    (update-in removal-map interposed-route
+               (fn [coll] 
+                 (println "coll" coll)
+                 (if coll
+                   (map-values #(shift-element index %) coll)
+                   {})))))
+
+(defn- add-element [mast removal-map route element]
   (let [index (last route)
         keyword-route (drop-last (prepare-path route))
         original-element (dom-to-node element)
         updated (update-in original-element [:attributes] #(conj % :added))]
-    (update-in mast keyword-route #(insert % index updated))))
+    [(update-in mast keyword-route #(insert % index updated)) (shift-removal route removal-map)]))
 
-(defn- modify-element [mast route element name newValue]
+(defn- modify-element [mast removal-map route element name newValue]
   (let [index (last route)
         keyword-route (prepare-path route)
         original-element (get-in mast keyword-route)
         with-attributes (update-in original-element [:attributes] #(conj % :edited))
         with-description (assoc-in with-attributes [(keyword name)] newValue)]
-    (assoc-in mast keyword-route with-description)))
+    [(assoc-in mast keyword-route with-description) removal-map]))
 
-(defn- remove-element [mast route]
+(defn- remove-element [mast removal-map route]
   (let [index (last route)
-        keyword-route (drop-last (prepare-path route))]
-    (update-in mast keyword-route #(vec-remove (vec %) index))))
+        keyword-route (drop-last (prepare-path route))
+        original-element (get-in mast keyword-route)]
+    [(update-in mast keyword-route #(vec-remove (vec %) index)) (insert-removal route original-element removal-map )]))
 
-(defn- apply-patch [mast patch]
+
+(defn- apply-patch [in patch]
   (println patch)
-  (let [{:keys [action route element newValue name]} patch]
+  (let [[mast removal-map] in
+        {:keys [action route element newValue name]} patch]
     (case action
-      "addElement" (add-element mast route element)
-      "modifyAttribute" (modify-element mast route element name newValue)
-      "removeElement" (remove-element mast route))))
+      "addElement" (add-element mast removal-map route element)
+      "modifyAttribute" (modify-element mast removal-map route element name newValue)
+      "removeElement" (remove-element mast removal-map route))))
+
+
+
+(defn tree-seq-path
+  "Like core's tree-seq but returns a lazy sequence of vectors of the
+  paths of the nodes in a tree, via a depth-first walk. It optionally
+  applies node-fn to each node before adding it to the path. branch?
+  must be a fn of one arg that returns true if passed a node that can
+  have children (but may not).  children must be a fn of one arg that
+  returns a sequence of the children. Will only be called on nodes for
+  which branch? returns true. Root is the root node of the tree."
+  [branch? children root & [node-fn]]
+  (let [node-fn (or node-fn identity)
+        walk (fn walk [path node]
+               (let [new-path (conj path (node-fn node))]
+                 (lazy-seq
+                  (cons new-path
+                        (when (branch? node)
+                          (mapcat (partial walk new-path) (children node)))))))]
+    (walk [] root)))
+
+(defn- apply-removal-map [mast removal-map]
+  (println (tree-seq-path #(contains? % :children) :children removal-map))
+  mast)
 
 (defn augment-mast-with-diff [mast diff]
-    (reduce apply-patch mast diff))
+  (let [_ (println "diff" diff)
+        removal-map {}
+        [mast removal-map] (reduce apply-patch [mast removal-map] diff)]
+    (println "removal-map" removal-map)
+    (apply-removal-map mast removal-map)))
