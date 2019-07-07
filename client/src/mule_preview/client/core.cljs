@@ -13,8 +13,8 @@
 (defn view []
   [:div {:class "root-component"} @root-component])
 
-(start-diff "/example_xml/a.xml"
-            "/example_xml/b.xml"
+(start-diff "/example_xml/nice-example.xml"
+            "/example_xml/nice-example-diff.xml"
             root-component)
 ; (start-preview "/example_xml/nice-example.xml" root-component)
 
