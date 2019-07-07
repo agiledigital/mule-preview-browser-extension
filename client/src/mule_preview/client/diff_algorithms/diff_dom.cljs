@@ -35,6 +35,5 @@
 (defn diff [a b]
   (let [dd (new (.. js/diffDOM -DiffDOM))
         dom-a (mast->dom a)
-        dom-b (mast->dom b)
-        _ (println "dom-a" dom-a "dom-b" dom-b)]
+        dom-b (mast->dom b)]
   (clojurise (.diff dd (clj->js dom-a) (clj->js dom-b)))))

@@ -15,13 +15,7 @@
         mast-a (xml->mast parsed-xml-a)
         mast-b (xml->mast parsed-xml-b)
         diff-output (diff mast-a mast-b)
-        ; _ (.dir js/console dom-a)
-        ; _ (.dir js/console dom-b)
-        ; _ (cljs.pprint/pprint mast-a)
-        _ (cljs.pprint/pprint (-> diff-output first :element :nodeName))
         augmented-mast (augment-mast-with-diff mast-a diff-output)
-        ; _ (cljs.pprint/pprint augmented-mast)
-        ; _ (cljs.pprint/pprint augmented-mast)
         transformed-components (mast->react augmented-mast)]
     (reset! root-component transformed-components)))
 

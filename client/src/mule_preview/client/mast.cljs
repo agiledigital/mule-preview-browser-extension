@@ -137,7 +137,6 @@
 
 
 (defn- apply-patch [in patch]
-  (println patch)
   (let [[mast removal-map] in
         {:keys [action route element newValue name]} patch]
     (case action
@@ -147,11 +146,8 @@
 
 
 (defn- process-removal [path mast [index element]]
-  (let [keyword-route path;(prepare-path path)
-        ; _ (println "keyword-route" keyword-route ":-O" (get-in mast keyword-route))
-        updated (update-in element [:attributes] #(conj % :removed))
-        ; _ (println "updated" updated)
-        ]
+  (let [keyword-route path
+        updated (update-in element [:attributes] #(conj % :removed))]
     (update-in mast keyword-route #(insert % index updated))))
 
 (defn- process-removal-path [mast [path removals]]
@@ -159,13 +155,9 @@
 
 (defn- apply-removal-map [mast removal-map]
   (let [mast-with-removals (reduce process-removal-path mast removal-map)]
-    (println "lol")
-    (cljs.pprint/pprint mast-with-removals)
     mast-with-removals))
 
 (defn augment-mast-with-diff [mast diff]
-  (let [_ (println "diff" diff)
-        removal-map {}
+  (let [removal-map {}
         [mast removal-map] (reduce apply-patch [mast removal-map] diff)]
-    (println "removal-map" removal-map)
     (apply-removal-map mast removal-map)))
