@@ -51,7 +51,8 @@
         {error-handlers true regular-components false}
         (group-by is-error-handler content)]
     {:type :error-container 
-     :tag-name tag-name 
+     :tag-name tag-name
+     :description description
      :content [(create-mule-psuedo-container regular-components)
                (create-mule-psuedo-container error-handlers)]
      :attributes attributes}))
