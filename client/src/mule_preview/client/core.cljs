@@ -8,23 +8,34 @@
 
 (def root-component (r/atom [:div]))
 
-;; -------------------------
-;; Views
-
-(defn view []
+(defn view [root-component]
   [:div {:class "root-component"} @root-component])
 
-(start-diff "/example_xml/nice-example.xml"
-            "/example_xml/nice-example-diff.xml"
-            root-component)
-; (start-preview "/example_xml/nice-example.xml" root-component)
+(defn mount-root [element root-component]
+  (println "element" element "root-component" root-component)
+  (r/render [(partial view root-component)] element))
 
+(defn mount-diff-on-element [element file-a file-b]
+  (let [root-component (r/atom [:div])]
+    (start-diff file-a
+                file-b
+                root-component)
+    (mount-root element root-component)))
 
-;; -------------------------
-;; Initialize app
-
-(defn mount-root []
-  (r/render [view] (.getElementById js/document "app")))
+(defn mount-preview-on-element [element file]
+  (let [root-component (r/atom [:div])]
+    (start-preview
+     file
+     root-component)
+    (mount-root element root-component)))
 
 (defn init! []
-  (mount-root))
+  (mount-diff-on-element
+   (.getElementById js/document "app")
+   "/example_xml/nice-example.xml"
+   "/example_xml/nice-example-diff.xml"))
+
+; (defn init! []
+;   (mount-preview-on-element 
+;    (.getElementById js/document "app") 
+;    "/example_xml/nice-example.xml"))
