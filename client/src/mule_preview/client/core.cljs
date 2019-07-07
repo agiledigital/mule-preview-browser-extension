@@ -1,4 +1,5 @@
 (ns mule-preview.client.core
+  "The entry point to the web application"
   (:require
    [reagent.core :as r]
    [tubax.core :refer [xml->clj]]

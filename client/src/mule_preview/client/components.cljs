@@ -1,4 +1,5 @@
 (ns mule-preview.client.components
+  "The react components that render the Mule preview"
   (:require
    [reagent.core :as r]
    [clojure.string :refer [split]]

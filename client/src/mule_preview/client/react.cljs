@@ -1,5 +1,5 @@
-(ns ^{:doc "Functions to convert MAST data structures to a structure suitable for reagent (react)"}
- mule-preview.client.react
+(ns mule-preview.client.react
+  "Functions to convert MAST data structures to a structure suitable for reagent (react)"
   (:require
    [clojure.walk :refer [prewalk]]
    [mule-preview.client.mappings :refer [root-container horizontal-container-list

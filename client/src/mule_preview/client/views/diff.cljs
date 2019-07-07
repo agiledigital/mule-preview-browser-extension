@@ -1,7 +1,9 @@
 (ns mule-preview.client.views.diff
+  "Renders a page that shows a diff between two Mule XML files"
   (:require
    [mule-preview.client.react :refer [mast->react]]
-   [mule-preview.client.mast :refer [xml->mast augment-mast-with-diff]]
+   [mule-preview.client.mast :refer [xml->mast]]
+   [mule-preview.client.transformers.apply_patch :refer [augment-mast-with-diff]]
    [mule-preview.client.diff-algorithms.diff-dom :refer [diff]]
    [reagent.core :as r]
    [cljs.core.async :refer [<!]]
@@ -22,7 +24,7 @@
 (defn start-diff [url-a url-b root-component]
   (go (let [response-a (<! (http/get url-a))
             response-b (<! (http/get url-b))]
-        (handle-xml-fetch-success 
-          (:body response-a) 
-          (:body response-b) 
-          root-component))))
+        (handle-xml-fetch-success
+         (:body response-a)
+         (:body response-b)
+         root-component))))

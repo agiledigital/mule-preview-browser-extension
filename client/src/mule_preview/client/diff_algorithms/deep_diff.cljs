@@ -1,4 +1,7 @@
-(ns mule-preview.client.diff-algorithms.deep-diff)
+(ns mule-preview.client.diff-algorithms.deep-diff
+  "Uses the deep-diff Javscript library to diff data structures.
+   Not currently in use since the diffs were not very good to work with.
+   See: https://github.com/flitbit/diff")
 
 ; Not sure why js->clj doesn't work but this does the trick
 ; https://stackoverflow.com/a/51439387
