@@ -1,8 +1,8 @@
 (defproject mule-preview "0.1.0-SNAPSHOT"
-  :description "FIXME: write description"
-  :url "http://example.com/FIXME"
-  :license {:name "Eclipse Public License"
-            :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :description "A react based library to render previews and diffs of Mule XML files"
+  :url "https://github.com/noxharmonium/mule-preview"
+  :license {:name "Apache License 2.0"
+            :url "http://www.apache.org/licenses/"}
 
   :dependencies [[org.clojure/clojure "1.10.0"]
                  [org.clojure/clojurescript "1.10.520"]
@@ -33,23 +33,35 @@
                        {:source-paths ["src/mule_preview/client" "env/dev/cljs"]
                         :compiler
                         {:main "mule-preview.client.dev"
-                         :output-to "public/js/app.js"
-                         :output-dir "public/js/out"
+                         :output-to "public/js/dev.js"
+                         :output-dir "public/js/dec"
                          :asset-path   "js/out"
                          :source-map true
                          :optimizations :none
-                         :pretty-print  true}
+                         :pretty-print true
+                         :npm-deps false
+                         :install-deps true
+                         :infer-externs true
+                         :foreign-libs [{:file "dist/index.bundle.js"
+                                         :provides ["diffdom"]
+                                         :global-exports {diffdom DiffDOM}}]}
                         :figwheel
                         {:on-jsload "mule-preview.client.core/mount-root"
                          :open-urls ["http://localhost:3449/index.html"]}}
                        :release
-                       {:source-paths ["src" "env/prod/cljs"]
+                       {:source-paths ["src/mule_preview/client" "env/prod/cljs"]
                         :compiler
-                        {:output-to "public/js/app.js"
+                        {:output-to "public/js/release.js"
                          :output-dir "public/js/release"
                          :asset-path   "js/out"
                          :optimizations :advanced
-                         :pretty-print false}}}}
+                         :pretty-print false
+                         :npm-deps false
+                         :install-deps true
+                         :infer-externs true
+                         :foreign-libs [{:file "dist/index.bundle.js"
+                                         :provides ["diffdom"]
+                                         :global-exports {diffdom DiffDOM}}]}}}}
 
   :aliases {"package" ["do" "clean" ["cljsbuild" "once" "release"]]}
 

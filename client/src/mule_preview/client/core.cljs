@@ -12,17 +12,16 @@
   [:div {:class "root-component"} @root-component])
 
 (defn mount-root [element root-component]
-  (println "element" element "root-component" root-component)
   (r/render [(partial view root-component)] element))
 
-(defn mount-diff-on-element [element file-a file-b]
+(defn ^:export mount-diff-on-element [element file-a file-b]
   (let [root-component (r/atom [:div])]
     (start-diff file-a
                 file-b
                 root-component)
     (mount-root element root-component)))
 
-(defn mount-preview-on-element [element file]
+(defn ^:export mount-preview-on-element [element file]
   (let [root-component (r/atom [:div])]
     (start-preview
      file
