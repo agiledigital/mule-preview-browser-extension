@@ -1,4 +1,5 @@
 (ns mule-preview.client.components
+  "The react components that render the Mule preview"
   (:require
    [reagent.core :as r]
    [clojure.string :refer [split]]
@@ -51,10 +52,10 @@
 (def arrow
   (image "img/arrow-right-2x.png" "flow-arrow"))
 
-(defn mule-component [name description]
+(defn mule-component [name description css-class]
   (let [img-url (name-to-img-url name false default-component-mapping)
         category-url (name-to-category-url name default-category-image)]
-    [:div {:class ["component" name]}
+    [:div {:class ["component" name css-class]}
      (image category-url "category-frame")
      (image img-url "icon")
      [:div {:class "label"} description]]))

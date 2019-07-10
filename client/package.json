@@ -1,0 +1,17 @@
+{
+  "name": "mule-preview",
+  "version": "0.1.0",
+  "description": "A react based library to render previews and diffs of Mule XML files",
+  "main": "public/js/app.js",
+  "repository": "https://github.com/noxharmonium/mule-preview",
+  "author": "Sean Dawson <spdawson@agiledigital.com.au>",
+  "license": "Apache 2.0",
+  "private": false,
+  "dependencies": {
+    "diff-dom": "^4.1.3"
+  },
+  "devDependencies": {
+    "webpack": "^4.35.3",
+    "webpack-cli": "^3.3.5"
+  }
+}

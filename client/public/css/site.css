@@ -158,3 +158,16 @@ a:hover {
 .hidden {
   display: none;
 }
+
+/* Diffing Styles */
+.edited {
+  background-color: yellow;
+}
+
+.added {
+  background-color: green;
+}
+
+.removed {
+  background-color: red;
+}
