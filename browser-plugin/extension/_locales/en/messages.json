@@ -1,0 +1,10 @@
+{
+  "extName": {
+    "message": "Mule Preview Browser Plugin",
+    "description": "Extension name"
+  },
+  "extDesc": {
+    "message": "Overlays the Mule Preview plugin over SCM web applications.",
+    "description": "Extension description"
+  }
+}
