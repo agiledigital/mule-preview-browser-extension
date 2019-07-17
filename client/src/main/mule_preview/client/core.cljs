@@ -3,8 +3,8 @@
   (:require
    [reagent.core :as r]
    [tubax.core :refer [xml->clj]]
-   [mule-preview.client.views.preview :refer [start-preview]]
-   [mule-preview.client.views.diff :refer [start-diff]]))
+   [mule-preview.client.views.preview :refer [start-preview start-preview-url]]
+   [mule-preview.client.views.diff :refer [start-diff start-diff-url]]))
 
 (def root-component (r/atom [:div]))
 
@@ -14,22 +14,36 @@
 (defn mount-root [element root-component]
   (r/render [(partial view root-component)] element))
 
-(defn ^:export mount-diff-on-element [element file-a file-b]
+(defn ^:export mount-url-diff-on-element [element file-a file-b]
   (let [root-component (r/atom [:div])]
-    (start-diff file-a
-                file-b
-                root-component)
+    (start-diff-url file-a
+                    file-b
+                    root-component)
     (mount-root element root-component)))
 
-(defn ^:export mount-preview-on-element [element file]
+(defn ^:export mount-url-preview-on-element [element file]
   (let [root-component (r/atom [:div])]
-    (start-preview
+    (start-preview-url
      file
      root-component)
     (mount-root element root-component)))
 
+(defn ^:export mount-diff-on-element [element content-a content-b]
+  (let [root-component (r/atom [:div])]
+    (start-diff content-a
+                content-b
+                root-component)
+    (mount-root element root-component)))
+
+(defn ^:export mount-preview-on-element [element content]
+  (let [root-component (r/atom [:div])]
+    (start-preview
+     content
+     root-component)
+    (mount-root element root-component)))
+
 (defn init! []
-  (mount-diff-on-element
+  (mount-url-diff-on-element
    (.getElementById js/document "app")
    "/example_xml/nice-example.xml"
    "/example_xml/nice-example-diff.xml"))

@@ -15,6 +15,9 @@
         transformed-components (mast->react mast)]
     (reset! root-component transformed-components)))
 
-(defn start-preview [url root-component]
+(defn start-preview-url [url root-component]
   (go (let [response (<! (http/get url))]
         (handle-xml-fetch-success (:body response) root-component))))
+
+(defn start-preview [content root-component]
+  (handle-xml-fetch-success content root-component))

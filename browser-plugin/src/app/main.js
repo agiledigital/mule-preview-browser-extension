@@ -1,20 +1,14 @@
-import mule_preview from "../../../client/dist/index.bundle";
+import mule_preview from "../../../client/build/npm/mule_preview.client.core";
 import browser from "webextension-polyfill";
 
 console.log("[Mule Preview] Plugin Initialising");
 
-function handleResponse({ message }) {
-  console.log(`background script sent a response: ${message}`);
-}
-
-function handleError(error) {
-  console.log(`Error: ${error}`);
-}
-
 const main = () => {
   console.log("[Mule Preview] Will attempt to load overlay.");
   console.dir(mule_preview);
-  browser.runtime.sendMessage({}).then(handleResponse, handleError);
+  console.log("xxx");
+  console.log(typeof window.wrappedJSObject.bitbucket);
+  console.log("yyy");
 };
 
 main();

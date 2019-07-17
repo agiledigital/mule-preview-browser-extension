@@ -21,10 +21,16 @@
         transformed-components (mast->react augmented-mast)]
     (reset! root-component transformed-components)))
 
-(defn start-diff [url-a url-b root-component]
+(defn start-diff-url [url-a url-b root-component]
   (go (let [response-a (<! (http/get url-a))
             response-b (<! (http/get url-b))]
         (handle-xml-fetch-success
          (:body response-a)
          (:body response-b)
          root-component))))
+
+(defn start-diff [content-a content-b root-component]
+  (handle-xml-fetch-success
+   content-a
+   content-b
+   root-component))
