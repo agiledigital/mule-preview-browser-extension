@@ -33,8 +33,3 @@
    (.getElementById js/document "app")
    "/example_xml/nice-example.xml"
    "/example_xml/nice-example-diff.xml"))
-
-; (defn init! []
-;   (mount-preview-on-element 
-;    (.getElementById js/document "app") 
-;    "/example_xml/nice-example.xml"))

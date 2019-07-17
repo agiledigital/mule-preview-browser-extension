@@ -1,0 +1,17 @@
+;; shadow-cljs configuration
+{:source-paths
+ ["src/dev"
+  "src/main"
+  "src/test"]
+
+ :dependencies
+ [[reagent "0.8.1" :exclusions [cljsjs/react cljsjs/react-dom]]
+  [funcool/tubax "0.2.0"]
+  [cljs-http "0.1.46"]
+  [cheshire "5.8.1"]]
+
+ :dev-http {8080 "public"}
+ :builds
+ {:frontend
+  {:target :browser
+   :modules {:main {:init-fn mule-preview.client.core/init!}}}}}

@@ -3,7 +3,7 @@
    https://github.com/fiduswriter/diffDOM"
   (:require
    [clojure.walk :refer [prewalk]]
-   [diffdom]))
+   ["diff-dom" :refer (DiffDOM)]))
 
 (defn- node-to-dom [node]
   (if (:type node)
@@ -36,7 +36,7 @@
     (js->clj round-trip :keywordize-keys true)))
 
 (defn diff [a b]
-  (let [dd (new js/DiffDOM)
+  (let [dd (new DiffDOM)
         dom-a (mast->dom a)
         dom-b (mast->dom b)]
     (clojurise (.diff dd (clj->js dom-a) (clj->js dom-b)))))
