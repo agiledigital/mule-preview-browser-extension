@@ -62,24 +62,16 @@ const startDiff = () => {
     return;
   }
 
-  hideBitbucketDiff();
-
   console.log(
     "[Mule Preview] Bitbucket detected. Will attempt to load overlay."
   );
   const element = getBitbucketDiffElement();
-
-  const mulePreviewElement = document.createElement("div");
-  element.insertAdjacentElement("afterend", mulePreviewElement);
-
-  console.log(document.URL);
 
   // Bitbucket has its own require function ¯\_(ツ)_/¯
   const filePathObj = window.wrappedJSObject
     .require("bitbucket/internal/model/page-state")
     .getFilePath();
   const filePath = filePathObj.attributes.components.join("/");
-  console.log(`filePath: ${filePath}`);
 
   fetch(document.URL, {
     headers: {
@@ -105,6 +97,9 @@ const startDiff = () => {
       throw new Error("Cannot diff files with only one state");
     })
     .then(({ fileA, fileB }) => {
+      hideBitbucketDiff();
+      const mulePreviewElement = document.createElement("div");
+      element.insertAdjacentElement("afterend", mulePreviewElement);
       mule_preview.mount_diff_on_element(
         mulePreviewElement,
         fileA,
@@ -112,7 +107,9 @@ const startDiff = () => {
         browser.runtime.getURL("public/")
       );
     })
-    .catch(err => console.error(err));
+    .catch(err => {
+      console.error(err);
+    });
 };
 
 const stopDiff = () => {
