@@ -6,7 +6,6 @@
 
  :dependencies
  [[reagent "0.8.1" :exclusions [cljsjs/react cljsjs/react-dom]]
-  [funcool/tubax "0.2.0"]
   [cljs-http "0.1.46"]
   [cheshire "5.8.1"]
   [lambdaisland/uri "1.1.0"]]

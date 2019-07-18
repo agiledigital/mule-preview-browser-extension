@@ -14,6 +14,11 @@
   [string]
   (str string "s"))
 
+(defn- data-prefixerise
+  "Prefixes all the keys in a map with 'data-' to align with HTML standards"
+  [m]
+  (into {} (for [[k v] m] [(str "data-" (name k)) v])))
+
 (defn- normalise-name [name]
   (let [split-name (split name #":")
         first-component (first split-name)]
@@ -53,21 +58,21 @@
 (defn- arrow [content-root]
   (image "img/arrow-right-2x.png" "flow-arrow" content-root))
 
-(defn mule-component [name description css-class content-root]
+(defn mule-component [name description css-class content-root location]
   (let [img-url (name-to-img-url name false default-component-mapping)
         category-url (name-to-category-url name default-category-image)]
-    [:div {:class ["component" name css-class]}
+    [:div (merge {:class ["component" name css-class]} (data-prefixerise location))
      (image category-url "category-frame" content-root)
      (image img-url "icon" content-root)
      [:div {:class "label"} description]]))
 
-(defn mule-container [name description children css-class content-root]
+(defn mule-container [name description children css-class content-root location]
   (let [generated-css-class (name-to-css-class name)
         img-url (name-to-img-url name (some? children) nil)
         category-url (name-to-category-url name default-category-image)
         interposed-children (interpose (arrow content-root) children)
         child-container-component (child-container interposed-children)]
-    [:div {:class ["container" generated-css-class css-class]}
+    [:div (merge {:class ["container" generated-css-class css-class]} (data-prefixerise location))
      [:div {:class "container-title"} description]
      [:div {:class "container-inner"}
       [:div {:class "icon-container"}

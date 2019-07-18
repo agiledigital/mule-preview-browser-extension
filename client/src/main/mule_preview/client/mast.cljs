@@ -26,7 +26,8 @@
      :tag-name tag-name
      :description (or description tag-name)
      :hash (hash (:attributes node))
-     :attributes attributes}))
+     :attributes attributes
+     :location (:location node)}))
 
 (defn- create-mule-container-component [node tag-name attributes]
   (let [description (get-description node)
@@ -36,7 +37,8 @@
      :description description
      :hash (hash (:attributes node))
      :content content
-     :attributes attributes}))
+     :attributes attributes
+     :location (:location node)}))
 
 (defn- create-mule-psuedo-container [content]
   {:type :container
@@ -98,8 +100,6 @@
   (let [index (last element-route)
         parent (drop-last element-route)]
     (update removal-map parent #(conj % [index original-element]))))
-
-; fix removal map to work with nested dicts properly
 
 (defn map-values [f map]
   (into {} (for [[k v] map] [k (f v)])))

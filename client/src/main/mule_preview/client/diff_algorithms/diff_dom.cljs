@@ -8,7 +8,7 @@
 (defn- node-to-dom [node]
   (if (:type node)
     (let [{:keys [tag-name content type attributes]} node
-          other-attributes (dissoc node :type-tag :content :type :attributes)]
+          other-attributes (dissoc node :type-tag :content :type :attributes :location)]
       {:nodeName tag-name
        :childNodes content
        :attributes other-attributes

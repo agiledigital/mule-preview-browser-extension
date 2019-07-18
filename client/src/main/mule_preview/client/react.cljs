@@ -11,18 +11,18 @@
   (clojure.string/join " " (map name attributes)))
 
 (defn- create-mule-component [node content-root]
-  (let [{:keys [tag-name description attributes]} node]
-    (mule-component tag-name description (attributes-to-css attributes) content-root)))
+  (let [{:keys [tag-name description attributes location]} node]
+    (mule-component tag-name description (attributes-to-css attributes) content-root location)))
 
 (defn- create-mule-container-component [node content-root]
-  (let [{:keys [tag-name description content attributes]} node]
-    (mule-container tag-name description content (attributes-to-css attributes) content-root)))
+  (let [{:keys [tag-name description content attributes location]} node]
+    (mule-container tag-name description content (attributes-to-css attributes) content-root location)))
 
 (defn- process-error-container [node content-root]
   (let [{:keys [tag-name description attributes content]} node
         wrapped-content [(create-mule-container-component (first content) content-root)
                          (create-mule-container-component (second content) content-root)]]
-    (mule-container tag-name description wrapped-content (attributes-to-css attributes) content-root)))
+    (mule-container tag-name description wrapped-content (attributes-to-css attributes) content-root {})))
 
 (defn- transform-tag [node content-root]
   (let [type (:type node)]

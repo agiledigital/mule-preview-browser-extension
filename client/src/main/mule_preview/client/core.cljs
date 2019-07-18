@@ -53,5 +53,5 @@
    "/example_xml/nice-example-diff.xml"
    "."))
 
-;(defn ^:dev/after-load start []
-;  (init!))
+(defn ^:dev/after-load start []
+  (init!))
