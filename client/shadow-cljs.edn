@@ -1,0 +1,28 @@
+;; shadow-cljs configuration
+{:source-paths
+ ["src/dev"
+  "src/main"
+  "src/test"]
+
+ :dependencies
+ [[reagent "0.8.1" :exclusions [cljsjs/react cljsjs/react-dom]]
+  [cljs-http "0.1.46"]
+  [cheshire "5.8.1"]
+  [lambdaisland/uri "1.1.0"]]
+
+ :dev-http {8080 "public"}
+ :builds
+ {:frontend
+  {:target :browser
+   :modules {:main {:init-fn mule-preview.client.core/init!}}}
+  :plugin
+  {:target :node-library
+   :exports {:mount-url-diff-on-element mule-preview.client.core/mount-url-diff-on-element
+             :mount-url-preview-on-element mule-preview.client.core/mount-url-preview-on-element
+             :mount-diff-on-element mule-preview.client.core/mount-diff-on-element
+             :mount-preview-on-element mule-preview.client.core/mount-preview-on-element}
+   :output-to "build/release.js"}
+  :integration
+  {:target :npm-module
+   :output-dir "build/npm"
+   :compiler-options {:closure-output-charset "US-ASCII"}}}}

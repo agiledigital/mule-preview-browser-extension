@@ -1,22 +1,3 @@
-/target
-/classes
-/checkouts
-profiles.clj
-pom.xml
-pom.xml.asc
-*.jar
-*.class
-/.lein-*
-/.nrepl-port
-/resources/public/js
-/public/js
-/out
-/.repl
-*.log
-/.env
-/public/img/icons/*.png
-src/mule_preview/client/mappings.json
-
 
 # Created by https://www.gitignore.io/api/node
 # Edit at https://www.gitignore.io/?templates=node
@@ -113,5 +94,8 @@ typings/
 
 # End of https://www.gitignore.io/api/node
 
-.shadow-cljs
-build/
+extension/dist
+*.code-workspace
+
+# Copied over from the client project
+extension/public/

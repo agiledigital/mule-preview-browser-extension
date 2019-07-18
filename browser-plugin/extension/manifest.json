@@ -1,0 +1,49 @@
+{
+  "manifest_version": 2,
+
+  "name": "__MSG_extName__",
+  "description": "__MSG_extDesc__",
+  "version": "1.0",
+  "default_locale": "en",
+
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["dist/main.js"],
+      "css": ["public/css/plugin.css"],
+      "run_at": "document_idle"
+    }
+  ],
+
+  "background": {
+    "scripts": ["dist/background.js"]
+  },
+
+  "options_ui": {
+    "page": "dist/options.html",
+    "chrome_style": true
+  },
+
+  "icons": {
+    "128": "icons/icon.png"
+  },
+
+  "web_accessible_resources": ["public/*"],
+
+  "browser_action": {
+    "default_icon": {
+      "32": "icons/icon-32.png"
+    },
+    "default_title": "__MSG_extName__"
+  },
+
+  "permissions": [
+    "cookies",
+    "activeTab",
+    "storage",
+    "http://*/*",
+    "https://*/*"
+  ],
+
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self';"
+}

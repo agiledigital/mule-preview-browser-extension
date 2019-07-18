@@ -1,0 +1,11 @@
+{
+  "folders": [
+    {
+      "path": "browser-plugin"
+    },
+    {
+      "path": "client"
+    }
+  ],
+  "settings": {}
+}
