@@ -2,7 +2,6 @@
   "The entry point to the web application"
   (:require
    [reagent.core :as r]
-   [tubax.core :refer [xml->clj]]
    [mule-preview.client.views.preview :refer [start-preview start-preview-url]]
    [mule-preview.client.views.diff :refer [start-diff start-diff-url]]))
 
