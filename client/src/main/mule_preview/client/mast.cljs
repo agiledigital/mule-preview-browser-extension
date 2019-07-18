@@ -24,7 +24,7 @@
   (let [description (get-description node)]
     {:type :component
      :tag-name tag-name
-     :description description
+     :description (or description tag-name)
      :hash (hash (:attributes node))
      :attributes attributes}))
 
