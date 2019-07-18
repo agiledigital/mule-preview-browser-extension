@@ -14,7 +14,9 @@
  :builds
  {:frontend
   {:target :browser
-   :modules {:main {:init-fn mule-preview.client.core/init!}}}
+   :modules {:main {:init-fn mule-preview.client.core/init!}}
+   :output-dir "public/js"
+   :asset-path "/js"}
   :plugin
   {:target :node-library
    :exports {:mount-url-diff-on-element mule-preview.client.core/mount-url-diff-on-element
