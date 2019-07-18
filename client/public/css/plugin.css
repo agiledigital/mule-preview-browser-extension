@@ -1,7 +1,12 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic.css");
 
+.mp-hidden {
+  display: none !important;
+}
+
 .mp.root-component {
   padding: 20px;
+  overflow: scroll;
 }
 
 .mp .container {

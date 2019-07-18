@@ -15,6 +15,10 @@
     }
   ],
 
+  "background": {
+    "scripts": ["dist/background.js"]
+  },
+
   "options_ui": {
     "page": "dist/options.html",
     "chrome_style": true
@@ -27,9 +31,10 @@
   "web_accessible_resources": ["public/*"],
 
   "browser_action": {
-    "default_icon": "icons/icon.png",
-    "default_title": "__MSG_extName__",
-    "default_popup": "dist/popup.html"
+    "default_icon": {
+      "32": "icons/icon-32.png"
+    },
+    "default_title": "__MSG_extName__"
   },
 
   "permissions": [

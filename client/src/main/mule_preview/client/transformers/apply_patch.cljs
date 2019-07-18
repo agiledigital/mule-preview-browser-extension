@@ -46,7 +46,7 @@
 (defn- remove-element [mast removal-map route]
   (let [index (last route)
         element-route (prepare-path route)
-        keyword-route (drop-last element-route)
+        keyword-route (prepare-path (drop-last route))
         original-element (get-in mast element-route)]
     [(update-in mast keyword-route #(vec-remove (vec %) index))
      (insert-removal element-route original-element removal-map)]))
@@ -54,10 +54,12 @@
 (defn- apply-patch [in patch]
   (let [[mast removal-map] in
         {:keys [action route element newValue name]} patch]
-    (case action
-      "addElement" (add-element mast removal-map route element)
-      "modifyAttribute" (modify-element mast removal-map route element name newValue)
-      "removeElement" (remove-element mast removal-map route))))
+    (if (empty? route)
+      [mast removal-map] ; Should not patch the root element at this time
+      (case action
+        "addElement" (add-element mast removal-map route element)
+        "modifyAttribute" (modify-element mast removal-map route element name newValue)
+        "removeElement" (remove-element mast removal-map route)))))
 
 (defn- process-removal [path mast [index element]]
   (let [keyword-route path
