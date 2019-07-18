@@ -2,7 +2,7 @@ import mule_preview from "../../../client/build/npm/mule_preview.client.core";
 import browser from "webextension-polyfill";
 import fetch from "cross-fetch";
 
-const currentUrl = new URL(document.URL);
+const getCurrentUrl = () => new URL(document.URL);
 const timeout = 10000;
 const startTime = new Date().getTime();
 
@@ -10,6 +10,12 @@ console.log("[Mule Preview] Plugin Initialising");
 
 const getRuntime = () => new Date().getTime() - startTime;
 const isTimedOut = () => getRuntime() > timeout;
+const isRunningInBitbucket = () => {
+  const metaTag = document.querySelector("meta[name=application-name]");
+  return metaTag === null
+    ? false
+    : metaTag.getAttribute("content") === "Bitbucket";
+};
 
 const fetchRawFileFromHash = (filePath, hash) => {
   const fetchUrl = new URL(`../../raw/${filePath}?at=${hash}`, document.URL);
@@ -174,10 +180,7 @@ const reset = () => {
     value: false
   });
 
-  if (
-    typeof window.wrappedJSObject.bitbucket === "object" &&
-    currentUrl.pathname.endsWith("diff")
-  ) {
+  if (isRunningInBitbucket() && getCurrentUrl().pathname.endsWith("diff")) {
     console.log(
       "[Mule Preview] I'm pretty sure this is the right place but I have to wait for the element to be ready."
     );
