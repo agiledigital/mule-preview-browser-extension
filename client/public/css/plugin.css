@@ -12,6 +12,7 @@
 .mp .container {
   padding: 5px;
   border: 1px solid gray;
+  background-color: white;
 }
 
 .mp .container.root {
@@ -62,6 +63,7 @@
 .mp .mule-when,
 .mp .mule-otherwise {
   border: none;
+  background-color: inherit;
 }
 
 .mp .mule-choice > .container-inner > .container-children,
