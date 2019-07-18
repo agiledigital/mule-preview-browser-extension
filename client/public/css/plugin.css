@@ -177,3 +177,12 @@
 .mp .removed {
   background-color: red;
 }
+
+/* We want the added/removed states to propogate to children */
+.mp .added .container {
+  background-color: green;
+}
+
+.mp .removed .container {
+  background-color: red;
+}
