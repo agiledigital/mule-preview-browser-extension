@@ -11,26 +11,28 @@
    [tubax.core :refer [xml->clj]])
   (:require-macros [cljs.core.async.macros :refer [go]]))
 
-(defn- handle-xml-fetch-success [response-a response-b root-component]
+(defn- handle-xml-fetch-success [response-a response-b root-component content-root]
   (let [parsed-xml-a (xml->clj (str response-a))
         parsed-xml-b (xml->clj (str response-b))
         mast-a (xml->mast parsed-xml-a)
         mast-b (xml->mast parsed-xml-b)
         diff-output (diff mast-a mast-b)
         augmented-mast (augment-mast-with-diff mast-a diff-output)
-        transformed-components (mast->react augmented-mast)]
+        transformed-components (mast->react augmented-mast content-root)]
     (reset! root-component transformed-components)))
 
-(defn start-diff-url [url-a url-b root-component]
+(defn start-diff-url [url-a url-b root-component content-root]
   (go (let [response-a (<! (http/get url-a))
             response-b (<! (http/get url-b))]
         (handle-xml-fetch-success
          (:body response-a)
          (:body response-b)
-         root-component))))
+         root-component
+         content-root))))
 
-(defn start-diff [content-a content-b root-component]
+(defn start-diff [content-a content-b root-component content-root]
   (handle-xml-fetch-success
    content-a
    content-b
-   root-component))
+   root-component
+   content-root))

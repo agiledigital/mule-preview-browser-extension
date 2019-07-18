@@ -96,3 +96,6 @@ typings/
 
 extension/dist
 *.code-workspace
+
+# Copied over from the client project
+extension/public/

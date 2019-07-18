@@ -9,15 +9,15 @@
    [tubax.core :refer [xml->clj]])
   (:require-macros [cljs.core.async.macros :refer [go]]))
 
-(defn- handle-xml-fetch-success [response root-component]
+(defn- handle-xml-fetch-success [response root-component content-root]
   (let [parsed-xml (xml->clj (str response))
         mast (xml->mast parsed-xml)
-        transformed-components (mast->react mast)]
+        transformed-components (mast->react mast content-root)]
     (reset! root-component transformed-components)))
 
-(defn start-preview-url [url root-component]
+(defn start-preview-url [url root-component content-root]
   (go (let [response (<! (http/get url))]
-        (handle-xml-fetch-success (:body response) root-component))))
+        (handle-xml-fetch-success (:body response) root-component content-root))))
 
-(defn start-preview [content root-component]
-  (handle-xml-fetch-success content root-component))
+(defn start-preview [content root-component content-root]
+  (handle-xml-fetch-success content root-component content-root))

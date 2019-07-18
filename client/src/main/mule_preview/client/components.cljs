@@ -3,7 +3,8 @@
   (:require
    [reagent.core :as r]
    [clojure.string :refer [split]]
-   [mule-preview.client.mappings :refer [element-to-icon-map]]))
+   [mule-preview.client.mappings :refer [element-to-icon-map]]
+   [lambdaisland.uri :refer [join]]))
 
 (def default-component-mapping {:image "UnknownNode-48x32.png"})
 (def default-category-image "org.mule.tooling.ui.modules.core.miscellaneous.large.png")
@@ -40,36 +41,36 @@
   (str "mule-" name))
 
 (defn- image
-  ([url] (image url ""))
-  ([url class]
+  ([url content-root] (image url "" content-root))
+  ([url class content-root]
    (if-not (nil? url)
-     [:img {:src url :class class}]
+     [:img {:src (str (join content-root url)) :class class}]
      nil)))
 
 (defn- child-container [children]
   (into [] (concat [:div {:class "container-children"}] children)))
 
-(def arrow
-  (image "img/arrow-right-2x.png" "flow-arrow"))
+(defn- arrow [content-root]
+  (image "img/arrow-right-2x.png" "flow-arrow" content-root))
 
-(defn mule-component [name description css-class]
+(defn mule-component [name description css-class content-root]
   (let [img-url (name-to-img-url name false default-component-mapping)
         category-url (name-to-category-url name default-category-image)]
     [:div {:class ["component" name css-class]}
-     (image category-url "category-frame")
-     (image img-url "icon")
+     (image category-url "category-frame" content-root)
+     (image img-url "icon" content-root)
      [:div {:class "label"} description]]))
 
-(defn mule-container [name description children css-class]
+(defn mule-container [name description children css-class content-root]
   (let [generated-css-class (name-to-css-class name)
         img-url (name-to-img-url name (some? children) nil)
         category-url (name-to-category-url name default-category-image)
-        interposed-children (interpose arrow children)
+        interposed-children (interpose (arrow content-root) children)
         child-container-component (child-container interposed-children)]
     [:div {:class ["container" generated-css-class css-class]}
      [:div {:class "container-title"} description]
      [:div {:class "container-inner"}
       [:div {:class "icon-container"}
-       (image category-url "category-frame")
-       (image img-url "icon container-image")]
+       (image category-url "category-frame" content-root)
+       (image img-url "icon container-image" content-root)]
       child-container-component]]))
