@@ -2,6 +2,16 @@ import browser from "webextension-polyfill";
 
 const tabEnabledSet = new Set();
 
+browser.tabs.onUpdated.addListener(() => {
+  console.log("[Mule Preview] change detected. Resetting...");
+  browser.tabs.query({ currentWindow: true, active: true }, tabArray => {
+    const currentTabId = tabArray[0].id;
+    browser.tabs.sendMessage(currentTabId, {
+      type: "reset"
+    });
+  });
+});
+
 const startDiff = tabId => {
   browser.tabs.query({ currentWindow: true, active: true }, tabArray => {
     const currentTabId = tabArray[0].id;

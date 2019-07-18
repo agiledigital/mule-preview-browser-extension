@@ -142,6 +142,8 @@ browser.runtime.onMessage.addListener(function(message, sender, sendResponse) {
   );
   if (message.type === "toggle-diff") {
     toggleDiff();
+  } else if (message.type === "reset") {
+    reset();
   }
 });
 

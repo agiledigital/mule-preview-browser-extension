@@ -46,7 +46,7 @@
 (defn- remove-element [mast removal-map route]
   (let [index (last route)
         element-route (prepare-path route)
-        keyword-route (prepare-path (drop-last route))
+        keyword-route (drop-last element-route)
         original-element (get-in mast element-route)]
     [(update-in mast keyword-route #(vec-remove (vec %) index))
      (insert-removal element-route original-element removal-map)]))

@@ -49,9 +49,9 @@
 (defn init! []
   (mount-url-diff-on-element
    (.getElementById js/document "app")
-   "/example_xml/badA.xml"
-   "/example_xml/badB.xml"
+   "/example_xml/nice-example.xml"
+   "/example_xml/nice-example-diff.xml"
    "."))
 
-(defn ^:dev/after-load start []
-  (init!))
+;(defn ^:dev/after-load start []
+;  (init!))
