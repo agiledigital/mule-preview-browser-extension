@@ -26,7 +26,7 @@
     {:type :component
      :tag-name tag-name
      :description (or description tag-name)
-     :hash (hash-combine (:attributes node) content)
+     :hash (hash-combine (hash (:attributes node)) (hash content))
      :attributes attributes
      :location (:location node)}))
 
