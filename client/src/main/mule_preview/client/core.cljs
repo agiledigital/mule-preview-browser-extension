@@ -2,7 +2,6 @@
   "The entry point to the web application"
   (:require
    [reagent.core :as r]
-   [tubax.core :refer [xml->clj]]
    [mule-preview.client.views.preview :refer [start-preview start-preview-url]]
    [mule-preview.client.views.diff :refer [start-diff start-diff-url]]))
 
@@ -46,12 +45,9 @@
      content-root)
     (mount-root element root-component)))
 
-(defn init! []
+(defn ^:dev/after-load init! []
   (mount-url-diff-on-element
    (.getElementById js/document "app")
    "/example_xml/nice-example.xml"
    "/example_xml/nice-example-diff.xml"
    "."))
-
-(defn ^:dev/after-load start []
-  (init!))

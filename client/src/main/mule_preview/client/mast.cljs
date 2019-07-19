@@ -21,11 +21,12 @@
     (or doc-name name)))
 
 (defn- create-mule-component [node tag-name attributes]
-  (let [description (get-description node)]
+  (let [description (get-description node)
+        content (node :content)]
     {:type :component
      :tag-name tag-name
      :description (or description tag-name)
-     :hash (hash (:attributes node))
+     :hash (hash-combine (:attributes node) content)
      :attributes attributes
      :location (:location node)}))
 

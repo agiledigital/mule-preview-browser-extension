@@ -1,5 +1,5 @@
 (ns tubax.core
-  (:require ext.saxjs))
+  (:require ["sax" :as sax]))
 
 (defn- new-document []
   (list))
@@ -50,12 +50,12 @@
                  lowercase true
                  position true
                  strict-entities false}}]
-   (let [parser (.parser js/sax strict #js {"trim" trim
-                                            "normalize" normalize
-                                            "lowercase" lowercase
-                                            "xmlns" xmlns
-                                            "position" position
-                                            "strictEntities" strict-entities})
+   (let [parser (.parser sax strict #js {"trim" trim
+                                         "normalize" normalize
+                                         "lowercase" lowercase
+                                         "xmlns" xmlns
+                                         "position" position
+                                         "strictEntities" strict-entities})
          document (atom (new-document))
          result (atom nil)]
      ;; OPEN TAG
