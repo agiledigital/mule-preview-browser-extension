@@ -3,6 +3,7 @@
 <mule xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:s3="http://www.mulesoft.org/schema/mule/s3" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
 	xmlns:spring="http://www.springframework.org/schema/beans" 
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
@@ -24,6 +25,14 @@ http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/
             <flow-ref name="example:/strain-overflow-noodle-requests" doc:name="example:/strain-overflow-noodle-requests"/>
         </foreach>
         <set-payload doc:name="Server Noodles"/>
+        <dw:transform-message doc:name="Deduplicate">
+            <dw:input-payload mimeType="application/java"/>
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+---
+
+payload distinctBy $.pies]]></dw:set-payload>
+        </dw:transform-message>
         <set-payload doc:name="Server Noodles 2"/>
         <catch-exception-strategy doc:name="Catch Exception Strategy">
             <set-payload doc:name="Nothing to see here"/>

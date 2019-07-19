@@ -25,9 +25,30 @@ export const showBitbucketDiff = () => {
   }
 };
 
+export const getBitbucketFilePreviewElement = () =>
+  document.querySelector(".source-view");
+
+export const hideBitbucketFilePreview = () => {
+  const element = getBitbucketFilePreviewElement();
+  if (element) {
+    element.classList.add("mp-hidden");
+  }
+};
+export const showBitbucketFilePreview = () => {
+  const element = getBitbucketFilePreviewElement();
+  if (element) {
+    element.classList.remove("mp-hidden");
+  }
+};
+
 export const getCurrentFile = () => {
   const filePathObj = window.wrappedJSObject
     .require("bitbucket/internal/model/page-state")
     .getFilePath();
   return filePathObj.attributes.components.join("/");
+};
+
+export const getFileRawUrlFromContentView = () => {
+  // This is not the best but it works for now I suppose
+  return document.URL.replace("/browse/", "/raw/");
 };
