@@ -1,51 +1,50 @@
-## Cross-browser Extension Boilerplate 
+## Mule Preview Browser Extension
 
-[![Travis status][travis-card]][travis-link] [![Licence][licence-card]][licence-link] [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+### Summary
 
-[travis-card]: https://travis-ci.org/williankeller/browser-extension-boilerplate.svg?branch=master 
-[travis-link]: https://travis-ci.org/williankeller/browser-extension-boilerplate "Trevis status"
+This project takes the [Mule Preview client](../client)
+and uses it to replace a diff of Mule XML in Bitbucket
+with a graphical diff.
 
-[licence-card]: https://img.shields.io/badge/License-MIT-blue.svg
-[licence-link]: http://opensource.org/licenses/MIT "MIT License"
+### Instructions
 
-A boilerplate template for building cross-browser extensions for Chrome and Firefox.
-The idea here is make easier to start a great extension for Chrome and Firefox.
-This template allow you start your cross-browser extension fast and also work with a organized code structure.
+Simply open a PR in Bitbucket and select a Mule XML file.
+The Mule Preview button in your browsers toolbar should enable.
+Clicking it will toggle Mule Preview mode.
 
+### Support
 
-### Starting:
-* Open the `manifest.json` file and change the `matches` URL to match exactly with the URL you want your script load.
-* You can add more than one URL at the same time, or add a Regex rule, like:
-```javascript
-"matches": ["https://any-url.com/*"],
-```
-* Install [Yarn](https://yarnpkg.com) in scope global. 
-  * `$ npm install -g yarn`
-* Install dependencies.
-  * `$ cd browser-extension-boilerplate/ && yarn`
-* Start project - Watch files in project and rebuild if any file changed.
-  * `yarn start`
-* Build for production
-  * `yarn build`
+Only tested on Firefox but it should also be compatible with Chrome.
 
-### Installing (Chrome)
-1. Visit `chrome://extensions/` in Chrome;
-2. Enable the **Developer mode**;
-3. Click on **Load unpacked extension**;
-4. Select the folder `browser-extension-boilerplate/extension` or the folder name you changed.
+### Building
 
-### Handler:
-* Your script that will handle the page or tab should be inserted inside the `src/app/main.js` file.
+Simply run these command to produce a production build
 
-### Locales:
-* You are able to translate your extension, just go to the `_locales` folder and create the respective language folder.
-* This boilerplate starts with two folder examples, like `en` to English (as default language) and `pt` to Portuguese.
-* After create the new language folder, you must create a `messages.json` file and insert inside:
-```javascript
-{
-  "keyName": {
-    "message": "Value translatable",
-    "description": "Description of translatable value"
-  }
-}
-```
+    $ yarn install
+    $ yarn prebuild
+    $ yarn build
+
+Note: This is currently broken because UglifyJs doesn't like the output of Babel at the moment.
+
+### Developing
+
+This commands set you up for development:
+
+    $ yarn install
+    $ yarn prebuild
+
+This command will build the plugin and rebuild if any files change:
+
+    $ yarn start
+
+This command will hot reload the extension into Firefox
+
+    $ yarn web-ext run -s extension/
+
+This command will ensure your code is up to scratch before comitting.
+
+    $ yarn lint
+
+### Acknowledgement
+
+Thanks to https://github.com/williankeller/browser-extension-boilerplate for making this extension so easy to get running.
