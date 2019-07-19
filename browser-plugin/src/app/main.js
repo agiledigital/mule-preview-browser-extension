@@ -1,4 +1,4 @@
-import mule_preview from "../../../client/build/npm/mule_preview.client.core";
+import { mount_diff_on_element } from "../../../client/build/release";
 import browser from "webextension-polyfill";
 import { getFileContentFromDiff } from "./scms/bitbucket/fetch";
 import {
@@ -9,6 +9,7 @@ import {
   isRunningInBitbucket
 } from "./scms/bitbucket/ui";
 import { messages } from "./constants";
+import { getMulePreviewElement } from "./ui";
 
 const getCurrentUrl = () => new URL(document.URL);
 const timeout = 10000;
@@ -18,8 +19,6 @@ console.log("[Mule Preview] Plugin Initialising");
 
 const getRuntime = () => new Date().getTime() - startTime;
 const isTimedOut = () => getRuntime() > timeout;
-const getMulePreviewElement = () =>
-  document.querySelector(".mp.root-component");
 
 const startDiff = () => {
   if (getMulePreviewElement() !== null) {
@@ -38,7 +37,7 @@ const startDiff = () => {
       hideBitbucketDiff();
       const mulePreviewElement = document.createElement("div");
       element.insertAdjacentElement("afterend", mulePreviewElement);
-      mule_preview.mount_diff_on_element(
+      mount_diff_on_element(
         mulePreviewElement,
         fileA,
         fileB,
