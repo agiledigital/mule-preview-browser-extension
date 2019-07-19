@@ -1,17 +1,13 @@
-import { mount_diff_on_element } from "../../../client/build/release";
 import browser from "webextension-polyfill";
-import { getFileContentFromDiff } from "./scms/bitbucket/fetch";
 import {
-  getCurrentFile,
   getBitbucketDiffElement,
-  hideBitbucketDiff,
-  showBitbucketDiff,
-  isRunningInBitbucket
+  isRunningInBitbucket,
+  getBitbucketFilePreviewElement
 } from "./scms/bitbucket/ui";
 import { messages } from "./constants";
-import { getMulePreviewElement } from "./ui";
+import { toggleDiff, stopDiff, isDiffMode } from "./modes/diff";
+import { isPreviewMode, togglePreview } from "./modes/preview";
 
-const getCurrentUrl = () => new URL(document.URL);
 const timeout = 10000;
 const startTime = new Date().getTime();
 
@@ -20,54 +16,6 @@ console.log("[Mule Preview] Plugin Initialising");
 const getRuntime = () => new Date().getTime() - startTime;
 const isTimedOut = () => getRuntime() > timeout;
 
-const startDiff = () => {
-  if (getMulePreviewElement() !== null) {
-    console.log("[Mule Preview] Already loaded. Will not load again.");
-    return;
-  }
-
-  console.log(
-    "[Mule Preview] Bitbucket detected. Will attempt to load overlay."
-  );
-  const element = getBitbucketDiffElement();
-  const filePath = getCurrentFile();
-
-  getFileContentFromDiff(filePath)
-    .then(({ fileA, fileB }) => {
-      hideBitbucketDiff();
-      const mulePreviewElement = document.createElement("div");
-      element.insertAdjacentElement("afterend", mulePreviewElement);
-      mount_diff_on_element(
-        mulePreviewElement,
-        fileA,
-        fileB,
-        browser.runtime.getURL("public/")
-      );
-    })
-    .catch(err => {
-      console.error(err);
-    });
-};
-
-const stopDiff = () => {
-  const element = getMulePreviewElement();
-  if (element) {
-    element.remove();
-  }
-  showBitbucketDiff();
-};
-
-const toggleDiff = () => {
-  const element = getMulePreviewElement();
-  if (element === null) {
-    console.log("[Mule Preview] No existing element. Starting diff");
-    startDiff();
-  } else {
-    console.log("[Mule Preview] Existing element found. Stopping diff");
-    stopDiff();
-  }
-};
-
 browser.runtime.onMessage.addListener(function(message, sender) {
   console.log(
     `[Mule Preview] Received message from [${sender}]: [${JSON.stringify(
@@ -75,7 +23,12 @@ browser.runtime.onMessage.addListener(function(message, sender) {
     )}]`
   );
   if (message.type === messages.ToggleDiff) {
-    toggleDiff();
+    if (getBitbucketDiffElement() !== null) {
+      toggleDiff();
+    }
+    if (getBitbucketFilePreviewElement() !== null) {
+      togglePreview();
+    }
   } else if (message.type === messages.Reset) {
     reset();
   }
@@ -91,8 +44,11 @@ const onReady = () => {
 
 const startReadyPolling = () => {
   const readyPoller = setInterval(() => {
-    if (getBitbucketDiffElement() !== null) {
-      console.log("[Mule Preview]  Bitbucket is now ready");
+    if (
+      getBitbucketDiffElement() !== null ||
+      getBitbucketFilePreviewElement() !== null
+    ) {
+      console.log("[Mule Preview] Ready!");
       clearInterval(readyPoller);
       onReady();
     }
@@ -111,7 +67,7 @@ const reset = () => {
     value: false
   });
 
-  if (isRunningInBitbucket() && getCurrentUrl().pathname.endsWith("diff")) {
+  if (isRunningInBitbucket() && (isDiffMode() || isPreviewMode())) {
     console.log(
       "[Mule Preview] I'm pretty sure this is the right place but I have to wait for the element to be ready."
     );
