@@ -1,6 +1,14 @@
 import mule_preview from "../../../client/build/npm/mule_preview.client.core";
 import browser from "webextension-polyfill";
-import fetch from "cross-fetch";
+import { getFileContentFromDiff } from "./scms/bitbucket/fetch";
+import {
+  getCurrentFile,
+  getBitbucketDiffElement,
+  hideBitbucketDiff,
+  showBitbucketDiff,
+  isRunningInBitbucket
+} from "./scms/bitbucket/ui";
+import { messages } from "./constants";
 
 const getCurrentUrl = () => new URL(document.URL);
 const timeout = 10000;
@@ -10,57 +18,8 @@ console.log("[Mule Preview] Plugin Initialising");
 
 const getRuntime = () => new Date().getTime() - startTime;
 const isTimedOut = () => getRuntime() > timeout;
-const isRunningInBitbucket = () => {
-  const metaTag = document.querySelector("meta[name=application-name]");
-  return metaTag === null
-    ? false
-    : metaTag.getAttribute("content") === "Bitbucket";
-};
-
-const fetchRawFileFromHash = (filePath, hash) => {
-  const fetchUrl = new URL(`../../raw/${filePath}?at=${hash}`, document.URL);
-  console.log(`fetchUrl: [${fetchUrl}]`);
-  return fetch(fetchUrl).then(response => response.text());
-};
-
-const fetchRawFilesFromHashes = (fromFilePath, toFilePath, fromHash, toHash) =>
-  Promise.all([
-    fetchRawFileFromHash(fromFilePath, fromHash),
-    fetchRawFileFromHash(toFilePath, toHash)
-  ]).then(([fileA, fileB]) => ({
-    fileA,
-    fileB
-  }));
-
-const getBitbucketDiffElement = () => document.querySelector(".diff-view");
-
 const getMulePreviewElement = () =>
   document.querySelector(".mp.root-component");
-
-const hideBitbucketDiff = () => {
-  const element = getBitbucketDiffElement();
-  if (element) {
-    element.classList.add("mp-hidden");
-  }
-};
-
-const showBitbucketDiff = () => {
-  const element = getBitbucketDiffElement();
-  if (element) {
-    element.classList.remove("mp-hidden");
-  }
-};
-
-const findDiffFromFilePath = (diffs, filePath) =>
-  diffs.find(
-    diff =>
-      diff.destination && diff.source && diff.destination.toString === filePath
-  );
-
-const extractPathsFromDiff = diff => ({
-  fromFilePath: diff.source.toString,
-  toFilePath: diff.destination.toString
-});
 
 const startDiff = () => {
   if (getMulePreviewElement() !== null) {
@@ -72,36 +31,9 @@ const startDiff = () => {
     "[Mule Preview] Bitbucket detected. Will attempt to load overlay."
   );
   const element = getBitbucketDiffElement();
+  const filePath = getCurrentFile();
 
-  // Bitbucket has its own require function ¯\_(ツ)_/¯
-  const filePathObj = window.wrappedJSObject
-    .require("bitbucket/internal/model/page-state")
-    .getFilePath();
-  const filePath = filePathObj.attributes.components.join("/");
-
-  fetch(document.URL, {
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json"
-    }
-  })
-    .then(response => {
-      console.log("Response received. Streaming JSON");
-      return response.json();
-    })
-    .then(({ fromHash, toHash, diffs }) => {
-      const diff = findDiffFromFilePath(diffs, filePath);
-      if (diff) {
-        const { fromFilePath, toFilePath } = extractPathsFromDiff(diff);
-        return fetchRawFilesFromHashes(
-          fromFilePath,
-          toFilePath,
-          fromHash,
-          toHash
-        );
-      }
-      throw new Error("Cannot diff files with only one state");
-    })
+  getFileContentFromDiff(filePath)
     .then(({ fileA, fileB }) => {
       hideBitbucketDiff();
       const mulePreviewElement = document.createElement("div");
@@ -143,9 +75,9 @@ browser.runtime.onMessage.addListener(function(message, sender) {
       message
     )}]`
   );
-  if (message.type === "toggle-diff") {
+  if (message.type === messages.ToggleDiff) {
     toggleDiff();
-  } else if (message.type === "reset") {
+  } else if (message.type === messages.Reset) {
     reset();
   }
 });
@@ -153,7 +85,7 @@ browser.runtime.onMessage.addListener(function(message, sender) {
 const onReady = () => {
   console.log("[Mule Preview] Bitbucket ready. Enabling button");
   browser.runtime.sendMessage({
-    type: "supported",
+    type: messages.Supported,
     value: true
   });
 };
@@ -176,7 +108,7 @@ const reset = () => {
   stopDiff();
   // Reset button
   browser.runtime.sendMessage({
-    type: "supported",
+    type: messages.Supported,
     value: false
   });
 

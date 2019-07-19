@@ -4,7 +4,8 @@
     "browser": true,
     "commonjs": true,
     "webextensions": true,
-    "es6": true
+    "es6": true,
+    "node": true
   },
   "parser": "babel-eslint"
 }

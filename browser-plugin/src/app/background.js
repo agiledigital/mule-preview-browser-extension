@@ -1,4 +1,5 @@
 import browser from "webextension-polyfill";
+import { messages } from "./constants";
 
 const tabEnabledSet = new Set();
 
@@ -7,7 +8,7 @@ browser.tabs.onUpdated.addListener(() => {
   browser.tabs.query({ currentWindow: true, active: true }, tabArray => {
     const currentTabId = tabArray[0].id;
     browser.tabs.sendMessage(currentTabId, {
-      type: "reset"
+      type: messages.Reset
     });
   });
 });
@@ -16,7 +17,7 @@ const startDiff = () => {
   browser.tabs.query({ currentWindow: true, active: true }, tabArray => {
     const currentTabId = tabArray[0].id;
     browser.tabs.sendMessage(currentTabId, {
-      type: "toggle-diff"
+      type: messages.ToggleDiff
     });
   });
 };
@@ -47,7 +48,7 @@ browser.runtime.onMessage.addListener(function(message, sender) {
   console.log(
     `Received message from [${senderTabId}]: [${JSON.stringify(message)}]`
   );
-  if (message.type === "supported" && message.value) {
+  if (message.type === messages.Supported && message.value) {
     console.log("Adding tab to enabled set!");
     tabEnabledSet.add(senderTabId);
     console.log(tabEnabledSet);
