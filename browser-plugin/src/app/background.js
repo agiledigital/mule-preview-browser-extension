@@ -12,7 +12,7 @@ browser.tabs.onUpdated.addListener(() => {
   });
 });
 
-const startDiff = tabId => {
+const startDiff = () => {
   browser.tabs.query({ currentWindow: true, active: true }, tabArray => {
     const currentTabId = tabArray[0].id;
     browser.tabs.sendMessage(currentTabId, {
@@ -42,7 +42,7 @@ const updateButtonState = () => {
   });
 };
 
-browser.runtime.onMessage.addListener(function(message, sender, sendResponse) {
+browser.runtime.onMessage.addListener(function(message, sender) {
   const senderTabId = sender.tab.id;
   console.log(
     `Received message from [${senderTabId}]: [${JSON.stringify(message)}]`

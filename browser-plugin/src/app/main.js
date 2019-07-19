@@ -137,7 +137,7 @@ const toggleDiff = () => {
   }
 };
 
-browser.runtime.onMessage.addListener(function(message, sender, sendResponse) {
+browser.runtime.onMessage.addListener(function(message, sender) {
   console.log(
     `[Mule Preview] Received message from [${sender}]: [${JSON.stringify(
       message

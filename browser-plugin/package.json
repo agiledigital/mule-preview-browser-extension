@@ -4,29 +4,37 @@
   "description": "Overlays the Mule Preview plugin over SCM web applications",
   "license": "MIT",
   "devDependencies": {
+    "addons-linter": "^1.10.1",
     "babel-core": "^6.26.0",
+    "babel-eslint": "^10.0.2",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-0": "^6.24.1",
     "compression-webpack-plugin": "^1.0.1",
     "css-loader": "^0.28.7",
+    "eslint": "^6.0.1",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.5",
     "html-loader": "^0.5.1",
     "html-webpack-plugin": "^2.30.1",
     "node-sass": "^4.6.0",
+    "prettier": "^1.18.2",
     "rimraf": "^2.6.2",
     "sass-loader": "^6.0.6",
     "standard": "^10.0.3",
     "style-loader": "^0.19.0",
     "url-loader": "^0.6.2",
+    "web-ext": "^3.1.0",
     "webpack": "^3.8.1"
   },
   "scripts": {
     "prebuild": "./node_modules/rimraf/bin.js ./extension/dist/",
     "start": "node_modules/.bin/webpack --config webpack.config.js -w -d",
     "build": "node_modules/.bin/webpack --config webpack.production.config.js -p",
-    "test": "node_modules/.bin/standard"
+    "test": "node_modules/.bin/standard",
+    "lint": "eslint --fix src"
   },
   "repository": {
     "type": "git",
@@ -57,5 +65,9 @@
     "cross-fetch": "^3.0.4",
     "react": "16.3.2",
     "webextension-polyfill": "^0.4.0"
-  }
+  },
+  "engines": {
+    "node": ">= 10.0.0"
+  },
+  "browserslist": "defaults"
 }
