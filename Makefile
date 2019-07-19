@@ -6,8 +6,13 @@ ANYPOINT_STUDIO_INSTALLATION=dependencies/AnypointStudio
 CLIENT_FILES := $(shell find client/src -iname '*.cljs')
 BROWSER_PLUGIN_FILES := $(shell find browser-plugin/src -iname '*.js')
 
-all: browser-plugin/extension/dist
+all: browser-plugin/build/package.zip
 .PHONY: all
+
+browser-plugin/build/package.zip: browser-plugin/extension/dist
+	@echo ">>> Packaging Browser Extension (Release)"
+	mkdir -p browser-plugin/build
+	zip -r browser-plugin/build/package.zip browser-plugin/extension/*
 
 browser-plugin/extension/dist: browser-plugin/node_modules/.installed client/build/release.js browser-plugin/extension/public $(BROWSER_PLUGIN_FILES)
 	@echo ">>> Building Browser Extension (Release)"
@@ -15,7 +20,7 @@ browser-plugin/extension/dist: browser-plugin/node_modules/.installed client/bui
 
 client/build/release.js: client/node_modules/.installed client/src/main/mule_preview/client/mappings.json client/public/img/icons $(CLIENT_FILES)
 	@echo ">>> Building Client Module (Release)"
-	cd client && npx shadow-cljs release plugin
+	cd client && npx shadow-cljs release plugin --source-maps
 
 browser-plugin/extension/public: client/src/main/mule_preview/client/mappings.json client/public/img/icons
 	@echo ">>> Copying required assets for Browser Extension"
@@ -59,5 +64,6 @@ clean:
 	dependencies \
 	tools/target \
 	client/build \
-	client/.shadow-cljs
+	client/.shadow-cljs \
+	browser-plugin/build
 .PHONY: clean

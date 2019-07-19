@@ -1,0 +1,22 @@
+language: clojure
+
+before_install:
+- nvm install
+- nvm use
+
+install: skip
+
+script: make -j2 -O
+
+deploy:
+  provider: releases
+  api_key:
+    secure: VTDnMO2Ba0Yy7JXGIMHNVOutAZhEmSbmx58zxjo9WIQA2XJ2thO8LNdnt/4/JKeRUpG6J8rX+ELUZu+bZJNhZ+Gdmntyom5ahiagLKNe5IQL7Cz2rDUn2yUBEzIkcsdbZ4ngbsYvWW0zF4tyL1ipeqv5QNjw4NleEpB1rgcKAL8F/r5BgpFTO/p98jq0JNZ+RDi1TFHLGQgkgOprPLV/2rZHaRet3DpMXzgNgx9Nat+CeaLtnZqyeocQyZJYm33iJlweiFkGa7QdWm2l7DiOQqEmWJ53o8nQydXhsOBd0lJDkZPHtzVMHQHZJ7PFXWOfnmgvMl7PV45/LgoeY1y3khFNIESCLHQygYWsnJJBZcxbXwYDac+qZja+WzU6VQpo4ESmMIK0wCdRUFAZ+5OQxtPPpCfyaKmeyh37tUOZa+LcU9h9bXsLJh/geUgEQX1naU1FqSGAb1uF9Y//hIk1hZ6B1+2FbfSrvePFThLPKWpc1fzwvgvFmCmb1pvMZVy684fYZOter9H/vWI2Wh+cW4/XvMxyASS0S8CbHBrZEMjGZEwvawHUEbN4q/irMUUNr7lmPD4jNlJyVjsLqq/rnJp655QS+QSF7+Lwl9D9fdlZC1+RqDtUD1wHv9IEn02uRU37k3skMCTeugxtHMhCGGsXqRB+hHdMb0mq/Y+ss+A=
+  file:
+    - browser-plugin/build/package.zip
+    - client/build/release.js
+    - client/build/release.js.map
+  draft: true
+  on:
+    branch: master
+    repo: agiledigital/mule-preview
