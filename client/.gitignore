@@ -10,6 +10,8 @@ pom.xml.asc
 /.nrepl-port
 /resources/public/js
 /public/js
+/public/img/icons
+/src/main/mule_preview/client/mappings.json
 /out
 /.repl
 *.log
