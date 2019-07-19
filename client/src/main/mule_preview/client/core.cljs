@@ -45,12 +45,9 @@
      content-root)
     (mount-root element root-component)))
 
-(defn init! []
+(defn ^:dev/after-load init! []
   (mount-url-diff-on-element
    (.getElementById js/document "app")
    "/example_xml/nice-example.xml"
    "/example_xml/nice-example-diff.xml"
    "."))
-
-(defn ^:dev/after-load start []
-  (init!))
