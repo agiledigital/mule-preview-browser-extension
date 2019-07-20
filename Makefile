@@ -18,11 +18,11 @@ browser-plugin/extension/dist: browser-plugin/node_modules/.installed client/bui
 	@echo ">>> Building Browser Extension (Release)"
 	cd browser-plugin && npm run build
 
-client/build/release.js: client/node_modules/.installed client/src/main/mule_preview/client/mappings.json client/public/img/icons $(CLIENT_FILES)
+client/build/release.js: client/node_modules/.installed client/src/main/mule_preview/client/mappings.json client/public/img/icons/.timestamp $(CLIENT_FILES)
 	@echo ">>> Building Client Module (Release)"
 	cd client && npx shadow-cljs release plugin --source-maps
 
-browser-plugin/extension/public: client/src/main/mule_preview/client/mappings.json client/public/img/icons
+browser-plugin/extension/public: client/src/main/mule_preview/client/mappings.json client/public/img/icons/.timestamp
 	@echo ">>> Copying required assets for Browser Extension"
 	rm -rf browser-plugin/extension/public && cp -rv client/public browser-plugin/extension/public
 
@@ -34,23 +34,27 @@ client/node_modules/.installed: client/package.json
 	@echo ">>> Installing dependencies for Client Module"
 	cd client && npm install && touch node_modules/.installed
 
-client/src/main/mule_preview/client/mappings.json: $(ANYPOINT_STUDIO_INSTALLATION)
+client/src/main/mule_preview/client/mappings.json: $(ANYPOINT_STUDIO_INSTALLATION)/.timestamp
 	@echo ">>> Generating mappings metadata from Anypoint Installation for Client Module"
-	cd tools && lein run -- -d "../${ANYPOINT_STUDIO_INSTALLATION}/plugins/" -o ../client/src/main/mule_preview/client generate-mappings
+	cd tools && lein run -- -d "../$(ANYPOINT_STUDIO_INSTALLATION)/plugins/" -o ../client/src/main/mule_preview/client generate-mappings
 
-client/public/img/icons: $(ANYPOINT_STUDIO_INSTALLATION)
+client/public/img/icons/.timestamp: $(ANYPOINT_STUDIO_INSTALLATION)/.timestamp
 	@echo ">>> Extracting icon assets from Anypoint Installation for Client Module"
-	cd tools && lein run -- -d "../${ANYPOINT_STUDIO_INSTALLATION}/plugins/" -o ../client/public/img/icons extract-images
-	cd tools && lein run -- -d "../${ANYPOINT_STUDIO_INSTALLATION}/plugins/" -o ../client/public/img/icons apply-light-theme
+	mkdir -p client/public/img/icons
+	cd tools && lein run -- -d "../$(ANYPOINT_STUDIO_INSTALLATION)/plugins/" -o ../client/public/img/icons extract-images
+	cd tools && lein run -- -d "../$(ANYPOINT_STUDIO_INSTALLATION)/plugins/" -o ../client/public/img/icons apply-light-theme
+	touch $@
 
-$(ANYPOINT_STUDIO_INSTALLATION): dependencies/$(ANYPOINT_STUDIO_ARCHIVE)
+$(ANYPOINT_STUDIO_INSTALLATION)/.timestamp: dependencies/$(ANYPOINT_STUDIO_ARCHIVE)
 	@echo ">>> Extracting Anypoint Studio dependency"
 	cd dependencies && tar -xzf $(ANYPOINT_STUDIO_ARCHIVE)
+	touch $@
 
 dependencies/$(ANYPOINT_STUDIO_ARCHIVE):
 	@echo ">>> Downloading Anypoint Studio dependency"
 	mkdir -p dependencies
 	cd dependencies && curl --show-error --fail -o $(ANYPOINT_STUDIO_ARCHIVE) $(ANYPOINT_URL)
+	touch $@
 
 clean:
 	rm -rf \
