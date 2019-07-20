@@ -1,9 +1,9 @@
 const webpack = require("webpack");
 const path = require("path");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const CompressionPlugin = require("compression-webpack-plugin");
 
 module.exports = {
+  mode: 'production',
+
   entry: {
     main: path.resolve(__dirname, "src/app/main.js"),
     background: path.resolve(__dirname, "src/app/background.js")
@@ -15,11 +15,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: [".js", ".json", ".scss", ".css"],
-    alias: {
-      images: path.resolve(__dirname, "src/images"),
-      styles: path.resolve(__dirname, "src/styles")
-    }
+    extensions: [".js", ".json", ".scss", ".css"]
   },
 
   module: {
@@ -35,10 +31,7 @@ module.exports = {
       },
       {
         test: /\.(scss|css)$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: ["css-loader", "sass-loader"]
-        })
+        loaders: ["css-loader", "sass-loader"]
       },
       {
         test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
@@ -49,29 +42,6 @@ module.exports = {
       }
     ]
   },
-
-  plugins: [
-    new webpack.DefinePlugin({
-      "process.env.NODE_ENV": JSON.stringify("production")
-    }),
-
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      compress: {
-        warnings: false
-      },
-      comments: false
-    }),
-
-    new ExtractTextPlugin("[name].css"),
-
-    new CompressionPlugin({
-      test: /\.js$|\.css$|\.html$/
-    }),
-
-    new webpack.optimize.AggressiveMergingPlugin(),
-    new webpack.optimize.OccurrenceOrderPlugin()
-  ],
 
   devtool: "cheap-module-source-map"
 };
