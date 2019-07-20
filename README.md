@@ -29,7 +29,7 @@ for use in the Client module.
 
 There is a Makefile that will build everything for you. Once you have the required dependencies you will simply have to run
 
-  $ make -j2
+    $ make -j2
   
 ### Dependencies
 
