@@ -178,7 +178,7 @@
   background-color: red;
 }
 
-/* We want the added/removed states to propogate to children */
+/* We want the added/removed states to propagate to children */
 .mp .added .container {
   background-color: green;
 }
