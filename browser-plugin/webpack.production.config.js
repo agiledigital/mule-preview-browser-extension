@@ -2,7 +2,7 @@ const webpack = require("webpack");
 const path = require("path");
 
 module.exports = {
-  mode: 'production',
+  mode: "production",
 
   entry: {
     main: path.resolve(__dirname, "src/app/main.js"),
@@ -23,7 +23,7 @@ module.exports = {
       {
         test: /\.js$/,
         loader: "babel-loader",
-        exclude: /node_modules/
+        exclude: [/node_modules/, /release.js/]
       },
       {
         test: /\.html$/,

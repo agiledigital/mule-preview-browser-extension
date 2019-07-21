@@ -1,0 +1,177 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`when rendering a Mule component when the component has mapping renders correctly 1`] = `
+<div
+  className="component set-payload some-css-class"
+  data-line={1}
+  data-position={4}
+>
+  <img
+    className="category-frame"
+    src="/img/icons/org.mule.tooling.category.transformers.large.png"
+  />
+  <img
+    className="icon"
+    src="/img/icons/SetPayload-48x32.png"
+  />
+  <div
+    className="label"
+  >
+    Set some payload
+  </div>
+</div>
+`;
+
+exports[`when rendering a Mule component when the component is unknown renders correctly 1`] = `
+<div
+  className="component sjdsfjlsdf some-css-class"
+  data-line={1}
+  data-position={4}
+>
+  <img
+    className="category-frame"
+    src="/img/icons/org.mule.tooling.ui.modules.core.miscellaneous.large.png"
+  />
+  <img
+    className="icon"
+    src="/img/icons/UnknownNode-48x32.png"
+  />
+  <div
+    className="label"
+  >
+    Set some payload
+  </div>
+</div>
+`;
+
+exports[`when rendering a Mule container when it has children renders correctly 1`] = `
+<div
+  className="container mule-flow some-css-class"
+  data-line={2}
+  data-position={3}
+>
+  <div
+    className="container-title"
+  >
+    Do something
+  </div>
+  <div
+    className="container-inner"
+  >
+    <div
+      className="icon-container"
+    >
+      <img
+        className="category-frame"
+        src="/img/icons/org.mule.tooling.category.scopes.large.png"
+      />
+      <img
+        className="icon container-image"
+        src="/img/icons/sub-flow-48x32.png"
+      />
+    </div>
+    <div
+      className="container-children"
+    >
+      <div
+        className="component set-payload some-css-class"
+        data-line={1}
+        data-position={4}
+      >
+        <img
+          className="category-frame"
+          src="/img/icons/org.mule.tooling.category.transformers.large.png"
+        />
+        <img
+          className="icon"
+          src="/img/icons/SetPayload-48x32.png"
+        />
+        <div
+          className="label"
+        >
+          Set some payload
+        </div>
+      </div>
+      <img
+        className="flow-arrow"
+        src="/img/arrow-right-2x.png"
+      />
+      <div
+        className="component message-properties-transformer some-css-class"
+        data-line={4}
+        data-position={4}
+      >
+        <img
+          className="category-frame"
+          src="/img/icons/org.mule.tooling.category.transformers.large.png"
+        />
+        <img
+          className="icon"
+          src="/img/icons/Transformer-48x32.png"
+        />
+        <div
+          className="label"
+        >
+          Transform something
+        </div>
+      </div>
+      <img
+        className="flow-arrow"
+        src="/img/arrow-right-2x.png"
+      />
+      <div
+        className="component http:request some-css-class"
+        data-line={7}
+        data-position={4}
+      >
+        <img
+          className="category-frame"
+          src="/img/icons/org.mule.tooling.category.cloudconnectors.large.png"
+        />
+        <img
+          className="icon"
+          src="/img/icons/http_connector_50x34.png"
+        />
+        <div
+          className="label"
+        >
+          Make some request
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`when rendering a Mule container when it has no children renders correctly 1`] = `
+<div
+  className="container mule-flow some-css-class"
+  data-line={2}
+  data-position={3}
+>
+  <div
+    className="container-title"
+  >
+    Do something
+  </div>
+  <div
+    className="container-inner"
+  >
+    <div
+      className="icon-container"
+    >
+      <img
+        className="category-frame"
+        src="/img/icons/org.mule.tooling.category.scopes.large.png"
+      />
+      <img
+        className="icon container-image"
+        src="/img/icons/sub-flow-48x32.png"
+      />
+    </div>
+    <div
+      className="container-children"
+    />
+  </div>
+</div>
+`;
