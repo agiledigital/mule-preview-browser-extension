@@ -1,8 +1,9 @@
 language: clojure
+dist: bionic
 
 before_install:
-- nvm install
-- nvm use
+  - nvm install
+  - nvm use
 
 install: skip
 
