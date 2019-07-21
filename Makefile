@@ -3,8 +3,9 @@ ANYPOINT_STUDIO_ARCHIVE=AnypointStudio-for-linux-64bit-6.6.1-201906072050.tar.gz
 ANYPOINT_URL=https://mule-studio.s3.amazonaws.com/6.6.1-U1/AnypointStudio-for-linux-64bit-6.6.1-201906072050.tar.gz
 ANYPOINT_STUDIO_INSTALLATION=dependencies/AnypointStudio
 
-CLIENT_FILES := $(shell find client/src -iname '*.cljs')
-BROWSER_PLUGIN_FILES := $(shell find browser-plugin/src -iname '*.js')
+CLIENT_FILES := $(shell find client/src -type f -iname '*.cljs')
+CLIENT_PUBLIC_FILES := $(shell find client/public -type f ! -path "client/public/img/icons/*")
+BROWSER_PLUGIN_FILES := $(shell find browser-plugin/src -type f -iname '*.js')
 
 all: browser-plugin/build/package.zip
 .PHONY: all
@@ -22,7 +23,8 @@ client/build/release.js: client/node_modules/.installed client/src/main/mule_pre
 	@echo ">>> Building Client Module (Release)"
 	cd client && npm test && npx shadow-cljs release plugin --source-maps
 
-browser-plugin/extension/public: client/src/main/mule_preview/client/mappings.json client/public/img/icons/.timestamp
+# TODO: Copy these files whenever any file in public has changed
+browser-plugin/extension/public: client/src/main/mule_preview/client/mappings.json client/public/img/icons/.timestamp $(CLIENT_PUBLIC_FILES)
 	@echo ">>> Copying required assets for Browser Extension"
 	rm -rf browser-plugin/extension/public && cp -rv client/public browser-plugin/extension/public
 
