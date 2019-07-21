@@ -1,0 +1,499 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`when converting applying a diff to MAST transforms correctly 1`] = `
+Object {
+  "attributes": Array [
+    "vertical",
+    "root",
+  ],
+  "content": Array [
+    Object {
+      "attributes": Array [
+        "vertical",
+      ],
+      "content": Array [
+        Object {
+          "attributes": Array [
+            "horizontal",
+          ],
+          "content": Array [
+            Object {
+              "attributes": Array [
+                "added",
+              ],
+              "content": null,
+              "description": "Overwrite the payload",
+              "hash": 266487046,
+              "tag-name": "set-payload",
+              "type": "component",
+            },
+            Object {
+              "attributes": Array [],
+              "description": "HTTP",
+              "hash": 2077519509,
+              "location": Object {
+                "column": 95,
+                "line": 14,
+              },
+              "tag-name": "http:listener",
+              "type": "component",
+            },
+            Object {
+              "attributes": Array [
+                "edited",
+              ],
+              "description": "Set Z level to 7000",
+              "hash": 641237277,
+              "location": Object {
+                "column": 93,
+                "line": 15,
+              },
+              "tag-name": "set-variable",
+              "type": "component",
+            },
+            Object {
+              "attributes": Array [],
+              "description": "Overwrite the payload",
+              "hash": 266487046,
+              "location": Object {
+                "column": 72,
+                "line": 16,
+              },
+              "tag-name": "set-payload",
+              "type": "component",
+            },
+            Object {
+              "attributes": Array [],
+              "description": "example:/expunge-convolvers",
+              "hash": 771211107,
+              "location": Object {
+                "column": 93,
+                "line": 17,
+              },
+              "tag-name": "flow-ref",
+              "type": "component",
+            },
+            Object {
+              "attributes": Array [
+                "removed",
+              ],
+              "description": "Filter recalcitrant ions",
+              "hash": -2096291590,
+              "location": Object {
+                "column": 78,
+                "line": 18,
+              },
+              "tag-name": "expression-filter",
+              "type": "component",
+            },
+            Object {
+              "attributes": Array [
+                "horizontal",
+              ],
+              "content": Array [
+                Object {
+                  "attributes": Array [
+                    "added",
+                  ],
+                  "content": null,
+                  "description": "example:/strain-overflow-noodle-requests",
+                  "hash": -2070961420,
+                  "tag-name": "flow-ref",
+                  "type": "component",
+                },
+                Object {
+                  "attributes": Array [
+                    "added",
+                  ],
+                  "content": null,
+                  "description": "example:/strain-overflow-noodle-requests",
+                  "hash": -2070961420,
+                  "tag-name": "flow-ref",
+                  "type": "component",
+                },
+                Object {
+                  "attributes": Array [
+                    "added",
+                  ],
+                  "content": null,
+                  "description": "example:/strain-overflow-noodle-requests",
+                  "hash": -2070961420,
+                  "tag-name": "flow-ref",
+                  "type": "component",
+                },
+                Object {
+                  "attributes": Array [
+                    "added",
+                  ],
+                  "content": null,
+                  "description": "example:/strain-overflow-noodle-requests",
+                  "hash": -2070961420,
+                  "tag-name": "flow-ref",
+                  "type": "component",
+                },
+                Object {
+                  "attributes": Array [],
+                  "description": "example:/strain-overflow-noodle-requests",
+                  "hash": -2070961420,
+                  "location": Object {
+                    "column": 123,
+                    "line": 20,
+                  },
+                  "tag-name": "flow-ref",
+                  "type": "component",
+                },
+              ],
+              "description": "For Each",
+              "hash": 242079301,
+              "location": Object {
+                "column": 37,
+                "line": 19,
+              },
+              "tag-name": "foreach",
+              "type": "container",
+            },
+            Object {
+              "attributes": Array [],
+              "description": "Server Noodles",
+              "hash": -789013297,
+              "location": Object {
+                "column": 48,
+                "line": 22,
+              },
+              "tag-name": "set-payload",
+              "type": "component",
+            },
+            Object {
+              "attributes": Array [
+                "edited",
+              ],
+              "description": "Deduplicate",
+              "hash": 251600214,
+              "location": Object {
+                "column": 53,
+                "line": 23,
+              },
+              "tag-name": "dw:transform-message",
+              "type": "component",
+            },
+            Object {
+              "attributes": Array [
+                "added",
+              ],
+              "content": null,
+              "description": "Server Noodles 2",
+              "hash": 798826535,
+              "tag-name": "set-payload",
+              "type": "component",
+            },
+          ],
+          "description": "",
+          "tag-name": "psuedo",
+          "type": "container",
+        },
+        Object {
+          "attributes": Array [
+            "horizontal",
+          ],
+          "content": Array [
+            Object {
+              "attributes": Array [
+                "error-handler",
+              ],
+              "content": Array [
+                Object {
+                  "attributes": Array [
+                    "added",
+                  ],
+                  "content": null,
+                  "description": "Nothing to see here",
+                  "hash": 54737936,
+                  "tag-name": "set-payload",
+                  "type": "component",
+                },
+                Object {
+                  "attributes": Array [
+                    "edited",
+                  ],
+                  "description": "Overwrite the payload",
+                  "hash": 266487046,
+                  "location": Object {
+                    "column": 57,
+                    "line": 32,
+                  },
+                  "tag-name": "set-payload",
+                  "type": "component",
+                },
+                Object {
+                  "attributes": Array [],
+                  "description": "Nor here",
+                  "hash": 614804477,
+                  "location": Object {
+                    "column": 65,
+                    "line": 33,
+                  },
+                  "tag-name": "message-properties-transformer",
+                  "type": "component",
+                },
+              ],
+              "description": "Catch Exception Strategy",
+              "hash": 497298084,
+              "location": Object {
+                "column": 70,
+                "line": 31,
+              },
+              "tag-name": "catch-exception-strategy",
+              "type": "container",
+            },
+          ],
+          "description": "",
+          "tag-name": "psuedo",
+          "type": "container",
+        },
+      ],
+      "description": "example:/http-incoming-flow",
+      "tag-name": "flow",
+      "type": "error-container",
+    },
+    Object {
+      "attributes": Array [
+        "horizontal",
+        "removed",
+      ],
+      "content": Array [
+        Object {
+          "attributes": Array [],
+          "description": "Flush the convolver prisms",
+          "hash": 579843109,
+          "location": Object {
+            "column": 104,
+            "line": 37,
+          },
+          "tag-name": "db:no-operation-selected",
+          "type": "component",
+        },
+        Object {
+          "attributes": Array [
+            "vertical",
+          ],
+          "content": Array [
+            Object {
+              "attributes": Array [
+                "horizontal",
+              ],
+              "content": Array [
+                Object {
+                  "attributes": Array [],
+                  "description": "Fetch more prisms",
+                  "hash": 881435866,
+                  "location": Object {
+                    "column": 86,
+                    "line": 40,
+                  },
+                  "tag-name": "s3:no-operation-selected",
+                  "type": "component",
+                },
+                Object {
+                  "attributes": Array [],
+                  "description": "Log number of fanglehockeys",
+                  "hash": 543925965,
+                  "location": Object {
+                    "column": 77,
+                    "line": 41,
+                  },
+                  "tag-name": "logger",
+                  "type": "component",
+                },
+              ],
+              "description": null,
+              "hash": 2014296490,
+              "location": Object {
+                "column": 32,
+                "line": 39,
+              },
+              "tag-name": "when",
+              "type": "container",
+            },
+            Object {
+              "attributes": Array [
+                "horizontal",
+              ],
+              "content": Array [
+                Object {
+                  "attributes": Array [],
+                  "description": "Log Error",
+                  "hash": -818462707,
+                  "location": Object {
+                    "column": 73,
+                    "line": 44,
+                  },
+                  "tag-name": "logger",
+                  "type": "component",
+                },
+              ],
+              "description": null,
+              "hash": -15128758,
+              "location": Object {
+                "column": 23,
+                "line": 43,
+              },
+              "tag-name": "otherwise",
+              "type": "container",
+            },
+          ],
+          "description": "Did the flush occur?",
+          "hash": -1105159260,
+          "location": Object {
+            "column": 48,
+            "line": 38,
+          },
+          "tag-name": "choice",
+          "type": "container",
+        },
+      ],
+      "description": "example:/expunge-convolvers",
+      "hash": 1066677628,
+      "location": Object {
+        "column": 49,
+        "line": 36,
+      },
+      "tag-name": "sub-flow",
+      "type": "container",
+    },
+    Object {
+      "attributes": Array [
+        "horizontal",
+      ],
+      "content": Array [
+        Object {
+          "attributes": Array [
+            "vertical",
+          ],
+          "content": Array [
+            Object {
+              "attributes": Array [
+                "horizontal",
+              ],
+              "content": Array [
+                Object {
+                  "attributes": Array [],
+                  "description": "Clean Carburetor 1",
+                  "hash": 1112970330,
+                  "location": Object {
+                    "column": 93,
+                    "line": 51,
+                  },
+                  "tag-name": "http:request",
+                  "type": "component",
+                },
+                Object {
+                  "attributes": Array [],
+                  "description": "XML to DOM",
+                  "hash": -255883650,
+                  "location": Object {
+                    "column": 71,
+                    "line": 52,
+                  },
+                  "tag-name": "mulexml:xml-to-dom-transformer",
+                  "type": "component",
+                },
+              ],
+              "description": "Processor Chain",
+              "hash": 1690317879,
+              "location": Object {
+                "column": 56,
+                "line": 50,
+              },
+              "tag-name": "processor-chain",
+              "type": "container",
+            },
+            Object {
+              "attributes": Array [
+                "horizontal",
+              ],
+              "content": Array [
+                Object {
+                  "attributes": Array [],
+                  "description": "Oops this has a really long name",
+                  "hash": -1901883164,
+                  "location": Object {
+                    "column": 107,
+                    "line": 55,
+                  },
+                  "tag-name": "http:request",
+                  "type": "component",
+                },
+                Object {
+                  "attributes": Array [],
+                  "description": "Set Payload",
+                  "hash": 1079074260,
+                  "location": Object {
+                    "column": 53,
+                    "line": 56,
+                  },
+                  "tag-name": "set-payload",
+                  "type": "component",
+                },
+              ],
+              "description": null,
+              "hash": -15128758,
+              "location": Object {
+                "column": 29,
+                "line": 54,
+              },
+              "tag-name": "processor-chain",
+              "type": "container",
+            },
+            Object {
+              "attributes": Array [],
+              "description": "Clean Carburetor 3",
+              "hash": 598254326,
+              "location": Object {
+                "column": 89,
+                "line": 58,
+              },
+              "tag-name": "http:request",
+              "type": "component",
+            },
+          ],
+          "description": "Clean carburetors",
+          "hash": -688832045,
+          "location": Object {
+            "column": 53,
+            "line": 49,
+          },
+          "tag-name": "scatter-gather",
+          "type": "container",
+        },
+        Object {
+          "attributes": Array [],
+          "description": "Start Internal Noodle Engine",
+          "hash": -1986262879,
+          "location": Object {
+            "column": 95,
+            "line": 60,
+          },
+          "tag-name": "http:request",
+          "type": "component",
+        },
+      ],
+      "description": "example:/strain-overflow-noodle-requests",
+      "hash": 1816956808,
+      "location": Object {
+        "column": 62,
+        "line": 48,
+      },
+      "tag-name": "sub-flow",
+      "type": "container",
+    },
+  ],
+  "description": null,
+  "hash": -83749566,
+  "location": Object {
+    "column": 102,
+    "line": 12,
+  },
+  "tag-name": "mule",
+  "type": "container",
+}
+`;
