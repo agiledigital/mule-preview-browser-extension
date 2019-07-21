@@ -1,7 +1,4 @@
-import {
-  xml__GT_mast as xmlToMast,
-  augment_mast_with_diff as augmentMastWithDiff
-} from "mule-preview/mule_preview.client.mast";
+import { xml__GT_mast as xmlToMast } from "mule-preview/mule_preview.client.mast";
 import {
   xmlToClj,
   cljToJs,
@@ -11,15 +8,13 @@ import { readFileSync } from "fs";
 import { join } from "path";
 import exampleDiff from "./__fixtures__/example-diff-dom-output.json";
 
-describe("when converting applying a diff to MAST", () => {
+describe("when converting an XML file to MAST", () => {
   it("transforms correctly", () => {
     const xmlFile = readFileSync(
       join(__dirname, "__fixtures__/example-mule-file.xml")
     );
     const clojureXmlMap = xmlToClj(xmlFile);
-    const mast = xmlToMast(clojureXmlMap);
-    const diff = jsToClj(exampleDiff);
-    const transformedMast = cljToJs(augmentMastWithDiff(mast, diff));
-    expect(transformedMast).toMatchSnapshot();
+    const transformed = cljToJs(xmlToMast(clojureXmlMap));
+    expect(transformed).toMatchSnapshot();
   });
 });
