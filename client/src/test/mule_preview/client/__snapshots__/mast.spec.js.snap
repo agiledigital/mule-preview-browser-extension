@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`when converting applying a diff to MAST transforms correctly 1`] = `
+exports[`when converting an XML file to MAST transforms correctly 1`] = `
 Object {
   "attributes": Array [
     "vertical",
@@ -18,16 +18,6 @@ Object {
           ],
           "content": Array [
             Object {
-              "attributes": Array [
-                "added",
-              ],
-              "content": null,
-              "description": "Overwrite the payload",
-              "hash": 266487046,
-              "tag-name": "set-payload",
-              "type": "component",
-            },
-            Object {
               "attributes": Array [],
               "description": "HTTP",
               "hash": 2077519509,
@@ -39,11 +29,9 @@ Object {
               "type": "component",
             },
             Object {
-              "attributes": Array [
-                "edited",
-              ],
-              "description": "Set Z level to 7000",
-              "hash": 641237277,
+              "attributes": Array [],
+              "description": "Set Z level to 9000",
+              "hash": 1907014272,
               "location": Object {
                 "column": 93,
                 "line": 15,
@@ -74,9 +62,7 @@ Object {
               "type": "component",
             },
             Object {
-              "attributes": Array [
-                "removed",
-              ],
+              "attributes": Array [],
               "description": "Filter recalcitrant ions",
               "hash": -2096291590,
               "location": Object {
@@ -91,46 +77,6 @@ Object {
                 "horizontal",
               ],
               "content": Array [
-                Object {
-                  "attributes": Array [
-                    "added",
-                  ],
-                  "content": null,
-                  "description": "example:/strain-overflow-noodle-requests",
-                  "hash": -2070961420,
-                  "tag-name": "flow-ref",
-                  "type": "component",
-                },
-                Object {
-                  "attributes": Array [
-                    "added",
-                  ],
-                  "content": null,
-                  "description": "example:/strain-overflow-noodle-requests",
-                  "hash": -2070961420,
-                  "tag-name": "flow-ref",
-                  "type": "component",
-                },
-                Object {
-                  "attributes": Array [
-                    "added",
-                  ],
-                  "content": null,
-                  "description": "example:/strain-overflow-noodle-requests",
-                  "hash": -2070961420,
-                  "tag-name": "flow-ref",
-                  "type": "component",
-                },
-                Object {
-                  "attributes": Array [
-                    "added",
-                  ],
-                  "content": null,
-                  "description": "example:/strain-overflow-noodle-requests",
-                  "hash": -2070961420,
-                  "tag-name": "flow-ref",
-                  "type": "component",
-                },
                 Object {
                   "attributes": Array [],
                   "description": "example:/strain-overflow-noodle-requests",
@@ -164,26 +110,14 @@ Object {
               "type": "component",
             },
             Object {
-              "attributes": Array [
-                "edited",
-              ],
+              "attributes": Array [],
               "description": "Deduplicate",
-              "hash": 251600214,
+              "hash": 385704797,
               "location": Object {
                 "column": 53,
                 "line": 23,
               },
               "tag-name": "dw:transform-message",
-              "type": "component",
-            },
-            Object {
-              "attributes": Array [
-                "added",
-              ],
-              "content": null,
-              "description": "Server Noodles 2",
-              "hash": 798826535,
-              "tag-name": "set-payload",
               "type": "component",
             },
           ],
@@ -202,21 +136,9 @@ Object {
               ],
               "content": Array [
                 Object {
-                  "attributes": Array [
-                    "added",
-                  ],
-                  "content": null,
+                  "attributes": Array [],
                   "description": "Nothing to see here",
                   "hash": 54737936,
-                  "tag-name": "set-payload",
-                  "type": "component",
-                },
-                Object {
-                  "attributes": Array [
-                    "edited",
-                  ],
-                  "description": "Overwrite the payload",
-                  "hash": 266487046,
                   "location": Object {
                     "column": 57,
                     "line": 32,
@@ -258,7 +180,6 @@ Object {
     Object {
       "attributes": Array [
         "horizontal",
-        "removed",
       ],
       "content": Array [
         Object {
