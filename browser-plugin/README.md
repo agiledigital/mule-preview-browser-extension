@@ -20,9 +20,9 @@ Only tested on Firefox but it should also be compatible with Chrome.
 
 Simply run these command to produce a production build
 
-    $ yarn install
-    $ yarn prebuild
-    $ yarn build
+    $ npm install
+    $ npm run prebuild
+    $ npm run build
 
 Note: This is currently broken because UglifyJs doesn't like the output of Babel at the moment.
 
@@ -30,20 +30,20 @@ Note: This is currently broken because UglifyJs doesn't like the output of Babel
 
 This commands set you up for development:
 
-    $ yarn install
-    $ yarn prebuild
+    $ npm install
+    $ npm prebuild
 
 This command will build the plugin and rebuild if any files change:
 
-    $ yarn start
+    $ npm start
 
 This command will hot reload the extension into Firefox
 
-    $ yarn web-ext run -s extension/
+    $ npx web-ext run -s extension/
 
 This command will ensure your code is up to scratch before comitting.
 
-    $ yarn lint
+    $ npm run lint
 
 ### Acknowledgement
 

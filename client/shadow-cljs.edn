@@ -8,7 +8,8 @@
  [[reagent "0.8.1" :exclusions [cljsjs/react cljsjs/react-dom]]
   [cljs-http "0.1.46"]
   [cheshire "5.8.1"]
-  [lambdaisland/uri "1.1.0"]]
+  [lambdaisland/uri "1.1.0"]
+  [cider/cider-nrepl "0.21.1"]]
 
  :dev-http {8080 "public"}
  :builds
