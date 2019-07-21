@@ -23,4 +23,7 @@
              :mount-url-preview-on-element mule-preview.client.core/mount-url-preview-on-element
              :mount-diff-on-element mule-preview.client.core/mount-diff-on-element
              :mount-preview-on-element mule-preview.client.core/mount-preview-on-element}
-   :output-to "build/release.js"}}}
+   :output-to "build/release.js"}
+  :testing
+  {:target :npm-module
+   :output-dir "node_modules/mule-preview"}}}

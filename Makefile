@@ -20,7 +20,7 @@ browser-plugin/extension/dist: browser-plugin/node_modules/.installed client/bui
 
 client/build/release.js: client/node_modules/.installed client/src/main/mule_preview/client/mappings.json client/public/img/icons/.timestamp $(CLIENT_FILES)
 	@echo ">>> Building Client Module (Release)"
-	cd client && npx shadow-cljs release plugin --source-maps
+	cd client && npm test && npx shadow-cljs release plugin --source-maps
 
 browser-plugin/extension/public: client/src/main/mule_preview/client/mappings.json client/public/img/icons/.timestamp
 	@echo ">>> Copying required assets for Browser Extension"

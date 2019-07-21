@@ -14,10 +14,18 @@
   [string]
   (str string "s"))
 
+(defn map-kv [m f]
+  (reduce-kv #(assoc %1 (f %2) %3) {} m))
+
+; (defn- data-prefixerise
+;   "Prefixes all the keys in a map with 'data-' to align with HTML standards"
+;   [m]
+;   (into {} (for [[k v] m] [(str "data-" (name k)) v])))
+
 (defn- data-prefixerise
   "Prefixes all the keys in a map with 'data-' to align with HTML standards"
   [m]
-  (into {} (for [[k v] m] [(str "data-" (name k)) v])))
+  (map-kv m #(str "data-" (name %))))
 
 (defn- normalise-name [name]
   (let [split-name (split name #":")
@@ -58,7 +66,7 @@
 (defn- arrow [content-root]
   (image "img/arrow-right-2x.png" "flow-arrow" content-root))
 
-(defn mule-component [name description css-class content-root location]
+(defn mule-component [{:keys [name description css-class content-root location]}]
   (let [img-url (name-to-img-url name false default-component-mapping)
         category-url (name-to-category-url name default-category-image)]
     [:div (merge {:class ["component" name css-class]} (data-prefixerise location))
@@ -66,7 +74,7 @@
      (image img-url "icon" content-root)
      [:div {:class "label"} description]]))
 
-(defn mule-container [name description children css-class content-root location]
+(defn mule-container [{:keys [name description children css-class content-root location]}]
   (let [generated-css-class (name-to-css-class name)
         img-url (name-to-img-url name (some? children) nil)
         category-url (name-to-category-url name default-category-image)
@@ -79,3 +87,7 @@
        (image category-url "category-frame" content-root)
        (image img-url "icon container-image" content-root)]
       child-container-component]]))
+
+; Exports for testing with Jest
+(def ^:export MuleComponent (r/reactify-component mule-component))
+(def ^:export MuleContainer (r/reactify-component mule-container))

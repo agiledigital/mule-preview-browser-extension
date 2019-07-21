@@ -1,0 +1,326 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`when diffing two MAST data structures produces correct output 1`] = `
+Array [
+  Object {
+    "action": "removeElement",
+    "element": Object {
+      "attributes": Object {
+        "description": "example:/expunge-convolvers",
+        "hash": 1066677628,
+        "tag-name": "sub-flow",
+      },
+      "childNodes": Array [
+        Object {
+          "attributes": Object {
+            "description": "Flush the convolver prisms",
+            "hash": 579843109,
+            "tag-name": "db:no-operation-selected",
+          },
+          "childNodes": null,
+          "nodeName": "db:no-operation-selected",
+          "original-attributes": Array [],
+          "original-type": "component",
+        },
+        Object {
+          "attributes": Object {
+            "description": "Did the flush occur?",
+            "hash": -1105159260,
+            "tag-name": "choice",
+          },
+          "childNodes": Array [
+            Object {
+              "attributes": Object {
+                "description": null,
+                "hash": 2014296490,
+                "tag-name": "when",
+              },
+              "childNodes": Array [
+                Object {
+                  "attributes": Object {
+                    "description": "Fetch more prisms",
+                    "hash": 881435866,
+                    "tag-name": "s3:no-operation-selected",
+                  },
+                  "childNodes": null,
+                  "nodeName": "s3:no-operation-selected",
+                  "original-attributes": Array [],
+                  "original-type": "component",
+                },
+                Object {
+                  "attributes": Object {
+                    "description": "Log number of fanglehockeys",
+                    "hash": 543925965,
+                    "tag-name": "logger",
+                  },
+                  "childNodes": null,
+                  "nodeName": "logger",
+                  "original-attributes": Array [],
+                  "original-type": "component",
+                },
+              ],
+              "nodeName": "when",
+              "original-attributes": Array [
+                "horizontal",
+              ],
+              "original-type": "container",
+            },
+            Object {
+              "attributes": Object {
+                "description": null,
+                "hash": -15128758,
+                "tag-name": "otherwise",
+              },
+              "childNodes": Array [
+                Object {
+                  "attributes": Object {
+                    "description": "Log Error",
+                    "hash": -818462707,
+                    "tag-name": "logger",
+                  },
+                  "childNodes": null,
+                  "nodeName": "logger",
+                  "original-attributes": Array [],
+                  "original-type": "component",
+                },
+              ],
+              "nodeName": "otherwise",
+              "original-attributes": Array [
+                "horizontal",
+              ],
+              "original-type": "container",
+            },
+          ],
+          "nodeName": "choice",
+          "original-attributes": Array [
+            "vertical",
+          ],
+          "original-type": "container",
+        },
+      ],
+      "nodeName": "sub-flow",
+      "original-attributes": Array [
+        "horizontal",
+      ],
+      "original-type": "container",
+    },
+    "route": Array [
+      1,
+    ],
+  },
+  Object {
+    "action": "addElement",
+    "element": Object {
+      "attributes": Object {
+        "description": "Overwrite the payload",
+        "hash": 266487046,
+        "tag-name": "set-payload",
+      },
+      "childNodes": null,
+      "nodeName": "set-payload",
+      "original-attributes": Array [],
+      "original-type": "component",
+    },
+    "route": Array [
+      0,
+      0,
+      0,
+    ],
+  },
+  Object {
+    "action": "removeElement",
+    "element": Object {
+      "attributes": Object {
+        "description": "Filter recalcitrant ions",
+        "hash": -2096291590,
+        "tag-name": "expression-filter",
+      },
+      "childNodes": null,
+      "nodeName": "expression-filter",
+      "original-attributes": Array [],
+      "original-type": "component",
+    },
+    "route": Array [
+      0,
+      0,
+      5,
+    ],
+  },
+  Object {
+    "action": "addElement",
+    "element": Object {
+      "attributes": Object {
+        "description": "Nothing to see here",
+        "hash": 54737936,
+        "tag-name": "set-payload",
+      },
+      "childNodes": null,
+      "nodeName": "set-payload",
+      "original-attributes": Array [],
+      "original-type": "component",
+    },
+    "route": Array [
+      0,
+      1,
+      0,
+      0,
+    ],
+  },
+  Object {
+    "action": "modifyAttribute",
+    "name": "description",
+    "newValue": "Set Z level to 7000",
+    "oldValue": "Set Z level to 9000",
+    "route": Array [
+      0,
+      0,
+      2,
+    ],
+  },
+  Object {
+    "action": "modifyAttribute",
+    "name": "hash",
+    "newValue": 641237277,
+    "oldValue": 1907014272,
+    "route": Array [
+      0,
+      0,
+      2,
+    ],
+  },
+  Object {
+    "action": "addElement",
+    "element": Object {
+      "attributes": Object {
+        "description": "example:/strain-overflow-noodle-requests",
+        "hash": -2070961420,
+        "tag-name": "flow-ref",
+      },
+      "childNodes": null,
+      "nodeName": "flow-ref",
+      "original-attributes": Array [],
+      "original-type": "component",
+    },
+    "route": Array [
+      0,
+      0,
+      5,
+      0,
+    ],
+  },
+  Object {
+    "action": "addElement",
+    "element": Object {
+      "attributes": Object {
+        "description": "example:/strain-overflow-noodle-requests",
+        "hash": -2070961420,
+        "tag-name": "flow-ref",
+      },
+      "childNodes": null,
+      "nodeName": "flow-ref",
+      "original-attributes": Array [],
+      "original-type": "component",
+    },
+    "route": Array [
+      0,
+      0,
+      5,
+      1,
+    ],
+  },
+  Object {
+    "action": "addElement",
+    "element": Object {
+      "attributes": Object {
+        "description": "example:/strain-overflow-noodle-requests",
+        "hash": -2070961420,
+        "tag-name": "flow-ref",
+      },
+      "childNodes": null,
+      "nodeName": "flow-ref",
+      "original-attributes": Array [],
+      "original-type": "component",
+    },
+    "route": Array [
+      0,
+      0,
+      5,
+      2,
+    ],
+  },
+  Object {
+    "action": "addElement",
+    "element": Object {
+      "attributes": Object {
+        "description": "example:/strain-overflow-noodle-requests",
+        "hash": -2070961420,
+        "tag-name": "flow-ref",
+      },
+      "childNodes": null,
+      "nodeName": "flow-ref",
+      "original-attributes": Array [],
+      "original-type": "component",
+    },
+    "route": Array [
+      0,
+      0,
+      5,
+      3,
+    ],
+  },
+  Object {
+    "action": "modifyAttribute",
+    "name": "hash",
+    "newValue": 251600214,
+    "oldValue": 385704797,
+    "route": Array [
+      0,
+      0,
+      7,
+    ],
+  },
+  Object {
+    "action": "addElement",
+    "element": Object {
+      "attributes": Object {
+        "description": "Server Noodles 2",
+        "hash": 798826535,
+        "tag-name": "set-payload",
+      },
+      "childNodes": null,
+      "nodeName": "set-payload",
+      "original-attributes": Array [],
+      "original-type": "component",
+    },
+    "route": Array [
+      0,
+      0,
+      8,
+    ],
+  },
+  Object {
+    "action": "modifyAttribute",
+    "name": "description",
+    "newValue": "Overwrite the payload",
+    "oldValue": "Nothing to see here",
+    "route": Array [
+      0,
+      1,
+      0,
+      1,
+    ],
+  },
+  Object {
+    "action": "modifyAttribute",
+    "name": "hash",
+    "newValue": 266487046,
+    "oldValue": 54737936,
+    "route": Array [
+      0,
+      1,
+      0,
+      1,
+    ],
+  },
+]
+`;
