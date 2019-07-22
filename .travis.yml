@@ -7,7 +7,7 @@ before_install:
 
 install: skip
 
-script: make -j2 -O
+script: make
 
 deploy:
   provider: releases
