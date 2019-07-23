@@ -1,13 +1,8 @@
 import { mount_diff_on_element } from "../../../../client/build/release";
 import browser from "webextension-polyfill";
 import { getFileContentFromDiff } from "../scms/bitbucket/fetch";
-import {
-  getCurrentFile,
-  getBitbucketDiffElement,
-  hideBitbucketDiff,
-  showBitbucketDiff
-} from "../scms/bitbucket/ui";
-import { getMulePreviewElement } from "../ui";
+import { getCurrentFile } from "../scms/bitbucket/ui";
+import { getMulePreviewElement, createContainerElement } from "../ui";
 
 const startDiff = () => {
   if (getMulePreviewElement() !== null) {
@@ -18,14 +13,13 @@ const startDiff = () => {
   console.log(
     "[Mule Preview] Bitbucket detected. Will attempt to load overlay."
   );
-  const element = getBitbucketDiffElement();
+  const element = document.querySelector("body");
   const filePath = getCurrentFile();
 
   getFileContentFromDiff(filePath)
     .then(({ fileA, fileB }) => {
-      hideBitbucketDiff();
-      const mulePreviewElement = document.createElement("div");
-      element.insertAdjacentElement("afterend", mulePreviewElement);
+      const mulePreviewElement = createContainerElement();
+      element.appendChild(mulePreviewElement);
       mount_diff_on_element(
         mulePreviewElement,
         fileA,
@@ -43,7 +37,6 @@ export const stopDiff = () => {
   if (element) {
     element.remove();
   }
-  showBitbucketDiff();
 };
 
 export const toggleDiff = () => {

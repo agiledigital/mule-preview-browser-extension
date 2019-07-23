@@ -1,12 +1,7 @@
 import { mount_preview_on_element } from "../../../../client/build/release";
 import browser from "webextension-polyfill";
-import {
-  getFileRawUrlFromContentView,
-  getBitbucketFilePreviewElement,
-  hideBitbucketFilePreview,
-  showBitbucketFilePreview
-} from "../scms/bitbucket/ui";
-import { getMulePreviewElement } from "../ui";
+import { getFileRawUrlFromContentView } from "../scms/bitbucket/ui";
+import { getMulePreviewElement, createContainerElement } from "../ui";
 
 const startPreview = () => {
   if (getMulePreviewElement() !== null) {
@@ -17,14 +12,13 @@ const startPreview = () => {
   console.log(
     "[Mule Preview] Bitbucket detected. Will attempt to load overlay."
   );
-  const element = getBitbucketFilePreviewElement();
+  const element = document.querySelector("body");
   const url = getFileRawUrlFromContentView();
   return fetch(url)
     .then(response => response.text())
     .then(content => {
-      hideBitbucketFilePreview();
-      const mulePreviewElement = document.createElement("div");
-      element.insertAdjacentElement("afterend", mulePreviewElement);
+      const mulePreviewElement = createContainerElement();
+      element.appendChild(mulePreviewElement);
       mount_preview_on_element(
         mulePreviewElement,
         content,
@@ -41,7 +35,6 @@ export const stopPreview = () => {
   if (element) {
     element.remove();
   }
-  showBitbucketFilePreview();
 };
 
 export const togglePreview = () => {

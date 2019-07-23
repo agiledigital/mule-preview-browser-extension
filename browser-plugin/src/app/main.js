@@ -7,6 +7,7 @@ import {
 import { messages } from "./constants";
 import { toggleDiff, stopDiff, isDiffMode } from "./modes/diff";
 import { isPreviewMode, togglePreview } from "./modes/preview";
+import "../scss/extension.scss";
 
 const timeout = 10000;
 const startTime = new Date().getTime();

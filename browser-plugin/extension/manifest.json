@@ -10,7 +10,7 @@
     {
       "matches": ["http://*/*", "https://*/*"],
       "js": ["dist/main.js"],
-      "css": ["public/css/plugin.css"],
+      "css": ["dist/main.css", "public/css/plugin.css"],
       "run_at": "document_idle"
     }
   ],
