@@ -12,34 +12,8 @@ export const isRunningInBitbucket = () => {
 export const getBitbucketDiffElement = () =>
   document.querySelector(".diff-view");
 
-export const hideBitbucketDiff = () => {
-  const element = getBitbucketDiffElement();
-  if (element) {
-    element.classList.add("mp-hidden");
-  }
-};
-export const showBitbucketDiff = () => {
-  const element = getBitbucketDiffElement();
-  if (element) {
-    element.classList.remove("mp-hidden");
-  }
-};
-
 export const getBitbucketFilePreviewElement = () =>
   document.querySelector(".source-view");
-
-export const hideBitbucketFilePreview = () => {
-  const element = getBitbucketFilePreviewElement();
-  if (element) {
-    element.classList.add("mp-hidden");
-  }
-};
-export const showBitbucketFilePreview = () => {
-  const element = getBitbucketFilePreviewElement();
-  if (element) {
-    element.classList.remove("mp-hidden");
-  }
-};
 
 export const getCurrentFile = () => {
   const filePathObj = window.wrappedJSObject

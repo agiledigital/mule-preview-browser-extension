@@ -6,13 +6,16 @@
 
 .mp.root-component {
   padding: 20px;
-  overflow: scroll;
 }
 
 .mp .container {
   padding: 5px;
   border: 1px solid gray;
   background-color: white;
+}
+
+.mp .container.mule-mule {
+  background-color: transparent;
 }
 
 .mp .container.root {
