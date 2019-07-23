@@ -21,6 +21,15 @@ module.exports = {
   module: {
     rules: [
       {
+        enforce: "pre",
+        test: /\.js$/,
+        loader: "eslint-loader",
+        exclude: [/node_modules/, /release.js/],
+        options: {
+          cache: true
+        }
+      },
+      {
         test: /\.js$/,
         loader: "babel-loader",
         exclude: [/node_modules/, /release.js/]

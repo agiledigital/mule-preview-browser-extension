@@ -25,9 +25,11 @@
     "addons-linter": "^1.10.1",
     "babel-eslint": "^10.0.2",
     "babel-loader": "^8.0.0",
+    "concurrently": "^4.1.1",
     "css-loader": "^3.1.0",
     "eslint": "^6.0.1",
     "eslint-config-prettier": "^6.0.0",
+    "eslint-loader": "^2.2.1",
     "eslint-plugin-prettier": "^3.1.0",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^4.1.0",
@@ -43,7 +45,9 @@
   },
   "scripts": {
     "prebuild": "rimraf ./extension/dist/",
-    "start": "webpack --config webpack.config.js -w -d",
+    "watch-extension": "web-ext run -s extension/",
+    "watch-webpack": "webpack --config webpack.config.js -w -d",
+    "start": "concurrently --kill-others \"npm run watch-extension\" \"npm run watch-webpack\"",
     "build": "webpack --config webpack.production.config.js -p",
     "lint": "eslint --fix src"
   },
