@@ -1,6 +1,6 @@
 ## Mule Preview
 
-[![GitHub License](https://img.shields.io/github/license/agiledigital/idm-ts-types.svg)](https://github.com/agiledigital/idm-ts-types/blob/master/LICENSE)
+[![GitHub License](https://img.shields.io/github/license/agiledigital/mule-preview.svg)](https://github.com/agiledigital/mule-preview/blob/master/LICENSE)
 [![Build Status](https://travis-ci.com/agiledigital/mule-preview.svg?branch=master)](https://travis-ci.com/agiledigital/mule-preview)
 [![Known Vulnerabilities](https://snyk.io/test/github/agiledigital/mule-preview/badge.svg)](https://snyk.io/test/github/agiledigital/mule-preview)
 
