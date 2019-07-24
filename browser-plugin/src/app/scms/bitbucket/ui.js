@@ -16,10 +16,19 @@ export const getBitbucketFilePreviewElement = () =>
   document.querySelector(".source-view");
 
 export const getCurrentFile = () => {
-  const filePathObj = window.wrappedJSObject
-    .require("bitbucket/internal/model/page-state")
-    .getFilePath();
-  return filePathObj.attributes.components.join("/");
+  // Since chrome doesn't allow you to access the page context at all
+  // this is the best way I can find to determine the file path of the
+  // file being currently diffed.
+  // Not ideal but will have to do for now.
+  const diffElement = document.querySelector("a.difftree-file.jstree-clicked");
+  if (diffElement == null) {
+    throw new Error("[Mule Preview] Cannot determine diff target from DOM");
+  }
+  const urlComponents = diffElement.href.split("#");
+  if (urlComponents.length !== 2) {
+    throw new Error("[Mule Preview] Cannot determine diff target from DOM");
+  }
+  return urlComponents[1];
 };
 
 export const getFileRawUrlFromContentView = () => {

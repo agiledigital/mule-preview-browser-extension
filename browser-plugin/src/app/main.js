@@ -8,8 +8,10 @@ import { messages } from "./constants";
 import { toggleDiff, stopDiff, isDiffMode } from "./modes/diff";
 import { isPreviewMode, togglePreview } from "./modes/preview";
 import "../scss/extension.scss";
+import { setTabSupportsMulePreview } from "./messenging";
 
-const timeout = 10000;
+const bitbucketPollPeriod = 1000; //ms
+const timeout = bitbucketPollPeriod * 10; //ms
 const startTime = new Date().getTime();
 
 console.log("[Mule Preview] Plugin Initialising");
@@ -33,14 +35,12 @@ browser.runtime.onMessage.addListener(function(message, sender) {
   } else if (message.type === messages.Reset) {
     reset();
   }
+  return true; // Enable async
 });
 
 const onReady = () => {
   console.log("[Mule Preview] Bitbucket ready. Enabling button");
-  browser.runtime.sendMessage({
-    type: messages.Supported,
-    value: true
-  });
+  setTabSupportsMulePreview(true);
 };
 
 const startReadyPolling = () => {
@@ -57,16 +57,13 @@ const startReadyPolling = () => {
       console.log("[Mule Preview] Timed out waiting for bitbucket to be ready");
       clearInterval(readyPoller);
     }
-  }, 1000);
+  }, bitbucketPollPeriod);
 };
 
 const reset = () => {
   stopDiff();
   // Reset button
-  browser.runtime.sendMessage({
-    type: messages.Supported,
-    value: false
-  });
+  setTabSupportsMulePreview(false);
 
   if (isRunningInBitbucket() && (isDiffMode() || isPreviewMode())) {
     console.log(
