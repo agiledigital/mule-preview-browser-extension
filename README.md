@@ -1,5 +1,9 @@
 ## Mule Preview
 
+[![GitHub License](https://img.shields.io/github/license/agiledigital/idm-ts-types.svg)](https://github.com/agiledigital/idm-ts-types/blob/master/LICENSE)
+[![Build Status](https://travis-ci.com/agiledigital/mule-preview.svg?branch=master)](https://travis-ci.com/agiledigital/mule-preview)
+[![Known Vulnerabilities](https://snyk.io/test/github/agiledigital/mule-preview/badge.svg)](https://snyk.io/test/github/agiledigital/mule-preview)
+
 A project to take Mule configuration XML files and render the flows in HTML
 and also display visual diffs for things like Pull Requests.
 
