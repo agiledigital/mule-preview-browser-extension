@@ -19,11 +19,6 @@
     "scripts": ["dist/background.js"]
   },
 
-  "options_ui": {
-    "page": "dist/options.html",
-    "chrome_style": true
-  },
-
   "icons": {
     "128": "icons/icon.png"
   },
