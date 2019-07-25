@@ -2,7 +2,9 @@
 
 [![GitHub License](https://img.shields.io/github/license/agiledigital/mule-preview.svg)](https://github.com/agiledigital/mule-preview/blob/master/LICENSE)
 [![Build Status](https://travis-ci.com/agiledigital/mule-preview.svg?branch=master)](https://travis-ci.com/agiledigital/mule-preview)
-[![Known Vulnerabilities](https://snyk.io/test/github/agiledigital/mule-preview/badge.svg)](https://snyk.io/test/github/agiledigital/mule-preview)
+[![Known Vulnerabilities](https://snyk.io//test/github/agiledigital/mule-preview/badge.svg?targetFile=browser-plugin/package.json)](https://snyk.io//test/github/agiledigital/mule-preview?targetFile=browser-plugin/package.json)
+[![Known Vulnerabilities](https://snyk.io//test/github/agiledigital/mule-preview/badge.svg?targetFile=client/package.json)](https://snyk.io//test/github/agiledigital/mule-preview?targetFile=client/package.json)
+[![Maintainability](https://api.codeclimate.com/v1/badges/958029813bd4b7f26dca/maintainability)](https://codeclimate.com/github/agiledigital/mule-preview/maintainability)
 
 A project to take Mule configuration XML files and render the flows in HTML
 and also display visual diffs for things like Pull Requests.
@@ -34,7 +36,7 @@ for use in the Client module.
 There is a Makefile that will build everything for you. Once you have the required dependencies you will simply have to run
 
     $ make -j2
-  
+
 ### Dependencies
 
 You will need the following things:
