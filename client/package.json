@@ -6,17 +6,23 @@
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.2",
     "babel-jest": "^24.8.0",
     "eslint": "^6.0.1",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-react": "^7.14.3",
     "jest": "^24.8.0",
+    "prettier": "^1.18.2",
     "react-test-renderer": "^16.8.6",
     "shadow-cljs": "^2.8.40",
     "source-map-support": "^0.5.12"
   },
   "scripts": {
-    "test": "shadow-cljs compile testing && jest"
+    "start": "shadow-cljs watch frontend",
+    "lint": "eslint --fix src/test",
+    "test": "npm run lint && shadow-cljs compile testing && jest",
+    "build": "npm test && shadow-cljs release plugin --source-maps"
   },
   "dependencies": {
     "create-react-class": "^15.6.3",

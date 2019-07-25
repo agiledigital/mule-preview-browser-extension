@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`when diffing two XML files when file B adds elements with nested content renders correctly 1`] = `
+Array [
+  "div",
+  Object {
+    "class": Array [
+      "container",
+      "mule-mule",
+      "vertical root",
+    ],
+    "data-column": 126,
+    "data-line": 13,
+  },
+  Array [
+    "div",
+    Object {
+      "class": "container-title",
+    },
+    null,
+  ],
+  Array [
+    "div",
+    Object {
+      "class": "container-inner",
+    },
+    Array [
+      "div",
+      Object {
+        "class": "icon-container",
+      },
+      Array [
+        "img",
+        Object {
+          "class": "category-frame",
+          "src": "/img/icons/org.mule.tooling.ui.modules.core.miscellaneous.large.png",
+        },
+      ],
+      null,
+    ],
+    Array [
+      "div",
+      Object {
+        "class": "container-children",
+      },
+    ],
+  ],
+]
+`;

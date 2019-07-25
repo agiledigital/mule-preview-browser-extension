@@ -3,7 +3,7 @@
   (:require
    [clojure.walk :refer [prewalk]]
    [mule-preview.client.utils :refer [insert vec-remove map-values]]
-   [mule-preview.client.diff-algorithms.diff-dom :refer [dom-to-node]]
+   [mule-preview.client.diff-algorithms.diff-dom :refer [dom->mast]]
    [mule-preview.client.mappings :refer [root-container horizontal-container-list
                                          vertical-container-list error-handler-component-list
                                          error-handler-container-list]]))
@@ -31,7 +31,7 @@
 (defn- add-element [mast removal-map route element]
   (let [index (last route)
         keyword-route (drop-last (prepare-path route))
-        original-element (dom-to-node element)
+        original-element (dom->mast element)
         updated (update-in original-element [:attributes] #(conj % :added))]
     [(update-in mast keyword-route #(insert % index updated)) (shift-removal route removal-map)]))
 
