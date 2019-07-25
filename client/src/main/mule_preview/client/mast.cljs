@@ -2,7 +2,6 @@
   "Functions to convert Mule XML data structures to an intermediate MAST structure"
   (:require
    [clojure.walk :refer [prewalk]]
-   [mule-preview.client.diff-algorithms.diff-dom :refer [dom-to-node]]
    [mule-preview.client.mappings :refer [root-container horizontal-container-list
                                          vertical-container-list error-handler-component-list
                                          error-handler-container-list]]))
