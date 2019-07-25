@@ -2,7 +2,7 @@
   "The react components that render the Mule preview"
   (:require
    [reagent.core :as r]
-   [clojure.string :refer [split]]
+   [clojure.string :refer [split replace]]
    [mule-preview.client.mappings :refer [element-to-icon-map]]
    [lambdaisland.uri :refer [join]]))
 
@@ -51,7 +51,8 @@
       nil)))
 
 (defn- name-to-css-class [name]
-  (str "mule-" name))
+  (let [normalized-name (replace name #":" "_")]
+    (str "mule-" normalized-name)))
 
 (defn- image
   ([url content-root] (image url "" content-root))

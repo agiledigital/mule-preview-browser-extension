@@ -36,6 +36,14 @@
   border-top: 2px solid red;
 }
 
+.mp .mule-munit_test,
+.mp .mule-munit_before-test,
+.mp .mule-munit_after-test,
+.mp .mule-munit_after-suite,
+.mp .mule-munit_before-suite {
+  border-top: 2px solid #ffcc66;
+}
+
 .mp
   .mule-scatter-gather
   > .container-inner
