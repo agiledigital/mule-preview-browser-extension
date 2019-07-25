@@ -809,6 +809,86 @@ Array [
       Object {
         "class": "container-children",
       },
+      Array [
+        "div",
+        Object {
+          "class": Array [
+            "container",
+            "mule-sub-flow",
+            "horizontal added",
+          ],
+        },
+        Array [
+          "div",
+          Object {
+            "class": "container-title",
+          },
+          "a sub flow",
+        ],
+        Array [
+          "div",
+          Object {
+            "class": "container-inner",
+          },
+          Array [
+            "div",
+            Object {
+              "class": "icon-container",
+            },
+            Array [
+              "img",
+              Object {
+                "class": "category-frame",
+                "src": "/img/icons/org.mule.tooling.category.scopes.large.png",
+              },
+            ],
+            Array [
+              "img",
+              Object {
+                "class": "icon container-image",
+                "src": "/img/icons/sub-flow-48x32.png",
+              },
+            ],
+          ],
+          Array [
+            "div",
+            Object {
+              "class": "container-children",
+            },
+            Array [
+              "div",
+              Object {
+                "class": Array [
+                  "component",
+                  "dw:transform-message",
+                  "",
+                ],
+              },
+              Array [
+                "img",
+                Object {
+                  "class": "category-frame",
+                  "src": "/img/icons/org.mule.tooling.category.core.large.png",
+                },
+              ],
+              Array [
+                "img",
+                Object {
+                  "class": "icon",
+                  "src": "/img/icons/dfl-48x32.png",
+                },
+              ],
+              Array [
+                "div",
+                Object {
+                  "class": "label",
+                },
+                "Some transform",
+              ],
+            ],
+          ],
+        ],
+      ],
     ],
   ],
 ]
