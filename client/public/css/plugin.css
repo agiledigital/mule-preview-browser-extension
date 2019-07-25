@@ -1,5 +1,8 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic.css");
 
+/* TODO: Fix specificity warnings */
+/* stylelint-disable no-descending-specificity  */
+
 .mp-hidden {
   display: none !important;
 }
@@ -41,7 +44,7 @@
 .mp .mule-munit_after-test,
 .mp .mule-munit_after-suite,
 .mp .mule-munit_before-suite {
-  border-top: 2px solid #ffcc66;
+  border-top: 2px solid #fc6;
 }
 
 .mp
@@ -50,7 +53,7 @@
   > .container-children
   > .mule-processor-chain,
 .mp
-  mule-scatter-gather
+  .mule-scatter-gather
   > .container-inner
   > .container-children
   > .mule-processor-chain
