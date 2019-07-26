@@ -33,7 +33,7 @@
     (mule-container {:tag-name tag-name
                      :description description
                      :children wrapped-content
-                     :attributes (attributes-to-css attributes)
+                     :css-class (attributes-to-css attributes)
                      :content-root content-root
                      :location {}})))
 

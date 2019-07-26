@@ -5,17 +5,21 @@
 const findDiffFromFilePath = (diffs, filePath) =>
   diffs.find(
     diff =>
-      diff.destination && diff.source && diff.destination.toString === filePath
+      (diff.source && diff.source.toString === filePath) ||
+      (diff.destination && diff.destination.toString) === filePath
   );
 
 const extractPathsFromDiff = diff => ({
-  fromFilePath: diff.source.toString,
-  toFilePath: diff.destination.toString
+  fromFilePath: diff.source ? diff.source.toString : undefined,
+  toFilePath: diff.destination ? diff.destination.toString : undefined
 });
 
 const fetchRawFileFromHash = (filePath, hash) => {
   const fetchUrl = new URL(`../../raw/${filePath}?at=${hash}`, document.URL);
   console.log(`fetchUrl: [${fetchUrl}]`);
+  if (!filePath) {
+    return Promise.resolve(undefined);
+  }
   return fetch(fetchUrl).then(response => response.text());
 };
 
@@ -50,5 +54,4 @@ export const getFileContentFromDiff = filePath =>
           toHash
         );
       }
-      throw new Error("Cannot diff files with only one state");
     });
