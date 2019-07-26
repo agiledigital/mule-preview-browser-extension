@@ -10,7 +10,22 @@ describe("when diffing two XML files", () => {
         join(__dirname, "__fixtures__/nested-add-a.xml")
       );
       const xmlFileB = readFileSync(
-        join(__dirname, "__fixtures__/nested-add-a.xml")
+        join(__dirname, "__fixtures__/nested-add-b.xml")
+      );
+      const output = cljToJs(
+        calculate_diff_components(xmlFileA, xmlFileB, ".")
+      );
+      expect(output).toMatchSnapshot();
+    });
+  });
+
+  describe("when diffing MUnit tests", () => {
+    it("renders correctly", () => {
+      const xmlFileA = readFileSync(
+        join(__dirname, "__fixtures__/munit-a.xml")
+      );
+      const xmlFileB = readFileSync(
+        join(__dirname, "__fixtures__/munit-b.xml")
       );
       const output = cljToJs(
         calculate_diff_components(xmlFileA, xmlFileB, ".")
