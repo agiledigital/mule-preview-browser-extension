@@ -11,9 +11,11 @@
    [tubax.core :refer [xml->clj]])
   (:require-macros [cljs.core.async.macros :refer [go]]))
 
+(def empty-file "<?xml version=\"1.0\" encoding=\"UTF-8\"?><mule></mule>")
+
 (defn calculate-diff-components [content-a content-b content-root]
-  (let [parsed-xml-a (xml->clj content-a)
-        parsed-xml-b (xml->clj content-b)
+  (let [parsed-xml-a (xml->clj (or content-a empty-file))
+        parsed-xml-b (xml->clj (or content-b empty-file))
         mast-a (xml->mast parsed-xml-a)
         mast-b (xml->mast parsed-xml-b)
         diff-output (diff mast-a mast-b)
@@ -21,15 +23,15 @@
     (mast->react augmented-mast content-root)))
 
 (defn- handle-xml-fetch-success [response-a response-b root-component content-root]
-  (let [transformed-components (calculate-diff-components (str response-a) (str response-b) content-root)]
+  (let [transformed-components (calculate-diff-components response-a response-b content-root)]
     (reset! root-component transformed-components)))
 
 (defn start-diff-url [url-a url-b root-component content-root]
-  (go (let [response-a (<! (http/get url-a))
-            response-b (<! (http/get url-b))]
+  (go (let [response-a (when url-a (<! (http/get url-a)))
+            response-b (when url-b (<! (http/get url-b)))]
         (handle-xml-fetch-success
-         (:body response-a)
-         (:body response-b)
+         (when response-a (str (:body response-a)))
+         (when response-b  (str (:body response-b)))
          root-component
          content-root))))
 

@@ -51,8 +51,8 @@
       nil)))
 
 (defn- name-to-css-class [name]
-  (let [normalized-name (replace name #":" "_")]
-    (str "mule-" normalized-name)))
+  (when name (let [normalized-name (replace name #":" "_")]
+               (str "mule-" normalized-name))))
 
 (defn- image
   ([url content-root] (image url "" content-root))
