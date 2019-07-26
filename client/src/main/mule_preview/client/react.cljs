@@ -30,7 +30,7 @@
   (let [{:keys [tag-name description attributes content]} node
         wrapped-content [(create-mule-container-component (first content) content-root)
                          (create-mule-container-component (second content) content-root)]]
-    (mule-container {:tag-name tag-name
+    (mule-container {:name tag-name
                      :description description
                      :children wrapped-content
                      :css-class (attributes-to-css attributes)
