@@ -9,7 +9,6 @@
   (if (:type node)
     (let [{:keys [tag-name content type attributes]} node
           other-attributes (dissoc node :type-tag :content :type :location :labels :attributes)]
-      (println "merge " (merge attributes other-attributes))
       {:nodeName tag-name
        :childNodes content
        :attributes (merge attributes other-attributes)
