@@ -78,10 +78,16 @@
                                             [:span {:class ["current"]} current]]
     (and (some? previous) (nil? current)) [:div
                                            {:key name}
-                                           [:span {:class ["previous"]} (str name ": ") previous]]
+                                           [:span {:class ["previous"]}
+                                            (str  name ": ")
+                                            previous
+                                            " (Attribute Removed)"]]
     (and (nil? previous) (some? current)) [:div
                                            {:key name}
-                                           [:span {:class ["current"]} (str name ": ") current]]))
+                                           [:span {:class ["current"]}
+                                            (str  name ": ")
+                                            current
+                                            " (Attribute Added)"]]))
 
 (defn tooltip-item [{:keys [name delta]}]
   (if (#{"content-hash"} name)
@@ -100,48 +106,53 @@
    :title "Changes"
    :body (tooltip-inner change-record)])
 
-(defn mule-component [{:keys [name description css-class content-root location change-record]}]
-  (let [showing? (r/atom false)]
-    (fn [] (let [img-url (name-to-img-url name false default-component-mapping)
-                 category-url (name-to-category-url name default-category-image)]
-             [popover-anchor-wrapper
-              :position :below-right
-              :showing? showing?
-              :popover (tooltip change-record)
-              :anchor [:div {:class ["component-container"]}
-                       [:div
-                        (merge {:class ["component" name css-class]}
-                               (when change-record {:on-mouse-over (m/handler-fn (reset! showing? true))
-                                                    :on-mouse-out  (m/handler-fn (reset! showing? false))})
-                               (data-prefixerise location))
-                        (image category-url "category-frame" content-root)
-                        (image img-url "icon" content-root)
-                        [:div {:class "label"} description]]]]))))
-
-(defn mule-container [{:keys [name description children css-class content-root location change-record]}]
-  (let [showing? (r/atom false)]
-    (fn []
-      (let [generated-css-class (name-to-css-class name)
-            img-url (name-to-img-url name (some? children) nil)
-            category-url (name-to-category-url name default-category-image)
-            interposed-children (interpose (arrow content-root) children)
-            child-container-component (child-container interposed-children)]
-        [popover-anchor-wrapper
-         :position :below-right
-         :showing? showing?
-         :popover (tooltip change-record)
-         :anchor
-         [:div (merge {:class ["container" generated-css-class css-class]}
-                      (when change-record {:on-mouse-over (m/handler-fn (reset! showing? true))
-                                           :on-mouse-out  (m/handler-fn (reset! showing? false))})
+(defn mule-component-inner [{:keys [name description css-class content-root location change-record showing-atom]}]
+  (let [img-url (name-to-img-url name false default-component-mapping)
+        category-url (name-to-category-url name default-category-image)]
+    [popover-anchor-wrapper
+     :position :below-right
+     :showing? showing-atom
+     :popover (tooltip change-record)
+     :anchor [:div {:class ["component-container"]}
+              [:div
+               (merge {:class ["component" name css-class]}
+                      (when change-record {:on-mouse-over (m/handler-fn (reset! showing-atom true))
+                                           :on-mouse-out  (m/handler-fn (reset! showing-atom false))})
                       (data-prefixerise location))
-          [:div {:class "container-title"} description]
-          [:div {:class "container-inner"}
-           [:div {:class "icon-container"}
-            (image category-url "category-frame" content-root)
-            (image img-url "icon container-image" content-root)]
-           child-container-component]]]))))
+               (image category-url "category-frame" content-root)
+               (image img-url "icon" content-root)
+               [:div {:class "label"} description]]]]))
+
+(defn mule-component [props]
+  (let [showing-atom (r/atom false)]
+    (fn [] (mule-component-inner (assoc props :showing-atom showing-atom)))))
+
+(defn mule-container-inner [{:keys [name description children css-class content-root location change-record showing-atom]}]
+  (let [generated-css-class (name-to-css-class name)
+        img-url (name-to-img-url name (some? children) nil)
+        category-url (name-to-category-url name default-category-image)
+        interposed-children (interpose (arrow content-root) children)
+        child-container-component (child-container interposed-children)]
+    [popover-anchor-wrapper
+     :position :below-right
+     :showing? showing-atom
+     :popover (tooltip change-record)
+     :anchor
+     [:div (merge {:class ["container" generated-css-class css-class]}
+                  (when change-record {:on-mouse-over (m/handler-fn (reset! showing-atom true))
+                                       :on-mouse-out  (m/handler-fn (reset! showing-atom false))})
+                  (data-prefixerise location))
+      [:div {:class "container-title"} description]
+      [:div {:class "container-inner"}
+       [:div {:class "icon-container"}
+        (image category-url "category-frame" content-root)
+        (image img-url "icon container-image" content-root)]
+       child-container-component]]]))
+
+(defn mule-container [props]
+  (let [showing-atom (r/atom false)]
+    (fn [] (mule-container-inner (assoc props :showing-atom showing-atom)))))
 
 ; Exports for testing with Jest
-(def ^:export MuleComponent (r/reactify-component [mule-component]))
-(def ^:export MuleContainer (r/reactify-component [mule-container]))
+(def ^:export MuleComponent (r/reactify-component mule-component-inner))
+(def ^:export MuleContainer (r/reactify-component mule-container-inner))

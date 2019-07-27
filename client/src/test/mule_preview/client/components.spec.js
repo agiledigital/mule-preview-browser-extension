@@ -4,7 +4,7 @@ import {
   MuleComponent,
   MuleContainer
 } from "mule-preview/mule_preview.client.components";
-import { jsToClj } from "mule-preview/mule_preview.client.test_utils";
+import { jsToClj, makeAtom } from "mule-preview/mule_preview.client.test_utils";
 
 describe("when rendering a Mule component", () => {
   describe("when the component has mapping", () => {
@@ -17,6 +17,7 @@ describe("when rendering a Mule component", () => {
             css-class="some-css-class"
             content-root="some-content-root"
             location={jsToClj({ line: 1, position: 4 })}
+            showing-atom={makeAtom(false)}
           />
         )
         .toJSON();
@@ -33,6 +34,7 @@ describe("when rendering a Mule component", () => {
             css-class="some-css-class"
             content-root="some-content-root"
             location={jsToClj({ line: 1, position: 4 })}
+            showing-atom={makeAtom(false)}
           />
         )
         .toJSON();
@@ -52,6 +54,7 @@ describe("when rendering a Mule container", () => {
             css-class="some-css-class"
             content-root="some-content-root"
             location={jsToClj({ line: 2, position: 3 })}
+            showing-atom={makeAtom(false)}
           />
         )
         .toJSON();
@@ -68,6 +71,7 @@ describe("when rendering a Mule container", () => {
             css-class="some-css-class"
             content-root="some-content-root"
             location={jsToClj({ line: 2, position: 3 })}
+            showing-atom={makeAtom(false)}
           >
             <MuleComponent
               name="set-payload"
@@ -75,6 +79,7 @@ describe("when rendering a Mule container", () => {
               css-class="some-css-class"
               content-root="some-content-root"
               location={jsToClj({ line: 1, position: 4 })}
+              showing-atom={makeAtom(false)}
             />
             <MuleComponent
               name="message-properties-transformer"
@@ -82,6 +87,7 @@ describe("when rendering a Mule container", () => {
               css-class="some-css-class"
               content-root="some-content-root"
               location={jsToClj({ line: 4, position: 4 })}
+              showing-atom={makeAtom(false)}
             />
             <MuleComponent
               name="http:request"
@@ -89,6 +95,7 @@ describe("when rendering a Mule container", () => {
               css-class="some-css-class"
               content-root="some-content-root"
               location={jsToClj({ line: 7, position: 4 })}
+              showing-atom={makeAtom(false)}
             />
           </MuleContainer>
         )

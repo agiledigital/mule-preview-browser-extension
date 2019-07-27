@@ -41,7 +41,8 @@
         original-element (get-in mast keyword-route)
         with-labels (update-in original-element [:labels] #(conj % :edited))
         with-description (assoc-in with-labels [(keyword name)] newValue)
-        with-change-record (update-in with-description [:change-record] #(conj % {:name name :delta [oldValue newValue]}))]
+        with-change-record (update-in with-description [:change-record]
+                                      #(conj % {:name name :delta [oldValue newValue]}))]
     [(assoc-in mast keyword-route with-change-record) removal-map]))
 
 (defn- remove-element [mast removal-map route]
