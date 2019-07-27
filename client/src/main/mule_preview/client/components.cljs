@@ -4,7 +4,8 @@
    [reagent.core :as r]
    [clojure.string :refer [split replace]]
    [mule-preview.client.mappings :refer [element-to-icon-map]]
-   [lambdaisland.uri :refer [join]]))
+   [lambdaisland.uri :refer [join]])
+  (:require-macros [mule-preview.client.macros :as m]))
 
 (def default-component-mapping {:image "UnknownNode-48x32.png"})
 (def default-category-image "org.mule.tooling.ui.modules.core.miscellaneous.large.png")
@@ -67,28 +68,70 @@
 (defn- arrow [content-root]
   (image "img/arrow-right-2x.png" "flow-arrow" content-root))
 
-(defn mule-component [{:keys [name description css-class content-root location]}]
-  (let [img-url (name-to-img-url name false default-component-mapping)
-        category-url (name-to-category-url name default-category-image)]
-    [:div (merge {:class ["component" name css-class]} (data-prefixerise location))
-     (image category-url "category-frame" content-root)
-     (image img-url "icon" content-root)
-     [:div {:class "label"} description]]))
+(defn delta-text [name [previous current]]
+  (cond
+    (and (some? previous) (some? current)) [:li
+                                            {:key name} (str name ": ")
+                                            [:span {:class ["previous"]} previous]
+                                            " > "
+                                            [:span {:class ["current"]} current]]
+    (and (some? previous) (nil? current)) [:li
+                                           {:key name}
+                                           [:span {:class ["previous"]} (str name ": ") previous]]
+    (and (nil? previous) (some? current)) [:li
+                                           {:key name}
+                                           [:span {:class ["current"]} (str name ": ") current]]))
 
-(defn mule-container [{:keys [name description children css-class content-root location]}]
-  (let [generated-css-class (name-to-css-class name)
-        img-url (name-to-img-url name (some? children) nil)
-        category-url (name-to-category-url name default-category-image)
-        interposed-children (interpose (arrow content-root) children)
-        child-container-component (child-container interposed-children)]
-    [:div (merge {:class ["container" generated-css-class css-class]} (data-prefixerise location))
-     [:div {:class "container-title"} description]
-     [:div {:class "container-inner"}
-      [:div {:class "icon-container"}
-       (image category-url "category-frame" content-root)
-       (image img-url "icon container-image" content-root)]
-      child-container-component]]))
+(defn tooltip-item [{:keys [name delta]}]
+  (if (#{"content-hash"} name)
+    [:li
+     {:key name}
+     "Content Changed"]
+    (delta-text name delta)))
+
+(defn tooltip [change-record]
+  (when change-record
+    [:div {:class ["tooltip"]}
+     [:h4 "Changes"]
+     [:ul {:class ["tooltip-items"]}
+      (->>
+       change-record
+       (remove #(#{"hash" "description"} (:name %)))
+       (map tooltip-item))]]))
+
+(defn mule-component [{:keys [name description css-class content-root location change-record]}]
+  (let [show-tooltip? (r/atom false)]
+    (fn [] (let [img-url (name-to-img-url name false default-component-mapping)
+                 category-url (name-to-category-url name default-category-image)]
+             [:div {:class ["component-container"]}
+              (when @show-tooltip? (tooltip change-record))
+              [:div
+               (merge {:class ["component" name css-class]
+                       :on-mouse-over (m/handler-fn (reset! show-tooltip? true))
+                       :on-mouse-out  (m/handler-fn (reset! show-tooltip? false))} (data-prefixerise location))
+               (image category-url "category-frame" content-root)
+               (image img-url "icon" content-root)
+               [:div {:class "label"} description]]]))))
+
+(defn mule-container [{:keys [name description children css-class content-root location change-record]}]
+  (let [show-tooltip? (r/atom false)]
+    (fn []
+      (let [generated-css-class (name-to-css-class name)
+            img-url (name-to-img-url name (some? children) nil)
+            category-url (name-to-category-url name default-category-image)
+            interposed-children (interpose (arrow content-root) children)
+            child-container-component (child-container interposed-children)]
+        [:div (merge {:class ["container" generated-css-class css-class]
+                      :on-mouse-over (m/handler-fn (reset! show-tooltip? true))
+                      :on-mouse-out  (m/handler-fn (reset! show-tooltip? false))} (data-prefixerise location))
+         (when @show-tooltip? (tooltip change-record))
+         [:div {:class "container-title"} description]
+         [:div {:class "container-inner"}
+          [:div {:class "icon-container"}
+           (image category-url "category-frame" content-root)
+           (image img-url "icon container-image" content-root)]
+          child-container-component]]))))
 
 ; Exports for testing with Jest
-(def ^:export MuleComponent (r/reactify-component mule-component))
-(def ^:export MuleContainer (r/reactify-component mule-container))
+(def ^:export MuleComponent (r/reactify-component [mule-component]))
+(def ^:export MuleContainer (r/reactify-component [mule-container]))

@@ -153,6 +153,10 @@
   position: relative;
 }
 
+.mp .component-container {
+  position: relative;
+}
+
 .mp .component > .label {
   word-wrap: break-word;
 }
@@ -192,6 +196,10 @@
   background-color: red;
 }
 
+.mp .container.edited {
+  background-color: lightyellow;
+}
+
 /* We want the added/removed states to propagate to children */
 .mp .added .container {
   background-color: green;
@@ -199,4 +207,37 @@
 
 .mp .removed .container {
   background-color: red;
+}
+
+/* Tooltip */
+
+.mp .tooltip {
+  position: absolute;
+  background: white;
+  z-index: 1000;
+  left: 100%;
+  top: 100%;
+  padding: 10px;
+  border: solid 1px black;
+  min-width: 300px;
+  font-size: 14px;
+}
+
+.mp .tooltip h4 {
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+.mp .tooltip ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.mp .tooltip .previous {
+  color: red;
+  text-decoration: line-through;
+}
+
+.mp .tooltip .current {
+  color: green;
 }

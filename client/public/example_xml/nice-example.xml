@@ -13,7 +13,7 @@ http://www.mulesoft.org/schema/mule/s3 http://www.mulesoft.org/schema/mule/s3/cu
 http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd">
     <flow name="example:/http-incoming-flow">
         <http:listener config-ref="example-pizza-httpListenerConfig" path="/" doc:name="HTTP"/>
-        <set-variable variableName="z-level" value="#[9000]" doc:name="Set Z level to 9000"/>
+        <set-variable variableName="z-level" value="#[9000]" doc:name="Set Z level to 9000" a="1"/>
         <set-payload value="#['lol']" doc:name="Overwrite the payload"/>
         <flow-ref name="example:/expunge-convolvers" doc:name="example:/expunge-convolvers"/>
         <expression-filter expression="" doc:name="Filter recalcitrant ions"/>

@@ -14,7 +14,7 @@ http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/
     <flow name="example:/http-incoming-flow">
         <set-payload value="#['lol']" doc:name="Overwrite the payload"/>
         <http:listener config-ref="example-pizza-httpListenerConfig" path="/" doc:name="HTTP"/>
-        <set-variable variableName="z-level" value="#[7000]" doc:name="Set Z level to 7000"/>
+        <set-variable variableName="z-level" value="#[7000]" doc:name="Set Z level to 7000" b="2"/>
         <set-payload value="#['lol']" doc:name="Overwrite the payload"/>
         <flow-ref name="example:/expunge-convolvers" doc:name="example:/expunge-convolvers"/>
         <foreach doc:name="For Each">

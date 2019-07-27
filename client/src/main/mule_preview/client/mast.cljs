@@ -19,35 +19,40 @@
         name (get-in node [:attributes :name])]
     (or doc-name name)))
 
-(defn- create-mule-component [node tag-name attributes]
+(defn- create-mule-component [node tag-name labels]
   (let [description (get-description node)
-        content (node :content)]
+        content (node :content)
+        attributes (:attributes node)]
     {:type :component
      :tag-name tag-name
      :description (or description tag-name)
-     :hash (hash-combine (hash (:attributes node)) (hash content))
-     :attributes attributes
-     :location (:location node)}))
+     :hash (hash (:attributes node))
+     :content-hash (hash content)
+     :labels labels
+     :location (:location node)
+     :attributes attributes}))
 
-(defn- create-mule-container-component [node tag-name attributes]
+(defn- create-mule-container-component [node tag-name labels]
   (let [description (get-description node)
-        content (node :content)]
+        content (node :content)
+        attributes (:attributes node)]
     {:type :container
      :tag-name tag-name
      :description description
      :hash (hash (:attributes node))
      :content content
-     :attributes attributes
-     :location (:location node)}))
+     :labels labels
+     :location (:location node)
+     :attributes attributes}))
 
 (defn- create-mule-psuedo-container [content]
   {:type :container
    :tag-name "psuedo"
    :description ""
    :content content
-   :attributes #{:horizontal}})
+   :labels #{:horizontal}})
 
-(defn- process-error-container [node tag-name attributes]
+(defn- process-error-container [node tag-name labels]
   (let [description (get-description node)
         content (node :content)
         {error-handlers true regular-components false}
@@ -57,7 +62,7 @@
      :description description
      :content [(create-mule-psuedo-container regular-components)
                (create-mule-psuedo-container error-handlers)]
-     :attributes attributes}))
+     :labels labels}))
 
 (defn- transform-tag [node]
   (let [tag-name (get-tag node)
