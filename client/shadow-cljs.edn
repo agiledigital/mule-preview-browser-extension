@@ -5,7 +5,7 @@
   "src/test"]
 
  :dependencies
- [[reagent "0.8.1" :exclusions [cljsjs/react cljsjs/react-dom]]
+ [[reagent "0.8.1-BINDFIX" :exclusions [cljsjs/react cljsjs/react-dom]]
   [cljs-http "0.1.46"]
   [cheshire "5.8.1"]
   [lambdaisland/uri "1.1.0"]
