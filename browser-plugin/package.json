@@ -56,7 +56,8 @@
     "watch-webpack": "webpack --config webpack.config.js -w -d",
     "start": "concurrently --kill-others \"npm run watch-extension\" \"npm run watch-webpack\"",
     "build": "webpack --config webpack.production.config.js -p",
-    "lint": "eslint --fix src && npx stylelint --fix \"src/**/*.scss\" \"src/**/*.css\" \"src/**/*.html\""
+    "lint": "eslint --fix src && npx stylelint --fix \"src/**/*.scss\" \"src/**/*.css\" \"src/**/*.html\"",
+    "sign": "web-ext sign -s extension/ --api-key \"${MOZILLA_API_KEY}\" --api-secret \"${MOZILLA_API_SECRET}\" --channel unlisted"
   },
   "repository": {
     "type": "git",

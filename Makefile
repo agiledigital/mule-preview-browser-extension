@@ -7,13 +7,13 @@ CLIENT_FILES := $(shell find client/src -type f -iname '*.cljs')
 CLIENT_PUBLIC_FILES := $(shell find client/public -type f ! -path "client/public/img/icons/*")
 BROWSER_PLUGIN_FILES := $(shell find browser-plugin/src -type f -iname '*.js')
 
-all: browser-plugin/build/package.zip
+all: browser-plugin/build/package-unsigned.zip
 .PHONY: all
 
-browser-plugin/build/package.zip: browser-plugin/extension/dist
+browser-plugin/build/package-unsigned.zip: browser-plugin/extension/dist
 	@echo ">>> Packaging Browser Extension (Release)"
 	mkdir -p browser-plugin/build
-	zip -r browser-plugin/build/package.zip browser-plugin/extension/*
+	cd browser-plugin/extension && zip -r ../build/package-unsigned.zip *
 
 browser-plugin/extension/dist: browser-plugin/node_modules/.installed client/build/release.js browser-plugin/extension/public $(BROWSER_PLUGIN_FILES)
 	@echo ">>> Building Browser Extension (Release)"
