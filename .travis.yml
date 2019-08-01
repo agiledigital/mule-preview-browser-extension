@@ -20,5 +20,5 @@ deploy:
     - client/build/release.js.map
   draft: true
   on:
-    branch: master
+    tags: true
     repo: agiledigital/mule-preview
