@@ -1,2081 +1,976 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`when diffing two XML files when diffing MUnit tests renders correctly 1`] = `
-Array [
-  "div",
-  Object {
-    "class": Array [
-      "container",
-      "mule-mule",
-      "vertical root",
-    ],
-    "data-column": 108,
-    "data-line": 12,
+exports[`when diffing two XML files when diffing MUnit tests augments the MAST correctly 1`] = `
+Object {
+  "attributes": Object {
+    "xmlns": "http://www.mulesoft.org/schema/mule/core",
+    "xmlns:doc": "http://www.mulesoft.org/schema/mule/documentation",
+    "xmlns:mock": "http://www.mulesoft.org/schema/mule/mock",
+    "xmlns:munit": "http://www.mulesoft.org/schema/mule/munit",
+    "xmlns:spring": "http://www.springframework.org/schema/beans",
+    "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+    "xsi:schemaLocation": "http://www.mulesoft.org/schema/mule/mock http://www.mulesoft.org/schema/mule/mock/current/mule-mock.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd",
   },
-  Array [
-    "div",
+  "content": Array [
     Object {
-      "class": "container-title",
+      "attributes": Object {
+        "doc:name": "MUnit configuration",
+        "name": "munit",
+      },
+      "content-hash": -2017569654,
+      "description": "MUnit configuration",
+      "hash": -910446770,
+      "labels": Array [],
+      "location": Object {
+        "column": 63,
+        "line": 13,
+      },
+      "tag-name": "munit:config",
+      "type": "component",
     },
-    null,
-  ],
-  Array [
-    "div",
     Object {
-      "class": "container-inner",
-    },
-    Array [
-      "div",
-      Object {
-        "class": "icon-container",
-      },
-      Array [
-        "img",
+      "content": Array [
         Object {
-          "class": "category-frame",
-          "src": "/img/icons/org.mule.tooling.ui.modules.core.miscellaneous.large.png",
-        },
-      ],
-      null,
-    ],
-    Array [
-      "div",
-      Object {
-        "class": "container-children",
-      },
-      Array [
-        "div",
-        Object {
-          "class": Array [
-            "component",
-            "munit:config",
-            "",
-          ],
-          "data-column": 63,
-          "data-line": 13,
-        },
-        Array [
-          "img",
-          Object {
-            "class": "category-frame",
-            "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-          },
-        ],
-        Array [
-          "img",
-          Object {
-            "class": "icon",
-            "src": "/img/icons/MUnit-Palette.png",
-          },
-        ],
-        Array [
-          "div",
-          Object {
-            "class": "label",
-          },
-          "MUnit configuration",
-        ],
-      ],
-      Array [
-        "img",
-        Object {
-          "class": "flow-arrow",
-          "src": "/img/arrow-right-2x.png",
-        },
-      ],
-      Array [
-        "div",
-        Object {
-          "class": Array [
-            "container",
-            "mule-munit_after-suite",
+          "content": null,
+          "description": "",
+          "labels": Array [
             "horizontal",
           ],
-          "data-column": 89,
-          "data-line": 14,
+          "tag-name": "psuedo",
+          "type": "container",
         },
-        Array [
-          "div",
-          Object {
-            "class": "container-title",
-          },
-          "new-test-suiteAfter_Suite",
-        ],
-        Array [
-          "div",
-          Object {
-            "class": "container-inner",
-          },
-          Array [
-            "div",
-            Object {
-              "class": "icon-container",
-            },
-            Array [
-              "img",
-              Object {
-                "class": "category-frame",
-                "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-              },
-            ],
-            Array [
-              "img",
-              Object {
-                "class": "icon container-image",
-                "src": "/img/icons/After-Suite-Palette.png",
-              },
-            ],
-          ],
-          Array [
-            "div",
-            Object {
-              "class": "container-children",
-            },
-            Array [
-              "div",
-              Object {
-                "class": Array [
-                  "component",
-                  "munit:assert-on-equals",
-                  "added",
-                ],
-              },
-              Array [
-                "img",
-                Object {
-                  "class": "category-frame",
-                  "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-                },
-              ],
-              Array [
-                "img",
-                Object {
-                  "class": "icon",
-                  "src": "/img/icons/Assert-Equals.png",
-                },
-              ],
-              Array [
-                "div",
-                Object {
-                  "class": "label",
-                },
-                "Assert Equals",
-              ],
-            ],
-            Array [
-              "img",
-              Object {
-                "class": "flow-arrow",
-                "src": "/img/arrow-right-2x.png",
-              },
-            ],
-            Array [
-              "div",
-              Object {
-                "class": Array [
-                  "component",
-                  "munit:assert-false",
-                  "",
-                ],
-                "data-column": 69,
-                "data-line": 15,
-              },
-              Array [
-                "img",
-                Object {
-                  "class": "category-frame",
-                  "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-                },
-              ],
-              Array [
-                "img",
-                Object {
-                  "class": "icon",
-                  "src": "/img/icons/Assert-False.png",
-                },
-              ],
-              Array [
-                "div",
-                Object {
-                  "class": "label",
-                },
-                "Assert False",
-              ],
-            ],
-          ],
-        ],
-      ],
-      Array [
-        "img",
         Object {
-          "class": "flow-arrow",
-          "src": "/img/arrow-right-2x.png",
-        },
-      ],
-      Array [
-        "div",
-        Object {
-          "class": Array [
-            "container",
-            "mule-munit_after-test",
-            "horizontal removed",
-          ],
-          "data-column": 88,
-          "data-line": 17,
-        },
-        Array [
-          "div",
-          Object {
-            "class": "container-title",
-          },
-          "new-test-suiteAfter_Test",
-        ],
-        Array [
-          "div",
-          Object {
-            "class": "container-inner",
-          },
-          Array [
-            "div",
+          "content": Array [
             Object {
-              "class": "icon-container",
+              "actualValue": "#[]",
+              "content": null,
+              "content-hash": -2017569654,
+              "description": "Assert Equals",
+              "doc:name": "Assert Equals",
+              "expectedValue": "#[]",
+              "hash": 1540583787,
+              "labels": Array [
+                "added",
+              ],
+              "location": Object {
+                "column": 96,
+                "line": 15,
+              },
+              "tag-name": "munit:assert-on-equals",
+              "type": "component",
             },
-            Array [
-              "img",
-              Object {
-                "class": "category-frame",
-                "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-              },
-            ],
-            Array [
-              "img",
-              Object {
-                "class": "icon container-image",
-                "src": "/img/icons/After-Test-Palette.png",
-              },
-            ],
-          ],
-          Array [
-            "div",
             Object {
-              "class": "container-children",
+              "attributes": Object {
+                "condition": "#[]",
+                "doc:name": "Assert False",
+              },
+              "content-hash": -2017569654,
+              "description": "Assert False",
+              "hash": -964144491,
+              "labels": Array [],
+              "location": Object {
+                "column": 69,
+                "line": 15,
+              },
+              "tag-name": "munit:assert-false",
+              "type": "component",
             },
-            Array [
-              "div",
-              Object {
-                "class": Array [
-                  "component",
-                  "munit:assert-not-same",
-                  "",
-                ],
-                "data-column": 99,
-                "data-line": 18,
-              },
-              Array [
-                "img",
-                Object {
-                  "class": "category-frame",
-                  "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-                },
-              ],
-              Array [
-                "img",
-                Object {
-                  "class": "icon",
-                  "src": "/img/icons/Assert-Not-Equals.png",
-                },
-              ],
-              Array [
-                "div",
-                Object {
-                  "class": "label",
-                },
-                "Assert Not Equals",
-              ],
-            ],
-            Array [
-              "img",
-              Object {
-                "class": "flow-arrow",
-                "src": "/img/arrow-right-2x.png",
-              },
-            ],
-            Array [
-              "div",
-              Object {
-                "class": Array [
-                  "component",
-                  "munit:assert-not-null",
-                  "",
-                ],
-                "data-column": 67,
-                "data-line": 19,
-              },
-              Array [
-                "img",
-                Object {
-                  "class": "category-frame",
-                  "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-                },
-              ],
-              Array [
-                "img",
-                Object {
-                  "class": "icon",
-                  "src": "/img/icons/Assert-Not-Null.png",
-                },
-              ],
-              Array [
-                "div",
-                Object {
-                  "class": "label",
-                },
-                "Assert Not Null Payload",
-              ],
-            ],
           ],
-        ],
-      ],
-      Array [
-        "img",
-        Object {
-          "class": "flow-arrow",
-          "src": "/img/arrow-right-2x.png",
-        },
-      ],
-      Array [
-        "div",
-        Object {
-          "class": Array [
-            "container",
-            "mule-munit_before-suite",
-            "horizontal added",
-          ],
-        },
-        Array [
-          "div",
-          Object {
-            "class": "container-title",
-          },
-          "new-test-suiteBefore_Suite",
-        ],
-        Array [
-          "div",
-          Object {
-            "class": "container-inner",
-          },
-          Array [
-            "div",
-            Object {
-              "class": "icon-container",
-            },
-            Array [
-              "img",
-              Object {
-                "class": "category-frame",
-                "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-              },
-            ],
-            Array [
-              "img",
-              Object {
-                "class": "icon container-image",
-                "src": "/img/icons/Before-Suite-Palette.png",
-              },
-            ],
-          ],
-          Array [
-            "div",
-            Object {
-              "class": "container-children",
-            },
-            Array [
-              "div",
-              Object {
-                "class": Array [
-                  "component",
-                  "munit:assert-null",
-                  "",
-                ],
-              },
-              Array [
-                "img",
-                Object {
-                  "class": "category-frame",
-                  "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-                },
-              ],
-              Array [
-                "img",
-                Object {
-                  "class": "icon",
-                  "src": "/img/icons/Assert-Null.png",
-                },
-              ],
-              Array [
-                "div",
-                Object {
-                  "class": "label",
-                },
-                "Assert Null Payload",
-              ],
-            ],
-            Array [
-              "img",
-              Object {
-                "class": "flow-arrow",
-                "src": "/img/arrow-right-2x.png",
-              },
-            ],
-            Array [
-              "div",
-              Object {
-                "class": Array [
-                  "component",
-                  "munit:assert-payload-equals",
-                  "",
-                ],
-              },
-              Array [
-                "img",
-                Object {
-                  "class": "category-frame",
-                  "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-                },
-              ],
-              Array [
-                "img",
-                Object {
-                  "class": "icon",
-                  "src": "/img/icons/Assert-Payload.png",
-                },
-              ],
-              Array [
-                "div",
-                Object {
-                  "class": "label",
-                },
-                "Assert Payload",
-              ],
-            ],
-          ],
-        ],
-      ],
-      Array [
-        "img",
-        Object {
-          "class": "flow-arrow",
-          "src": "/img/arrow-right-2x.png",
-        },
-      ],
-      Array [
-        "div",
-        Object {
-          "class": Array [
-            "container",
-            "mule-munit_before-test",
+          "description": "",
+          "labels": Array [
             "horizontal",
           ],
-          "data-column": 91,
-          "data-line": 21,
-        },
-        Array [
-          "div",
-          Object {
-            "class": "container-title",
-          },
-          "new-test-suiteBefore_Test",
-        ],
-        Array [
-          "div",
-          Object {
-            "class": "container-inner",
-          },
-          Array [
-            "div",
-            Object {
-              "class": "icon-container",
-            },
-            Array [
-              "img",
-              Object {
-                "class": "category-frame",
-                "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-              },
-            ],
-            Array [
-              "img",
-              Object {
-                "class": "icon container-image",
-                "src": "/img/icons/Before-Test-Palette.png",
-              },
-            ],
-          ],
-          Array [
-            "div",
-            Object {
-              "class": "container-children",
-            },
-            Array [
-              "div",
-              Object {
-                "class": Array [
-                  "component",
-                  "munit:assert-true",
-                  "",
-                ],
-                "data-column": 67,
-                "data-line": 22,
-              },
-              Array [
-                "img",
-                Object {
-                  "class": "category-frame",
-                  "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-                },
-              ],
-              Array [
-                "img",
-                Object {
-                  "class": "icon",
-                  "src": "/img/icons/Assert-True.png",
-                },
-              ],
-              Array [
-                "div",
-                Object {
-                  "class": "label",
-                },
-                "Assert True",
-              ],
-            ],
-            Array [
-              "img",
-              Object {
-                "class": "flow-arrow",
-                "src": "/img/arrow-right-2x.png",
-              },
-            ],
-            Array [
-              "div",
-              Object {
-                "class": Array [
-                  "component",
-                  "munit:run-custom",
-                  "",
-                ],
-                "data-column": 72,
-                "data-line": 23,
-              },
-              Array [
-                "img",
-                Object {
-                  "class": "category-frame",
-                  "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-                },
-              ],
-              Array [
-                "img",
-                Object {
-                  "class": "icon",
-                  "src": "/img/icons/Assert-Custom.png",
-                },
-              ],
-              Array [
-                "div",
-                Object {
-                  "class": "label",
-                },
-                "Custom Assertion",
-              ],
-            ],
-          ],
-        ],
-      ],
-      Array [
-        "img",
-        Object {
-          "class": "flow-arrow",
-          "src": "/img/arrow-right-2x.png",
+          "tag-name": "psuedo",
+          "type": "container",
         },
       ],
-      Array [
-        "div",
+      "description": "new-test-suiteAfter_Suite",
+      "labels": Array [
+        "vertical",
+      ],
+      "tag-name": "munit:after-suite",
+      "type": "munit-container",
+    },
+    Object {
+      "content": Array [
         Object {
-          "class": Array [
-            "container",
-            "mule-munit_test",
+          "content": null,
+          "description": "",
+          "labels": Array [
             "horizontal",
           ],
-          "data-column": 67,
-          "data-line": 25,
+          "tag-name": "psuedo",
+          "type": "container",
         },
-        Array [
-          "div",
-          Object {
-            "class": "container-title",
-          },
-          "new-test-suiteTest",
-        ],
-        Array [
-          "div",
-          Object {
-            "class": "container-inner",
-          },
-          Array [
-            "div",
+        Object {
+          "content": Array [
             Object {
-              "class": "icon-container",
+              "attributes": Object {
+                "actualValue": "#[]",
+                "doc:name": "Assert Not Equals",
+                "expectedValue": "#[]",
+              },
+              "content-hash": -2017569654,
+              "description": "Assert Not Equals",
+              "hash": 1131396067,
+              "labels": Array [],
+              "location": Object {
+                "column": 99,
+                "line": 18,
+              },
+              "tag-name": "munit:assert-not-same",
+              "type": "component",
             },
-            Array [
-              "img",
-              Object {
-                "class": "category-frame",
-                "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-              },
-            ],
-            Array [
-              "img",
-              Object {
-                "class": "icon container-image",
-                "src": "/img/icons/MUnit-Palette.png",
-              },
-            ],
-          ],
-          Array [
-            "div",
             Object {
-              "class": "container-children",
+              "attributes": Object {
+                "doc:name": "Assert Not Null Payload",
+              },
+              "content-hash": -2017569654,
+              "description": "Assert Not Null Payload",
+              "hash": -802864801,
+              "labels": Array [],
+              "location": Object {
+                "column": 67,
+                "line": 19,
+              },
+              "tag-name": "munit:assert-not-null",
+              "type": "component",
             },
-            Array [
-              "div",
-              Object {
-                "class": Array [
-                  "component",
-                  "munit:set",
-                  "",
-                ],
-                "data-column": 57,
-                "data-line": 26,
-              },
-              Array [
-                "img",
-                Object {
-                  "class": "category-frame",
-                  "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-                },
-              ],
-              Array [
-                "img",
-                Object {
-                  "class": "icon",
-                  "src": "/img/icons/Set-Message.png",
-                },
-              ],
-              Array [
-                "div",
-                Object {
-                  "class": "label",
-                },
-                "Set Message",
-              ],
-            ],
-            Array [
-              "img",
-              Object {
-                "class": "flow-arrow",
-                "src": "/img/arrow-right-2x.png",
-              },
-            ],
-            Array [
-              "div",
-              Object {
-                "class": Array [
-                  "component",
-                  "munit:fail",
-                  "added",
-                ],
-              },
-              Array [
-                "img",
-                Object {
-                  "class": "category-frame",
-                  "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-                },
-              ],
-              Array [
-                "img",
-                Object {
-                  "class": "icon",
-                  "src": "/img/icons/Fail.png",
-                },
-              ],
-              Array [
-                "div",
-                Object {
-                  "class": "label",
-                },
-                "Fail",
-              ],
-            ],
-            Array [
-              "img",
-              Object {
-                "class": "flow-arrow",
-                "src": "/img/arrow-right-2x.png",
-              },
-            ],
-            Array [
-              "div",
-              Object {
-                "class": Array [
-                  "component",
-                  "munit:set-null-payload",
-                  "",
-                ],
-                "data-column": 61,
-                "data-line": 27,
-              },
-              Array [
-                "img",
-                Object {
-                  "class": "category-frame",
-                  "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-                },
-              ],
-              Array [
-                "img",
-                Object {
-                  "class": "icon",
-                  "src": "/img/icons/Null-Payload.png",
-                },
-              ],
-              Array [
-                "div",
-                Object {
-                  "class": "label",
-                },
-                "Set Null Payload",
-              ],
-            ],
           ],
-        ],
+          "description": "",
+          "labels": Array [
+            "horizontal",
+          ],
+          "tag-name": "psuedo",
+          "type": "container",
+        },
       ],
-    ],
+      "description": "new-test-suiteAfter_Test",
+      "labels": Array [
+        "vertical",
+        "removed",
+      ],
+      "tag-name": "munit:after-test",
+      "type": "munit-container",
+    },
+    Object {
+      "content": Array [
+        Object {
+          "content": null,
+          "description": "",
+          "location": null,
+          "tag-name": "psuedo",
+          "type": "container",
+        },
+        Object {
+          "content": Array [
+            Object {
+              "content": null,
+              "content-hash": -2017569654,
+              "description": "Assert Null Payload",
+              "doc:name": "Assert Null Payload",
+              "hash": 358321917,
+              "location": Object {
+                "column": 59,
+                "line": 19,
+              },
+              "tag-name": "munit:assert-null",
+              "type": "component",
+            },
+            Object {
+              "content": null,
+              "content-hash": -2017569654,
+              "description": "Assert Payload",
+              "doc:name": "Assert Payload",
+              "expectedValue": "#[]",
+              "hash": 1170098794,
+              "location": Object {
+                "column": 84,
+                "line": 20,
+              },
+              "tag-name": "munit:assert-payload-equals",
+              "type": "component",
+            },
+          ],
+          "description": "",
+          "location": null,
+          "tag-name": "psuedo",
+          "type": "container",
+        },
+      ],
+      "description": "new-test-suiteBefore_Suite",
+      "labels": Array [
+        "added",
+      ],
+      "location": null,
+      "tag-name": "munit:before-suite",
+      "type": "munit-container",
+    },
+    Object {
+      "content": Array [
+        Object {
+          "content": null,
+          "description": "",
+          "labels": Array [
+            "horizontal",
+          ],
+          "tag-name": "psuedo",
+          "type": "container",
+        },
+        Object {
+          "content": Array [
+            Object {
+              "attributes": Object {
+                "condition": "#[]",
+                "doc:name": "Assert True",
+              },
+              "content-hash": -2017569654,
+              "description": "Assert True",
+              "hash": 1099203488,
+              "labels": Array [],
+              "location": Object {
+                "column": 67,
+                "line": 22,
+              },
+              "tag-name": "munit:assert-true",
+              "type": "component",
+            },
+            Object {
+              "attributes": Object {
+                "assertion-ref": "",
+                "doc:name": "Custom Assertion",
+              },
+              "content-hash": -2017569654,
+              "description": "Custom Assertion",
+              "hash": 1823118484,
+              "labels": Array [],
+              "location": Object {
+                "column": 72,
+                "line": 23,
+              },
+              "tag-name": "munit:run-custom",
+              "type": "component",
+            },
+          ],
+          "description": "",
+          "labels": Array [
+            "horizontal",
+          ],
+          "tag-name": "psuedo",
+          "type": "container",
+        },
+      ],
+      "description": "new-test-suiteBefore_Test",
+      "labels": Array [
+        "vertical",
+      ],
+      "tag-name": "munit:before-test",
+      "type": "munit-container",
+    },
+    Object {
+      "content": Array [
+        Object {
+          "content": null,
+          "description": "",
+          "labels": Array [
+            "horizontal",
+          ],
+          "tag-name": "psuedo",
+          "type": "container",
+        },
+        Object {
+          "content": Array [
+            Object {
+              "attributes": Object {
+                "doc:name": "Set Message",
+                "payload": "#[]",
+              },
+              "content-hash": -2017569654,
+              "description": "Set Message",
+              "hash": -339828259,
+              "labels": Array [],
+              "location": Object {
+                "column": 57,
+                "line": 26,
+              },
+              "tag-name": "munit:set",
+              "type": "component",
+            },
+            Object {
+              "content": null,
+              "content-hash": -2017569654,
+              "description": "Fail",
+              "doc:name": "Fail",
+              "hash": 369682545,
+              "labels": Array [
+                "added",
+              ],
+              "location": Object {
+                "column": 37,
+                "line": 28,
+              },
+              "tag-name": "munit:fail",
+              "type": "component",
+            },
+            Object {
+              "attributes": Object {
+                "doc:name": "Set Null Payload",
+              },
+              "content-hash": -2017569654,
+              "description": "Set Null Payload",
+              "hash": -852187714,
+              "labels": Array [],
+              "location": Object {
+                "column": 61,
+                "line": 27,
+              },
+              "tag-name": "munit:set-null-payload",
+              "type": "component",
+            },
+          ],
+          "description": "",
+          "labels": Array [
+            "horizontal",
+          ],
+          "tag-name": "psuedo",
+          "type": "container",
+        },
+      ],
+      "description": "new-test-suiteTest",
+      "labels": Array [
+        "vertical",
+      ],
+      "tag-name": "munit:test",
+      "type": "munit-container",
+    },
   ],
-]
+  "description": null,
+  "hash": -2009730132,
+  "labels": Array [
+    "vertical",
+    "root",
+  ],
+  "location": Object {
+    "column": 108,
+    "line": 12,
+  },
+  "tag-name": "mule",
+  "type": "container",
+}
 `;
 
-exports[`when diffing two XML files when doing a diff with a non existant final state renders correctly 1`] = `
-Array [
-  "div",
-  Object {
-    "class": Array [
-      "container",
-      "mule-mule",
-      "vertical root",
-    ],
-    "data-column": 108,
-    "data-line": 12,
+exports[`when diffing two XML files when doing a diff with a non existant final state augments the MAST correctly 1`] = `
+Object {
+  "attributes": Object {
+    "xmlns": "http://www.mulesoft.org/schema/mule/core",
+    "xmlns:doc": "http://www.mulesoft.org/schema/mule/documentation",
+    "xmlns:mock": "http://www.mulesoft.org/schema/mule/mock",
+    "xmlns:munit": "http://www.mulesoft.org/schema/mule/munit",
+    "xmlns:spring": "http://www.springframework.org/schema/beans",
+    "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+    "xsi:schemaLocation": "http://www.mulesoft.org/schema/mule/mock http://www.mulesoft.org/schema/mule/mock/current/mule-mock.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd",
   },
-  Array [
-    "div",
+  "content": Array [
     Object {
-      "class": "container-title",
+      "attributes": Object {
+        "doc:name": "MUnit configuration",
+        "name": "munit",
+      },
+      "content-hash": -2017569654,
+      "description": "MUnit configuration",
+      "hash": -910446770,
+      "labels": Array [
+        "removed",
+      ],
+      "location": Object {
+        "column": 63,
+        "line": 13,
+      },
+      "tag-name": "munit:config",
+      "type": "component",
     },
-    null,
-  ],
-  Array [
-    "div",
     Object {
-      "class": "container-inner",
+      "content": Array [
+        Object {
+          "content": null,
+          "description": "",
+          "labels": Array [
+            "horizontal",
+          ],
+          "tag-name": "psuedo",
+          "type": "container",
+        },
+        Object {
+          "content": Array [
+            Object {
+              "attributes": Object {
+                "actualValue": "#[]",
+                "doc:name": "Assert Equals",
+                "expectedValue": "#[]",
+              },
+              "content-hash": -2017569654,
+              "description": "Assert Equals",
+              "hash": 1540583787,
+              "labels": Array [],
+              "location": Object {
+                "column": 96,
+                "line": 15,
+              },
+              "tag-name": "munit:assert-on-equals",
+              "type": "component",
+            },
+            Object {
+              "attributes": Object {
+                "condition": "#[]",
+                "doc:name": "Assert False",
+              },
+              "content-hash": -2017569654,
+              "description": "Assert False",
+              "hash": -964144491,
+              "labels": Array [],
+              "location": Object {
+                "column": 69,
+                "line": 16,
+              },
+              "tag-name": "munit:assert-false",
+              "type": "component",
+            },
+          ],
+          "description": "",
+          "labels": Array [
+            "horizontal",
+          ],
+          "tag-name": "psuedo",
+          "type": "container",
+        },
+      ],
+      "description": "new-test-suiteAfter_Suite",
+      "labels": Array [
+        "vertical",
+        "removed",
+      ],
+      "tag-name": "munit:after-suite",
+      "type": "munit-container",
     },
-    Array [
-      "div",
-      Object {
-        "class": "icon-container",
-      },
-      Array [
-        "img",
+    Object {
+      "content": Array [
         Object {
-          "class": "category-frame",
-          "src": "/img/icons/org.mule.tooling.ui.modules.core.miscellaneous.large.png",
-        },
-      ],
-      null,
-    ],
-    Array [
-      "div",
-      Object {
-        "class": "container-children",
-      },
-      Array [
-        "div",
-        Object {
-          "class": Array [
-            "component",
-            "munit:config",
-            "removed",
+          "content": null,
+          "description": "",
+          "labels": Array [
+            "horizontal",
           ],
-          "data-column": 63,
-          "data-line": 13,
+          "tag-name": "psuedo",
+          "type": "container",
         },
-        Array [
-          "img",
-          Object {
-            "class": "category-frame",
-            "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-          },
-        ],
-        Array [
-          "img",
-          Object {
-            "class": "icon",
-            "src": "/img/icons/MUnit-Palette.png",
-          },
-        ],
-        Array [
-          "div",
-          Object {
-            "class": "label",
-          },
-          "MUnit configuration",
-        ],
-      ],
-      Array [
-        "img",
         Object {
-          "class": "flow-arrow",
-          "src": "/img/arrow-right-2x.png",
-        },
-      ],
-      Array [
-        "div",
-        Object {
-          "class": Array [
-            "container",
-            "mule-munit_after-suite",
-            "horizontal removed",
-          ],
-          "data-column": 89,
-          "data-line": 14,
-        },
-        Array [
-          "div",
-          Object {
-            "class": "container-title",
-          },
-          "new-test-suiteAfter_Suite",
-        ],
-        Array [
-          "div",
-          Object {
-            "class": "container-inner",
-          },
-          Array [
-            "div",
+          "content": Array [
             Object {
-              "class": "icon-container",
+              "attributes": Object {
+                "doc:name": "Assert Null Payload",
+              },
+              "content-hash": -2017569654,
+              "description": "Assert Null Payload",
+              "hash": 358321917,
+              "labels": Array [],
+              "location": Object {
+                "column": 59,
+                "line": 19,
+              },
+              "tag-name": "munit:assert-null",
+              "type": "component",
             },
-            Array [
-              "img",
-              Object {
-                "class": "category-frame",
-                "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-              },
-            ],
-            Array [
-              "img",
-              Object {
-                "class": "icon container-image",
-                "src": "/img/icons/After-Suite-Palette.png",
-              },
-            ],
-          ],
-          Array [
-            "div",
             Object {
-              "class": "container-children",
+              "attributes": Object {
+                "doc:name": "Assert Payload",
+                "expectedValue": "#[]",
+              },
+              "content-hash": -2017569654,
+              "description": "Assert Payload",
+              "hash": 1170098794,
+              "labels": Array [],
+              "location": Object {
+                "column": 84,
+                "line": 20,
+              },
+              "tag-name": "munit:assert-payload-equals",
+              "type": "component",
             },
-            Array [
-              "div",
-              Object {
-                "class": Array [
-                  "component",
-                  "munit:assert-on-equals",
-                  "",
-                ],
-                "data-column": 96,
-                "data-line": 15,
-              },
-              Array [
-                "img",
-                Object {
-                  "class": "category-frame",
-                  "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-                },
-              ],
-              Array [
-                "img",
-                Object {
-                  "class": "icon",
-                  "src": "/img/icons/Assert-Equals.png",
-                },
-              ],
-              Array [
-                "div",
-                Object {
-                  "class": "label",
-                },
-                "Assert Equals",
-              ],
-            ],
-            Array [
-              "img",
-              Object {
-                "class": "flow-arrow",
-                "src": "/img/arrow-right-2x.png",
-              },
-            ],
-            Array [
-              "div",
-              Object {
-                "class": Array [
-                  "component",
-                  "munit:assert-false",
-                  "",
-                ],
-                "data-column": 69,
-                "data-line": 16,
-              },
-              Array [
-                "img",
-                Object {
-                  "class": "category-frame",
-                  "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-                },
-              ],
-              Array [
-                "img",
-                Object {
-                  "class": "icon",
-                  "src": "/img/icons/Assert-False.png",
-                },
-              ],
-              Array [
-                "div",
-                Object {
-                  "class": "label",
-                },
-                "Assert False",
-              ],
-            ],
           ],
-        ],
-      ],
-      Array [
-        "img",
-        Object {
-          "class": "flow-arrow",
-          "src": "/img/arrow-right-2x.png",
+          "description": "",
+          "labels": Array [
+            "horizontal",
+          ],
+          "tag-name": "psuedo",
+          "type": "container",
         },
       ],
-      Array [
-        "div",
-        Object {
-          "class": Array [
-            "container",
-            "mule-munit_before-suite",
-            "horizontal removed",
-          ],
-          "data-column": 83,
-          "data-line": 18,
-        },
-        Array [
-          "div",
-          Object {
-            "class": "container-title",
-          },
-          "new-test-suiteBefore_Suite",
-        ],
-        Array [
-          "div",
-          Object {
-            "class": "container-inner",
-          },
-          Array [
-            "div",
-            Object {
-              "class": "icon-container",
-            },
-            Array [
-              "img",
-              Object {
-                "class": "category-frame",
-                "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-              },
-            ],
-            Array [
-              "img",
-              Object {
-                "class": "icon container-image",
-                "src": "/img/icons/Before-Suite-Palette.png",
-              },
-            ],
-          ],
-          Array [
-            "div",
-            Object {
-              "class": "container-children",
-            },
-            Array [
-              "div",
-              Object {
-                "class": Array [
-                  "component",
-                  "munit:assert-null",
-                  "",
-                ],
-                "data-column": 59,
-                "data-line": 19,
-              },
-              Array [
-                "img",
-                Object {
-                  "class": "category-frame",
-                  "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-                },
-              ],
-              Array [
-                "img",
-                Object {
-                  "class": "icon",
-                  "src": "/img/icons/Assert-Null.png",
-                },
-              ],
-              Array [
-                "div",
-                Object {
-                  "class": "label",
-                },
-                "Assert Null Payload",
-              ],
-            ],
-            Array [
-              "img",
-              Object {
-                "class": "flow-arrow",
-                "src": "/img/arrow-right-2x.png",
-              },
-            ],
-            Array [
-              "div",
-              Object {
-                "class": Array [
-                  "component",
-                  "munit:assert-payload-equals",
-                  "",
-                ],
-                "data-column": 84,
-                "data-line": 20,
-              },
-              Array [
-                "img",
-                Object {
-                  "class": "category-frame",
-                  "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-                },
-              ],
-              Array [
-                "img",
-                Object {
-                  "class": "icon",
-                  "src": "/img/icons/Assert-Payload.png",
-                },
-              ],
-              Array [
-                "div",
-                Object {
-                  "class": "label",
-                },
-                "Assert Payload",
-              ],
-            ],
-          ],
-        ],
+      "description": "new-test-suiteBefore_Suite",
+      "labels": Array [
+        "vertical",
+        "removed",
       ],
-      Array [
-        "img",
+      "tag-name": "munit:before-suite",
+      "type": "munit-container",
+    },
+    Object {
+      "content": Array [
         Object {
-          "class": "flow-arrow",
-          "src": "/img/arrow-right-2x.png",
+          "content": null,
+          "description": "",
+          "labels": Array [
+            "horizontal",
+          ],
+          "tag-name": "psuedo",
+          "type": "container",
+        },
+        Object {
+          "content": Array [
+            Object {
+              "attributes": Object {
+                "condition": "#[]",
+                "doc:name": "Assert True",
+              },
+              "content-hash": -2017569654,
+              "description": "Assert True",
+              "hash": 1099203488,
+              "labels": Array [],
+              "location": Object {
+                "column": 67,
+                "line": 23,
+              },
+              "tag-name": "munit:assert-true",
+              "type": "component",
+            },
+            Object {
+              "attributes": Object {
+                "assertion-ref": "",
+                "doc:name": "Custom Assertion",
+              },
+              "content-hash": -2017569654,
+              "description": "Custom Assertion",
+              "hash": 1823118484,
+              "labels": Array [],
+              "location": Object {
+                "column": 72,
+                "line": 24,
+              },
+              "tag-name": "munit:run-custom",
+              "type": "component",
+            },
+          ],
+          "description": "",
+          "labels": Array [
+            "horizontal",
+          ],
+          "tag-name": "psuedo",
+          "type": "container",
         },
       ],
-      Array [
-        "div",
-        Object {
-          "class": Array [
-            "container",
-            "mule-munit_before-test",
-            "horizontal removed",
-          ],
-          "data-column": 91,
-          "data-line": 22,
-        },
-        Array [
-          "div",
-          Object {
-            "class": "container-title",
-          },
-          "new-test-suiteBefore_Test",
-        ],
-        Array [
-          "div",
-          Object {
-            "class": "container-inner",
-          },
-          Array [
-            "div",
-            Object {
-              "class": "icon-container",
-            },
-            Array [
-              "img",
-              Object {
-                "class": "category-frame",
-                "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-              },
-            ],
-            Array [
-              "img",
-              Object {
-                "class": "icon container-image",
-                "src": "/img/icons/Before-Test-Palette.png",
-              },
-            ],
-          ],
-          Array [
-            "div",
-            Object {
-              "class": "container-children",
-            },
-            Array [
-              "div",
-              Object {
-                "class": Array [
-                  "component",
-                  "munit:assert-true",
-                  "",
-                ],
-                "data-column": 67,
-                "data-line": 23,
-              },
-              Array [
-                "img",
-                Object {
-                  "class": "category-frame",
-                  "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-                },
-              ],
-              Array [
-                "img",
-                Object {
-                  "class": "icon",
-                  "src": "/img/icons/Assert-True.png",
-                },
-              ],
-              Array [
-                "div",
-                Object {
-                  "class": "label",
-                },
-                "Assert True",
-              ],
-            ],
-            Array [
-              "img",
-              Object {
-                "class": "flow-arrow",
-                "src": "/img/arrow-right-2x.png",
-              },
-            ],
-            Array [
-              "div",
-              Object {
-                "class": Array [
-                  "component",
-                  "munit:run-custom",
-                  "",
-                ],
-                "data-column": 72,
-                "data-line": 24,
-              },
-              Array [
-                "img",
-                Object {
-                  "class": "category-frame",
-                  "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-                },
-              ],
-              Array [
-                "img",
-                Object {
-                  "class": "icon",
-                  "src": "/img/icons/Assert-Custom.png",
-                },
-              ],
-              Array [
-                "div",
-                Object {
-                  "class": "label",
-                },
-                "Custom Assertion",
-              ],
-            ],
-          ],
-        ],
+      "description": "new-test-suiteBefore_Test",
+      "labels": Array [
+        "vertical",
+        "removed",
       ],
-      Array [
-        "img",
+      "tag-name": "munit:before-test",
+      "type": "munit-container",
+    },
+    Object {
+      "content": Array [
         Object {
-          "class": "flow-arrow",
-          "src": "/img/arrow-right-2x.png",
+          "content": null,
+          "description": "",
+          "labels": Array [
+            "horizontal",
+          ],
+          "tag-name": "psuedo",
+          "type": "container",
+        },
+        Object {
+          "content": Array [
+            Object {
+              "attributes": Object {
+                "doc:name": "Set Message",
+                "payload": "#[]",
+              },
+              "content-hash": -2017569654,
+              "description": "Set Message",
+              "hash": -339828259,
+              "labels": Array [],
+              "location": Object {
+                "column": 57,
+                "line": 27,
+              },
+              "tag-name": "munit:set",
+              "type": "component",
+            },
+            Object {
+              "attributes": Object {
+                "doc:name": "Fail",
+              },
+              "content-hash": -2017569654,
+              "description": "Fail",
+              "hash": 369682545,
+              "labels": Array [],
+              "location": Object {
+                "column": 37,
+                "line": 28,
+              },
+              "tag-name": "munit:fail",
+              "type": "component",
+            },
+            Object {
+              "attributes": Object {
+                "doc:name": "Set Null Payload",
+              },
+              "content-hash": -2017569654,
+              "description": "Set Null Payload",
+              "hash": -852187714,
+              "labels": Array [],
+              "location": Object {
+                "column": 61,
+                "line": 29,
+              },
+              "tag-name": "munit:set-null-payload",
+              "type": "component",
+            },
+          ],
+          "description": "",
+          "labels": Array [
+            "horizontal",
+          ],
+          "tag-name": "psuedo",
+          "type": "container",
         },
       ],
-      Array [
-        "div",
-        Object {
-          "class": Array [
-            "container",
-            "mule-munit_test",
-            "horizontal removed",
-          ],
-          "data-column": 67,
-          "data-line": 26,
-        },
-        Array [
-          "div",
-          Object {
-            "class": "container-title",
-          },
-          "new-test-suiteTest",
-        ],
-        Array [
-          "div",
-          Object {
-            "class": "container-inner",
-          },
-          Array [
-            "div",
-            Object {
-              "class": "icon-container",
-            },
-            Array [
-              "img",
-              Object {
-                "class": "category-frame",
-                "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-              },
-            ],
-            Array [
-              "img",
-              Object {
-                "class": "icon container-image",
-                "src": "/img/icons/MUnit-Palette.png",
-              },
-            ],
-          ],
-          Array [
-            "div",
-            Object {
-              "class": "container-children",
-            },
-            Array [
-              "div",
-              Object {
-                "class": Array [
-                  "component",
-                  "munit:set",
-                  "",
-                ],
-                "data-column": 57,
-                "data-line": 27,
-              },
-              Array [
-                "img",
-                Object {
-                  "class": "category-frame",
-                  "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-                },
-              ],
-              Array [
-                "img",
-                Object {
-                  "class": "icon",
-                  "src": "/img/icons/Set-Message.png",
-                },
-              ],
-              Array [
-                "div",
-                Object {
-                  "class": "label",
-                },
-                "Set Message",
-              ],
-            ],
-            Array [
-              "img",
-              Object {
-                "class": "flow-arrow",
-                "src": "/img/arrow-right-2x.png",
-              },
-            ],
-            Array [
-              "div",
-              Object {
-                "class": Array [
-                  "component",
-                  "munit:fail",
-                  "",
-                ],
-                "data-column": 37,
-                "data-line": 28,
-              },
-              Array [
-                "img",
-                Object {
-                  "class": "category-frame",
-                  "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-                },
-              ],
-              Array [
-                "img",
-                Object {
-                  "class": "icon",
-                  "src": "/img/icons/Fail.png",
-                },
-              ],
-              Array [
-                "div",
-                Object {
-                  "class": "label",
-                },
-                "Fail",
-              ],
-            ],
-            Array [
-              "img",
-              Object {
-                "class": "flow-arrow",
-                "src": "/img/arrow-right-2x.png",
-              },
-            ],
-            Array [
-              "div",
-              Object {
-                "class": Array [
-                  "component",
-                  "munit:set-null-payload",
-                  "",
-                ],
-                "data-column": 61,
-                "data-line": 29,
-              },
-              Array [
-                "img",
-                Object {
-                  "class": "category-frame",
-                  "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-                },
-              ],
-              Array [
-                "img",
-                Object {
-                  "class": "icon",
-                  "src": "/img/icons/Null-Payload.png",
-                },
-              ],
-              Array [
-                "div",
-                Object {
-                  "class": "label",
-                },
-                "Set Null Payload",
-              ],
-            ],
-          ],
-        ],
+      "description": "new-test-suiteTest",
+      "labels": Array [
+        "vertical",
+        "removed",
       ],
-    ],
+      "tag-name": "munit:test",
+      "type": "munit-container",
+    },
   ],
-]
+  "description": null,
+  "hash": -2009730132,
+  "labels": Array [
+    "vertical",
+    "root",
+  ],
+  "location": Object {
+    "column": 108,
+    "line": 12,
+  },
+  "tag-name": "mule",
+  "type": "container",
+}
 `;
 
-exports[`when diffing two XML files when doing a diff with a non existant initial state renders correctly 1`] = `
-Array [
-  "div",
-  Object {
-    "class": Array [
-      "container",
-      "mule-mule",
-      "vertical root",
-    ],
-    "data-column": 44,
-    "data-line": 0,
+exports[`when diffing two XML files when doing a diff with a non existant initial state augments the MAST correctly 1`] = `
+Object {
+  "attributes": Object {},
+  "content": Array [
+    Object {
+      "content": null,
+      "content-hash": -2017569654,
+      "description": "MUnit configuration",
+      "doc:name": "MUnit configuration",
+      "hash": -910446770,
+      "labels": Array [
+        "added",
+      ],
+      "location": Object {
+        "column": 63,
+        "line": 13,
+      },
+      "name": "munit",
+      "tag-name": "munit:config",
+      "type": "component",
+    },
+    Object {
+      "content": Array [
+        Object {
+          "content": null,
+          "description": "",
+          "location": null,
+          "tag-name": "psuedo",
+          "type": "container",
+        },
+        Object {
+          "content": Array [
+            Object {
+              "condition": "#[]",
+              "content": null,
+              "content-hash": -2017569654,
+              "description": "Assert False",
+              "doc:name": "Assert False",
+              "hash": -964144491,
+              "location": Object {
+                "column": 69,
+                "line": 15,
+              },
+              "tag-name": "munit:assert-false",
+              "type": "component",
+            },
+          ],
+          "description": "",
+          "location": null,
+          "tag-name": "psuedo",
+          "type": "container",
+        },
+      ],
+      "description": "new-test-suiteAfter_Suite",
+      "labels": Array [
+        "added",
+      ],
+      "location": null,
+      "tag-name": "munit:after-suite",
+      "type": "munit-container",
+    },
+    Object {
+      "content": Array [
+        Object {
+          "content": null,
+          "description": "",
+          "location": null,
+          "tag-name": "psuedo",
+          "type": "container",
+        },
+        Object {
+          "content": Array [
+            Object {
+              "actualValue": "#[]",
+              "content": null,
+              "content-hash": -2017569654,
+              "description": "Assert Not Equals",
+              "doc:name": "Assert Not Equals",
+              "expectedValue": "#[]",
+              "hash": 1131396067,
+              "location": Object {
+                "column": 99,
+                "line": 18,
+              },
+              "tag-name": "munit:assert-not-same",
+              "type": "component",
+            },
+            Object {
+              "content": null,
+              "content-hash": -2017569654,
+              "description": "Assert Not Null Payload",
+              "doc:name": "Assert Not Null Payload",
+              "hash": -802864801,
+              "location": Object {
+                "column": 67,
+                "line": 19,
+              },
+              "tag-name": "munit:assert-not-null",
+              "type": "component",
+            },
+          ],
+          "description": "",
+          "location": null,
+          "tag-name": "psuedo",
+          "type": "container",
+        },
+      ],
+      "description": "new-test-suiteAfter_Test",
+      "labels": Array [
+        "added",
+      ],
+      "location": null,
+      "tag-name": "munit:after-test",
+      "type": "munit-container",
+    },
+    Object {
+      "content": Array [
+        Object {
+          "content": null,
+          "description": "",
+          "location": null,
+          "tag-name": "psuedo",
+          "type": "container",
+        },
+        Object {
+          "content": Array [
+            Object {
+              "condition": "#[]",
+              "content": null,
+              "content-hash": -2017569654,
+              "description": "Assert True",
+              "doc:name": "Assert True",
+              "hash": 1099203488,
+              "location": Object {
+                "column": 67,
+                "line": 22,
+              },
+              "tag-name": "munit:assert-true",
+              "type": "component",
+            },
+            Object {
+              "assertion-ref": "",
+              "content": null,
+              "content-hash": -2017569654,
+              "description": "Custom Assertion",
+              "doc:name": "Custom Assertion",
+              "hash": 1823118484,
+              "location": Object {
+                "column": 72,
+                "line": 23,
+              },
+              "tag-name": "munit:run-custom",
+              "type": "component",
+            },
+          ],
+          "description": "",
+          "location": null,
+          "tag-name": "psuedo",
+          "type": "container",
+        },
+      ],
+      "description": "new-test-suiteBefore_Test",
+      "labels": Array [
+        "added",
+      ],
+      "location": null,
+      "tag-name": "munit:before-test",
+      "type": "munit-container",
+    },
+    Object {
+      "content": Array [
+        Object {
+          "content": null,
+          "description": "",
+          "location": null,
+          "tag-name": "psuedo",
+          "type": "container",
+        },
+        Object {
+          "content": Array [
+            Object {
+              "content": null,
+              "content-hash": -2017569654,
+              "description": "Set Message",
+              "doc:name": "Set Message",
+              "hash": -339828259,
+              "location": Object {
+                "column": 57,
+                "line": 26,
+              },
+              "payload": "#[]",
+              "tag-name": "munit:set",
+              "type": "component",
+            },
+            Object {
+              "content": null,
+              "content-hash": -2017569654,
+              "description": "Set Null Payload",
+              "doc:name": "Set Null Payload",
+              "hash": -852187714,
+              "location": Object {
+                "column": 61,
+                "line": 27,
+              },
+              "tag-name": "munit:set-null-payload",
+              "type": "component",
+            },
+          ],
+          "description": "",
+          "location": null,
+          "tag-name": "psuedo",
+          "type": "container",
+        },
+      ],
+      "description": "new-test-suiteTest",
+      "labels": Array [
+        "added",
+      ],
+      "location": null,
+      "tag-name": "munit:test",
+      "type": "munit-container",
+    },
+  ],
+  "description": null,
+  "hash": -15128758,
+  "labels": Array [
+    "vertical",
+    "root",
+  ],
+  "location": Object {
+    "column": 44,
+    "line": 0,
   },
-  Array [
-    "div",
-    Object {
-      "class": "container-title",
-    },
-    null,
-  ],
-  Array [
-    "div",
-    Object {
-      "class": "container-inner",
-    },
-    Array [
-      "div",
-      Object {
-        "class": "icon-container",
-      },
-      Array [
-        "img",
-        Object {
-          "class": "category-frame",
-          "src": "/img/icons/org.mule.tooling.ui.modules.core.miscellaneous.large.png",
-        },
-      ],
-      null,
-    ],
-    Array [
-      "div",
-      Object {
-        "class": "container-children",
-      },
-      Array [
-        "div",
-        Object {
-          "class": Array [
-            "component",
-            "munit:config",
-            "added",
-          ],
-        },
-        Array [
-          "img",
-          Object {
-            "class": "category-frame",
-            "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-          },
-        ],
-        Array [
-          "img",
-          Object {
-            "class": "icon",
-            "src": "/img/icons/MUnit-Palette.png",
-          },
-        ],
-        Array [
-          "div",
-          Object {
-            "class": "label",
-          },
-          "MUnit configuration",
-        ],
-      ],
-      Array [
-        "img",
-        Object {
-          "class": "flow-arrow",
-          "src": "/img/arrow-right-2x.png",
-        },
-      ],
-      Array [
-        "div",
-        Object {
-          "class": Array [
-            "container",
-            "mule-munit_after-suite",
-            "horizontal added",
-          ],
-        },
-        Array [
-          "div",
-          Object {
-            "class": "container-title",
-          },
-          "new-test-suiteAfter_Suite",
-        ],
-        Array [
-          "div",
-          Object {
-            "class": "container-inner",
-          },
-          Array [
-            "div",
-            Object {
-              "class": "icon-container",
-            },
-            Array [
-              "img",
-              Object {
-                "class": "category-frame",
-                "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-              },
-            ],
-            Array [
-              "img",
-              Object {
-                "class": "icon container-image",
-                "src": "/img/icons/After-Suite-Palette.png",
-              },
-            ],
-          ],
-          Array [
-            "div",
-            Object {
-              "class": "container-children",
-            },
-            Array [
-              "div",
-              Object {
-                "class": Array [
-                  "component",
-                  "munit:assert-false",
-                  "",
-                ],
-              },
-              Array [
-                "img",
-                Object {
-                  "class": "category-frame",
-                  "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-                },
-              ],
-              Array [
-                "img",
-                Object {
-                  "class": "icon",
-                  "src": "/img/icons/Assert-False.png",
-                },
-              ],
-              Array [
-                "div",
-                Object {
-                  "class": "label",
-                },
-                "Assert False",
-              ],
-            ],
-          ],
-        ],
-      ],
-      Array [
-        "img",
-        Object {
-          "class": "flow-arrow",
-          "src": "/img/arrow-right-2x.png",
-        },
-      ],
-      Array [
-        "div",
-        Object {
-          "class": Array [
-            "container",
-            "mule-munit_after-test",
-            "horizontal added",
-          ],
-        },
-        Array [
-          "div",
-          Object {
-            "class": "container-title",
-          },
-          "new-test-suiteAfter_Test",
-        ],
-        Array [
-          "div",
-          Object {
-            "class": "container-inner",
-          },
-          Array [
-            "div",
-            Object {
-              "class": "icon-container",
-            },
-            Array [
-              "img",
-              Object {
-                "class": "category-frame",
-                "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-              },
-            ],
-            Array [
-              "img",
-              Object {
-                "class": "icon container-image",
-                "src": "/img/icons/After-Test-Palette.png",
-              },
-            ],
-          ],
-          Array [
-            "div",
-            Object {
-              "class": "container-children",
-            },
-            Array [
-              "div",
-              Object {
-                "class": Array [
-                  "component",
-                  "munit:assert-not-same",
-                  "",
-                ],
-              },
-              Array [
-                "img",
-                Object {
-                  "class": "category-frame",
-                  "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-                },
-              ],
-              Array [
-                "img",
-                Object {
-                  "class": "icon",
-                  "src": "/img/icons/Assert-Not-Equals.png",
-                },
-              ],
-              Array [
-                "div",
-                Object {
-                  "class": "label",
-                },
-                "Assert Not Equals",
-              ],
-            ],
-            Array [
-              "img",
-              Object {
-                "class": "flow-arrow",
-                "src": "/img/arrow-right-2x.png",
-              },
-            ],
-            Array [
-              "div",
-              Object {
-                "class": Array [
-                  "component",
-                  "munit:assert-not-null",
-                  "",
-                ],
-              },
-              Array [
-                "img",
-                Object {
-                  "class": "category-frame",
-                  "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-                },
-              ],
-              Array [
-                "img",
-                Object {
-                  "class": "icon",
-                  "src": "/img/icons/Assert-Not-Null.png",
-                },
-              ],
-              Array [
-                "div",
-                Object {
-                  "class": "label",
-                },
-                "Assert Not Null Payload",
-              ],
-            ],
-          ],
-        ],
-      ],
-      Array [
-        "img",
-        Object {
-          "class": "flow-arrow",
-          "src": "/img/arrow-right-2x.png",
-        },
-      ],
-      Array [
-        "div",
-        Object {
-          "class": Array [
-            "container",
-            "mule-munit_before-test",
-            "horizontal added",
-          ],
-        },
-        Array [
-          "div",
-          Object {
-            "class": "container-title",
-          },
-          "new-test-suiteBefore_Test",
-        ],
-        Array [
-          "div",
-          Object {
-            "class": "container-inner",
-          },
-          Array [
-            "div",
-            Object {
-              "class": "icon-container",
-            },
-            Array [
-              "img",
-              Object {
-                "class": "category-frame",
-                "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-              },
-            ],
-            Array [
-              "img",
-              Object {
-                "class": "icon container-image",
-                "src": "/img/icons/Before-Test-Palette.png",
-              },
-            ],
-          ],
-          Array [
-            "div",
-            Object {
-              "class": "container-children",
-            },
-            Array [
-              "div",
-              Object {
-                "class": Array [
-                  "component",
-                  "munit:assert-true",
-                  "",
-                ],
-              },
-              Array [
-                "img",
-                Object {
-                  "class": "category-frame",
-                  "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-                },
-              ],
-              Array [
-                "img",
-                Object {
-                  "class": "icon",
-                  "src": "/img/icons/Assert-True.png",
-                },
-              ],
-              Array [
-                "div",
-                Object {
-                  "class": "label",
-                },
-                "Assert True",
-              ],
-            ],
-            Array [
-              "img",
-              Object {
-                "class": "flow-arrow",
-                "src": "/img/arrow-right-2x.png",
-              },
-            ],
-            Array [
-              "div",
-              Object {
-                "class": Array [
-                  "component",
-                  "munit:run-custom",
-                  "",
-                ],
-              },
-              Array [
-                "img",
-                Object {
-                  "class": "category-frame",
-                  "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-                },
-              ],
-              Array [
-                "img",
-                Object {
-                  "class": "icon",
-                  "src": "/img/icons/Assert-Custom.png",
-                },
-              ],
-              Array [
-                "div",
-                Object {
-                  "class": "label",
-                },
-                "Custom Assertion",
-              ],
-            ],
-          ],
-        ],
-      ],
-      Array [
-        "img",
-        Object {
-          "class": "flow-arrow",
-          "src": "/img/arrow-right-2x.png",
-        },
-      ],
-      Array [
-        "div",
-        Object {
-          "class": Array [
-            "container",
-            "mule-munit_test",
-            "horizontal added",
-          ],
-        },
-        Array [
-          "div",
-          Object {
-            "class": "container-title",
-          },
-          "new-test-suiteTest",
-        ],
-        Array [
-          "div",
-          Object {
-            "class": "container-inner",
-          },
-          Array [
-            "div",
-            Object {
-              "class": "icon-container",
-            },
-            Array [
-              "img",
-              Object {
-                "class": "category-frame",
-                "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-              },
-            ],
-            Array [
-              "img",
-              Object {
-                "class": "icon container-image",
-                "src": "/img/icons/MUnit-Palette.png",
-              },
-            ],
-          ],
-          Array [
-            "div",
-            Object {
-              "class": "container-children",
-            },
-            Array [
-              "div",
-              Object {
-                "class": Array [
-                  "component",
-                  "munit:set",
-                  "",
-                ],
-              },
-              Array [
-                "img",
-                Object {
-                  "class": "category-frame",
-                  "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-                },
-              ],
-              Array [
-                "img",
-                Object {
-                  "class": "icon",
-                  "src": "/img/icons/Set-Message.png",
-                },
-              ],
-              Array [
-                "div",
-                Object {
-                  "class": "label",
-                },
-                "Set Message",
-              ],
-            ],
-            Array [
-              "img",
-              Object {
-                "class": "flow-arrow",
-                "src": "/img/arrow-right-2x.png",
-              },
-            ],
-            Array [
-              "div",
-              Object {
-                "class": Array [
-                  "component",
-                  "munit:set-null-payload",
-                  "",
-                ],
-              },
-              Array [
-                "img",
-                Object {
-                  "class": "category-frame",
-                  "src": "/img/icons/org.mule.tooling.category.munit.large.png",
-                },
-              ],
-              Array [
-                "img",
-                Object {
-                  "class": "icon",
-                  "src": "/img/icons/Null-Payload.png",
-                },
-              ],
-              Array [
-                "div",
-                Object {
-                  "class": "label",
-                },
-                "Set Null Payload",
-              ],
-            ],
-          ],
-        ],
-      ],
-    ],
-  ],
-]
+  "tag-name": "mule",
+  "type": "container",
+}
 `;
 
-exports[`when diffing two XML files when file B adds elements with nested content renders correctly 1`] = `
-Array [
-  "div",
-  Object {
-    "class": Array [
-      "container",
-      "mule-mule",
-      "vertical root",
-    ],
-    "data-column": 126,
-    "data-line": 13,
+exports[`when diffing two XML files when file B adds elements with nested content augments the MAST correctly 1`] = `
+Object {
+  "attributes": Object {
+    "xmlns": "http://www.mulesoft.org/schema/mule/core",
+    "xmlns:amqps": "http://www.mulesoft.org/schema/mule/amqps",
+    "xmlns:doc": "http://www.mulesoft.org/schema/mule/documentation",
+    "xmlns:dw": "http://www.mulesoft.org/schema/mule/ee/dw",
+    "xmlns:objectstore": "http://www.mulesoft.org/schema/mule/objectstore",
+    "xmlns:spring": "http://www.springframework.org/schema/beans",
+    "xmlns:tracking": "http://www.mulesoft.org/schema/mule/ee/tracking",
+    "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+    "xsi:schemaLocation": "http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd
+http://www.mulesoft.org/schema/mule/amqps http://www.mulesoft.org/schema/mule/amqps/current/mule-amqps.xsd
+http://www.mulesoft.org/schema/mule/objectstore http://www.mulesoft.org/schema/mule/objectstore/current/mule-objectstore.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd",
   },
-  Array [
-    "div",
+  "content": Array [
     Object {
-      "class": "container-title",
-    },
-    null,
-  ],
-  Array [
-    "div",
-    Object {
-      "class": "container-inner",
-    },
-    Array [
-      "div",
-      Object {
-        "class": "icon-container",
-      },
-      Array [
-        "img",
+      "content": Array [
         Object {
-          "class": "category-frame",
-          "src": "/img/icons/org.mule.tooling.ui.modules.core.miscellaneous.large.png",
+          "content": null,
+          "content-hash": 1725153786,
+          "description": "Some transform",
+          "doc:name": "Some transform",
+          "hash": 1005263453,
+          "location": Object {
+            "column": 56,
+            "line": 16,
+          },
+          "tag-name": "dw:transform-message",
+          "type": "component",
         },
       ],
-      null,
-    ],
-    Array [
-      "div",
-      Object {
-        "class": "container-children",
-      },
-      Array [
-        "div",
-        Object {
-          "class": Array [
-            "container",
-            "mule-sub-flow",
-            "horizontal added",
-          ],
-        },
-        Array [
-          "div",
-          Object {
-            "class": "container-title",
-          },
-          "a sub flow",
-        ],
-        Array [
-          "div",
-          Object {
-            "class": "container-inner",
-          },
-          Array [
-            "div",
-            Object {
-              "class": "icon-container",
-            },
-            Array [
-              "img",
-              Object {
-                "class": "category-frame",
-                "src": "/img/icons/org.mule.tooling.category.scopes.large.png",
-              },
-            ],
-            Array [
-              "img",
-              Object {
-                "class": "icon container-image",
-                "src": "/img/icons/sub-flow-48x32.png",
-              },
-            ],
-          ],
-          Array [
-            "div",
-            Object {
-              "class": "container-children",
-            },
-            Array [
-              "div",
-              Object {
-                "class": Array [
-                  "component",
-                  "dw:transform-message",
-                  "",
-                ],
-              },
-              Array [
-                "img",
-                Object {
-                  "class": "category-frame",
-                  "src": "/img/icons/org.mule.tooling.category.core.large.png",
-                },
-              ],
-              Array [
-                "img",
-                Object {
-                  "class": "icon",
-                  "src": "/img/icons/dfl-48x32.png",
-                },
-              ],
-              Array [
-                "div",
-                Object {
-                  "class": "label",
-                },
-                "Some transform",
-              ],
-            ],
-          ],
-        ],
+      "description": "a sub flow",
+      "hash": 1871898525,
+      "labels": Array [
+        "added",
       ],
-    ],
+      "location": Object {
+        "column": 32,
+        "line": 15,
+      },
+      "name": "a sub flow",
+      "tag-name": "sub-flow",
+      "type": "container",
+    },
   ],
-]
+  "description": null,
+  "hash": -1827547211,
+  "labels": Array [
+    "vertical",
+    "root",
+  ],
+  "location": Object {
+    "column": 126,
+    "line": 13,
+  },
+  "tag-name": "mule",
+  "type": "container",
+}
 `;

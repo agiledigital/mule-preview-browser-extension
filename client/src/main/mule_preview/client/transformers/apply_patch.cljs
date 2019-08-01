@@ -32,16 +32,18 @@
   (let [index (last route)
         keyword-route (drop-last (prepare-path route))
         original-element (dom->mast element)
-        updated (update-in original-element [:attributes] #(conj % :added))]
+        updated (update-in original-element [:labels] #(set (conj % :added)))]
     [(update-in mast keyword-route #(insert % index updated)) (shift-removal route removal-map)]))
 
-(defn- modify-element [mast removal-map route element name newValue]
+(defn- modify-element [mast removal-map route element name oldValue newValue]
   (let [index (last route)
         keyword-route (prepare-path route)
         original-element (get-in mast keyword-route)
-        with-attributes (update-in original-element [:attributes] #(conj % :edited))
-        with-description (assoc-in with-attributes [(keyword name)] newValue)]
-    [(assoc-in mast keyword-route with-description) removal-map]))
+        with-labels (update-in original-element [:labels] #(set (conj % :edited)))
+        with-description (assoc-in with-labels [(keyword name)] newValue)
+        with-change-record (update-in with-description [:change-record]
+                                      #(conj % {:name name :delta [oldValue newValue]}))]
+    [(assoc-in mast keyword-route with-change-record) removal-map]))
 
 (defn- remove-element [mast removal-map route]
   (let [index (last route)
@@ -53,24 +55,26 @@
 
 (defn- apply-patch [in patch]
   (let [[mast removal-map] in
-        {:keys [action route element newValue name]} patch]
+        {:keys [action route element value oldValue newValue name]} patch]
     (if (empty? route)
       [mast removal-map] ; Should not patch the root element at this time
       (case action
         "addElement" (add-element mast removal-map route element)
-        "modifyAttribute" (modify-element mast removal-map route element name newValue)
+        "addAttribute" (modify-element mast removal-map route element name nil value)
+        "modifyAttribute" (modify-element mast removal-map route element name oldValue newValue)
+        "removeAttribute" (modify-element mast removal-map route element name value nil)
         "removeElement" (remove-element mast removal-map route)))))
 
 (defn- process-removal [path mast [index element]]
   (let [keyword-route path
-        updated (update-in element [:attributes] #(conj % :removed))]
+        updated (update-in element [:labels] #(set (conj % :removed)))]
     (update-in mast keyword-route #(insert % index updated))))
 
 (defn- process-removal-path [mast [path removals]]
   (reduce (partial process-removal path) mast removals))
 
 (defn- apply-removal-map [mast removal-map]
-  (let [mast-with-removals (reduce process-removal-path mast removal-map)]
+  (let [mast-with-removals (reduce process-removal-path mast (reverse removal-map))]
     mast-with-removals))
 
 (defn augment-mast-with-diff [mast diff]

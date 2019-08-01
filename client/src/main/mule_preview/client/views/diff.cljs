@@ -13,17 +13,17 @@
 
 (def empty-file "<?xml version=\"1.0\" encoding=\"UTF-8\"?><mule></mule>")
 
-(defn calculate-diff-components [content-a content-b content-root]
+(defn calculate-diff [content-a content-b content-root]
   (let [parsed-xml-a (xml->clj (or content-a empty-file))
         parsed-xml-b (xml->clj (or content-b empty-file))
         mast-a (xml->mast parsed-xml-a)
         mast-b (xml->mast parsed-xml-b)
-        diff-output (diff mast-a mast-b)
-        augmented-mast (augment-mast-with-diff mast-a diff-output)]
-    (mast->react augmented-mast content-root)))
+        diff-output (diff mast-a mast-b)]
+    (augment-mast-with-diff mast-a diff-output)))
 
 (defn- handle-xml-fetch-success [response-a response-b root-component content-root]
-  (let [transformed-components (calculate-diff-components response-a response-b content-root)]
+  (let [augmented-mast (calculate-diff response-a response-b content-root)
+        transformed-components (mast->react augmented-mast content-root)]
     (reset! root-component transformed-components)))
 
 (defn start-diff-url [url-a url-b root-component content-root]

@@ -13,7 +13,7 @@ http://www.mulesoft.org/schema/mule/s3 http://www.mulesoft.org/schema/mule/s3/cu
 http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd">
     <flow name="example:/http-incoming-flow">
         <http:listener config-ref="example-pizza-httpListenerConfig" path="/" doc:name="HTTP"/>
-        <set-variable variableName="z-level" value="#[9000]" doc:name="Set Z level to 9000"/>
+        <set-variable variableName="z-level" value="#[9000]" doc:name="Set Z level to 9000" a="1"/>
         <set-payload value="#['lol']" doc:name="Overwrite the payload"/>
         <flow-ref name="example:/expunge-convolvers" doc:name="example:/expunge-convolvers"/>
         <expression-filter expression="" doc:name="Filter recalcitrant ions"/>
@@ -60,4 +60,31 @@ payload distinctBy $.pizza]]></dw:set-payload>
         </scatter-gather>
         <http:request config-ref="" path="" method="" doc:name="Start Internal Noodle Engine"/>
     </sub-flow>
+    <munit:test description="Bork Bork" name="some-test">
+        <mock:when doc:name="xxxx" messageProcessor=".*:.*">
+            <mock:with-attributes>
+                <mock:with-attribute name="name" whereValue="#[matchContains('zzzyyy')]"/>
+            </mock:with-attributes>
+            <mock:then-return payload="#[YYY]"/>
+        </mock:when>
+        <mock:spy doc:name="Spy" messageProcessor=".*:.*">
+            <mock:with-attributes>
+                <mock:with-attribute name="name" whereValue="#[matchContains('sdds')]"/>
+            </mock:with-attributes>
+            <mock:assertions-before-call>
+                <assert-object-equals:compare-objects doc:name="FFF" expected-ref="YYY"/>
+            </mock:assertions-before-call>
+        </mock:spy>
+        <mock:spy doc:name="Spy" messageProcessor="asfsf">
+            <mock:assertions-before-call>
+                <munit:assert-true condition="#[af]" doc:name="gaddga"/>
+            </mock:assertions-before-call>
+        </mock:spy>
+        <flow-ref doc:name="sgdsd" name="csgdsdg"/>
+        <mock:verify-call doc:name="sgdsdgsgd" messageProcessor=".*:.*" times="4">
+            <mock:with-attributes>
+                <mock:with-attribute name="name" whereValue="#sdfsdfw"/>
+            </mock:with-attributes>
+        </mock:verify-call>
+    </munit:test>
 </mule>

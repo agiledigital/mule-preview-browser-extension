@@ -2,35 +2,51 @@
 
 exports[`when converting applying a diff to MAST transforms correctly 1`] = `
 Object {
-  "attributes": Array [
-    "vertical",
-    "root",
-  ],
+  "attributes": Object {
+    "xmlns": "http://www.mulesoft.org/schema/mule/core",
+    "xmlns:db": "http://www.mulesoft.org/schema/mule/db",
+    "xmlns:doc": "http://www.mulesoft.org/schema/mule/documentation",
+    "xmlns:dw": "http://www.mulesoft.org/schema/mule/ee/dw",
+    "xmlns:http": "http://www.mulesoft.org/schema/mule/http",
+    "xmlns:mulexml": "http://www.mulesoft.org/schema/mule/xml",
+    "xmlns:s3": "http://www.mulesoft.org/schema/mule/s3",
+    "xmlns:spring": "http://www.springframework.org/schema/beans",
+    "xmlns:tracking": "http://www.mulesoft.org/schema/mule/ee/tracking",
+    "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+    "xsi:schemaLocation": "http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/s3 http://www.mulesoft.org/schema/mule/s3/current/mule-s3.xsd
+http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd",
+  },
   "content": Array [
     Object {
-      "attributes": Array [
-        "vertical",
-      ],
       "content": Array [
         Object {
-          "attributes": Array [
-            "horizontal",
-          ],
           "content": Array [
             Object {
-              "attributes": Array [
-                "added",
-              ],
               "content": null,
               "description": "Overwrite the payload",
               "hash": 266487046,
+              "labels": Array [
+                "added",
+              ],
+              "location": null,
               "tag-name": "set-payload",
               "type": "component",
             },
             Object {
-              "attributes": Array [],
+              "attributes": Object {
+                "config-ref": "example-pizza-httpListenerConfig",
+                "doc:name": "HTTP",
+                "path": "/",
+              },
+              "content-hash": -2017569654,
               "description": "HTTP",
-              "hash": 2077519509,
+              "hash": -699903627,
+              "labels": Array [],
               "location": Object {
                 "column": 95,
                 "line": 14,
@@ -39,11 +55,33 @@ Object {
               "type": "component",
             },
             Object {
-              "attributes": Array [
-                "edited",
+              "attributes": Object {
+                "doc:name": "Set Z level to 9000",
+                "value": "#[9000]",
+                "variableName": "z-level",
+              },
+              "change-record": Array [
+                Object {
+                  "delta": Array [
+                    1907014272,
+                    641237277,
+                  ],
+                  "name": "hash",
+                },
+                Object {
+                  "delta": Array [
+                    "Set Z level to 9000",
+                    "Set Z level to 7000",
+                  ],
+                  "name": "description",
+                },
               ],
+              "content-hash": -2017569654,
               "description": "Set Z level to 7000",
               "hash": 641237277,
+              "labels": Array [
+                "edited",
+              ],
               "location": Object {
                 "column": 93,
                 "line": 15,
@@ -52,9 +90,14 @@ Object {
               "type": "component",
             },
             Object {
-              "attributes": Array [],
+              "attributes": Object {
+                "doc:name": "Overwrite the payload",
+                "value": "#['lol']",
+              },
+              "content-hash": -2017569654,
               "description": "Overwrite the payload",
-              "hash": 266487046,
+              "hash": 1820937142,
+              "labels": Array [],
               "location": Object {
                 "column": 72,
                 "line": 16,
@@ -63,9 +106,14 @@ Object {
               "type": "component",
             },
             Object {
-              "attributes": Array [],
+              "attributes": Object {
+                "doc:name": "example:/expunge-convolvers",
+                "name": "example:/expunge-convolvers",
+              },
+              "content-hash": -2017569654,
               "description": "example:/expunge-convolvers",
-              "hash": 771211107,
+              "hash": 661336026,
+              "labels": Array [],
               "location": Object {
                 "column": 93,
                 "line": 17,
@@ -74,11 +122,16 @@ Object {
               "type": "component",
             },
             Object {
-              "attributes": Array [
+              "attributes": Object {
+                "doc:name": "Filter recalcitrant ions",
+                "expression": "",
+              },
+              "content-hash": -2017569654,
+              "description": "Filter recalcitrant ions",
+              "hash": -586981530,
+              "labels": Array [
                 "removed",
               ],
-              "description": "Filter recalcitrant ions",
-              "hash": -2096291590,
               "location": Object {
                 "column": 78,
                 "line": 18,
@@ -87,54 +140,63 @@ Object {
               "type": "component",
             },
             Object {
-              "attributes": Array [
-                "horizontal",
-              ],
+              "attributes": Object {
+                "doc:name": "For Each",
+              },
               "content": Array [
                 Object {
-                  "attributes": Array [
-                    "added",
-                  ],
                   "content": null,
                   "description": "example:/strain-overflow-noodle-requests",
                   "hash": -2070961420,
+                  "labels": Array [
+                    "added",
+                  ],
+                  "location": null,
                   "tag-name": "flow-ref",
                   "type": "component",
                 },
                 Object {
-                  "attributes": Array [
-                    "added",
-                  ],
                   "content": null,
                   "description": "example:/strain-overflow-noodle-requests",
                   "hash": -2070961420,
+                  "labels": Array [
+                    "added",
+                  ],
+                  "location": null,
                   "tag-name": "flow-ref",
                   "type": "component",
                 },
                 Object {
-                  "attributes": Array [
-                    "added",
-                  ],
                   "content": null,
                   "description": "example:/strain-overflow-noodle-requests",
                   "hash": -2070961420,
+                  "labels": Array [
+                    "added",
+                  ],
+                  "location": null,
                   "tag-name": "flow-ref",
                   "type": "component",
                 },
                 Object {
-                  "attributes": Array [
-                    "added",
-                  ],
                   "content": null,
                   "description": "example:/strain-overflow-noodle-requests",
                   "hash": -2070961420,
+                  "labels": Array [
+                    "added",
+                  ],
+                  "location": null,
                   "tag-name": "flow-ref",
                   "type": "component",
                 },
                 Object {
-                  "attributes": Array [],
+                  "attributes": Object {
+                    "doc:name": "example:/strain-overflow-noodle-requests",
+                    "name": "example:/strain-overflow-noodle-requests",
+                  },
+                  "content-hash": -2017569654,
                   "description": "example:/strain-overflow-noodle-requests",
-                  "hash": -2070961420,
+                  "hash": 160630889,
+                  "labels": Array [],
                   "location": Object {
                     "column": 123,
                     "line": 20,
@@ -145,6 +207,9 @@ Object {
               ],
               "description": "For Each",
               "hash": 242079301,
+              "labels": Array [
+                "horizontal",
+              ],
               "location": Object {
                 "column": 37,
                 "line": 19,
@@ -153,9 +218,13 @@ Object {
               "type": "container",
             },
             Object {
-              "attributes": Array [],
+              "attributes": Object {
+                "doc:name": "Server Noodles",
+              },
+              "content-hash": -2017569654,
               "description": "Server Noodles",
-              "hash": -789013297,
+              "hash": -1584631798,
+              "labels": Array [],
               "location": Object {
                 "column": 48,
                 "line": 22,
@@ -164,11 +233,24 @@ Object {
               "type": "component",
             },
             Object {
-              "attributes": Array [
-                "edited",
+              "attributes": Object {
+                "doc:name": "Deduplicate",
+              },
+              "change-record": Array [
+                Object {
+                  "delta": Array [
+                    385704797,
+                    251600214,
+                  ],
+                  "name": "hash",
+                },
               ],
+              "content-hash": -539022716,
               "description": "Deduplicate",
               "hash": 251600214,
+              "labels": Array [
+                "edited",
+              ],
               "location": Object {
                 "column": 53,
                 "line": 23,
@@ -177,46 +259,68 @@ Object {
               "type": "component",
             },
             Object {
-              "attributes": Array [
-                "added",
-              ],
               "content": null,
               "description": "Server Noodles 2",
               "hash": 798826535,
+              "labels": Array [
+                "added",
+              ],
+              "location": null,
               "tag-name": "set-payload",
               "type": "component",
             },
           ],
           "description": "",
+          "labels": Array [
+            "horizontal",
+          ],
           "tag-name": "psuedo",
           "type": "container",
         },
         Object {
-          "attributes": Array [
-            "horizontal",
-          ],
           "content": Array [
             Object {
-              "attributes": Array [
-                "error-handler",
-              ],
+              "attributes": Object {
+                "doc:name": "Catch Exception Strategy",
+              },
               "content": Array [
                 Object {
-                  "attributes": Array [
-                    "added",
-                  ],
                   "content": null,
                   "description": "Nothing to see here",
                   "hash": 54737936,
+                  "labels": Array [
+                    "added",
+                  ],
+                  "location": null,
                   "tag-name": "set-payload",
                   "type": "component",
                 },
                 Object {
-                  "attributes": Array [
-                    "edited",
+                  "attributes": Object {
+                    "doc:name": "Nothing to see here",
+                  },
+                  "change-record": Array [
+                    Object {
+                      "delta": Array [
+                        54737936,
+                        266487046,
+                      ],
+                      "name": "hash",
+                    },
+                    Object {
+                      "delta": Array [
+                        "Nothing to see here",
+                        "Overwrite the payload",
+                      ],
+                      "name": "description",
+                    },
                   ],
+                  "content-hash": -2017569654,
                   "description": "Overwrite the payload",
                   "hash": 266487046,
+                  "labels": Array [
+                    "edited",
+                  ],
                   "location": Object {
                     "column": 57,
                     "line": 32,
@@ -225,9 +329,13 @@ Object {
                   "type": "component",
                 },
                 Object {
-                  "attributes": Array [],
+                  "attributes": Object {
+                    "doc:name": "Nor here",
+                  },
+                  "content-hash": -2017569654,
                   "description": "Nor here",
-                  "hash": 614804477,
+                  "hash": -1443655736,
+                  "labels": Array [],
                   "location": Object {
                     "column": 65,
                     "line": 33,
@@ -238,6 +346,9 @@ Object {
               ],
               "description": "Catch Exception Strategy",
               "hash": 497298084,
+              "labels": Array [
+                "error-handler",
+              ],
               "location": Object {
                 "column": 70,
                 "line": 31,
@@ -247,24 +358,35 @@ Object {
             },
           ],
           "description": "",
+          "labels": Array [
+            "horizontal",
+          ],
           "tag-name": "psuedo",
           "type": "container",
         },
       ],
       "description": "example:/http-incoming-flow",
+      "labels": Array [
+        "vertical",
+      ],
       "tag-name": "flow",
       "type": "error-container",
     },
     Object {
-      "attributes": Array [
-        "horizontal",
-        "removed",
-      ],
+      "attributes": Object {
+        "name": "example:/expunge-convolvers",
+      },
       "content": Array [
         Object {
-          "attributes": Array [],
+          "attributes": Object {
+            "bulkMode": "false",
+            "config-ref": "",
+            "doc:name": "Flush the convolver prisms",
+          },
+          "content-hash": -2017569654,
           "description": "Flush the convolver prisms",
-          "hash": 579843109,
+          "hash": -1512076747,
+          "labels": Array [],
           "location": Object {
             "column": 104,
             "line": 37,
@@ -273,19 +395,24 @@ Object {
           "type": "component",
         },
         Object {
-          "attributes": Array [
-            "vertical",
-          ],
+          "attributes": Object {
+            "doc:name": "Did the flush occur?",
+          },
           "content": Array [
             Object {
-              "attributes": Array [
-                "horizontal",
-              ],
+              "attributes": Object {
+                "expression": "",
+              },
               "content": Array [
                 Object {
-                  "attributes": Array [],
+                  "attributes": Object {
+                    "config-ref": "",
+                    "doc:name": "Fetch more prisms",
+                  },
+                  "content-hash": -2017569654,
                   "description": "Fetch more prisms",
-                  "hash": 881435866,
+                  "hash": -615782938,
+                  "labels": Array [],
                   "location": Object {
                     "column": 86,
                     "line": 40,
@@ -294,9 +421,14 @@ Object {
                   "type": "component",
                 },
                 Object {
-                  "attributes": Array [],
+                  "attributes": Object {
+                    "doc:name": "Log number of fanglehockeys",
+                    "level": "INFO",
+                  },
+                  "content-hash": -2017569654,
                   "description": "Log number of fanglehockeys",
-                  "hash": 543925965,
+                  "hash": 1560335807,
+                  "labels": Array [],
                   "location": Object {
                     "column": 77,
                     "line": 41,
@@ -307,6 +439,9 @@ Object {
               ],
               "description": null,
               "hash": 2014296490,
+              "labels": Array [
+                "horizontal",
+              ],
               "location": Object {
                 "column": 32,
                 "line": 39,
@@ -315,14 +450,18 @@ Object {
               "type": "container",
             },
             Object {
-              "attributes": Array [
-                "horizontal",
-              ],
+              "attributes": Object {},
               "content": Array [
                 Object {
-                  "attributes": Array [],
+                  "attributes": Object {
+                    "doc:name": "Log Error",
+                    "level": "INFO",
+                    "message": "Bar",
+                  },
+                  "content-hash": -2017569654,
                   "description": "Log Error",
-                  "hash": -818462707,
+                  "hash": 2043302591,
+                  "labels": Array [],
                   "location": Object {
                     "column": 73,
                     "line": 44,
@@ -333,6 +472,9 @@ Object {
               ],
               "description": null,
               "hash": -15128758,
+              "labels": Array [
+                "horizontal",
+              ],
               "location": Object {
                 "column": 23,
                 "line": 43,
@@ -343,6 +485,9 @@ Object {
           ],
           "description": "Did the flush occur?",
           "hash": -1105159260,
+          "labels": Array [
+            "vertical",
+          ],
           "location": Object {
             "column": 48,
             "line": 38,
@@ -353,6 +498,10 @@ Object {
       ],
       "description": "example:/expunge-convolvers",
       "hash": 1066677628,
+      "labels": Array [
+        "horizontal",
+        "removed",
+      ],
       "location": Object {
         "column": 49,
         "line": 36,
@@ -361,24 +510,31 @@ Object {
       "type": "container",
     },
     Object {
-      "attributes": Array [
-        "horizontal",
-      ],
+      "attributes": Object {
+        "name": "example:/strain-overflow-noodle-requests",
+      },
       "content": Array [
         Object {
-          "attributes": Array [
-            "vertical",
-          ],
+          "attributes": Object {
+            "doc:name": "Clean carburetors",
+          },
           "content": Array [
             Object {
-              "attributes": Array [
-                "horizontal",
-              ],
+              "attributes": Object {
+                "doc:name": "Processor Chain",
+              },
               "content": Array [
                 Object {
-                  "attributes": Array [],
+                  "attributes": Object {
+                    "config-ref": "",
+                    "doc:name": "Clean Carburetor 1",
+                    "method": "",
+                    "path": "",
+                  },
+                  "content-hash": -2017569654,
                   "description": "Clean Carburetor 1",
-                  "hash": 1112970330,
+                  "hash": 1805930470,
+                  "labels": Array [],
                   "location": Object {
                     "column": 93,
                     "line": 51,
@@ -387,9 +543,13 @@ Object {
                   "type": "component",
                 },
                 Object {
-                  "attributes": Array [],
+                  "attributes": Object {
+                    "doc:name": "XML to DOM",
+                  },
+                  "content-hash": -2017569654,
                   "description": "XML to DOM",
-                  "hash": -255883650,
+                  "hash": -269132085,
+                  "labels": Array [],
                   "location": Object {
                     "column": 71,
                     "line": 52,
@@ -400,6 +560,9 @@ Object {
               ],
               "description": "Processor Chain",
               "hash": 1690317879,
+              "labels": Array [
+                "horizontal",
+              ],
               "location": Object {
                 "column": 56,
                 "line": 50,
@@ -408,14 +571,19 @@ Object {
               "type": "container",
             },
             Object {
-              "attributes": Array [
-                "horizontal",
-              ],
+              "attributes": Object {},
               "content": Array [
                 Object {
-                  "attributes": Array [],
+                  "attributes": Object {
+                    "config-ref": "",
+                    "doc:name": "Oops this has a really long name",
+                    "method": "",
+                    "path": "",
+                  },
+                  "content-hash": -2017569654,
                   "description": "Oops this has a really long name",
-                  "hash": -1901883164,
+                  "hash": 1450511924,
+                  "labels": Array [],
                   "location": Object {
                     "column": 107,
                     "line": 55,
@@ -424,9 +592,13 @@ Object {
                   "type": "component",
                 },
                 Object {
-                  "attributes": Array [],
+                  "attributes": Object {
+                    "doc:name": "Set Payload",
+                  },
+                  "content-hash": -2017569654,
                   "description": "Set Payload",
-                  "hash": 1079074260,
+                  "hash": 2077915881,
+                  "labels": Array [],
                   "location": Object {
                     "column": 53,
                     "line": 56,
@@ -437,6 +609,9 @@ Object {
               ],
               "description": null,
               "hash": -15128758,
+              "labels": Array [
+                "horizontal",
+              ],
               "location": Object {
                 "column": 29,
                 "line": 54,
@@ -445,9 +620,16 @@ Object {
               "type": "container",
             },
             Object {
-              "attributes": Array [],
+              "attributes": Object {
+                "config-ref": "",
+                "doc:name": "Clean Carburetor 3",
+                "method": "",
+                "path": "",
+              },
+              "content-hash": -2017569654,
               "description": "Clean Carburetor 3",
-              "hash": 598254326,
+              "hash": 1153502827,
+              "labels": Array [],
               "location": Object {
                 "column": 89,
                 "line": 58,
@@ -458,6 +640,9 @@ Object {
           ],
           "description": "Clean carburetors",
           "hash": -688832045,
+          "labels": Array [
+            "vertical",
+          ],
           "location": Object {
             "column": 53,
             "line": 49,
@@ -466,9 +651,16 @@ Object {
           "type": "container",
         },
         Object {
-          "attributes": Array [],
+          "attributes": Object {
+            "config-ref": "",
+            "doc:name": "Start Internal Noodle Engine",
+            "method": "",
+            "path": "",
+          },
+          "content-hash": -2017569654,
           "description": "Start Internal Noodle Engine",
-          "hash": -1986262879,
+          "hash": -1535423867,
+          "labels": Array [],
           "location": Object {
             "column": 95,
             "line": 60,
@@ -479,6 +671,9 @@ Object {
       ],
       "description": "example:/strain-overflow-noodle-requests",
       "hash": 1816956808,
+      "labels": Array [
+        "horizontal",
+      ],
       "location": Object {
         "column": 62,
         "line": 48,
@@ -489,6 +684,10 @@ Object {
   ],
   "description": null,
   "hash": -83749566,
+  "labels": Array [
+    "vertical",
+    "root",
+  ],
   "location": Object {
     "column": 102,
     "line": 12,

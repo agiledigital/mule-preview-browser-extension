@@ -1,55 +1,47 @@
 import { readFileSync } from "fs";
 import { join } from "path";
-import { calculate_diff_components } from "mule-preview/mule_preview.client.views.diff";
+import { calculate_diff } from "mule-preview/mule_preview.client.views.diff";
 import { cljToJs } from "mule-preview/mule_preview.client.test_utils";
 
 describe("when diffing two XML files", () => {
   describe("when file B adds elements with nested content", () => {
-    it("renders correctly", () => {
+    it("augments the MAST correctly", () => {
       const xmlFileA = readFileSync(
         join(__dirname, "__fixtures__/nested-add-a.xml")
       );
       const xmlFileB = readFileSync(
         join(__dirname, "__fixtures__/nested-add-b.xml")
       );
-      const output = cljToJs(
-        calculate_diff_components(xmlFileA, xmlFileB, ".")
-      );
+      const output = cljToJs(calculate_diff(xmlFileA, xmlFileB, "."));
       expect(output).toMatchSnapshot();
     });
   });
 
   describe("when diffing MUnit tests", () => {
-    it("renders correctly", () => {
+    it("augments the MAST correctly", () => {
       const xmlFileA = readFileSync(
         join(__dirname, "__fixtures__/munit-a.xml")
       );
       const xmlFileB = readFileSync(
         join(__dirname, "__fixtures__/munit-b.xml")
       );
-      const output = cljToJs(
-        calculate_diff_components(xmlFileA, xmlFileB, ".")
-      );
+      const output = cljToJs(calculate_diff(xmlFileA, xmlFileB, "."));
       expect(output).toMatchSnapshot();
     });
   });
 
   describe("when doing a diff with a non existant initial state", () => {
-    it("renders correctly", () => {
+    it("augments the MAST correctly", () => {
       const xmlFile = readFileSync(join(__dirname, "__fixtures__/munit-a.xml"));
-      const output = cljToJs(
-        calculate_diff_components(undefined, xmlFile, ".")
-      );
+      const output = cljToJs(calculate_diff(undefined, xmlFile, "."));
       expect(output).toMatchSnapshot();
     });
   });
 
   describe("when doing a diff with a non existant final state", () => {
-    it("renders correctly", () => {
+    it("augments the MAST correctly", () => {
       const xmlFile = readFileSync(join(__dirname, "__fixtures__/munit-b.xml"));
-      const output = cljToJs(
-        calculate_diff_components(xmlFile, undefined, ".")
-      );
+      const output = cljToJs(calculate_diff(xmlFile, undefined, "."));
       expect(output).toMatchSnapshot();
     });
   });

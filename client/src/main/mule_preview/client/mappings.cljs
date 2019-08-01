@@ -8,7 +8,7 @@
 
 (def error-handler-container-list
   "Elements that are a container, but can also have error handling"
-  #{"flow" "transactional"})
+  #{"flow" "transactional" "munit:test"})
 
 (def vertical-container-list
   "Containers that lay out their children vertically"
@@ -27,6 +27,11 @@
   "Elements that can be in the error section of an error handler container"
   #{"catch-exception-strategy" "choice-exception-strategy"
     "exception-strategy" "rollback-exception-strategy"})
+
+(def munit-container-list
+  "MUnit test flows"
+  #{"munit:test" "munit:before-test" "munit:after-test"
+    "munit:after-suite" "munit:before-suite"})
 
 (def element-to-icon-map
   "Mappings to provide icons for each component.

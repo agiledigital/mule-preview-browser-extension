@@ -7,22 +7,22 @@
 
 (defn- node-to-dom [node]
   (if (:type node)
-    (let [{:keys [tag-name content type attributes]} node
-          other-attributes (dissoc node :type-tag :content :type :attributes :location)]
+    (let [{:keys [tag-name content type attributes location]} node
+          other-attributes (dissoc node :type-tag :content :type :labels :attributes :location)]
       {:nodeName tag-name
        :childNodes content
-       :attributes other-attributes
+       :attributes (merge attributes other-attributes)
        :original-type type
-       :original-attributes attributes})
+       :location location})
     node))
 
 (defn dom-to-node [node]
   (if (:nodeName node)
-    (let [{:keys [nodeName childNodes attributes original-type original-attributes]} node]
+    (let [{:keys [nodeName childNodes attributes original-type location]} node]
       (merge {:tag-name nodeName
               :content childNodes
               :type (keyword original-type)
-              :attributes original-attributes} attributes))
+              :location location} attributes))
     node))
 
 (defn mast->dom [mast]

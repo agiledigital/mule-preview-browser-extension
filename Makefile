@@ -19,7 +19,7 @@ browser-plugin/extension/dist: browser-plugin/node_modules/.installed client/bui
 	@echo ">>> Building Browser Extension (Release)"
 	cd browser-plugin && npm run build
 
-client/build/release.js: client/node_modules/.installed client/src/main/mule_preview/client/mappings.json client/public/img/icons/.timestamp $(CLIENT_FILES)
+client/build/release.js: client/node_modules/.installed client/src/main/mule_preview/client/mappings.json client/public/img/icons/.timestamp libs/reagent/target/reagent-0.8.1-BINDFIX.jar $(CLIENT_FILES)
 	@echo ">>> Building Client Module (Release)"
 	cd client && npm run build
 
@@ -47,6 +47,14 @@ client/public/img/icons/.timestamp: $(ANYPOINT_STUDIO_INSTALLATION)/.timestamp
 	cd tools && lein run -- -d "../$(ANYPOINT_STUDIO_INSTALLATION)/plugins/" -o ../client/public/img/icons apply-light-theme
 	touch $@
 
+libs/reagent/target/reagent-0.8.1-BINDFIX.jar: libs/reagent/project.clj
+	@echo ">>> Installing forked version of Reagent into local repo"
+	cd libs/reagent && lein install
+
+libs/reagent/project.clj: .gitmodules
+	@echo ">>> Updating submodule"
+	git submodule update --init --recursive --remote
+
 $(ANYPOINT_STUDIO_INSTALLATION)/.timestamp: dependencies/$(ANYPOINT_STUDIO_ARCHIVE)
 	@echo ">>> Extracting Anypoint Studio dependency"
 	cd dependencies && tar -xzf $(ANYPOINT_STUDIO_ARCHIVE)
@@ -67,9 +75,10 @@ clean:
 	client/node_modules \
 	client/src/main/mule_preview/client/mappings.json \
 	client/public/img/icons \
-	dependencies \
 	tools/target \
 	client/build \
 	client/.shadow-cljs \
-	browser-plugin/build
+	libs/reagent/target \
+	browser-plugin/build \
+	dependencies
 .PHONY: clean
