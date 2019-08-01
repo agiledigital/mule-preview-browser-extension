@@ -15,7 +15,7 @@ deploy:
   api_key:
     secure: ReEx1Fyk8Z/65H0B2cSp6rumxnpBUnZWNz4OSGWhwSYRQdxCwJByaURmmo6xIJn+kKbc58gRsA8YQ50ssYbkTozNWGKboz+tFV73G0KsrsxDtTKzKeS7h/GpJ6qo+4mjWmPpWPo5wkLj1vYjyKuStlRo7sXAluQvbQt3MCYx7NGGaONkyTASuR4Tx+atbs7NtPvBMtl3z4wa3tRS//x9OUX/kyHZkqEcffXIirple9q6VGErRly/VdY1W3VziHbaJG/Z6i9zZbTB6oWZe8GfKKFoiuq2szngnTToEeFn8oYHrV3/B26isVcGJdwfIfAnRrJXUZ7XOzXePR/xkFqfZMEPQfULQyKG+X6OGb/wOxjwGp/6mL3cKFZlUwqiGn9z3/A2BxwcxQgVkNWRsE5dTnZgThIksxVKaqFgL/6YC5uUZ/HnwGnYCT54eoqVnUsamPh7BMjncDZcIN+q3zZPU2EjDZ7CNoddg8bBV1ieiqdBpwD5D0EcCAwk7dib7CvBNTp2poB8j2wBIj1HY5TEuEppcXzJzOp3OGSpfx5UOgwQZkSkM/aY4U/g9RC/uVDmZfAyzSslKT6a6NlAhTdidEO/V2zKrLI+RTcJCpgXHxmoM06FVTjes0MPnaR6vmBR0LZ8lc4qO7MTTSlR35u6f7zmb3bIwF77qvTbxH/mlqs=
   file:
-    - browser-plugin/build/package.zip
+    - browser-plugin/build/package-unsigned.zip
     - client/build/release.js
     - client/build/release.js.map
   draft: true
