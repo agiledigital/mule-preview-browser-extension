@@ -1,8 +1,8 @@
-(defproject tools "0.1.0-SNAPSHOT"
-  :description "FIXME: write description"
-  :url "http://example.com/FIXME"
-  :license {:name "EPL-2.0 OR GPL-2.0-or-later WITH Classpath-exception-2.0"
-            :url "https://www.eclipse.org/legal/epl-2.0/"}
+(defproject tools "1.0.0"
+  :description "Command line tools for processing Mule XML files"
+  :url "https://github.com/NoxHarmonium/mule-preview"
+  :license {:name "Apache License"
+            :url  "http://www.apache.org/licenses/LICENSE-2.0"}
   :dependencies [[org.clojure/clojure "1.10.0"]
                  [org.clojure/tools.cli "0.4.2"]
                  [com.github.kyleburton/clj-xpath "1.4.11"]
