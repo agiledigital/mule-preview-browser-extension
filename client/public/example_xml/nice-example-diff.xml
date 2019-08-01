@@ -61,20 +61,13 @@ payload distinctBy $.pies]]></dw:set-payload>
             </mock:with-attributes>
             <mock:then-return payload="#[YYY]"/>
         </mock:when>
-        <mock:spy doc:name="Spy" messageProcessor=".*:.*">
-            <mock:with-attributes>
-                <mock:with-attribute name="name" whereValue="#[matchContains('sdds')]"/>
-            </mock:with-attributes>
-            <mock:assertions-before-call>
-                <assert-object-equals:compare-objects doc:name="FFF" expected-ref="YYY"/>
-            </mock:assertions-before-call>
-        </mock:spy>
         <mock:spy doc:name="Spy" messageProcessor="asfsf">
             <mock:assertions-before-call>
                 <munit:assert-true condition="#[af]" doc:name="gaddga"/>
             </mock:assertions-before-call>
         </mock:spy>
         <flow-ref doc:name="sgdsd" name="csgdsdg"/>
+        <set-variable doc:name="var" name="ddd"/>
         <mock:verify-call doc:name="sgdsdgsgd" messageProcessor=".*:.*" times="4">
             <mock:with-attributes>
                 <mock:with-attribute name="name" whereValue="#sdfsdfw"/>

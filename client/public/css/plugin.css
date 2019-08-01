@@ -175,7 +175,8 @@
 }
 
 .mp .container.root > .container-inner > .icon-container,
-.mp .container.mule-flow > .container-inner > .icon-container {
+.mp .container.mule-flow > .container-inner > .icon-container,
+.mp .container.mule-munit_test > .container-inner > .icon-container {
   display: none;
 }
 

@@ -161,7 +161,7 @@ http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/
               "attributes": Object {
                 "doc:name": "Deduplicate",
               },
-              "content-hash": 1353515646,
+              "content-hash": -539022716,
               "description": "Deduplicate",
               "hash": 754939631,
               "labels": Array [],

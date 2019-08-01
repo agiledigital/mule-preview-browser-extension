@@ -74,7 +74,7 @@
   (reduce (partial process-removal path) mast removals))
 
 (defn- apply-removal-map [mast removal-map]
-  (let [mast-with-removals (reduce process-removal-path mast removal-map)]
+  (let [mast-with-removals (reduce process-removal-path mast (reverse removal-map))]
     mast-with-removals))
 
 (defn augment-mast-with-diff [mast diff]

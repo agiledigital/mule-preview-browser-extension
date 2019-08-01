@@ -245,7 +245,7 @@ http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/
                   "name": "hash",
                 },
               ],
-              "content-hash": 1353515646,
+              "content-hash": -539022716,
               "description": "Deduplicate",
               "hash": 251600214,
               "labels": Array [

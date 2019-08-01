@@ -34,6 +34,7 @@
 (defn- transform-tag [node content-root]
   (let [type (:type node)]
     (case type
+      :munit-container (create-mule-container-component node content-root)
       :error-container (create-mule-container-component node content-root)
       :container (create-mule-container-component node content-root)
       :component (create-mule-component node content-root))))
