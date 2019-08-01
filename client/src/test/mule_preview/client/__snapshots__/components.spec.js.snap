@@ -28,8 +28,6 @@ exports[`when rendering a Mule component when the component has mapping renders 
     >
       <div
         className="component set-payload some-css-class"
-        data-line={1}
-        data-position={4}
       >
         <img
           className="category-frame"
@@ -78,8 +76,6 @@ exports[`when rendering a Mule component when the component is unknown renders c
     >
       <div
         className="component sjdsfjlsdf some-css-class"
-        data-line={1}
-        data-position={4}
       >
         <img
           className="category-frame"
@@ -125,8 +121,6 @@ exports[`when rendering a Mule container when it has children renders correctly 
   >
     <div
       className="container mule-flow some-css-class"
-      data-line={2}
-      data-position={3}
     >
       <div
         className="container-title"
@@ -178,8 +172,6 @@ exports[`when rendering a Mule container when it has children renders correctly 
               >
                 <div
                   className="component set-payload some-css-class"
-                  data-line={1}
-                  data-position={4}
                 >
                   <img
                     className="category-frame"
@@ -229,8 +221,6 @@ exports[`when rendering a Mule container when it has children renders correctly 
               >
                 <div
                   className="component message-properties-transformer some-css-class"
-                  data-line={4}
-                  data-position={4}
                 >
                   <img
                     className="category-frame"
@@ -280,8 +270,6 @@ exports[`when rendering a Mule container when it has children renders correctly 
               >
                 <div
                   className="component http:request some-css-class"
-                  data-line={7}
-                  data-position={4}
                 >
                   <img
                     className="category-frame"
@@ -332,8 +320,6 @@ exports[`when rendering a Mule container when it has no children renders correct
   >
     <div
       className="container mule-flow some-css-class"
-      data-line={2}
-      data-position={3}
     >
       <div
         className="container-title"

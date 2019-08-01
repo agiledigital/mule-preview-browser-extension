@@ -48,6 +48,10 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
           "labels": Array [
             "added",
           ],
+          "location": Object {
+            "column": 96,
+            "line": 15,
+          },
           "tag-name": "munit:assert-on-equals",
           "type": "component",
         },
@@ -140,6 +144,10 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
           "description": "Assert Null Payload",
           "doc:name": "Assert Null Payload",
           "hash": 358321917,
+          "location": Object {
+            "column": 59,
+            "line": 19,
+          },
           "tag-name": "munit:assert-null",
           "type": "component",
         },
@@ -150,6 +158,10 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
           "doc:name": "Assert Payload",
           "expectedValue": "#[]",
           "hash": 1170098794,
+          "location": Object {
+            "column": 84,
+            "line": 20,
+          },
           "tag-name": "munit:assert-payload-equals",
           "type": "component",
         },
@@ -159,6 +171,10 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
       "labels": Array [
         "added",
       ],
+      "location": Object {
+        "column": 83,
+        "line": 18,
+      },
       "name": "new-test-suiteBefore_Suite",
       "tag-name": "munit:before-suite",
       "type": "container",
@@ -245,6 +261,10 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
           "labels": Array [
             "added",
           ],
+          "location": Object {
+            "column": 37,
+            "line": 28,
+          },
           "tag-name": "munit:fail",
           "type": "component",
         },
@@ -576,6 +596,10 @@ Object {
       "labels": Array [
         "added",
       ],
+      "location": Object {
+        "column": 63,
+        "line": 13,
+      },
       "name": "munit",
       "tag-name": "munit:config",
       "type": "component",
@@ -589,6 +613,10 @@ Object {
           "description": "Assert False",
           "doc:name": "Assert False",
           "hash": -964144491,
+          "location": Object {
+            "column": 69,
+            "line": 15,
+          },
           "tag-name": "munit:assert-false",
           "type": "component",
         },
@@ -598,6 +626,10 @@ Object {
       "labels": Array [
         "added",
       ],
+      "location": Object {
+        "column": 89,
+        "line": 14,
+      },
       "name": "new-test-suiteAfter_Suite",
       "tag-name": "munit:after-suite",
       "type": "container",
@@ -612,6 +644,10 @@ Object {
           "doc:name": "Assert Not Equals",
           "expectedValue": "#[]",
           "hash": 1131396067,
+          "location": Object {
+            "column": 99,
+            "line": 18,
+          },
           "tag-name": "munit:assert-not-same",
           "type": "component",
         },
@@ -621,6 +657,10 @@ Object {
           "description": "Assert Not Null Payload",
           "doc:name": "Assert Not Null Payload",
           "hash": -802864801,
+          "location": Object {
+            "column": 67,
+            "line": 19,
+          },
           "tag-name": "munit:assert-not-null",
           "type": "component",
         },
@@ -630,6 +670,10 @@ Object {
       "labels": Array [
         "added",
       ],
+      "location": Object {
+        "column": 88,
+        "line": 17,
+      },
       "name": "new-test-suiteAfter_Test",
       "tag-name": "munit:after-test",
       "type": "container",
@@ -643,6 +687,10 @@ Object {
           "description": "Assert True",
           "doc:name": "Assert True",
           "hash": 1099203488,
+          "location": Object {
+            "column": 67,
+            "line": 22,
+          },
           "tag-name": "munit:assert-true",
           "type": "component",
         },
@@ -653,6 +701,10 @@ Object {
           "description": "Custom Assertion",
           "doc:name": "Custom Assertion",
           "hash": 1823118484,
+          "location": Object {
+            "column": 72,
+            "line": 23,
+          },
           "tag-name": "munit:run-custom",
           "type": "component",
         },
@@ -662,6 +714,10 @@ Object {
       "labels": Array [
         "added",
       ],
+      "location": Object {
+        "column": 91,
+        "line": 21,
+      },
       "name": "new-test-suiteBefore_Test",
       "tag-name": "munit:before-test",
       "type": "container",
@@ -674,6 +730,10 @@ Object {
           "description": "Set Message",
           "doc:name": "Set Message",
           "hash": -339828259,
+          "location": Object {
+            "column": 57,
+            "line": 26,
+          },
           "payload": "#[]",
           "tag-name": "munit:set",
           "type": "component",
@@ -684,6 +744,10 @@ Object {
           "description": "Set Null Payload",
           "doc:name": "Set Null Payload",
           "hash": -852187714,
+          "location": Object {
+            "column": 61,
+            "line": 27,
+          },
           "tag-name": "munit:set-null-payload",
           "type": "component",
         },
@@ -693,6 +757,10 @@ Object {
       "labels": Array [
         "added",
       ],
+      "location": Object {
+        "column": 67,
+        "line": 25,
+      },
       "name": "new-test-suiteTest",
       "tag-name": "munit:test",
       "type": "container",
@@ -740,6 +808,10 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
           "description": "Some transform",
           "doc:name": "Some transform",
           "hash": 1005263453,
+          "location": Object {
+            "column": 56,
+            "line": 16,
+          },
           "tag-name": "dw:transform-message",
           "type": "component",
         },
@@ -749,6 +821,10 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
       "labels": Array [
         "added",
       ],
+      "location": Object {
+        "column": 32,
+        "line": 15,
+      },
       "name": "a sub flow",
       "tag-name": "sub-flow",
       "type": "container",
