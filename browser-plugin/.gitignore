@@ -98,3 +98,4 @@ extension/dist
 
 # Copied over from the client project
 extension/public/
+web-ext-artifacts/
