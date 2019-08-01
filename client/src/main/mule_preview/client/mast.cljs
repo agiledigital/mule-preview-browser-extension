@@ -2,6 +2,7 @@
   "Functions to convert Mule XML data structures to an intermediate MAST structure"
   (:require
    [clojure.walk :refer [prewalk]]
+   [mule-preview.client.utils :refer [remove-location]]
    [mule-preview.client.mappings :refer [root-container horizontal-container-list
                                          vertical-container-list error-handler-component-list
                                          error-handler-container-list]]))
@@ -27,7 +28,7 @@
      :tag-name tag-name
      :description (or description tag-name)
      :hash (hash (:attributes node))
-     :content-hash (hash content)
+     :content-hash (hash (remove-location content))
      :labels labels
      :location (:location node)
      :attributes attributes}))

@@ -115,8 +115,6 @@
         category-url (name-to-category-url name default-category-image)
         tooltip (tooltip change-record labels location)
         should-show-tooltip (or change-record (:added labels) (:removed labels))]
-    (println labels)
-
     [popover-anchor-wrapper
      :position :below-right
      :showing? showing-atom
