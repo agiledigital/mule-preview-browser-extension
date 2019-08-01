@@ -32,14 +32,14 @@
   (let [index (last route)
         keyword-route (drop-last (prepare-path route))
         original-element (dom->mast element)
-        updated (update-in original-element [:labels] #(conj % :added))]
+        updated (update-in original-element [:labels] #(set (conj % :added)))]
     [(update-in mast keyword-route #(insert % index updated)) (shift-removal route removal-map)]))
 
 (defn- modify-element [mast removal-map route element name oldValue newValue]
   (let [index (last route)
         keyword-route (prepare-path route)
         original-element (get-in mast keyword-route)
-        with-labels (update-in original-element [:labels] #(conj % :edited))
+        with-labels (update-in original-element [:labels] #(set (conj % :edited)))
         with-description (assoc-in with-labels [(keyword name)] newValue)
         with-change-record (update-in with-description [:change-record]
                                       #(conj % {:name name :delta [oldValue newValue]}))]
@@ -67,7 +67,7 @@
 
 (defn- process-removal [path mast [index element]]
   (let [keyword-route path
-        updated (update-in element [:labels] #(conj % :removed))]
+        updated (update-in element [:labels] #(set (conj % :removed)))]
     (update-in mast keyword-route #(insert % index updated))))
 
 (defn- process-removal-path [mast [path removals]]

@@ -17,7 +17,8 @@
                       :css-class (labels-to-css labels)
                       :content-root content-root
                       :location location
-                      :change-record change-record})]))
+                      :change-record change-record
+                      :labels labels})]))
 
 (defn- create-mule-container-component [node content-root]
   (let [{:keys [tag-name description content labels location change-record]} node]
@@ -27,7 +28,8 @@
                       :css-class (labels-to-css labels)
                       :content-root content-root
                       :location location
-                      :change-record change-record})]))
+                      :change-record change-record
+                      :labels labels})]))
 
 (defn- transform-tag [node content-root]
   (let [type (:type node)]

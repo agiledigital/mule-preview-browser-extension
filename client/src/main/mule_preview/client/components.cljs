@@ -19,16 +19,6 @@
 (defn map-kv [m f]
   (reduce-kv #(assoc %1 (f %2) %3) {} m))
 
-; (defn- data-prefixerise
-;   "Prefixes all the keys in a map with 'data-' to align with HTML standards"
-;   [m]
-;   (into {} (for [[k v] m] [(str "data-" (name k)) v])))
-
-(defn- data-prefixerise
-  "Prefixes all the keys in a map with 'data-' to align with HTML standards"
-  [m]
-  (map-kv m #(str "data-" (name %))))
-
 (defn- normalise-name [name]
   (let [split-name (split name #":")
         first-component (first split-name)]
@@ -92,33 +82,50 @@
 (defn tooltip-item [{:keys [name delta]}]
   (if (#{"content-hash"} name)
     [:div
+     {:key name}
      "Content Changed"]
     (delta-text name delta)))
 
-(defn tooltip-inner [change-record]
+(defn tooltip-edited [change-record]
   [:div (->>
          change-record
          (remove #(#{"hash" "description"} (:name %)))
          (map tooltip-item))])
 
-(defn tooltip [change-record]
+
+(defn tooltip-added []
+  [:div "Element Added"])
+
+(defn tooltip-removed []
+  [:div "Element Removed"])
+
+(defn tooltip [change-record labels location]
   [popover-content-wrapper
    :title "Changes"
-   :body (tooltip-inner change-record)])
+   :body [:div
+          [:p {:class "change-location"} (str "Line " (:line location) ", Column " (:column location))]
+          (cond
+            (:added labels) (tooltip-added)
+            (:removed labels) (tooltip-removed)
+            (:edited labels) (tooltip-edited change-record)
+            :else nil)]])
 
-(defn mule-component-inner [{:keys [name description css-class content-root location change-record showing-atom]}]
+(defn mule-component-inner [{:keys [name description css-class content-root location change-record showing-atom labels]}]
   (let [img-url (name-to-img-url name false default-component-mapping)
-        category-url (name-to-category-url name default-category-image)]
+        category-url (name-to-category-url name default-category-image)
+        tooltip (tooltip change-record labels location)
+        should-show-tooltip (or change-record (:added labels) (:removed labels))]
+    (println labels)
+
     [popover-anchor-wrapper
      :position :below-right
      :showing? showing-atom
-     :popover (tooltip change-record)
+     :popover tooltip
      :anchor [:div {:class ["component-container"]}
               [:div
                (merge {:class ["component" name css-class]}
-                      (when change-record {:on-mouse-over (m/handler-fn (reset! showing-atom true))
-                                           :on-mouse-out  (m/handler-fn (reset! showing-atom false))})
-                      (data-prefixerise location))
+                      (when should-show-tooltip {:on-mouse-over (m/handler-fn (reset! showing-atom true))
+                                                 :on-mouse-out  (m/handler-fn (reset! showing-atom false))}))
                (image category-url "category-frame" content-root)
                (image img-url "icon" content-root)
                [:div {:class "label"} description]]]]))
@@ -127,21 +134,22 @@
   (let [showing-atom (r/atom false)]
     (fn [] (mule-component-inner (assoc props :showing-atom showing-atom)))))
 
-(defn mule-container-inner [{:keys [name description children css-class content-root location change-record showing-atom]}]
+(defn mule-container-inner [{:keys [name description children css-class content-root location change-record showing-atom labels]}]
   (let [generated-css-class (name-to-css-class name)
         img-url (name-to-img-url name (some? children) nil)
         category-url (name-to-category-url name default-category-image)
         interposed-children (interpose (arrow content-root) children)
-        child-container-component (child-container interposed-children)]
+        child-container-component (child-container interposed-children)
+        tooltip (tooltip change-record labels location)
+        should-show-tooltip (or change-record (:added labels) (:removed labels))]
     [popover-anchor-wrapper
      :position :below-right
      :showing? showing-atom
-     :popover (tooltip change-record)
+     :popover tooltip
      :anchor
      [:div (merge {:class ["container" generated-css-class css-class]}
-                  (when change-record {:on-mouse-over (m/handler-fn (reset! showing-atom true))
-                                       :on-mouse-out  (m/handler-fn (reset! showing-atom false))})
-                  (data-prefixerise location))
+                  (when should-show-tooltip {:on-mouse-over (m/handler-fn (reset! showing-atom true))
+                                             :on-mouse-out  (m/handler-fn (reset! showing-atom false))}))
       [:div {:class "container-title"} description]
       [:div {:class "container-inner"}
        [:div {:class "icon-container"}
