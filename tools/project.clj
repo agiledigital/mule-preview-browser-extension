@@ -1,4 +1,4 @@
-(defproject tools "1.0.3"
+(defproject tools "1.0.4"
   :description "Command line tools for processing Mule XML files"
   :url "https://github.com/NoxHarmonium/mule-preview"
   :license {:name "Apache License"
