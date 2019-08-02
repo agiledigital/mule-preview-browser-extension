@@ -13,7 +13,7 @@ before_install:
   - nvm use
 install: skip
 script: make
-before_deploy: cd browser-plugin && npm run firefox-upload && npm run chrome-upload && cd ..
+before_deploy: cd browser-plugin && npm run firefox-upload && npm run chrome-upload && npm run chrome-publish && cd ..
 deploy:
   provider: releases
   skip_cleanup: true
