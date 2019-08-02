@@ -25,6 +25,7 @@
     "addons-linter": "^1.10.1",
     "babel-eslint": "^10.0.2",
     "babel-loader": "^8.0.0",
+    "chrome-webstore-upload-cli": "^1.2.0",
     "concurrently": "^4.1.1",
     "core-js": "^3.1.4",
     "css-loader": "^3.1.0",
@@ -57,7 +58,8 @@
     "start": "concurrently --kill-others \"npm run watch-extension\" \"npm run watch-webpack\"",
     "build": "webpack --config webpack.production.config.js -p",
     "lint": "eslint --fix src && npx stylelint --fix \"src/**/*.scss\" \"src/**/*.css\" \"src/**/*.html\"",
-    "sign": "web-ext sign -s extension/ --api-key \"${MOZILLA_API_KEY}\" --api-secret \"${MOZILLA_API_SECRET}\" --channel unlisted"
+    "firefox-upload": "web-ext sign -s extension/ --api-key \"${MOZILLA_API_KEY}\" --api-secret \"${MOZILLA_API_SECRET}\" --channel unlisted",
+    "chrome-upload": "webstore upload --auto-publish --source build/package-unsigned.zip --extension-id \"${GOOGLE_EXTENSION_ID}\" --client-id \"${GOOGLE_CLIENT_ID}\" --client-secret \"${GOOGLE_CLIENT_SECRET}\" --refresh-token \"${GOOGLE_CLIENT_REFRESH}\""
   },
   "repository": {
     "type": "git",
