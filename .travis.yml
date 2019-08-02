@@ -9,7 +9,7 @@ before_install:
 - nvm use
 install: skip
 script: make
-before_deploy: cd browser-plugin && npm run sign
+before_deploy: cd browser-plugin && npm run sign && cd ..
 deploy:
   provider: releases
   skip_cleanup: true
