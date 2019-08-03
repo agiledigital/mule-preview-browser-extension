@@ -138,24 +138,14 @@
         img-url (name-to-img-url name (some? children) nil)
         category-url (name-to-category-url name default-category-image)
         interposed-children (interpose (arrow content-root) children)
-        child-container-component (child-container interposed-children)
-        tooltip (tooltip change-record labels location)
-        should-show-tooltip (or change-record (:added labels) (:removed labels))]
-    [popover-anchor-wrapper
-     :position :below-right
-     :showing? showing-atom
-     :popover tooltip
-     :anchor
-     [:div {:class ["container" generated-css-class css-class]
-            ; :on-mouse-over (m/handler-fn (reset! showing-atom should-show-tooltip))
-            ; :on-mouse-out  (m/handler-fn (reset! showing-atom false))
-            }
-      [:div {:class "container-title"} description]
-      [:div {:class "container-inner"}
-       [:div {:class "icon-container"}
-        (image category-url "category-frame" content-root)
-        (image img-url "icon container-image" content-root)]
-       child-container-component]]]))
+        child-container-component (child-container interposed-children)]
+    [:div {:class ["container" generated-css-class css-class]}
+     [:div {:class "container-title"} description]
+     [:div {:class "container-inner"}
+      [:div {:class "icon-container"}
+       (image category-url "category-frame" content-root)
+       (image img-url "icon container-image" content-root)]
+      child-container-component]]))
 
 (defn mule-container [props]
   (let [showing-atom (r/atom false)]
