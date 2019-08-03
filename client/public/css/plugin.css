@@ -232,7 +232,7 @@
 }
 
 /* We want the added/removed states to propagate to children */
-.mp .added .container {
+.mp .added.container {
   background: repeating-linear-gradient(
     45deg,
     #5cb85c,
@@ -242,7 +242,7 @@
   );
 }
 
-.mp .removed .container {
+.mp .removed.container {
   background: repeating-linear-gradient(
     45deg,
     #d9534f,
@@ -250,6 +250,12 @@
     #d43f3a 10px,
     #d43f3a 20px
   );
+}
+
+.mp .container.edited .container,
+.mp .container.added .container,
+.mp .container.removed .container {
+  background-color: transparent;
 }
 
 /* Tooltip */
