@@ -216,10 +216,10 @@
 .mp .container.edited {
   background: repeating-linear-gradient(
     45deg,
-    #f0ad4e,
-    #f0ad4e 10px,
-    #eea236 10px,
-    #eea236 20px
+    #f0ad4ebb,
+    #f0ad4ebb 10px,
+    #eea236bb 10px,
+    #eea236bb 20px
   );
 }
 
@@ -227,20 +227,20 @@
 .mp .added.container {
   background: repeating-linear-gradient(
     45deg,
-    #5cb85c,
-    #5cb85c 10px,
-    #4cae4c 10px,
-    #4cae4c 20px
+    #5cb85cbb,
+    #5cb85cbb 10px,
+    #4cae4cbb 10px,
+    #4cae4cbb 20px
   );
 }
 
 .mp .removed.container {
   background: repeating-linear-gradient(
     45deg,
-    #d9534f,
-    #d9534f 10px,
-    #d43f3a 10px,
-    #d43f3a 20px
+    #d9534fbb,
+    #d9534fbb 10px,
+    #d43f3abb 10px,
+    #d43f3abb 20px
   );
 }
 
