@@ -76,7 +76,8 @@
      :description description
      :content [(create-mule-psuedo-container regular-components #{:top})
                (create-mule-psuedo-container error-handlers #{:bottom})]
-     :labels labels}))
+     :labels labels
+     :location (:location node)}))
 
 (defn- process-munit-container [node tag-name labels]
   (let [description (get-description node)
@@ -88,7 +89,8 @@
      :description description
      :content [(create-mule-psuedo-container mocks #{:top} "Setup")
                (create-mule-psuedo-container regular-components #{:bottom} "Test")]
-     :labels labels}))
+     :labels labels
+     :location (:location node)}))
 
 (defn- transform-tag [node]
   (let [tag-name (get-tag node)
