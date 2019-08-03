@@ -119,10 +119,9 @@
      :position :below-right
      :showing? showing-atom
      :popover tooltip
-     :anchor [:div (merge {:class ["component-container" css-class]}
-                          (when should-show-tooltip {:on-mouse-over (m/handler-fn (reset! showing-atom true))
-                                                     :on-mouse-out  (m/handler-fn (reset! showing-atom false))}))
-
+     :anchor [:div  {:class ["component-container" css-class]
+                     :on-mouse-over (m/handler-fn (reset! showing-atom should-show-tooltip))
+                     :on-mouse-out  (m/handler-fn (reset! showing-atom false))}
               [:div {:class ["diff-icon"]}]
               [:div
                {:class ["component" name]}
@@ -147,9 +146,10 @@
      :showing? showing-atom
      :popover tooltip
      :anchor
-     [:div (merge {:class ["container" generated-css-class css-class]}
-                  (when should-show-tooltip {:on-mouse-over (m/handler-fn (reset! showing-atom true))
-                                             :on-mouse-out  (m/handler-fn (reset! showing-atom false))}))
+     [:div {:class ["container" generated-css-class css-class]
+            ; :on-mouse-over (m/handler-fn (reset! showing-atom should-show-tooltip))
+            ; :on-mouse-out  (m/handler-fn (reset! showing-atom false))
+            }
       [:div {:class "container-title"} description]
       [:div {:class "container-inner"}
        [:div {:class "icon-container"}
