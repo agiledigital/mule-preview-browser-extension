@@ -273,6 +273,7 @@ http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/
           "description": "",
           "labels": Array [
             "horizontal",
+            "top",
           ],
           "tag-name": "psuedo",
           "type": "container",
@@ -360,6 +361,7 @@ http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/
           "description": "",
           "labels": Array [
             "horizontal",
+            "bottom",
           ],
           "tag-name": "psuedo",
           "type": "container",
@@ -369,6 +371,10 @@ http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/
       "labels": Array [
         "vertical",
       ],
+      "location": Object {
+        "column": 45,
+        "line": 13,
+      },
       "tag-name": "flow",
       "type": "error-container",
     },

@@ -40,6 +40,9 @@ payload distinctBy $.pies]]></dw:set-payload>
             <message-properties-transformer doc:name="Nor here"/>
         </catch-exception-strategy>
     </flow>
+    <sub-flow name="example:/new-flow">
+        <set-payload doc:name="Set donkey identifiers"></set-payload>
+    </sub-flow>
     <sub-flow name="example:/strain-overflow-noodle-requests">
         <scatter-gather doc:name="Clean carburetors">
             <processor-chain doc:name="Processor Chain">
@@ -74,4 +77,7 @@ payload distinctBy $.pies]]></dw:set-payload>
             </mock:with-attributes>
         </mock:verify-call>
     </munit:test>
+    <munit:before-suite name="test-mercer.read.eventBefore_Suite" description="MUnit Test">
+        <set-payload doc:name="Set Payload"/>
+    </munit:before-suite>
 </mule>

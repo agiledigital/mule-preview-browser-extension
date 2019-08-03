@@ -52,3 +52,7 @@ with hot reloading.
     $ npx shadow-cljs watch frontend
 
 Simply navigate to http://localhost:8080 in a browser to view the test environment
+
+### Acknowledgements
+
+Math icons made by [Freepik](https://www.freepik.com/home) from www.flaticon.com

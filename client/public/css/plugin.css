@@ -1,5 +1,3 @@
-@import url("https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic.css");
-
 /* TODO: Fix specificity warnings */
 /* stylelint-disable no-descending-specificity  */
 
@@ -37,14 +35,6 @@
 
 .mp .error-handler {
   border-top: 2px solid red;
-}
-
-.mp .mule-munit_test,
-.mp .mule-munit_before-test,
-.mp .mule-munit_after-test,
-.mp .mule-munit_after-suite,
-.mp .mule-munit_before-suite {
-  border-top: 2px solid #fc6;
 }
 
 .mp
@@ -91,7 +81,8 @@
   align-items: flex-start;
 }
 
-.mp .container.horizontal > .container-inner > .container-children > * {
+.mp .container.horizontal > .container-inner > .container-children > *,
+.mp .container.error-handler > .container-inner > .container-children > * {
   margin-left: 5px;
   margin-right: 5px;
 }
@@ -166,6 +157,30 @@
   font-weight: 500;
 }
 
+.mp .container.munit .container-title {
+  text-align: center;
+}
+
+.mp .component-container .diff-icon {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  left: -12px;
+  top: -12px;
+}
+
+.mp .component-container.added .diff-icon {
+  background-image: url("../img/plus.svg");
+}
+
+.mp .component-container.removed .diff-icon {
+  background-image: url("../img/minus.svg");
+}
+
+.mp .component-container.edited .diff-icon {
+  background-image: url("../img/is-not-equal-to.svg");
+}
+
 .mp .container.vertical > .container-inner > .container-children > .flow-arrow {
   display: none;
 }
@@ -176,7 +191,7 @@
 
 .mp .container.root > .container-inner > .icon-container,
 .mp .container.mule-flow > .container-inner > .icon-container,
-.mp .container.mule-munit_test > .container-inner > .icon-container {
+.mp .container.munit > .container-inner > .icon-container {
   display: none;
 }
 
@@ -186,28 +201,55 @@
 
 /* Diffing Styles */
 .mp .edited {
-  background-color: yellow;
+  border: 2px solid #eea236;
+  border-radius: 5px;
 }
 
 .mp .added {
-  background-color: green;
+  border: 2px solid #4cae4c;
+  border-radius: 5px;
 }
 
 .mp .removed {
-  background-color: red;
+  border: 2px solid #d43f3a;
+  border-radius: 5px;
 }
 
 .mp .container.edited {
-  background-color: lightyellow;
+  background: repeating-linear-gradient(
+    45deg,
+    #f0ad4ebb,
+    #f0ad4ebb 10px,
+    #eea236bb 10px,
+    #eea236bb 20px
+  );
 }
 
 /* We want the added/removed states to propagate to children */
-.mp .added .container {
-  background-color: green;
+.mp .added.container {
+  background: repeating-linear-gradient(
+    45deg,
+    #5cb85cbb,
+    #5cb85cbb 10px,
+    #4cae4cbb 10px,
+    #4cae4cbb 20px
+  );
 }
 
-.mp .removed .container {
-  background-color: red;
+.mp .removed.container {
+  background: repeating-linear-gradient(
+    45deg,
+    #d9534fbb,
+    #d9534fbb 10px,
+    #d43f3abb 10px,
+    #d43f3abb 20px
+  );
+}
+
+.mp .container.edited .container,
+.mp .container.added .container,
+.mp .container.removed .container {
+  background-color: transparent;
 }
 
 /* Tooltip */
@@ -371,4 +413,18 @@
   margin-top: 5px;
   margin-bottom: 5px;
   font-style: italic;
+}
+
+/* MUnit Flows */
+
+.mp .mule-munit_test,
+.mp .mule-munit_before-test,
+.mp .mule-munit_after-test,
+.mp .mule-munit_after-suite,
+.mp .mule-munit_before-suite {
+  border-top: 2px solid #fc6;
+}
+
+.mp .mule-munit_test.vertical .mule-psuedo.top {
+  border-bottom: 1px solid #c4c4c4;
 }
