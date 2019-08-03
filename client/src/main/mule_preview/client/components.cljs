@@ -119,12 +119,13 @@
      :position :below-right
      :showing? showing-atom
      :popover tooltip
-     :anchor [:div {:class ["component-container" css-class]}
+     :anchor [:div (merge {:class ["component-container" css-class]}
+                          (when should-show-tooltip {:on-mouse-over (m/handler-fn (reset! showing-atom true))
+                                                     :on-mouse-out  (m/handler-fn (reset! showing-atom false))}))
+
               [:div {:class ["diff-icon"]}]
               [:div
-               (merge {:class ["component" name]}
-                      (when should-show-tooltip {:on-mouse-over (m/handler-fn (reset! showing-atom true))
-                                                 :on-mouse-out  (m/handler-fn (reset! showing-atom false))}))
+               {:class ["component" name]}
                (image category-url "category-frame" content-root)
                (image img-url "icon" content-root)
                [:div {:class "label"} description]]]]))
