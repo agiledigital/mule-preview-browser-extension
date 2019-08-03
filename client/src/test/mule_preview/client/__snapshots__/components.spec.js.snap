@@ -108,208 +108,184 @@ exports[`when rendering a Mule component when the component is unknown renders c
 
 exports[`when rendering a Mule container when it has children renders correctly 1`] = `
 <div
-  className="rc-popover-anchor-wrapper display-inline-flex "
-  style={
-    Object {
-      "WebkitFlex": "inherit",
-      "flex": "inherit",
-    }
-  }
+  className="container mule-flow some-css-class"
 >
   <div
-    className="rc-point-wrapper display-inline-flex"
-    style={
-      Object {
-        "WebkitAlignItems": "center",
-        "WebkitFlex": "auto",
-        "WebkitFlexFlow": "column",
-        "alignItems": "center",
-        "flex": "auto",
-        "flexFlow": "column",
-      }
-    }
+    className="container-title"
+  >
+    Do something
+  </div>
+  <div
+    className="container-inner"
   >
     <div
-      className="container mule-flow some-css-class"
+      className="icon-container"
+    >
+      <img
+        className="category-frame"
+        src="/img/icons/org.mule.tooling.category.scopes.large.png"
+      />
+      <img
+        className="icon container-image"
+        src="/img/icons/sub-flow-48x32.png"
+      />
+    </div>
+    <div
+      className="container-children"
     >
       <div
-        className="container-title"
-      >
-        Do something
-      </div>
-      <div
-        className="container-inner"
+        className="rc-popover-anchor-wrapper display-inline-flex "
+        style={
+          Object {
+            "WebkitFlex": "inherit",
+            "flex": "inherit",
+          }
+        }
       >
         <div
-          className="icon-container"
+          className="rc-point-wrapper display-inline-flex"
+          style={
+            Object {
+              "WebkitAlignItems": "center",
+              "WebkitFlex": "auto",
+              "WebkitFlexFlow": "column",
+              "alignItems": "center",
+              "flex": "auto",
+              "flexFlow": "column",
+            }
+          }
         >
-          <img
-            className="category-frame"
-            src="/img/icons/org.mule.tooling.category.scopes.large.png"
-          />
-          <img
-            className="icon container-image"
-            src="/img/icons/sub-flow-48x32.png"
-          />
+          <div
+            className="component-container some-css-class"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+          >
+            <div
+              className="diff-icon"
+            />
+            <div
+              className="component set-payload"
+            >
+              <img
+                className="category-frame"
+                src="/img/icons/org.mule.tooling.category.transformers.large.png"
+              />
+              <img
+                className="icon"
+                src="/img/icons/SetPayload-48x32.png"
+              />
+              <div
+                className="label"
+              >
+                Set some payload
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+      <img
+        className="flow-arrow"
+        src="/img/arrow-right-2x.png"
+      />
+      <div
+        className="rc-popover-anchor-wrapper display-inline-flex "
+        style={
+          Object {
+            "WebkitFlex": "inherit",
+            "flex": "inherit",
+          }
+        }
+      >
         <div
-          className="container-children"
+          className="rc-point-wrapper display-inline-flex"
+          style={
+            Object {
+              "WebkitAlignItems": "center",
+              "WebkitFlex": "auto",
+              "WebkitFlexFlow": "column",
+              "alignItems": "center",
+              "flex": "auto",
+              "flexFlow": "column",
+            }
+          }
         >
           <div
-            className="rc-popover-anchor-wrapper display-inline-flex "
-            style={
-              Object {
-                "WebkitFlex": "inherit",
-                "flex": "inherit",
-              }
-            }
+            className="component-container some-css-class"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
           >
             <div
-              className="rc-point-wrapper display-inline-flex"
-              style={
-                Object {
-                  "WebkitAlignItems": "center",
-                  "WebkitFlex": "auto",
-                  "WebkitFlexFlow": "column",
-                  "alignItems": "center",
-                  "flex": "auto",
-                  "flexFlow": "column",
-                }
-              }
+              className="diff-icon"
+            />
+            <div
+              className="component message-properties-transformer"
             >
+              <img
+                className="category-frame"
+                src="/img/icons/org.mule.tooling.category.transformers.large.png"
+              />
+              <img
+                className="icon"
+                src="/img/icons/Transformer-48x32.png"
+              />
               <div
-                className="component-container some-css-class"
-                onMouseOut={[Function]}
-                onMouseOver={[Function]}
+                className="label"
               >
-                <div
-                  className="diff-icon"
-                />
-                <div
-                  className="component set-payload"
-                >
-                  <img
-                    className="category-frame"
-                    src="/img/icons/org.mule.tooling.category.transformers.large.png"
-                  />
-                  <img
-                    className="icon"
-                    src="/img/icons/SetPayload-48x32.png"
-                  />
-                  <div
-                    className="label"
-                  >
-                    Set some payload
-                  </div>
-                </div>
+                Transform something
               </div>
             </div>
           </div>
-          <img
-            className="flow-arrow"
-            src="/img/arrow-right-2x.png"
-          />
-          <div
-            className="rc-popover-anchor-wrapper display-inline-flex "
-            style={
-              Object {
-                "WebkitFlex": "inherit",
-                "flex": "inherit",
-              }
+        </div>
+      </div>
+      <img
+        className="flow-arrow"
+        src="/img/arrow-right-2x.png"
+      />
+      <div
+        className="rc-popover-anchor-wrapper display-inline-flex "
+        style={
+          Object {
+            "WebkitFlex": "inherit",
+            "flex": "inherit",
+          }
+        }
+      >
+        <div
+          className="rc-point-wrapper display-inline-flex"
+          style={
+            Object {
+              "WebkitAlignItems": "center",
+              "WebkitFlex": "auto",
+              "WebkitFlexFlow": "column",
+              "alignItems": "center",
+              "flex": "auto",
+              "flexFlow": "column",
             }
+          }
+        >
+          <div
+            className="component-container some-css-class"
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
           >
             <div
-              className="rc-point-wrapper display-inline-flex"
-              style={
-                Object {
-                  "WebkitAlignItems": "center",
-                  "WebkitFlex": "auto",
-                  "WebkitFlexFlow": "column",
-                  "alignItems": "center",
-                  "flex": "auto",
-                  "flexFlow": "column",
-                }
-              }
-            >
-              <div
-                className="component-container some-css-class"
-                onMouseOut={[Function]}
-                onMouseOver={[Function]}
-              >
-                <div
-                  className="diff-icon"
-                />
-                <div
-                  className="component message-properties-transformer"
-                >
-                  <img
-                    className="category-frame"
-                    src="/img/icons/org.mule.tooling.category.transformers.large.png"
-                  />
-                  <img
-                    className="icon"
-                    src="/img/icons/Transformer-48x32.png"
-                  />
-                  <div
-                    className="label"
-                  >
-                    Transform something
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <img
-            className="flow-arrow"
-            src="/img/arrow-right-2x.png"
-          />
-          <div
-            className="rc-popover-anchor-wrapper display-inline-flex "
-            style={
-              Object {
-                "WebkitFlex": "inherit",
-                "flex": "inherit",
-              }
-            }
-          >
+              className="diff-icon"
+            />
             <div
-              className="rc-point-wrapper display-inline-flex"
-              style={
-                Object {
-                  "WebkitAlignItems": "center",
-                  "WebkitFlex": "auto",
-                  "WebkitFlexFlow": "column",
-                  "alignItems": "center",
-                  "flex": "auto",
-                  "flexFlow": "column",
-                }
-              }
+              className="component http:request"
             >
+              <img
+                className="category-frame"
+                src="/img/icons/org.mule.tooling.category.cloudconnectors.large.png"
+              />
+              <img
+                className="icon"
+                src="/img/icons/http_connector_50x34.png"
+              />
               <div
-                className="component-container some-css-class"
-                onMouseOut={[Function]}
-                onMouseOver={[Function]}
+                className="label"
               >
-                <div
-                  className="diff-icon"
-                />
-                <div
-                  className="component http:request"
-                >
-                  <img
-                    className="category-frame"
-                    src="/img/icons/org.mule.tooling.category.cloudconnectors.large.png"
-                  />
-                  <img
-                    className="icon"
-                    src="/img/icons/http_connector_50x34.png"
-                  />
-                  <div
-                    className="label"
-                  >
-                    Make some request
-                  </div>
-                </div>
+                Make some request
               </div>
             </div>
           </div>
@@ -322,55 +298,31 @@ exports[`when rendering a Mule container when it has children renders correctly 
 
 exports[`when rendering a Mule container when it has no children renders correctly 1`] = `
 <div
-  className="rc-popover-anchor-wrapper display-inline-flex "
-  style={
-    Object {
-      "WebkitFlex": "inherit",
-      "flex": "inherit",
-    }
-  }
+  className="container mule-flow some-css-class"
 >
   <div
-    className="rc-point-wrapper display-inline-flex"
-    style={
-      Object {
-        "WebkitAlignItems": "center",
-        "WebkitFlex": "auto",
-        "WebkitFlexFlow": "column",
-        "alignItems": "center",
-        "flex": "auto",
-        "flexFlow": "column",
-      }
-    }
+    className="container-title"
+  >
+    Do something
+  </div>
+  <div
+    className="container-inner"
   >
     <div
-      className="container mule-flow some-css-class"
+      className="icon-container"
     >
-      <div
-        className="container-title"
-      >
-        Do something
-      </div>
-      <div
-        className="container-inner"
-      >
-        <div
-          className="icon-container"
-        >
-          <img
-            className="category-frame"
-            src="/img/icons/org.mule.tooling.category.scopes.large.png"
-          />
-          <img
-            className="icon container-image"
-            src="/img/icons/sub-flow-48x32.png"
-          />
-        </div>
-        <div
-          className="container-children"
-        />
-      </div>
+      <img
+        className="category-frame"
+        src="/img/icons/org.mule.tooling.category.scopes.large.png"
+      />
+      <img
+        className="icon container-image"
+        src="/img/icons/sub-flow-48x32.png"
+      />
     </div>
+    <div
+      className="container-children"
+    />
   </div>
 </div>
 `;
