@@ -39,14 +39,6 @@
   border-top: 2px solid red;
 }
 
-.mp .mule-munit_test,
-.mp .mule-munit_before-test,
-.mp .mule-munit_after-test,
-.mp .mule-munit_after-suite,
-.mp .mule-munit_before-suite {
-  border-top: 2px solid #fc6;
-}
-
 .mp
   .mule-scatter-gather
   > .container-inner
@@ -419,6 +411,16 @@
   margin-top: 5px;
   margin-bottom: 5px;
   font-style: italic;
+}
+
+/* MUnit Flows */
+
+.mp .mule-munit_test,
+.mp .mule-munit_before-test,
+.mp .mule-munit_after-test,
+.mp .mule-munit_after-suite,
+.mp .mule-munit_before-suite {
+  border-top: 2px solid #fc6;
 }
 
 .mp .mule-munit_test.vertical .mule-psuedo.top {
