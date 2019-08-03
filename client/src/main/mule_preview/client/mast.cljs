@@ -2,6 +2,7 @@
   "Functions to convert Mule XML data structures to an intermediate MAST structure"
   (:require
    [clojure.walk :refer [prewalk]]
+   [clojure.set :refer [union]]
    [clojure.string :refer [starts-with?]]
    [mule-preview.client.utils :refer [remove-location]]
    [mule-preview.client.mappings :refer [root-container horizontal-container-list
@@ -52,12 +53,18 @@
      :location (:location node)
      :attributes attributes}))
 
-(defn- create-mule-psuedo-container [content]
-  {:type :container
-   :tag-name "psuedo"
-   :description ""
-   :content content
-   :labels #{:horizontal}})
+(defn-
+  create-mule-psuedo-container
+  ([content]
+   (create-mule-psuedo-container content #{} ""))
+  ([content extra-labels]
+   (create-mule-psuedo-container content extra-labels ""))
+  ([content extra-labels title]
+   {:type :container
+    :tag-name "psuedo"
+    :description title
+    :content content
+    :labels (union #{:horizontal} extra-labels)}))
 
 (defn- process-error-container [node tag-name labels]
   (let [description (get-description node)
@@ -67,8 +74,8 @@
     {:type :error-container
      :tag-name tag-name
      :description description
-     :content [(create-mule-psuedo-container regular-components)
-               (create-mule-psuedo-container error-handlers)]
+     :content [(create-mule-psuedo-container regular-components #{:top})
+               (create-mule-psuedo-container error-handlers #{:bottom})]
      :labels labels}))
 
 (defn- process-munit-container [node tag-name labels]
@@ -79,8 +86,8 @@
     {:type :munit-container
      :tag-name tag-name
      :description description
-     :content [(create-mule-psuedo-container mocks)
-               (create-mule-psuedo-container regular-components)]
+     :content [(create-mule-psuedo-container mocks #{:top} "Setup")
+               (create-mule-psuedo-container regular-components #{:bottom} "Test")]
      :labels labels}))
 
 (defn- transform-tag [node]
