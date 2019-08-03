@@ -159,6 +159,10 @@
   font-weight: 500;
 }
 
+.mp .container.munit .container-title {
+  text-align: center;
+}
+
 .mp .component-container .diff-icon {
   position: absolute;
   width: 24px;
@@ -189,7 +193,7 @@
 
 .mp .container.root > .container-inner > .icon-container,
 .mp .container.mule-flow > .container-inner > .icon-container,
-.mp .container.mule-munit_test > .container-inner > .icon-container {
+.mp .container.munit > .container-inner > .icon-container {
   display: none;
 }
 
