@@ -1,6 +1,6 @@
 {
   "name": "plugin",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "private": true,
   "devDependencies": {
     "@babel/core": "^7.0.0",
