@@ -176,15 +176,15 @@
 }
 
 .mp .component-container.added .diff-icon {
-  background-image: url("../img/plus.png");
+  background-image: url("../img/plus.svg");
 }
 
 .mp .component-container.removed .diff-icon {
-  background-image: url("../img/minus.png");
+  background-image: url("../img/minus.svg");
 }
 
 .mp .component-container.edited .diff-icon {
-  background-image: url("../img/is-not-equal-to.png");
+  background-image: url("../img/is-not-equal-to.svg");
 }
 
 .mp .container.vertical > .container-inner > .container-children > .flow-arrow {
