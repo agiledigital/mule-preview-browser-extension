@@ -43,6 +43,7 @@ Array [
             "line": 37,
           },
           "nodeName": "db:no-operation-selected",
+          "original-labels": null,
           "original-type": "component",
         },
         Object {
@@ -79,6 +80,7 @@ Array [
                     "line": 40,
                   },
                   "nodeName": "s3:no-operation-selected",
+                  "original-labels": null,
                   "original-type": "component",
                 },
                 Object {
@@ -95,6 +97,7 @@ Array [
                     "line": 41,
                   },
                   "nodeName": "logger",
+                  "original-labels": null,
                   "original-type": "component",
                 },
               ],
@@ -103,6 +106,7 @@ Array [
                 "line": 39,
               },
               "nodeName": "when",
+              "original-labels": null,
               "original-type": "container",
             },
             Object {
@@ -129,6 +133,7 @@ Array [
                     "line": 44,
                   },
                   "nodeName": "logger",
+                  "original-labels": null,
                   "original-type": "component",
                 },
               ],
@@ -137,6 +142,7 @@ Array [
                 "line": 43,
               },
               "nodeName": "otherwise",
+              "original-labels": null,
               "original-type": "container",
             },
           ],
@@ -145,6 +151,7 @@ Array [
             "line": 38,
           },
           "nodeName": "choice",
+          "original-labels": null,
           "original-type": "container",
         },
       ],
@@ -153,6 +160,7 @@ Array [
         "line": 36,
       },
       "nodeName": "sub-flow",
+      "original-labels": null,
       "original-type": "container",
     },
     "route": Array [
@@ -275,6 +283,7 @@ Array [
         "line": 14,
       },
       "nodeName": "set-payload",
+      "original-labels": null,
       "original-type": "component",
     },
     "route": Array [
@@ -299,6 +308,7 @@ Array [
         "line": 18,
       },
       "nodeName": "expression-filter",
+      "original-labels": null,
       "original-type": "component",
     },
     "route": Array [
@@ -551,6 +561,7 @@ Array [
         "line": 35,
       },
       "nodeName": "set-payload",
+      "original-labels": null,
       "original-type": "component",
     },
     "route": Array [
@@ -575,6 +586,7 @@ Array [
         "line": 37,
       },
       "nodeName": "set-payload",
+      "original-labels": null,
       "original-type": "component",
     },
     "route": Array [
@@ -680,6 +692,7 @@ Array [
         "line": 20,
       },
       "nodeName": "flow-ref",
+      "original-labels": null,
       "original-type": "component",
     },
     "route": Array [
@@ -705,6 +718,7 @@ Array [
         "line": 21,
       },
       "nodeName": "flow-ref",
+      "original-labels": null,
       "original-type": "component",
     },
     "route": Array [
@@ -730,6 +744,7 @@ Array [
         "line": 22,
       },
       "nodeName": "flow-ref",
+      "original-labels": null,
       "original-type": "component",
     },
     "route": Array [
@@ -755,6 +770,7 @@ Array [
         "line": 23,
       },
       "nodeName": "flow-ref",
+      "original-labels": null,
       "original-type": "component",
     },
     "route": Array [

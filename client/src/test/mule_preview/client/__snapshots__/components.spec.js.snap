@@ -24,10 +24,15 @@ exports[`when rendering a Mule component when the component has mapping renders 
     }
   >
     <div
-      className="component-container"
+      className="component-container some-css-class"
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
     >
       <div
-        className="component set-payload some-css-class"
+        className="diff-icon"
+      />
+      <div
+        className="component set-payload"
       >
         <img
           className="category-frame"
@@ -72,10 +77,15 @@ exports[`when rendering a Mule component when the component is unknown renders c
     }
   >
     <div
-      className="component-container"
+      className="component-container some-css-class"
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
     >
       <div
-        className="component sjdsfjlsdf some-css-class"
+        className="diff-icon"
+      />
+      <div
+        className="component sjdsfjlsdf"
       >
         <img
           className="category-frame"
@@ -168,10 +178,15 @@ exports[`when rendering a Mule container when it has children renders correctly 
               }
             >
               <div
-                className="component-container"
+                className="component-container some-css-class"
+                onMouseOut={[Function]}
+                onMouseOver={[Function]}
               >
                 <div
-                  className="component set-payload some-css-class"
+                  className="diff-icon"
+                />
+                <div
+                  className="component set-payload"
                 >
                   <img
                     className="category-frame"
@@ -217,10 +232,15 @@ exports[`when rendering a Mule container when it has children renders correctly 
               }
             >
               <div
-                className="component-container"
+                className="component-container some-css-class"
+                onMouseOut={[Function]}
+                onMouseOver={[Function]}
               >
                 <div
-                  className="component message-properties-transformer some-css-class"
+                  className="diff-icon"
+                />
+                <div
+                  className="component message-properties-transformer"
                 >
                   <img
                     className="category-frame"
@@ -266,10 +286,15 @@ exports[`when rendering a Mule container when it has children renders correctly 
               }
             >
               <div
-                className="component-container"
+                className="component-container some-css-class"
+                onMouseOut={[Function]}
+                onMouseOver={[Function]}
               >
                 <div
-                  className="component http:request some-css-class"
+                  className="diff-icon"
+                />
+                <div
+                  className="component http:request"
                 >
                   <img
                     className="category-frame"

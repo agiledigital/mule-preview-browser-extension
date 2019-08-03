@@ -35,9 +35,10 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
       "content": Array [
         Object {
           "content": null,
-          "description": "",
+          "description": "After suite",
           "labels": Array [
             "horizontal",
+            "top",
           ],
           "tag-name": "psuedo",
           "type": "container",
@@ -82,6 +83,7 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
           "description": "",
           "labels": Array [
             "horizontal",
+            "bottom",
           ],
           "tag-name": "psuedo",
           "type": "container",
@@ -89,8 +91,13 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
       ],
       "description": "new-test-suiteAfter_Suite",
       "labels": Array [
+        "munit",
         "vertical",
       ],
+      "location": Object {
+        "column": 89,
+        "line": 14,
+      },
       "tag-name": "munit:after-suite",
       "type": "munit-container",
     },
@@ -98,9 +105,10 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
       "content": Array [
         Object {
           "content": null,
-          "description": "",
+          "description": "After test",
           "labels": Array [
             "horizontal",
+            "top",
           ],
           "tag-name": "psuedo",
           "type": "container",
@@ -143,6 +151,7 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
           "description": "",
           "labels": Array [
             "horizontal",
+            "bottom",
           ],
           "tag-name": "psuedo",
           "type": "container",
@@ -150,9 +159,14 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
       ],
       "description": "new-test-suiteAfter_Test",
       "labels": Array [
+        "munit",
         "vertical",
         "removed",
       ],
+      "location": Object {
+        "column": 88,
+        "line": 17,
+      },
       "tag-name": "munit:after-test",
       "type": "munit-container",
     },
@@ -160,7 +174,11 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
       "content": Array [
         Object {
           "content": null,
-          "description": "",
+          "description": "Before suite",
+          "labels": Array [
+            "horizontal",
+            "top",
+          ],
           "location": null,
           "tag-name": "psuedo",
           "type": "container",
@@ -173,6 +191,7 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
               "description": "Assert Null Payload",
               "doc:name": "Assert Null Payload",
               "hash": 358321917,
+              "labels": Array [],
               "location": Object {
                 "column": 59,
                 "line": 19,
@@ -187,6 +206,7 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
               "doc:name": "Assert Payload",
               "expectedValue": "#[]",
               "hash": 1170098794,
+              "labels": Array [],
               "location": Object {
                 "column": 84,
                 "line": 20,
@@ -196,6 +216,10 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
             },
           ],
           "description": "",
+          "labels": Array [
+            "horizontal",
+            "bottom",
+          ],
           "location": null,
           "tag-name": "psuedo",
           "type": "container",
@@ -203,9 +227,14 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
       ],
       "description": "new-test-suiteBefore_Suite",
       "labels": Array [
+        "munit",
+        "vertical",
         "added",
       ],
-      "location": null,
+      "location": Object {
+        "column": 83,
+        "line": 18,
+      },
       "tag-name": "munit:before-suite",
       "type": "munit-container",
     },
@@ -213,9 +242,10 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
       "content": Array [
         Object {
           "content": null,
-          "description": "",
+          "description": "Before test",
           "labels": Array [
             "horizontal",
+            "top",
           ],
           "tag-name": "psuedo",
           "type": "container",
@@ -258,6 +288,7 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
           "description": "",
           "labels": Array [
             "horizontal",
+            "bottom",
           ],
           "tag-name": "psuedo",
           "type": "container",
@@ -265,8 +296,13 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
       ],
       "description": "new-test-suiteBefore_Test",
       "labels": Array [
+        "munit",
         "vertical",
       ],
+      "location": Object {
+        "column": 91,
+        "line": 21,
+      },
       "tag-name": "munit:before-test",
       "type": "munit-container",
     },
@@ -274,9 +310,10 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
       "content": Array [
         Object {
           "content": null,
-          "description": "",
+          "description": "Test",
           "labels": Array [
             "horizontal",
+            "top",
           ],
           "tag-name": "psuedo",
           "type": "container",
@@ -334,6 +371,7 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
           "description": "",
           "labels": Array [
             "horizontal",
+            "bottom",
           ],
           "tag-name": "psuedo",
           "type": "container",
@@ -341,8 +379,13 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
       ],
       "description": "new-test-suiteTest",
       "labels": Array [
+        "munit",
         "vertical",
       ],
+      "location": Object {
+        "column": 67,
+        "line": 25,
+      },
       "tag-name": "munit:test",
       "type": "munit-container",
     },
@@ -399,9 +442,10 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
       "content": Array [
         Object {
           "content": null,
-          "description": "",
+          "description": "After suite",
           "labels": Array [
             "horizontal",
+            "top",
           ],
           "tag-name": "psuedo",
           "type": "container",
@@ -445,6 +489,7 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
           "description": "",
           "labels": Array [
             "horizontal",
+            "bottom",
           ],
           "tag-name": "psuedo",
           "type": "container",
@@ -452,9 +497,14 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
       ],
       "description": "new-test-suiteAfter_Suite",
       "labels": Array [
+        "munit",
         "vertical",
         "removed",
       ],
+      "location": Object {
+        "column": 89,
+        "line": 14,
+      },
       "tag-name": "munit:after-suite",
       "type": "munit-container",
     },
@@ -462,9 +512,10 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
       "content": Array [
         Object {
           "content": null,
-          "description": "",
+          "description": "Before suite",
           "labels": Array [
             "horizontal",
+            "top",
           ],
           "tag-name": "psuedo",
           "type": "container",
@@ -506,6 +557,7 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
           "description": "",
           "labels": Array [
             "horizontal",
+            "bottom",
           ],
           "tag-name": "psuedo",
           "type": "container",
@@ -513,9 +565,14 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
       ],
       "description": "new-test-suiteBefore_Suite",
       "labels": Array [
+        "munit",
         "vertical",
         "removed",
       ],
+      "location": Object {
+        "column": 83,
+        "line": 18,
+      },
       "tag-name": "munit:before-suite",
       "type": "munit-container",
     },
@@ -523,9 +580,10 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
       "content": Array [
         Object {
           "content": null,
-          "description": "",
+          "description": "Before test",
           "labels": Array [
             "horizontal",
+            "top",
           ],
           "tag-name": "psuedo",
           "type": "container",
@@ -568,6 +626,7 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
           "description": "",
           "labels": Array [
             "horizontal",
+            "bottom",
           ],
           "tag-name": "psuedo",
           "type": "container",
@@ -575,9 +634,14 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
       ],
       "description": "new-test-suiteBefore_Test",
       "labels": Array [
+        "munit",
         "vertical",
         "removed",
       ],
+      "location": Object {
+        "column": 91,
+        "line": 22,
+      },
       "tag-name": "munit:before-test",
       "type": "munit-container",
     },
@@ -585,9 +649,10 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
       "content": Array [
         Object {
           "content": null,
-          "description": "",
+          "description": "Test",
           "labels": Array [
             "horizontal",
+            "top",
           ],
           "tag-name": "psuedo",
           "type": "container",
@@ -644,6 +709,7 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
           "description": "",
           "labels": Array [
             "horizontal",
+            "bottom",
           ],
           "tag-name": "psuedo",
           "type": "container",
@@ -651,9 +717,14 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
       ],
       "description": "new-test-suiteTest",
       "labels": Array [
+        "munit",
         "vertical",
         "removed",
       ],
+      "location": Object {
+        "column": 67,
+        "line": 26,
+      },
       "tag-name": "munit:test",
       "type": "munit-container",
     },
@@ -698,7 +769,11 @@ Object {
       "content": Array [
         Object {
           "content": null,
-          "description": "",
+          "description": "After suite",
+          "labels": Array [
+            "horizontal",
+            "top",
+          ],
           "location": null,
           "tag-name": "psuedo",
           "type": "container",
@@ -712,6 +787,7 @@ Object {
               "description": "Assert False",
               "doc:name": "Assert False",
               "hash": -964144491,
+              "labels": Array [],
               "location": Object {
                 "column": 69,
                 "line": 15,
@@ -721,6 +797,10 @@ Object {
             },
           ],
           "description": "",
+          "labels": Array [
+            "horizontal",
+            "bottom",
+          ],
           "location": null,
           "tag-name": "psuedo",
           "type": "container",
@@ -728,9 +808,14 @@ Object {
       ],
       "description": "new-test-suiteAfter_Suite",
       "labels": Array [
+        "munit",
+        "vertical",
         "added",
       ],
-      "location": null,
+      "location": Object {
+        "column": 89,
+        "line": 14,
+      },
       "tag-name": "munit:after-suite",
       "type": "munit-container",
     },
@@ -738,7 +823,11 @@ Object {
       "content": Array [
         Object {
           "content": null,
-          "description": "",
+          "description": "After test",
+          "labels": Array [
+            "horizontal",
+            "top",
+          ],
           "location": null,
           "tag-name": "psuedo",
           "type": "container",
@@ -753,6 +842,7 @@ Object {
               "doc:name": "Assert Not Equals",
               "expectedValue": "#[]",
               "hash": 1131396067,
+              "labels": Array [],
               "location": Object {
                 "column": 99,
                 "line": 18,
@@ -766,6 +856,7 @@ Object {
               "description": "Assert Not Null Payload",
               "doc:name": "Assert Not Null Payload",
               "hash": -802864801,
+              "labels": Array [],
               "location": Object {
                 "column": 67,
                 "line": 19,
@@ -775,6 +866,10 @@ Object {
             },
           ],
           "description": "",
+          "labels": Array [
+            "horizontal",
+            "bottom",
+          ],
           "location": null,
           "tag-name": "psuedo",
           "type": "container",
@@ -782,9 +877,14 @@ Object {
       ],
       "description": "new-test-suiteAfter_Test",
       "labels": Array [
+        "munit",
+        "vertical",
         "added",
       ],
-      "location": null,
+      "location": Object {
+        "column": 88,
+        "line": 17,
+      },
       "tag-name": "munit:after-test",
       "type": "munit-container",
     },
@@ -792,7 +892,11 @@ Object {
       "content": Array [
         Object {
           "content": null,
-          "description": "",
+          "description": "Before test",
+          "labels": Array [
+            "horizontal",
+            "top",
+          ],
           "location": null,
           "tag-name": "psuedo",
           "type": "container",
@@ -806,6 +910,7 @@ Object {
               "description": "Assert True",
               "doc:name": "Assert True",
               "hash": 1099203488,
+              "labels": Array [],
               "location": Object {
                 "column": 67,
                 "line": 22,
@@ -820,6 +925,7 @@ Object {
               "description": "Custom Assertion",
               "doc:name": "Custom Assertion",
               "hash": 1823118484,
+              "labels": Array [],
               "location": Object {
                 "column": 72,
                 "line": 23,
@@ -829,6 +935,10 @@ Object {
             },
           ],
           "description": "",
+          "labels": Array [
+            "horizontal",
+            "bottom",
+          ],
           "location": null,
           "tag-name": "psuedo",
           "type": "container",
@@ -836,9 +946,14 @@ Object {
       ],
       "description": "new-test-suiteBefore_Test",
       "labels": Array [
+        "munit",
+        "vertical",
         "added",
       ],
-      "location": null,
+      "location": Object {
+        "column": 91,
+        "line": 21,
+      },
       "tag-name": "munit:before-test",
       "type": "munit-container",
     },
@@ -846,7 +961,11 @@ Object {
       "content": Array [
         Object {
           "content": null,
-          "description": "",
+          "description": "Test",
+          "labels": Array [
+            "horizontal",
+            "top",
+          ],
           "location": null,
           "tag-name": "psuedo",
           "type": "container",
@@ -859,6 +978,7 @@ Object {
               "description": "Set Message",
               "doc:name": "Set Message",
               "hash": -339828259,
+              "labels": Array [],
               "location": Object {
                 "column": 57,
                 "line": 26,
@@ -873,6 +993,7 @@ Object {
               "description": "Set Null Payload",
               "doc:name": "Set Null Payload",
               "hash": -852187714,
+              "labels": Array [],
               "location": Object {
                 "column": 61,
                 "line": 27,
@@ -882,6 +1003,10 @@ Object {
             },
           ],
           "description": "",
+          "labels": Array [
+            "horizontal",
+            "bottom",
+          ],
           "location": null,
           "tag-name": "psuedo",
           "type": "container",
@@ -889,9 +1014,14 @@ Object {
       ],
       "description": "new-test-suiteTest",
       "labels": Array [
+        "munit",
+        "vertical",
         "added",
       ],
-      "location": null,
+      "location": Object {
+        "column": 67,
+        "line": 25,
+      },
       "tag-name": "munit:test",
       "type": "munit-container",
     },
@@ -938,6 +1068,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
           "description": "Some transform",
           "doc:name": "Some transform",
           "hash": 1005263453,
+          "labels": Array [],
           "location": Object {
             "column": 56,
             "line": 16,
@@ -949,6 +1080,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
       "description": "a sub flow",
       "hash": 1871898525,
       "labels": Array [
+        "horizontal",
         "added",
       ],
       "location": Object {
