@@ -101,9 +101,8 @@
 
 (defn tooltip [change-record labels location]
   [popover-content-wrapper
-   :title "Changes"
+   :title (str "Line " (:line location) ", Column " (:column location))
    :body [:div
-          [:p {:class "change-location"} (str "Line " (:line location) ", Column " (:column location))]
           (cond
             (:added labels) (tooltip-added)
             (:removed labels) (tooltip-removed)
