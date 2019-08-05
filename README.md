@@ -5,6 +5,7 @@
 [![Known Vulnerabilities](https://snyk.io//test/github/agiledigital/mule-preview/badge.svg?targetFile=browser-plugin/package.json)](https://snyk.io//test/github/agiledigital/mule-preview?targetFile=browser-plugin/package.json)
 [![Known Vulnerabilities](https://snyk.io//test/github/agiledigital/mule-preview/badge.svg?targetFile=client/package.json)](https://snyk.io//test/github/agiledigital/mule-preview?targetFile=client/package.json)
 [![Maintainability](https://api.codeclimate.com/v1/badges/958029813bd4b7f26dca/maintainability)](https://codeclimate.com/github/agiledigital/mule-preview/maintainability)
+![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/agiledigital/mule-preview)
 
 A project to take Mule configuration XML files and render the flows in HTML
 and also display visual diffs for things like Pull Requests.
