@@ -23,6 +23,9 @@ http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/
   },
   "content": Array [
     Object {
+      "attributes": Object {
+        "name": "example:/http-incoming-flow",
+      },
       "content": Array [
         Object {
           "content": Array [

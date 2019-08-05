@@ -75,10 +75,12 @@
   (let [description (get-description node)
         content (node :content)
         {error-handlers true regular-components false}
-        (group-by is-error-handler content)]
+        (group-by is-error-handler content)
+        attributes (:attributes node)]
     {:type :error-container
      :tag-name tag-name
      :description description
+     :attributes attributes
      :content [(create-mule-psuedo-container regular-components #{:top})
                (create-mule-psuedo-container error-handlers #{:bottom})]
      :labels labels
@@ -90,10 +92,12 @@
         {mocks true regular-components false}
         (group-by is-munit-mock-component content)
         title (get-munit-title tag-name)
-        is-split-flow (= tag-name "test")]
+        is-split-flow (= tag-name "munit:test")
+        attributes (:attributes node)]
     {:type :munit-container
      :tag-name tag-name
      :description description
+     :attributes attributes
      :content [(create-mule-psuedo-container mocks #{:top} (if is-split-flow "Setup" title))
                (create-mule-psuedo-container regular-components #{:bottom} (if is-split-flow "Test" ""))]
      :labels labels

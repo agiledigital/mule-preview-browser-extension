@@ -9,6 +9,7 @@ import { toggleDiff, stopDiff, isDiffMode } from "./modes/diff";
 import { isPreviewMode, togglePreview } from "./modes/preview";
 import "../scss/extension.scss";
 import { setTabSupportsMulePreview } from "./messenging";
+import "css-browser-selector";
 
 const bitbucketPollPeriod = 1000; //ms
 const timeout = bitbucketPollPeriod * 10; //ms
