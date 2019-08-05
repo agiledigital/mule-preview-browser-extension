@@ -23,10 +23,9 @@ client/build/release.js: client/node_modules/.installed client/src/main/mule_pre
 	@echo ">>> Building Client Module (Release)"
 	cd client && npm run build
 
-# TODO: Copy these files whenever any file in public has changed
 browser-plugin/extension/public: client/src/main/mule_preview/client/mappings.json client/public/img/icons/.timestamp $(CLIENT_PUBLIC_FILES)
 	@echo ">>> Copying required assets for Browser Extension"
-	rm -rf browser-plugin/extension/public && cp -rv client/public browser-plugin/extension/public
+	rm -rf browser-plugin/extension/public && mkdir -p browser-plugin/extension/public && cp -rv client/public/css client/public/img browser-plugin/extension/public
 
 browser-plugin/node_modules/.installed: browser-plugin/package.json
 	@echo ">>> Installing dependencies for Browser Extension"
