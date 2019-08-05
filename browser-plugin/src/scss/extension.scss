@@ -15,7 +15,7 @@
  * Firefox resolves URLs in injected CSS files relative to the CSS file itself, rather than to the page it's injected into.
  * Chrome needs these special variable substitutions to work correctly though
  */
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
+.webkit {
   .mp .component-container.added .diff-icon {
     background-image: url("chrome-extension://__MSG_@@extension_id__/public/img/plus.svg") !important;
   }

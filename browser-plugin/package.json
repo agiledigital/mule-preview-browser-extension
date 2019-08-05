@@ -89,6 +89,7 @@
   },
   "dependencies": {
     "cross-fetch": "^3.0.4",
+    "css-browser-selector": "^0.6.5",
     "webextension-polyfill": "^0.4.0"
   },
   "engines": {
