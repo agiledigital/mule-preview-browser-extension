@@ -16,6 +16,7 @@
     "prettier": "^1.18.2",
     "prettier-stylelint": "^0.4.2",
     "react-test-renderer": "^16.8.6",
+    "rimraf": "^2.6.3",
     "shadow-cljs": "^2.8.40",
     "source-map-support": "^0.5.12",
     "stylelint": "^10.1.0",
@@ -24,10 +25,11 @@
     "stylelint-prettier": "^1.1.1"
   },
   "scripts": {
+    "prebuild": "rimraf ./public/js",
     "start": "shadow-cljs watch frontend",
     "lint": "eslint --fix src/test && stylelint --fix \"public/css/**/*.scss\" \"public/css/**/*.css\" \"public/css/**/*.html\"",
     "test": "npm run lint && shadow-cljs compile testing && jest",
-    "build": "npm test && shadow-cljs release plugin --source-maps"
+    "build": "npm test && npm run prebuild && shadow-cljs release plugin --source-maps"
   },
   "dependencies": {
     "create-react-class": "^15.6.3",

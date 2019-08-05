@@ -56,7 +56,7 @@
     "watch-extension": "web-ext run -s extension/",
     "watch-webpack": "webpack --config webpack.config.js -w -d",
     "start": "concurrently --kill-others \"npm run watch-extension\" \"npm run watch-webpack\"",
-    "build": "webpack --config webpack.production.config.js -p",
+    "build": "npm run prebuild && webpack --config webpack.production.config.js -p",
     "lint": "eslint --fix src && npx stylelint --fix \"src/**/*.scss\" \"src/**/*.css\" \"src/**/*.html\"",
     "firefox-upload": "web-ext sign -s extension/ --api-key \"${MOZILLA_API_KEY}\" --api-secret \"${MOZILLA_API_SECRET}\" --channel unlisted",
     "chrome-upload": "webstore upload --source build/package-unsigned.zip --extension-id \"${GOOGLE_EXTENSION_ID}\" --client-id \"${GOOGLE_CLIENT_ID}\" --client-secret \"${GOOGLE_CLIENT_SECRET}\" --refresh-token \"${GOOGLE_CLIENT_REFRESH}\"",
