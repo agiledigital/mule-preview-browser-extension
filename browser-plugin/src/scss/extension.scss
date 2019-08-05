@@ -10,3 +10,21 @@
   background-color: lightgray;
   box-shadow: -3px 0 5px 0 rgba(0, 0, 0, 0.28);
 }
+
+/*
+ * Firefox resolves URLs in injected CSS files relative to the CSS file itself, rather than to the page it's injected into.
+ * Chrome needs these special variable substitutions to work correctly though
+ */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .mp .component-container.added .diff-icon {
+    background-image: url("chrome-extension://__MSG_@@extension_id__/public/img/plus.svg") !important;
+  }
+
+  .mp .component-container.removed .diff-icon {
+    background-image: url("chrome-extension://__MSG_@@extension_id__/public/img/minus.svg") !important;
+  }
+
+  .mp .component-container.edited .diff-icon {
+    background-image: url("chrome-extension://__MSG_@@extension_id__/public/img/is-not-equal-to.svg") !important;
+  }
+}
