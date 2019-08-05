@@ -32,6 +32,10 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
       "type": "component",
     },
     Object {
+      "attributes": Object {
+        "description": "Ater suite actions",
+        "name": "new-test-suiteAfter_Suite",
+      },
       "content": Array [
         Object {
           "content": null,
@@ -102,6 +106,10 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
       "type": "munit-container",
     },
     Object {
+      "attributes": Object {
+        "description": "After tests actions",
+        "name": "new-test-suiteAfter_Test",
+      },
       "content": Array [
         Object {
           "content": null,
@@ -235,10 +243,15 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
         "column": 83,
         "line": 18,
       },
+      "name": "new-test-suiteBefore_Suite",
       "tag-name": "munit:before-suite",
       "type": "munit-container",
     },
     Object {
+      "attributes": Object {
+        "description": "Before tests actions",
+        "name": "new-test-suiteBefore_Test",
+      },
       "content": Array [
         Object {
           "content": null,
@@ -307,6 +320,10 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
       "type": "munit-container",
     },
     Object {
+      "attributes": Object {
+        "description": "MUnit Test",
+        "name": "new-test-suiteTest",
+      },
       "content": Array [
         Object {
           "content": null,
@@ -439,6 +456,10 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
       "type": "component",
     },
     Object {
+      "attributes": Object {
+        "description": "Ater suite actions",
+        "name": "new-test-suiteAfter_Suite",
+      },
       "content": Array [
         Object {
           "content": null,
@@ -509,6 +530,10 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
       "type": "munit-container",
     },
     Object {
+      "attributes": Object {
+        "description": "MUnit Test",
+        "name": "new-test-suiteBefore_Suite",
+      },
       "content": Array [
         Object {
           "content": null,
@@ -577,6 +602,10 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
       "type": "munit-container",
     },
     Object {
+      "attributes": Object {
+        "description": "Before tests actions",
+        "name": "new-test-suiteBefore_Test",
+      },
       "content": Array [
         Object {
           "content": null,
@@ -646,6 +675,10 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
       "type": "munit-container",
     },
     Object {
+      "attributes": Object {
+        "description": "MUnit Test",
+        "name": "new-test-suiteTest",
+      },
       "content": Array [
         Object {
           "content": null,
@@ -816,6 +849,7 @@ Object {
         "column": 89,
         "line": 14,
       },
+      "name": "new-test-suiteAfter_Suite",
       "tag-name": "munit:after-suite",
       "type": "munit-container",
     },
@@ -885,6 +919,7 @@ Object {
         "column": 88,
         "line": 17,
       },
+      "name": "new-test-suiteAfter_Test",
       "tag-name": "munit:after-test",
       "type": "munit-container",
     },
@@ -954,6 +989,7 @@ Object {
         "column": 91,
         "line": 21,
       },
+      "name": "new-test-suiteBefore_Test",
       "tag-name": "munit:before-test",
       "type": "munit-container",
     },
@@ -1022,6 +1058,7 @@ Object {
         "column": 67,
         "line": 25,
       },
+      "name": "new-test-suiteTest",
       "tag-name": "munit:test",
       "type": "munit-container",
     },
