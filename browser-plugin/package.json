@@ -1,6 +1,6 @@
 {
   "name": "mule-preview-browser-plugin",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Overlays the Mule Preview plugin over SCM web applications",
   "license": "MIT",
   "devDependencies": {
