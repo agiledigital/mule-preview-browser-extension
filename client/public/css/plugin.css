@@ -428,3 +428,7 @@
 .mp .mule-munit_test.vertical .mule-psuedo.top {
   border-bottom: 1px solid #c4c4c4;
 }
+
+.mp .mule-munit_test.vertical > .container-inner > .container-children {
+  align-items: center;
+}

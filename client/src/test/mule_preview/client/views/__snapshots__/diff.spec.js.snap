@@ -310,7 +310,7 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
       "content": Array [
         Object {
           "content": null,
-          "description": "Test",
+          "description": "Setup",
           "labels": Array [
             "horizontal",
             "top",
@@ -368,7 +368,7 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
               "type": "component",
             },
           ],
-          "description": "",
+          "description": "Test",
           "labels": Array [
             "horizontal",
             "bottom",
@@ -649,7 +649,7 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
       "content": Array [
         Object {
           "content": null,
-          "description": "Test",
+          "description": "Setup",
           "labels": Array [
             "horizontal",
             "top",
@@ -706,7 +706,7 @@ http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/mu
               "type": "component",
             },
           ],
-          "description": "",
+          "description": "Test",
           "labels": Array [
             "horizontal",
             "bottom",
@@ -961,7 +961,7 @@ Object {
       "content": Array [
         Object {
           "content": null,
-          "description": "Test",
+          "description": "Setup",
           "labels": Array [
             "horizontal",
             "top",
@@ -1002,7 +1002,7 @@ Object {
               "type": "component",
             },
           ],
-          "description": "",
+          "description": "Test",
           "labels": Array [
             "horizontal",
             "bottom",

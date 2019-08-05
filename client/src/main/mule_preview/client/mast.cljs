@@ -90,7 +90,7 @@
         {mocks true regular-components false}
         (group-by is-munit-mock-component content)
         title (get-munit-title tag-name)
-        is-split-flow (= tag-name "test")]
+        is-split-flow (= tag-name "munit:test")]
     {:type :munit-container
      :tag-name tag-name
      :description description
