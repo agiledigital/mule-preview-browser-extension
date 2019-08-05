@@ -51,9 +51,10 @@ libs/reagent/target/reagent-0.8.1-BINDFIX.jar: libs/reagent/project.clj
 	@echo ">>> Installing forked version of Reagent into local repo"
 	cd libs/reagent && lein install
 
-libs/reagent/project.clj: .gitmodules
+libs/reagent/.timestamp: .gitmodules
 	@echo ">>> Updating submodule"
 	git submodule update --init --recursive --remote
+	touch $@
 
 $(ANYPOINT_STUDIO_INSTALLATION)/.timestamp: dependencies/$(ANYPOINT_STUDIO_ARCHIVE)
 	@echo ">>> Extracting Anypoint Studio dependency"
