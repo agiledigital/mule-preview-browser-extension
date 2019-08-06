@@ -29,9 +29,6 @@ exports[`when rendering a Mule component when the component has mapping renders 
       onMouseOver={[Function]}
     >
       <div
-        className="diff-icon"
-      />
-      <div
         className="component set-payload"
       >
         <img
@@ -81,9 +78,6 @@ exports[`when rendering a Mule component when the component is unknown renders c
       onMouseOut={[Function]}
       onMouseOver={[Function]}
     >
-      <div
-        className="diff-icon"
-      />
       <div
         className="component sjdsfjlsdf"
       >
@@ -184,8 +178,9 @@ exports[`when rendering a Mule container when it has children renders correctly 
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
               >
-                <div
+                <img
                   className="diff-icon"
+                  src="/img/is-not-equal-to.svg"
                 />
                 <div
                   className="component set-payload"
@@ -238,8 +233,9 @@ exports[`when rendering a Mule container when it has children renders correctly 
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
               >
-                <div
+                <img
                   className="diff-icon"
+                  src="/img/minus.svg"
                 />
                 <div
                   className="component message-properties-transformer"
@@ -292,8 +288,9 @@ exports[`when rendering a Mule container when it has children renders correctly 
                 onMouseOut={[Function]}
                 onMouseOver={[Function]}
               >
-                <div
+                <img
                   className="diff-icon"
+                  src="/img/plus.svg"
                 />
                 <div
                   className="component http:request"

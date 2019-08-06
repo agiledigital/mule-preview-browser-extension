@@ -42,6 +42,13 @@
       (str "img/icons/" filename)
       nil)))
 
+(defn- labels-to-diff-icon-url [labels]
+  (cond
+    (:added labels) "img/plus.svg"
+    (:edited labels) "img/is-not-equal-to.svg"
+    (:removed labels) "img/minus.svg"
+    :else nil))
+
 (defn- name-to-css-class [name]
   (when name (let [normalized-name (replace name #":" "_")]
                (str "mule-" normalized-name))))
@@ -111,6 +118,7 @@
 
 (defn mule-component-inner [{:keys [name description css-class content-root location change-record showing-atom labels]}]
   (let [img-url (name-to-img-url name false default-component-mapping)
+        diff-icon-url (labels-to-diff-icon-url labels)
         category-url (name-to-category-url name default-category-image)
         tooltip (tooltip change-record labels location)
         should-show-tooltip (or change-record (:added labels) (:removed labels))]
@@ -121,7 +129,7 @@
      :anchor [:div  {:class ["component-container" css-class]
                      :on-mouse-over (m/handler-fn (reset! showing-atom should-show-tooltip))
                      :on-mouse-out  (m/handler-fn (reset! showing-atom false))}
-              [:div {:class ["diff-icon"]}]
+              (when diff-icon-url (image diff-icon-url "diff-icon" content-root))
               [:div
                {:class ["component" name]}
                (image category-url "category-frame" content-root)

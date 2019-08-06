@@ -9,3 +9,4 @@
 (def ^:export xmlToClj xml->clj)
 (def ^:export makeAtom #(r/atom %))
 (def ^:export reactifyComponent r/reactify-component)
+(def ^:export makeSet #(set (map keyword (js->clj %))))
