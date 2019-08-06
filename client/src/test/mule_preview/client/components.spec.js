@@ -4,7 +4,11 @@ import {
   MuleComponent,
   MuleContainer
 } from "mule-preview/mule_preview.client.components";
-import { jsToClj, makeAtom } from "mule-preview/mule_preview.client.test_utils";
+import {
+  jsToClj,
+  makeAtom,
+  makeSet
+} from "mule-preview/mule_preview.client.test_utils";
 
 describe("when rendering a Mule component", () => {
   describe("when the component has mapping", () => {
@@ -80,6 +84,7 @@ describe("when rendering a Mule container", () => {
               content-root="some-content-root"
               location={jsToClj({ line: 1, position: 4 })}
               showing-atom={makeAtom(false)}
+              labels={makeSet(["edited"])}
             />
             <MuleComponent
               name="message-properties-transformer"
@@ -88,6 +93,7 @@ describe("when rendering a Mule container", () => {
               content-root="some-content-root"
               location={jsToClj({ line: 4, position: 4 })}
               showing-atom={makeAtom(false)}
+              labels={makeSet(["removed"])}
             />
             <MuleComponent
               name="http:request"
@@ -96,6 +102,7 @@ describe("when rendering a Mule container", () => {
               content-root="some-content-root"
               location={jsToClj({ line: 7, position: 4 })}
               showing-atom={makeAtom(false)}
+              labels={makeSet(["added"])}
             />
           </MuleContainer>
         )
