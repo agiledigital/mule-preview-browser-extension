@@ -23,6 +23,7 @@ const startDiff = () => {
       return getFileContentFromDiff(bitbucketData);
     })
     .then(({ fileA, fileB }) => {
+      console.dir({ fileA, fileB });
       const mulePreviewElement = createContainerElement();
       element.appendChild(mulePreviewElement);
       mount_diff_on_element(

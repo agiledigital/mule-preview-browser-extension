@@ -1,5 +1,6 @@
-import { mount_preview_on_element } from "../../../../client/build/release";
 import browser from "webextension-polyfill";
+import fetch from "cross-fetch";
+import { mount_preview_on_element } from "../../../../client/build/release";
 import { getFileRawUrlFromContentView } from "../scms/bitbucket/ui";
 import { getMulePreviewElement, createContainerElement } from "../ui";
 
