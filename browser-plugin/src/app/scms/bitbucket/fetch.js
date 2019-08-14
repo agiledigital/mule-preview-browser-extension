@@ -32,26 +32,33 @@ const fetchRawFilesFromHashes = (fromFilePath, toFilePath, fromHash, toHash) =>
     fileB
   }));
 
-export const getFileContentFromDiff = filePath =>
-  fetch(document.URL, {
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json"
-    }
-  })
+//https://stash.agiledigital.com.au/rest/api/latest/projects/FP/repos/sample-mule-project/compare/changes?from=42d1b74fad8af18ee0d88256c4f9dd218dc9c526&fromRepo=761&to=06fbb70f52044f963ca30dcdbd1eb9bc9ccd1a8f&start=0&limit=1000
+
+export const getFileContentFromDiff = ({
+  path,
+  projectCode,
+  repoName,
+  sourceRepoId,
+  sourceCommit,
+  targetRepoId,
+  targetCommit
+}) =>
+  fetch(
+    `/rest/api/latest/projects/${projectCode}/repos/${repoName}/compare/changes?from=${sourceCommit}&fromRepo=${sourceRepoId}&to=${targetCommit}&toRepo=${targetRepoId}&start=0&limit=1000`
+  )
     .then(response => {
       console.log("Response received. Streaming JSON");
       return response.json();
     })
-    .then(({ fromHash, toHash, diffs }) => {
-      const diff = findDiffFromFilePath(diffs, filePath);
+    .then(({ values }) => {
+      const diff = findDiffFromFilePath(values, path);
       if (diff) {
         const { fromFilePath, toFilePath } = extractPathsFromDiff(diff);
         return fetchRawFilesFromHashes(
           fromFilePath,
           toFilePath,
-          fromHash,
-          toHash
+          sourceCommit,
+          targetCommit
         );
       }
     });

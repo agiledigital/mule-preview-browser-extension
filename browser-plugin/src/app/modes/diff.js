@@ -1,7 +1,7 @@
 import { mount_diff_on_element } from "../../../../client/build/release";
 import browser from "webextension-polyfill";
 import { getFileContentFromDiff } from "../scms/bitbucket/fetch";
-import { getCurrentFile } from "../scms/bitbucket/ui";
+import { getBitbucketData } from "../scms/bitbucket/ui";
 import { getMulePreviewElement, createContainerElement } from "../ui";
 
 const startDiff = () => {
@@ -14,9 +14,14 @@ const startDiff = () => {
     "[Mule Preview] Bitbucket detected. Will attempt to load overlay."
   );
   const element = document.querySelector("body");
-  const filePath = getCurrentFile();
-
-  getFileContentFromDiff(filePath)
+  getBitbucketData()
+    .then(bitbucketData => {
+      console.dir(bitbucketData);
+      if (!bitbucketData.valid) {
+        throw new Error("Could not fetch Bitbucket data");
+      }
+      return getFileContentFromDiff(bitbucketData);
+    })
     .then(({ fileA, fileB }) => {
       const mulePreviewElement = createContainerElement();
       element.appendChild(mulePreviewElement);
