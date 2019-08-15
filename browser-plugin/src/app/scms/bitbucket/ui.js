@@ -1,3 +1,7 @@
+import browser from "webextension-polyfill";
+import { injectScript } from "../../inject";
+import { messages } from "../../constants";
+
 /**
  * Functions to get the state of the Bitbucket UI
  */
@@ -29,6 +33,22 @@ export const getCurrentFile = () => {
     throw new Error("[Mule Preview] Cannot determine diff target from DOM");
   }
   return urlComponents[1];
+};
+
+export const getBitbucketData = async () => {
+  return new Promise((resolve, reject) => {
+    document.addEventListener(messages.BitbucketDataScraped, function({
+      detail
+    }) {
+      console.log(`Recieved [${messages.BitbucketDataScraped}] event!`);
+      resolve(detail);
+    });
+    setTimeout(
+      () => reject(new Error("Took too long to scrape Bitbucket data")),
+      1000
+    );
+    injectScript(browser.extension.getURL("dist/scraper.js"), "body");
+  });
 };
 
 export const getFileRawUrlFromContentView = () => {

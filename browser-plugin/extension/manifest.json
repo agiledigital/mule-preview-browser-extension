@@ -23,7 +23,11 @@
     "128": "icons/icon.png"
   },
 
-  "web_accessible_resources": ["public/*"],
+  "web_accessible_resources": [
+    "public/*",
+    "dist/scraper.js",
+    "dist/scraper.js.map"
+  ],
 
   "browser_action": {
     "default_icon": {

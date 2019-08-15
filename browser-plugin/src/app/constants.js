@@ -1,5 +1,6 @@
 export const messages = Object.freeze({
   ToggleDiff: "ToggleDiff",
   Reset: "Reset",
-  Supported: "Supported"
+  Supported: "Supported",
+  BitbucketDataScraped: "BitbucketDataScraped"
 });

@@ -1,57 +1,78 @@
+import fetch from "cross-fetch";
+
 /**
  * Functions to fetch files from Bitbucket to preview and diff
  */
 
+const toFilePathFromDiff = diff => diff.path.components.join("/");
+
+const fromFilePathFromDiff = diff =>
+  diff.srcPath === undefined
+    ? toFilePathFromDiff(diff)
+    : diff.srcPath.components.join("/");
+
 const findDiffFromFilePath = (diffs, filePath) =>
-  diffs.find(
-    diff =>
-      (diff.source && diff.source.toString === filePath) ||
-      (diff.destination && diff.destination.toString) === filePath
-  );
+  diffs.find(diff => fromFilePathFromDiff(diff) === filePath);
 
 const extractPathsFromDiff = diff => ({
-  fromFilePath: diff.source ? diff.source.toString : undefined,
-  toFilePath: diff.destination ? diff.destination.toString : undefined
+  fromFilePath: fromFilePathFromDiff(diff),
+  toFilePath: toFilePathFromDiff(diff)
 });
 
-const fetchRawFileFromHash = (filePath, hash) => {
-  const fetchUrl = new URL(`../../raw/${filePath}?at=${hash}`, document.URL);
-  console.log(`fetchUrl: [${fetchUrl}]`);
+const fetchRawFileFromHash = (projectCode, repoName, filePath, hash) => {
   if (!filePath) {
     return Promise.resolve(undefined);
   }
-  return fetch(fetchUrl).then(response => response.text());
+  const fetchUrl = new URL(
+    `/projects/${projectCode}/repos/${repoName}/raw/${filePath}?at=${hash}`,
+    document.URL
+  );
+
+  return fetch(fetchUrl).then(response =>
+    response.ok ? response.text() : undefined
+  );
 };
 
-const fetchRawFilesFromHashes = (fromFilePath, toFilePath, fromHash, toHash) =>
+const fetchRawFilesFromHashes = (
+  projectCode,
+  repoName,
+  fromFilePath,
+  toFilePath,
+  fromHash,
+  toHash
+) =>
   Promise.all([
-    fetchRawFileFromHash(fromFilePath, fromHash),
-    fetchRawFileFromHash(toFilePath, toHash)
+    fetchRawFileFromHash(projectCode, repoName, toFilePath, toHash),
+    fetchRawFileFromHash(projectCode, repoName, fromFilePath, fromHash)
   ]).then(([fileA, fileB]) => ({
     fileA,
     fileB
   }));
 
-export const getFileContentFromDiff = filePath =>
-  fetch(document.URL, {
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json"
-    }
-  })
-    .then(response => {
-      console.log("Response received. Streaming JSON");
-      return response.json();
-    })
-    .then(({ fromHash, toHash, diffs }) => {
-      const diff = findDiffFromFilePath(diffs, filePath);
+export const getFileContentFromDiff = ({
+  path,
+  projectCode,
+  repoName,
+  sourceRepoId,
+  sourceCommit,
+  targetRepoId,
+  targetCommit
+}) => {
+  const absoluteUrl = `/rest/api/latest/projects/${projectCode}/repos/${repoName}/compare/changes?from=${sourceCommit}&fromRepo=${sourceRepoId}&to=${targetCommit}&toRepo=${targetRepoId}&start=0&limit=1000`;
+  return fetch(new URL(absoluteUrl, document.URL))
+    .then(response => response.json())
+    .then(({ values }) => {
+      const diff = findDiffFromFilePath(values, path);
       if (diff) {
         const { fromFilePath, toFilePath } = extractPathsFromDiff(diff);
         return fetchRawFilesFromHashes(
+          projectCode,
+          repoName,
           fromFilePath,
           toFilePath,
-          fromHash,
-          toHash
+          sourceCommit,
+          targetCommit
         );
       }
     });
+};
