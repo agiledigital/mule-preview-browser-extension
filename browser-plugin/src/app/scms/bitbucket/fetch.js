@@ -19,24 +19,31 @@ const extractPathsFromDiff = diff => ({
   toFilePath: toFilePathFromDiff(diff)
 });
 
-const fetchRawFileFromHash = (filePath, hash) => {
+const fetchRawFileFromHash = (projectCode, repoName, filePath, hash) => {
   if (!filePath) {
     return Promise.resolve(undefined);
   }
-  const fetchUrl = new URL(`../../raw/${filePath}?at=${hash}`, document.URL);
-  console.log(`fetchUrl: [${fetchUrl}]`);
+  const fetchUrl = new URL(
+    `/projects/${projectCode}/repos/${repoName}/raw/${filePath}?at=${hash}`,
+    document.URL
+  );
 
-  return fetch(fetchUrl).then(response => {
-    // TODO: Why are all added/removed diffs backwards
-    console.dir(response);
-    return response.ok ? response.text() : undefined;
-  });
+  return fetch(fetchUrl).then(response =>
+    response.ok ? response.text() : undefined
+  );
 };
 
-const fetchRawFilesFromHashes = (fromFilePath, toFilePath, fromHash, toHash) =>
+const fetchRawFilesFromHashes = (
+  projectCode,
+  repoName,
+  fromFilePath,
+  toFilePath,
+  fromHash,
+  toHash
+) =>
   Promise.all([
-    fetchRawFileFromHash(toFilePath, toHash),
-    fetchRawFileFromHash(fromFilePath, fromHash)
+    fetchRawFileFromHash(projectCode, repoName, toFilePath, toHash),
+    fetchRawFileFromHash(projectCode, repoName, fromFilePath, fromHash)
   ]).then(([fileA, fileB]) => ({
     fileA,
     fileB
@@ -53,18 +60,14 @@ export const getFileContentFromDiff = ({
 }) => {
   const absoluteUrl = `/rest/api/latest/projects/${projectCode}/repos/${repoName}/compare/changes?from=${sourceCommit}&fromRepo=${sourceRepoId}&to=${targetCommit}&toRepo=${targetRepoId}&start=0&limit=1000`;
   return fetch(new URL(absoluteUrl, document.URL))
-    .then(response => {
-      console.log("Response received. Streaming JSON");
-      return response.json();
-    })
+    .then(response => response.json())
     .then(({ values }) => {
-      console.dir(values);
       const diff = findDiffFromFilePath(values, path);
-      console.dir(diff);
       if (diff) {
         const { fromFilePath, toFilePath } = extractPathsFromDiff(diff);
-        console.dir({ fromFilePath, toFilePath });
         return fetchRawFilesFromHashes(
+          projectCode,
+          repoName,
           fromFilePath,
           toFilePath,
           sourceCommit,

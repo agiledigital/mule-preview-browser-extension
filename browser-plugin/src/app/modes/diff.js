@@ -16,14 +16,12 @@ const startDiff = () => {
   const element = document.querySelector("body");
   getBitbucketData()
     .then(bitbucketData => {
-      console.dir(bitbucketData);
       if (!bitbucketData.valid) {
         throw new Error("Could not fetch Bitbucket data");
       }
       return getFileContentFromDiff(bitbucketData);
     })
     .then(({ fileA, fileB }) => {
-      console.dir({ fileA, fileB });
       const mulePreviewElement = createContainerElement();
       element.appendChild(mulePreviewElement);
       mount_diff_on_element(
