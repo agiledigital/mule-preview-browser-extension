@@ -35,8 +35,8 @@ const fetchRawFileFromHash = (filePath, hash) => {
 
 const fetchRawFilesFromHashes = (fromFilePath, toFilePath, fromHash, toHash) =>
   Promise.all([
-    fetchRawFileFromHash(fromFilePath, fromHash),
-    fetchRawFileFromHash(toFilePath, toHash)
+    fetchRawFileFromHash(toFilePath, toHash),
+    fetchRawFileFromHash(fromFilePath, fromHash)
   ]).then(([fileA, fileB]) => ({
     fileA,
     fileB
