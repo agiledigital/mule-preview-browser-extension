@@ -117,3 +117,4 @@ typings/
 
 .shadow-cljs
 build/
+dist/

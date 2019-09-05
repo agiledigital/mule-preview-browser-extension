@@ -1,10 +1,10 @@
-import { xml__GT_mast as xmlToMast } from "mule-preview/mule_preview.client.mast";
-import { augment_mast_with_diff as augmentMastWithDiff } from "mule-preview/mule_preview.client.transformers.apply_patch";
+import { xml__GT_mast as xmlToMast } from "../../../../../dist/mule_preview.client.mast";
+import { augment_mast_with_diff as augmentMastWithDiff } from "../../../../../dist/mule_preview.client.transformers.apply_patch";
 import {
   xmlToClj,
   cljToJs,
   jsToClj
-} from "mule-preview/mule_preview.client.test_utils";
+} from "../../../../../dist/mule_preview.client.test_utils";
 import { readFileSync } from "fs";
 import { join } from "path";
 import exampleDiff from "./__fixtures__/example-diff-dom-output.json";

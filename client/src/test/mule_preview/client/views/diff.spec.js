@@ -1,7 +1,7 @@
 import { readFileSync } from "fs";
 import { join } from "path";
-import { calculate_diff } from "mule-preview/mule_preview.client.views.diff";
-import { cljToJs } from "mule-preview/mule_preview.client.test_utils";
+import { calculate_diff } from "../../../../../dist/mule_preview.client.views.diff";
+import { cljToJs } from "../../../../../dist/mule_preview.client.test_utils";
 
 describe("when diffing two XML files", () => {
   describe("when file B adds elements with nested content", () => {

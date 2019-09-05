@@ -15,13 +15,14 @@ browser-plugin/build/package-unsigned.zip: browser-plugin/extension/dist
 	mkdir -p browser-plugin/build
 	cd browser-plugin/extension && zip -r ../build/package-unsigned.zip *
 
-browser-plugin/extension/dist: browser-plugin/node_modules/.installed client/build/release.js browser-plugin/extension/public $(BROWSER_PLUGIN_FILES)
+browser-plugin/extension/dist: browser-plugin/node_modules/.installed client/dist/.timestamp browser-plugin/extension/public $(BROWSER_PLUGIN_FILES)
 	@echo ">>> Building Browser Extension (Release)"
 	cd browser-plugin && npm run build
 
-client/build/release.js: client/node_modules/.installed client/src/main/mule_preview/client/mappings.json client/public/img/icons/.timestamp libs/reagent/target/reagent-0.8.1-BINDFIX.jar $(CLIENT_FILES)
+client/dist/.timestamp: client/node_modules/.installed client/src/main/mule_preview/client/mappings.json client/public/img/icons/.timestamp libs/reagent/target/reagent-0.8.1-BINDFIX.jar $(CLIENT_FILES)
 	@echo ">>> Building Client Module (Release)"
 	cd client && npm run build
+	touch $@
 
 browser-plugin/extension/public: client/src/main/mule_preview/client/mappings.json client/public/img/icons/.timestamp $(CLIENT_PUBLIC_FILES)
 	@echo ">>> Copying required assets for Browser Extension"
@@ -68,17 +69,21 @@ dependencies/$(ANYPOINT_STUDIO_ARCHIVE):
 
 clean:
 	rm -rf \
+	browser-plugin/.cache \
+	browser-plugin/build \
 	browser-plugin/extension/public \
 	browser-plugin/extension/dist \
-	client/build/release.js \
 	browser-plugin/node_modules \
+	browser-plugin/web-ext-artifacts \
+	client/public/js \
+	client/dist \
+	client/build \
+	client/.shadow-cljs \
 	client/node_modules \
 	client/src/main/mule_preview/client/mappings.json \
 	client/public/img/icons \
 	tools/target \
-	client/build \
-	client/.shadow-cljs \
 	libs/reagent/target \
-	browser-plugin/build \
 	dependencies
+
 .PHONY: clean

@@ -5,8 +5,6 @@
    [mule-preview.client.views.preview :refer [start-preview start-preview-url]]
    [mule-preview.client.views.diff :refer [start-diff start-diff-url]]))
 
-(def root-component (r/atom [:div]))
-
 (defn view [root-component]
   [:div {:class "mp root-component"} @root-component])
 

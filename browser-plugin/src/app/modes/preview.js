@@ -1,6 +1,6 @@
 import browser from "webextension-polyfill";
 import fetch from "cross-fetch";
-import { mount_preview_on_element } from "../../../../client/build/release";
+import { mountPreviewOnElement } from "mule-preview";
 import { getFileRawUrlFromContentView } from "../scms/bitbucket/ui";
 import { getMulePreviewElement, createContainerElement } from "../ui";
 
@@ -20,7 +20,7 @@ const startPreview = () => {
     .then(content => {
       const mulePreviewElement = createContainerElement();
       element.appendChild(mulePreviewElement);
-      mount_preview_on_element(
+      mountPreviewOnElement(
         mulePreviewElement,
         content,
         browser.runtime.getURL("public/")

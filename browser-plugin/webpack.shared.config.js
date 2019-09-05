@@ -17,21 +17,35 @@ module.exports = {
     extensions: [".js", ".json", ".scss", ".css"]
   },
 
+  node: {
+    fs: "empty"
+  },
+
   module: {
     rules: [
       {
         enforce: "pre",
         test: /\.js$/,
         loader: "eslint-loader",
-        exclude: [/node_modules/, /release.js/],
+        include: [/browser-plugin\/src/],
         options: {
           cache: true
         }
       },
       {
         test: /\.js$/,
+        use: ["source-map-loader"],
+        enforce: "pre",
+        include: [/mule_preview\.client/],
+        // The large embedded JSON blob in the mappings file causes OOM
+        // in source map processors.
+        // TODO: Find a better way to embed the mappings
+        exclude: [/mule_preview\.client\.mappings/]
+      },
+      {
+        test: /\.js$/,
         loader: "babel-loader",
-        exclude: [/node_modules/, /release.js/]
+        exclude: [/node_modules/]
       },
       {
         test: /\.html$/,
