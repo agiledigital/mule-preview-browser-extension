@@ -9,8 +9,7 @@
   [cljs-http "0.1.46"]
   [cheshire "5.8.1"]
   [lambdaisland/uri "1.1.0"]
-  [cider/cider-nrepl "0.21.1"]
-  [re-com "2.5.0"]]
+  [cider/cider-nrepl "0.21.1"]]
 
  :dev-http {8080 "public"}
  :builds
