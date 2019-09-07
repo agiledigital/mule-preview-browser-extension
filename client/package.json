@@ -33,7 +33,6 @@
     "build": "npm test && npm run prebuild && shadow-cljs release dist --source-maps"
   },
   "dependencies": {
-    "@material-ui/core": "4.0.1",
     "create-react-class": "^15.6.3",
     "diff-dom": "^4.1.6",
     "react": "^16.9.0",
