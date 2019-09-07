@@ -21,7 +21,7 @@
         diff-output (diff mast-a mast-b)]
     (augment-mast-with-diff mast-a diff-output)))
 
-(defn- handle-xml-fetch-success [response-a response-b root-component content-root]
+(defn handle-xml-fetch-success [response-a response-b root-component content-root]
   (let [augmented-mast (calculate-diff response-a response-b content-root)
         transformed-components (mast->react augmented-mast content-root)]
     (reset! root-component transformed-components)))

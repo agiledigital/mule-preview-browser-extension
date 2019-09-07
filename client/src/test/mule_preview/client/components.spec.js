@@ -3,12 +3,12 @@ import renderer from "react-test-renderer";
 import {
   MuleComponent,
   MuleContainer
-} from "mule-preview/mule_preview.client.components";
+} from "../../../../dist/mule_preview.client.components";
 import {
   jsToClj,
   makeAtom,
   makeSet
-} from "mule-preview/mule_preview.client.test_utils";
+} from "../../../../dist/mule_preview.client.test_utils";
 
 describe("when rendering a Mule component", () => {
   describe("when the component has mapping", () => {

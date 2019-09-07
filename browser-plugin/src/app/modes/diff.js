@@ -1,4 +1,4 @@
-import { mount_diff_on_element } from "../../../../client/build/release";
+import { mountDiffOnElement } from "mule-preview";
 import browser from "webextension-polyfill";
 import { getFileContentFromDiff } from "../scms/bitbucket/fetch";
 import { getBitbucketData } from "../scms/bitbucket/ui";
@@ -16,7 +16,7 @@ const handleFileContent = ({ fileA, fileB }) => {
 
   const mulePreviewElement = createContainerElement();
   element.appendChild(mulePreviewElement);
-  mount_diff_on_element(
+  mountDiffOnElement(
     mulePreviewElement,
     fileA,
     fileB,
