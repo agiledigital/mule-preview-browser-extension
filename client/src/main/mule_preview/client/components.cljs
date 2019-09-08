@@ -107,22 +107,25 @@
 (defn tooltip-removed []
   [:div "Element Removed"])
 
-(defn tooltip [change-record labels location]
-  [:div {:class "popover"}
-   [:h3 (str "Line " (:line location) ", Column " (:column location))]
-   [:div
+(defn tooltip [change-record labels location placement]
+  [:div {:class ["mp-popover" placement]}
+   [:h3 {:class "mp-popover-title"}
+    (str "Line " (:line location) ", Column " (:column location))]
+   [:div {:class "mp-popover-content"}
     (cond
       (:added labels) (tooltip-added)
       (:removed labels) (tooltip-removed)
       (:edited labels) (tooltip-edited change-record)
       :else nil)]])
 
-(defn popper [showing-atom anchor-el tooltip-element]
+(defn popper [change-record labels location showing-atom anchor-el]
   (when @showing-atom (react-dom/createPortal
-                       (r/as-element [:> Popper {:placement "right" :reference-element @anchor-el}
-                                      (fn [props]
-                                        (let [{:keys [ref style placement]} (js->clj props :keywordize-keys true)]
-                                          (r/as-element [:div {:ref ref :style style :data-placement placement} tooltip-element])))])
+                       (r/as-element [:div {:class "mp-popover-root"}
+                                      [:> Popper {:placement "auto" :reference-element @anchor-el}
+                                       (fn [props]
+                                         (let [{:keys [ref style placement]} (js->clj props :keywordize-keys true)]
+                                           (r/as-element [:div {:ref ref :style style :data-placement placement :class placement}
+                                                          (tooltip change-record labels location placement)])))]])
                        (.-body js/document))))
 
 (defn mule-component-inner [{:keys [name description css-class content-root location change-record showing-atom labels]}]
@@ -130,7 +133,6 @@
         img-url (name-to-img-url name false default-component-mapping)
         diff-icon-url (labels-to-diff-icon-url labels)
         category-url (name-to-category-url name default-category-image)
-        tooltip-element (tooltip change-record labels location)
         should-show-tooltip (or change-record (:added labels) (:removed labels))]
     (fn []
       [:div {:ref #(reset! anchor-el %)}
@@ -143,7 +145,7 @@
          (image category-url "category-frame" content-root)
          (image img-url "icon" content-root)
          [:div {:class "label"} description]]]
-       (popper showing-atom anchor-el tooltip-element)])))
+       (popper change-record labels location showing-atom anchor-el)])))
 
 (defn mule-component [props]
   (let [showing-atom (r/atom false)]
@@ -156,8 +158,7 @@
         category-url (name-to-category-url name default-category-image)
         interposed-children (interpose (arrow content-root) children)
         child-container-component (child-container interposed-children)
-        should-show-tooltip (or change-record (:added labels) (:removed labels))
-        tooltip-element (tooltip change-record labels location)]
+        should-show-tooltip (or change-record (:added labels) (:removed labels))]
     (fn []
       [:div {:ref #(reset! anchor-el %)}
        [:div {:class ["container" generated-css-class css-class]
@@ -169,7 +170,7 @@
           (image category-url "category-frame" content-root)
           (image img-url "icon container-image" content-root)]
          child-container-component]]
-       (popper showing-atom anchor-el tooltip-element)])))
+       (popper change-record labels location showing-atom anchor-el)])))
 
 (defn mule-container [props]
   (let [showing-atom (r/atom false)]
