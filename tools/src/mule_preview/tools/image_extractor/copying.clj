@@ -57,8 +57,7 @@
 (defn scan-directory-for-plugins [root-dir output-dir]
   "Walks the given root dir looking for valid Mule widget plugins,
   for each valid plugin, it will copy all it's associated images into the output dir"
-  (let [raw-plugins (scan-for-files root-dir raw-filename-regex)
-        jars (scan-for-files root-dir jar-filename-regex)
+  (let [[raw-plugins jars] (scan-for-files root-dir [raw-filename-regex jar-filename-regex])
         jars-with-plugins (filter #(zu/zip-contains-file % "plugin.xml") jars)
         jar-scan-output (process-plugins jars-with-plugins zip-read-fn #(zip-copy-fn output-dir %1 %2))
         raw-scan-output (process-plugins raw-plugins raw-read-fn #(raw-copy-fn output-dir %1 %2))]

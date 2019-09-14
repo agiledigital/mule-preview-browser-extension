@@ -9,6 +9,13 @@ import {
   makeAtom,
   makeSet
 } from "../../../../dist/mule_preview.client.test_utils";
+import { readFileSync } from "fs";
+import { join } from "path";
+
+// Made up mapping data
+const mappings = JSON.parse(
+  readFileSync(join(__dirname, "__fixtures__/example-mappings.json"))
+);
 
 describe("when rendering a Mule component", () => {
   describe("when the component has mapping", () => {
@@ -22,6 +29,7 @@ describe("when rendering a Mule component", () => {
             content-root="some-content-root"
             location={jsToClj({ line: 1, position: 4 })}
             showing-atom={makeAtom(false)}
+            mappings={jsToClj(mappings)}
           />
         )
         .toJSON();
@@ -39,6 +47,7 @@ describe("when rendering a Mule component", () => {
             content-root="some-content-root"
             location={jsToClj({ line: 1, position: 4 })}
             showing-atom={makeAtom(false)}
+            mappings={jsToClj(mappings)}
           />
         )
         .toJSON();
@@ -59,6 +68,7 @@ describe("when rendering a Mule container", () => {
             content-root="some-content-root"
             location={jsToClj({ line: 2, position: 3 })}
             showing-atom={makeAtom(false)}
+            mappings={jsToClj(mappings)}
           />
         )
         .toJSON();
@@ -76,6 +86,7 @@ describe("when rendering a Mule container", () => {
             content-root="some-content-root"
             location={jsToClj({ line: 2, position: 3 })}
             showing-atom={makeAtom(false)}
+            mappings={jsToClj(mappings)}
           >
             <MuleComponent
               name="set-payload"
@@ -85,6 +96,7 @@ describe("when rendering a Mule container", () => {
               location={jsToClj({ line: 1, position: 4 })}
               showing-atom={makeAtom(false)}
               labels={makeSet(["edited"])}
+              mappings={jsToClj(mappings)}
             />
             <MuleComponent
               name="message-properties-transformer"
@@ -94,6 +106,7 @@ describe("when rendering a Mule container", () => {
               location={jsToClj({ line: 4, position: 4 })}
               showing-atom={makeAtom(false)}
               labels={makeSet(["removed"])}
+              mappings={jsToClj(mappings)}
             />
             <MuleComponent
               name="http:request"
@@ -103,6 +116,7 @@ describe("when rendering a Mule container", () => {
               location={jsToClj({ line: 7, position: 4 })}
               showing-atom={makeAtom(false)}
               labels={makeSet(["added"])}
+              mappings={jsToClj(mappings)}
             />
           </MuleContainer>
         )

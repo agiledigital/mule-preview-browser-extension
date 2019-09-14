@@ -8,7 +8,8 @@
 
 
 (defn find-light-theme [root-dir]
-  (first (scan-for-files root-dir #"org\.mule\.tooling\.ui\.theme\.light_.+\.jar")))
+  (let [[light-theme-jars] (scan-for-files root-dir [light-theme-jar-regex])]
+    (first (scan-for-files root-dir [light-theme-jar-regex]))))
 
 (defn copy-file-to-output-dir [zip-file path output-dir]
   (let [output-file (io/file output-dir (filename path))]

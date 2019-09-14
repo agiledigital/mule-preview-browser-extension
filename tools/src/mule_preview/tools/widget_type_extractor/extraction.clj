@@ -38,8 +38,7 @@
    which it will process into a merged map of widget type definitions
    and write them to a JSON file"
   (let [output-file (io/file output-dir "widget-type.json")
-        raw-plugins (scan-for-files root-dir raw-filename-regex)
-        jars (scan-for-files root-dir jar-filename-regex)
+        [raw-plugins jars] (scan-for-files root-dir [raw-filename-regex jar-filename-regex])
         jars-with-plugins (filter #(zu/zip-contains-file % "plugin.xml") jars)
         jar-scan-output (process-plugins jars-with-plugins zip-read-fn)
         raw-scan-output (process-plugins raw-plugins raw-read-fn)]
