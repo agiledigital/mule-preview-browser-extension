@@ -25,6 +25,7 @@
     "stylelint-prettier": "^1.1.1"
   },
   "scripts": {
+    "prepare": "npm run build",
     "prebuild": "rimraf ./public/js && rimraf dist/* && rimraf build/* && rimraf .shadow-cljs",
     "hack-remove-bad-source-map": "rimraf dist/mule_preview.client.mappings.js.map",
     "start": "shadow-cljs watch frontend",
