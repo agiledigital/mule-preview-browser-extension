@@ -35,7 +35,7 @@ browser-plugin/node_modules/.installed: browser-plugin/package.json
 	@echo ">>> Installing dependencies for Browser Extension"
 	cd browser-plugin && npm install && touch node_modules/.installed
 
-client/node_modules/.installed: client/package.json
+client/node_modules/.installed: client/package.json libs/reagent/target/reagent-0.8.1-BINDFIX.jar
 	@echo ">>> Installing dependencies for Client Module"
 	cd client && npm install && touch node_modules/.installed
 
