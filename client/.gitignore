@@ -17,6 +17,7 @@ pom.xml.asc
 *.log
 /.env
 /public/img/icons/*.png
+/public/mappings.json
 src/mule_preview/client/mappings.json
 
 

@@ -10,6 +10,14 @@
   (:use [mule-preview.tools.shared])
   (:gen-class))
 
+(defn extract-anypoint-version [feature-xml-file]
+  "Finds the org.mule.tooling.studio feature XML file
+   which seems (to be a reasonable way of finding the version of Anypoint studio"
+  (when feature-xml-file 
+    (let [feature-xml-contents (slurp feature-xml-file)
+          parsed-xml (xml-string-to-xml feature-xml-contents)]
+      (-> parsed-xml :attrs :version))))
+
 (defn element-name [prefix name]
   "Determines the element name for the mapping file
    Elements from the core namespace are not prefixed in Mule"
@@ -116,10 +124,13 @@
   "Walks the given root dir looking for valid Mule widget plugins, which it will process into a merged map of widget definitions
    and write them to a JSON file"
   (let [output-file (io/file output-dir "mappings.json")
-        raw-plugins (scan-for-files root-dir raw-filename-regex)
-        jars (scan-for-files root-dir jar-filename-regex)
+        [raw-plugins jars studio-feature-xmls] (scan-for-files root-dir
+                                                               [raw-filename-regex jar-filename-regex studio-feature-xml-regex])
+        anypoint-version (extract-anypoint-version (first studio-feature-xmls))
         jars-with-plugins (filter #(zu/zip-contains-file % "plugin.xml") jars)
         jar-scan-output (process-plugins jars-with-plugins zip-read-fn)
         raw-scan-output (process-plugins raw-plugins raw-read-fn)]
-    (cc/generate-stream (merge jar-scan-output raw-scan-output) (io/writer output-file))
+    (cc/generate-stream
+     {:mapping-version 1 :anypoint-version anypoint-version :mappings (merge jar-scan-output raw-scan-output)}
+     (io/writer output-file))
     (println "Successfully wrote mappings file to [" output-file "]")))

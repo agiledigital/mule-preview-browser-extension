@@ -12,11 +12,11 @@ exports[`when rendering a Mule component when the component has mapping renders 
     >
       <img
         className="category-frame"
-        src="/img/icons/org.mule.tooling.category.transformers.large.png"
+        src="/img/icons/setters.large.png"
       />
       <img
         className="icon"
-        src="/img/icons/SetPayload-48x32.png"
+        src="/img/icons/set-payload.png"
       />
       <div
         className="label"
@@ -76,11 +76,7 @@ exports[`when rendering a Mule container when it has children renders correctly 
       >
         <img
           className="category-frame"
-          src="/img/icons/org.mule.tooling.category.scopes.large.png"
-        />
-        <img
-          className="icon container-image"
-          src="/img/icons/sub-flow-48x32.png"
+          src="/img/icons/org.mule.tooling.ui.modules.core.miscellaneous.large.png"
         />
       </div>
       <div
@@ -101,11 +97,11 @@ exports[`when rendering a Mule container when it has children renders correctly 
             >
               <img
                 className="category-frame"
-                src="/img/icons/org.mule.tooling.category.transformers.large.png"
+                src="/img/icons/setters.large.png"
               />
               <img
                 className="icon"
-                src="/img/icons/SetPayload-48x32.png"
+                src="/img/icons/set-payload.png"
               />
               <div
                 className="label"
@@ -134,11 +130,11 @@ exports[`when rendering a Mule container when it has children renders correctly 
             >
               <img
                 className="category-frame"
-                src="/img/icons/org.mule.tooling.category.transformers.large.png"
+                src="/img/icons/transformers.large.png"
               />
               <img
                 className="icon"
-                src="/img/icons/Transformer-48x32.png"
+                src="/img/icons/message-properties-transformer.png"
               />
               <div
                 className="label"
@@ -167,11 +163,11 @@ exports[`when rendering a Mule container when it has children renders correctly 
             >
               <img
                 className="category-frame"
-                src="/img/icons/org.mule.tooling.category.cloudconnectors.large.png"
+                src="/img/icons/listeners.large.png"
               />
               <img
                 className="icon"
-                src="/img/icons/http_connector_50x34.png"
+                src="/img/icons/http-request.png"
               />
               <div
                 className="label"
@@ -207,11 +203,7 @@ exports[`when rendering a Mule container when it has no children renders correct
       >
         <img
           className="category-frame"
-          src="/img/icons/org.mule.tooling.category.scopes.large.png"
-        />
-        <img
-          className="icon container-image"
-          src="/img/icons/sub-flow-48x32.png"
+          src="/img/icons/org.mule.tooling.ui.modules.core.miscellaneous.large.png"
         />
       </div>
       <div

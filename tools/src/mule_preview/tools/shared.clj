@@ -74,19 +74,27 @@
 
 (def jar-filename-regex
   "A regex used when searching for jar files to process"
-  #".*\.jar")
+  #"^.+(\/|\\).+\.jar$")
 
 (def raw-filename-regex
   "A regex used when searching for raw plugins to process"
-  #"plugin.xml")
+  #"^.+(\/|\\)plugin.xml$")
+
+(def studio-feature-xml-regex
+  "A regex used when searching for the Anypoint Studio feature file which contains the version"
+  #"^.+features(\/|\\)org\.mule\.tooling\.studio_.*(\/|\\)feature.xml$")
+
+(def light-theme-jar-regex
+  "A regex used when searching the jar file that contains the light theme"
+  #"^.+(\/|\\)org\.mule\.tooling\.ui\.theme\.light_.+\.jar$")
 
 ; Widget Scanning
 
-(defn scan-for-files [dir pattern]
-  "Recursivly walks the given directory and returns files matching the given pattern"
-  (filter
-   #(re-matches pattern (.getName %))
-   (file-seq (io/file dir))))
+(defn scan-for-files [dir patterns]
+  "Recursivly walks the given directory and returns a sequence of 
+   lazy sequences for each provided pattern"
+  (let [s (file-seq (io/file dir))]
+    (map (fn [pattern] (filter #(re-matches pattern (.getPath %)) s)) patterns)))
 
 (defn xml-string-to-xml [xml-string]
   "Parses a string containing XML into a Clojure map"

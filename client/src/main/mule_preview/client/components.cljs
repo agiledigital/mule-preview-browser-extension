@@ -4,7 +4,6 @@
    [reagent.core :as r]
    [react-dom :as react-dom]
    [clojure.string :refer [split replace]]
-   [mule-preview.client.mappings :refer [element-to-icon-map]]
    [lambdaisland.uri :refer [join]]
    ["react-popper" :refer [Manager Reference Popper]])
   (:require-macros [mule-preview.client.macros :as m]))
@@ -27,16 +26,18 @@
       (str first-component ":*")
       first-component)))
 
-(defn- name-to-category-url [name default-image]
-  (let [mapping (get element-to-icon-map (keyword name))
+(defn- name-to-category-url [name default-image mappings]
+  (let [element-to-icon-map (:mappings mappings)
+        mapping (get element-to-icon-map (keyword name))
         category (:category mapping)
         filename (if (some? category) (str category ".large.png") default-image)]
     (if-not (nil? filename)
       (str "img/icons/" filename)
       nil)))
 
-(defn- name-to-img-url [name is-nested default-value]
-  (let [mapping (get element-to-icon-map (keyword name) default-value)
+(defn- name-to-img-url [name is-nested default-value mappings]
+  (let [element-to-icon-map (:mappings mappings)
+        mapping (get element-to-icon-map (keyword name) default-value)
         regular-filename (:image mapping)
         filename (if is-nested (get mapping :nested-image regular-filename) regular-filename)]
     (if-not (nil? filename)
@@ -128,11 +129,11 @@
                                                           (tooltip change-record labels location placement)])))]])
                        (.-body js/document))))
 
-(defn mule-component-inner [{:keys [name description css-class content-root location change-record showing-atom labels]}]
+(defn mule-component-inner [{:keys [name description css-class content-root location change-record showing-atom labels mappings]}]
   (let [anchor-el (clojure.core/atom nil)
-        img-url (name-to-img-url name false default-component-mapping)
+        img-url (name-to-img-url name false default-component-mapping mappings)
         diff-icon-url (labels-to-diff-icon-url labels)
-        category-url (name-to-category-url name default-category-image)
+        category-url (name-to-category-url name default-category-image mappings)
         should-show-tooltip (or change-record (:added labels) (:removed labels))]
     (fn []
       [:div {:ref #(reset! anchor-el %)}
@@ -151,11 +152,11 @@
   (let [showing-atom (r/atom false)]
     (fn [] (mule-component-inner (assoc props :showing-atom showing-atom)))))
 
-(defn mule-container-inner [{:keys [name description children css-class content-root location change-record showing-atom labels]}]
+(defn mule-container-inner [{:keys [name description children css-class content-root location change-record showing-atom labels mappings]}]
   (let [anchor-el (clojure.core/atom nil)
         generated-css-class (name-to-css-class name)
-        img-url (name-to-img-url name (some? children) nil)
-        category-url (name-to-category-url name default-category-image)
+        img-url (name-to-img-url name (some? children) nil mappings)
+        category-url (name-to-category-url name default-category-image mappings)
         interposed-children (interpose (arrow content-root) children)
         child-container-component (child-container interposed-children)
         should-show-tooltip (or change-record (:added labels) (:removed labels))]

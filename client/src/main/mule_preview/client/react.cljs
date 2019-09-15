@@ -10,7 +10,7 @@
 (defn- labels-to-css [labels]
   (clojure.string/join " " (map name labels)))
 
-(defn- create-mule-component [node content-root]
+(defn- create-mule-component [node mappings content-root]
   (let [{:keys [tag-name description labels location change-record]} node]
     [(mule-component {:name tag-name
                       :description description
@@ -18,9 +18,10 @@
                       :content-root content-root
                       :location location
                       :change-record change-record
-                      :labels labels})]))
+                      :labels labels
+                      :mappings mappings})]))
 
-(defn- create-mule-container-component [node content-root]
+(defn- create-mule-container-component [node mappings content-root]
   (let [{:keys [tag-name description content labels location change-record]} node]
     [(mule-container {:name tag-name
                       :description description
@@ -29,27 +30,28 @@
                       :content-root content-root
                       :location location
                       :change-record change-record
-                      :labels labels})]))
+                      :labels labels
+                      :mappings mappings})]))
 
-(defn- transform-tag [node content-root]
+(defn- transform-tag [mappings content-root node]
   (let [type (:type node)]
     (case type
-      :munit-container (create-mule-container-component node content-root)
-      :error-container (create-mule-container-component node content-root)
-      :container (create-mule-container-component node content-root)
-      :component (create-mule-component node content-root))))
+      :munit-container (create-mule-container-component node mappings content-root)
+      :error-container (create-mule-container-component node mappings content-root)
+      :container (create-mule-container-component node mappings content-root)
+      :component (create-mule-component node mappings content-root))))
 
-(defn- inner-transform-fn [content-root node]
+(defn- inner-transform-fn [mappings content-root node]
   (if (contains? node :type)
-    (let [transformed-tag (transform-tag node content-root)]
+    (let [transformed-tag (transform-tag mappings content-root node)]
       transformed-tag)
     node))
 
 (defn- outer-transform-fn [content-root node]
   node)
 
-(defn mast->react [xml content-root]
+(defn mast->react [xml mappings content-root]
   ; Needs to be a post walk so that the elements furthest from the root
   ; get transformed first, before they are wrapped up in functions and can't
   ; be traversed anymore
-  (postwalk (partial inner-transform-fn content-root) xml))
+  (postwalk (partial inner-transform-fn mappings content-root) xml))
