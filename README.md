@@ -1,8 +1,14 @@
-## Mule Preview Browser Extension
+# Mule Preview Browser Extension
+
+[![GitHub License](https://img.shields.io/github/license/agiledigital/mule-preview-browser-extension.svg)](https://github.com/agiledigital/mule-preview-browser-extension/blob/master/LICENSE)
+[![Build Status](https://travis-ci.com/agiledigital/mule-preview-browser-extension.svg?branch=master)](https://travis-ci.com/agiledigital/mule-preview-browser-extension)
+[![Known Vulnerabilities](https://snyk.io//test/github/agiledigital/mule-preview-browser-extension/badge.svg)](https://snyk.io//test/github/agiledigital/mule-preview-browser-extension)
+[![Maintainability](https://api.codeclimate.com/v1/badges/958029813bd4b7f26dca/maintainability)](https://codeclimate.com/github/agiledigital/mule-preview-browser-extension/maintainability)
+![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/agiledigital/mule-preview-browser-extension)
 
 ### Summary
 
-This project takes the [Mule Preview client](../client)
+This project takes the [Mule Preview client](https://github.com/agiledigital/mule-preview)
 and uses it to replace a diff of Mule XML in Bitbucket
 with a graphical diff.
 
