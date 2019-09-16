@@ -28,4 +28,4 @@ deploy:
   draft: true
   on:
     tags: true
-    repo: agiledigital/mule-preview
+    repo: agiledigital/mule-preview-browser-extension

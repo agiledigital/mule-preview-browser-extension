@@ -1,6 +1,6 @@
 import browser from "webextension-polyfill";
 import fetch from "cross-fetch";
-import { mountPreviewOnElement } from "mule-preview";
+import { mountPreviewOnElement } from "@agiledigital/mule-preview";
 import { getFileRawUrlFromContentView } from "../scms/bitbucket/ui";
 import { getMulePreviewElement, createContainerElement } from "../ui";
 

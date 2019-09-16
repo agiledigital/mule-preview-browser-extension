@@ -1,4 +1,4 @@
-import { mountDiffOnElement } from "mule-preview";
+import { mountDiffOnElement } from "@agiledigital/mule-preview";
 import browser from "webextension-polyfill";
 import { getFileContentFromDiff } from "../scms/bitbucket/fetch";
 import { getBitbucketData } from "../scms/bitbucket/ui";
