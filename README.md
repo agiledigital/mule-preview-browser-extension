@@ -27,11 +27,6 @@ The self contained module that can be used by other modules such as the browser 
 It uses Clojurescript to transform the XML into a React virtual DOM
 using the Reagent bindings library.
 
-#### Tools
-
-Some command line tools written in Clojure to extract metadata from a Mule installation
-for use in the Client module.
-
 ### Building Everything
 
 There is a Makefile that will build everything for you. Once you have the required dependencies you will simply have to run
@@ -44,5 +39,4 @@ You will need the following things:
 
 - make (should be on most \*nix like environments)
 - A JDK >= 1.8 (E.g. https://adoptopenjdk.net/)
-- Leiningen (https://leiningen.org/#install)
 - node >= 10.0 (See .nvmrc for exact version)

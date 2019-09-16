@@ -3,6 +3,8 @@ ANYPOINT_STUDIO_ARCHIVE=AnypointStudio-for-linux-64bit-6.6.1-201906072050.tar.gz
 ANYPOINT_6_URL=https://mule-studio.s3.amazonaws.com/6.6.1-U1/AnypointStudio-for-linux-64bit-6.6.1-201906072050.tar.gz
 ANYPOINT_7_URL=https://mule-studio.s3.amazonaws.com/7.3.5-U5/AnypointStudio-for-linux-64bit-7.3.5-201909031749.tar.gz
 ANYPOINT_STUDIO_INSTALLATION=dependencies/AnypointStudio
+METADATA_EXTRACTOR_URL=https://github.com/agiledigital/mule-metadata-extractor/releases/download/v1.0.14/mule-metadata-extractor-1.0.14-standalone.jar
+METADATA_EXTRACTOR_JAR=mule-metadata-extractor-1.0.14-standalone.jar
 
 CLIENT_FILES := $(shell find client/src -type f -iname '*.cljs')
 CLIENT_PUBLIC_FILES := $(shell find client/public -type f ! -path "client/public/img/icons/*")
@@ -33,19 +35,19 @@ browser-plugin/node_modules/.installed: browser-plugin/package.json
 	@echo ">>> Installing dependencies for Browser Extension"
 	cd browser-plugin && npm install && touch node_modules/.installed
 
-client/node_modules/.installed: client/package.json
+client/node_modules/.installed: client/package.json libs/reagent/target/reagent-0.8.1-BINDFIX.jar
 	@echo ">>> Installing dependencies for Client Module"
 	cd client && npm install && touch node_modules/.installed
 
-client/public/mappings.json: $(ANYPOINT_STUDIO_INSTALLATION)/.timestamp
+client/public/mappings.json: $(ANYPOINT_STUDIO_INSTALLATION)/.timestamp dependencies/$(METADATA_EXTRACTOR_JAR)
 	@echo ">>> Generating mappings metadata from Anypoint Installation for Client Module"
-	cd tools && lein run -- -d "../$(ANYPOINT_STUDIO_INSTALLATION)" -o ../client/public/ generate-mappings
+	java -jar dependencies/$(METADATA_EXTRACTOR_JAR) -d "$(ANYPOINT_STUDIO_INSTALLATION)" -o client/public/ generate-mappings
 
-client/public/img/icons/.timestamp: $(ANYPOINT_STUDIO_INSTALLATION)/.timestamp
+client/public/img/icons/.timestamp: $(ANYPOINT_STUDIO_INSTALLATION)/.timestamp dependencies/$(METADATA_EXTRACTOR_JAR)
 	@echo ">>> Extracting icon assets from Anypoint Installation for Client Module"
 	mkdir -p client/public/img/icons
-	cd tools && lein run -- -d "../$(ANYPOINT_STUDIO_INSTALLATION)" -o ../client/public/img/icons extract-images
-	cd tools && lein run -- -d "../$(ANYPOINT_STUDIO_INSTALLATION)" -o ../client/public/img/icons apply-light-theme
+	java -jar dependencies/$(METADATA_EXTRACTOR_JAR) -d "$(ANYPOINT_STUDIO_INSTALLATION)" -o client/public/img/icons extract-images
+	java -jar dependencies/$(METADATA_EXTRACTOR_JAR) -d "$(ANYPOINT_STUDIO_INSTALLATION)" -o client/public/img/icons apply-light-theme
 	touch $@
 
 libs/reagent/target/reagent-0.8.1-BINDFIX.jar: libs/reagent/project.clj
@@ -61,6 +63,11 @@ $(ANYPOINT_STUDIO_INSTALLATION)/.timestamp: dependencies/$(ANYPOINT_STUDIO_ARCHI
 	@echo ">>> Extracting Anypoint Studio dependency"
 	cd dependencies && tar -xzf $(ANYPOINT_STUDIO_ARCHIVE)
 	touch $@
+
+dependencies/$(METADATA_EXTRACTOR_JAR):
+	@echo ">>> Downloading mule-metadata-extractor binary"
+	mkdir -p dependencies
+	curl -L --show-error --fail -o dependencies/$(METADATA_EXTRACTOR_JAR) $(METADATA_EXTRACTOR_URL)
 
 dependencies/$(ANYPOINT_STUDIO_ARCHIVE):
 	@echo ">>> Downloading Anypoint Studio dependency"
@@ -83,8 +90,7 @@ clean:
 	client/node_modules \
 	client/public/mappings.json \
 	client/public/img/icons \
-	tools/target \
-	libs/reagent/target \
-	dependencies
+	libs/reagent/target #\
+	#dependencies
 
 .PHONY: clean
