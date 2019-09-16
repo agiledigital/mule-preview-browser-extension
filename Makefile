@@ -23,6 +23,9 @@ extension/dist: node_modules/.installed extension/public/mappings.json extension
 node_modules/.installed: package.json
 	@echo ">>> Installing dependencies for Browser Extension"
 	npm install && touch node_modules/.installed
+	# TODO: Work out how to bundle or supply these assets in a idiomatic way
+	mkdir -p extension/public/css
+	mkdir -p extension/public/img
 	rm -f extension/public/css/* extension/public/img/*.{png,svg}
 	cp -r node_modules/@agiledigital/mule-preview/public/css/ extension/public/css
 	cp node_modules/@agiledigital/mule-preview/public/img/* extension/public/img/
