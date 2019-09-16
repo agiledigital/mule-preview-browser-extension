@@ -1,42 +1,50 @@
-## Mule Preview
+## Mule Preview Browser Extension
 
-[![GitHub License](https://img.shields.io/github/license/agiledigital/mule-preview.svg)](https://github.com/agiledigital/mule-preview/blob/master/LICENSE)
-[![Build Status](https://travis-ci.com/agiledigital/mule-preview.svg?branch=master)](https://travis-ci.com/agiledigital/mule-preview)
-[![Known Vulnerabilities](https://snyk.io//test/github/agiledigital/mule-preview/badge.svg?targetFile=browser-plugin/package.json)](https://snyk.io//test/github/agiledigital/mule-preview?targetFile=browser-plugin/package.json)
-[![Known Vulnerabilities](https://snyk.io//test/github/agiledigital/mule-preview/badge.svg?targetFile=client/package.json)](https://snyk.io//test/github/agiledigital/mule-preview?targetFile=client/package.json)
-[![Maintainability](https://api.codeclimate.com/v1/badges/958029813bd4b7f26dca/maintainability)](https://codeclimate.com/github/agiledigital/mule-preview/maintainability)
-![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/agiledigital/mule-preview)
+### Summary
 
-A project to take Mule configuration XML files and render the flows in HTML
-and also display visual diffs for things like Pull Requests.
+This project takes the [Mule Preview client](../client)
+and uses it to replace a diff of Mule XML in Bitbucket
+with a graphical diff.
 
-![Example screenshot showing rendered flows](https://raw.githubusercontent.com/NoxHarmonium/mule-preview/master/doc/example.PNG "Example screenshot showing rendered flows")
+### Instructions
 
-### Structure
+Simply open a PR in Bitbucket and select a Mule XML file.
+The Mule Preview button in your browsers toolbar should enable.
+Clicking it will toggle Mule Preview mode.
 
-It is currently made up of three modules placed in subdirectories:
+### Support
 
-#### Browser Extension
+Only tested on Firefox but it should also be compatible with Chrome.
 
-A browser extension written in Javascript that can display visual diffs of Mule files in Bitbucket.
+### Building
 
-#### Client
+Simply run these command to produce a production build
 
-The self contained module that can be used by other modules such as the browser extension.
+    $ npm install
+    $ npm run prebuild
+    $ npm run build
 
-It uses Clojurescript to transform the XML into a React virtual DOM
-using the Reagent bindings library.
+Note: This is currently broken because UglifyJs doesn't like the output of Babel at the moment.
 
-### Building Everything
+### Developing
 
-There is a Makefile that will build everything for you. Once you have the required dependencies you will simply have to run
+This commands set you up for development:
 
-    $ make -j2
+    $ npm install
+    $ npm prebuild
 
-### Dependencies
+This command will build the plugin and rebuild if any files change:
 
-You will need the following things:
+    $ npm start
 
-- make (should be on most \*nix like environments)
-- A JDK >= 1.8 (E.g. https://adoptopenjdk.net/)
-- node >= 10.0 (See .nvmrc for exact version)
+This command will hot reload the extension into Firefox
+
+    $ npx web-ext run -s extension/
+
+This command will ensure your code is up to scratch before comitting.
+
+    $ npm run lint
+
+### Acknowledgement
+
+Thanks to https://github.com/williankeller/browser-extension-boilerplate for making this extension so easy to get running.

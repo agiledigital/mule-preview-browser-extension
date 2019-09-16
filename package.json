@@ -1,5 +1,5 @@
 {
-  "name": "mule-preview-browser-plugin",
+  "name": "mule-preview-browser-extension",
   "version": "1.0.10",
   "description": "Overlays the Mule Preview plugin over SCM web applications",
   "license": "MIT",
@@ -90,8 +90,8 @@
     ]
   },
   "dependencies": {
+    "@agiledigital/mule-preview": "^1.0.16",
     "cross-fetch": "^3.0.4",
-    "mule-preview": "file:../client",
     "webextension-polyfill": "^0.4.0"
   },
   "engines": {

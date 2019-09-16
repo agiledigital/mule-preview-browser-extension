@@ -6,57 +6,39 @@ ANYPOINT_STUDIO_INSTALLATION=dependencies/AnypointStudio
 METADATA_EXTRACTOR_URL=https://github.com/agiledigital/mule-metadata-extractor/releases/download/v1.0.14/mule-metadata-extractor-1.0.14-standalone.jar
 METADATA_EXTRACTOR_JAR=mule-metadata-extractor-1.0.14-standalone.jar
 
-CLIENT_FILES := $(shell find client/src -type f -iname '*.cljs')
-CLIENT_PUBLIC_FILES := $(shell find client/public -type f ! -path "client/public/img/icons/*")
-BROWSER_PLUGIN_FILES := $(shell find browser-plugin/src -type f -iname '*.js')
+BROWSER_PLUGIN_FILES := $(shell find src -type f -iname '*.js')
 
-all: browser-plugin/build/package-unsigned.zip
+all: build/package-unsigned.zip
 .PHONY: all
 
-browser-plugin/build/package-unsigned.zip: browser-plugin/extension/dist
+build/package-unsigned.zip: extension/dist
 	@echo ">>> Packaging Browser Extension (Release)"
-	mkdir -p browser-plugin/build
-	cd browser-plugin/extension && zip -r ../build/package-unsigned.zip *
+	mkdir -p build
+	cd extension && zip -r ../build/package-unsigned.zip *
 
-browser-plugin/extension/dist: browser-plugin/node_modules/.installed client/dist/.timestamp browser-plugin/extension/public $(BROWSER_PLUGIN_FILES)
+extension/dist: node_modules/.installed extension/public/mappings.json extension/public/img/icons/.timestamp $(BROWSER_PLUGIN_FILES)
 	@echo ">>> Building Browser Extension (Release)"
-	cd browser-plugin && npm run build
+	npm run build
 
-client/dist/.timestamp: client/node_modules/.installed client/public/mappings.json client/public/img/icons/.timestamp libs/reagent/target/reagent-0.8.1-BINDFIX.jar $(CLIENT_FILES)
-	@echo ">>> Building Client Module (Release)"
-	cd client && npm run build
-	touch $@
-
-browser-plugin/extension/public: client/public/mappings.json client/public/img/icons/.timestamp $(CLIENT_PUBLIC_FILES)
-	@echo ">>> Copying required assets for Browser Extension"
-	rm -rf browser-plugin/extension/public && mkdir -p browser-plugin/extension/public && cp -rv client/public/css client/public/img client/public/mappings.json browser-plugin/extension/public
-
-browser-plugin/node_modules/.installed: browser-plugin/package.json
+node_modules/.installed: package.json
 	@echo ">>> Installing dependencies for Browser Extension"
-	cd browser-plugin && npm install && touch node_modules/.installed
+	npm install && touch node_modules/.installed
+	# TODO: Work out how to bundle or supply these assets in a idiomatic way
+	mkdir -p extension/public/css
+	mkdir -p extension/public/img
+	rm -f extension/public/css/* extension/public/img/*.{png,svg}
+	cp -r node_modules/@agiledigital/mule-preview/public/css/ extension/public/css
+	cp node_modules/@agiledigital/mule-preview/public/img/* extension/public/img/
 
-client/node_modules/.installed: client/package.json libs/reagent/target/reagent-0.8.1-BINDFIX.jar
-	@echo ">>> Installing dependencies for Client Module"
-	cd client && npm install && touch node_modules/.installed
-
-client/public/mappings.json: $(ANYPOINT_STUDIO_INSTALLATION)/.timestamp dependencies/$(METADATA_EXTRACTOR_JAR)
+extension/public/mappings.json: $(ANYPOINT_STUDIO_INSTALLATION)/.timestamp dependencies/$(METADATA_EXTRACTOR_JAR)
 	@echo ">>> Generating mappings metadata from Anypoint Installation for Client Module"
-	java -jar dependencies/$(METADATA_EXTRACTOR_JAR) -d "$(ANYPOINT_STUDIO_INSTALLATION)" -o client/public/ generate-mappings
+	java -jar dependencies/$(METADATA_EXTRACTOR_JAR) -d "$(ANYPOINT_STUDIO_INSTALLATION)" -o extension/public/ generate-mappings
 
-client/public/img/icons/.timestamp: $(ANYPOINT_STUDIO_INSTALLATION)/.timestamp dependencies/$(METADATA_EXTRACTOR_JAR)
+extension/public/img/icons/.timestamp: $(ANYPOINT_STUDIO_INSTALLATION)/.timestamp dependencies/$(METADATA_EXTRACTOR_JAR)
 	@echo ">>> Extracting icon assets from Anypoint Installation for Client Module"
-	mkdir -p client/public/img/icons
-	java -jar dependencies/$(METADATA_EXTRACTOR_JAR) -d "$(ANYPOINT_STUDIO_INSTALLATION)" -o client/public/img/icons extract-images
-	java -jar dependencies/$(METADATA_EXTRACTOR_JAR) -d "$(ANYPOINT_STUDIO_INSTALLATION)" -o client/public/img/icons apply-light-theme
-	touch $@
-
-libs/reagent/target/reagent-0.8.1-BINDFIX.jar: libs/reagent/project.clj
-	@echo ">>> Installing forked version of Reagent into local repo"
-	cd libs/reagent && lein install
-
-libs/reagent/.timestamp: .gitmodules
-	@echo ">>> Updating submodule"
-	git submodule update --init --recursive --remote
+	mkdir -p extension/public/img/icons
+	java -jar dependencies/$(METADATA_EXTRACTOR_JAR) -d "$(ANYPOINT_STUDIO_INSTALLATION)" -o extension/public/img/icons extract-images
+	java -jar dependencies/$(METADATA_EXTRACTOR_JAR) -d "$(ANYPOINT_STUDIO_INSTALLATION)" -o extension/public/img/icons apply-light-theme
 	touch $@
 
 $(ANYPOINT_STUDIO_INSTALLATION)/.timestamp: dependencies/$(ANYPOINT_STUDIO_ARCHIVE)
@@ -77,19 +59,12 @@ dependencies/$(ANYPOINT_STUDIO_ARCHIVE):
 
 clean:
 	rm -rf \
-	browser-plugin/.cache \
-	browser-plugin/build \
-	browser-plugin/extension/public \
-	browser-plugin/extension/dist \
-	browser-plugin/node_modules \
-	browser-plugin/web-ext-artifacts \
-	client/public/js \
-	client/dist \
-	client/build \
-	client/.shadow-cljs \
-	client/node_modules \
-	client/public/mappings.json \
-	client/public/img/icons \
+	.cache \
+	build \
+	extension/public \
+	extension/dist \
+	node_modules \
+	web-ext-artifacts \
 	libs/reagent/target #\
 	#dependencies
 

@@ -36,11 +36,8 @@ module.exports = {
         test: /\.js$/,
         use: ["source-map-loader"],
         enforce: "pre",
-        include: [/mule_preview\.client/],
-        // The large embedded JSON blob in the mappings file causes OOM
-        // in source map processors.
-        // TODO: Find a better way to embed the mappings
-        exclude: [/mule_preview\.client\.mappings/]
+        include: [/mule-preview/],
+        exclude: [/node_modules/]
       },
       {
         test: /\.js$/,
