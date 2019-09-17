@@ -5,6 +5,7 @@
 [![Known Vulnerabilities](https://snyk.io//test/github/agiledigital/mule-preview-browser-extension/badge.svg)](https://snyk.io//test/github/agiledigital/mule-preview-browser-extension)
 [![Maintainability](https://api.codeclimate.com/v1/badges/ce5e7ca1a6ef3cc5b6ce/maintainability)](https://codeclimate.com/github/agiledigital/mule-preview-browser-extension/maintainability)
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/agiledigital/mule-preview-browser-extension)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fagiledigital%2Fmule-preview-browser-extension.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fagiledigital%2Fmule-preview-browser-extension?ref=badge_shield)
 
 ### Summary
 
@@ -54,3 +55,7 @@ This command will ensure your code is up to scratch before comitting.
 ### Acknowledgement
 
 Thanks to https://github.com/williankeller/browser-extension-boilerplate for making this extension so easy to get running.
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fagiledigital%2Fmule-preview-browser-extension.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fagiledigital%2Fmule-preview-browser-extension?ref=badge_large)
