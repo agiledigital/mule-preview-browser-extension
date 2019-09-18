@@ -1,3 +1,10 @@
+## [1.0.15](https://github.com/NoxHarmonium/mule-preview/compare/v1.0.14...v1.0.15) (2019-09-18)
+
+
+### Bug Fixes
+
+* try wrapping extension ID in braces to pass validation ([4f2e1a8](https://github.com/NoxHarmonium/mule-preview/commit/4f2e1a8)), closes [#66](https://github.com/NoxHarmonium/mule-preview/issues/66)
+
 ## [1.0.14](https://github.com/NoxHarmonium/mule-preview/compare/v1.0.13...v1.0.14) (2019-09-18)
 
 
