@@ -22,6 +22,12 @@
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
     "@babel/plugin-syntax-import-meta": "^7.0.0",
     "@babel/preset-env": "^7.6.0",
+    "@semantic-release/changelog": "^3.0.4",
+    "@semantic-release/commit-analyzer": "^6.3.0",
+    "@semantic-release/git": "^7.0.16",
+    "@semantic-release/github": "^5.4.3",
+    "@semantic-release/npm": "^5.1.15",
+    "@semantic-release/release-notes-generator": "^7.3.0",
     "addons-linter": "^1.12.1",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.0",
@@ -29,6 +35,7 @@
     "concurrently": "^4.1.2",
     "core-js": "^3.2.1",
     "css-loader": "^3.2.0",
+    "cz-conventional-changelog": "^3.0.2",
     "eslint": "^6.3.0",
     "eslint-config-prettier": "^6.2.0",
     "eslint-loader": "^2.2.1",
@@ -41,6 +48,9 @@
     "prettier-stylelint": "^0.4.2",
     "rimraf": "^2.7.1",
     "sass-loader": "^7.3.1",
+    "semantic-release": "^15.13.24",
+    "semantic-release-chrome": "^1.1.1",
+    "semantic-release-firefox": "^1.2.0",
     "source-map-loader": "github:noxharmonium/source-map-loader",
     "style-loader": "^0.23.1",
     "stylelint": "^10.1.0",
@@ -60,9 +70,7 @@
     "start": "npm run prebuild && concurrently --kill-others \"npm run watch-extension\" \"npm run watch-webpack\"",
     "build": "npm run prebuild && webpack --config webpack.production.config.js -p",
     "lint": "eslint --fix src && npx stylelint --fix \"src/**/*.scss\" \"src/**/*.css\" \"src/**/*.html\"",
-    "firefox-upload": "web-ext sign -s extension/ --api-key \"${MOZILLA_API_KEY}\" --api-secret \"${MOZILLA_API_SECRET}\" --channel unlisted",
-    "chrome-upload": "webstore upload --source build/package-unsigned.zip --extension-id \"${GOOGLE_EXTENSION_ID}\" --client-id \"${GOOGLE_CLIENT_ID}\" --client-secret \"${GOOGLE_CLIENT_SECRET}\" --refresh-token \"${GOOGLE_CLIENT_REFRESH}\"",
-    "chrome-publish": "webstore publish --trusted-testers --extension-id \"${GOOGLE_EXTENSION_ID}\" --client-id \"${GOOGLE_CLIENT_ID}\" --client-secret \"${GOOGLE_CLIENT_SECRET}\" --refresh-token \"${GOOGLE_CLIENT_REFRESH}\""
+    "release": "semantic-release"
   },
   "repository": {
     "type": "git",
@@ -97,5 +105,10 @@
   "engines": {
     "node": ">= 10.0.0"
   },
-  "browserslist": "defaults"
+  "browserslist": "defaults",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }

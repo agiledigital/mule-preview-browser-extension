@@ -1,0 +1,53 @@
+{
+  "branch": "master",
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/changelog",
+    "@semantic-release/github",
+    "@semantic-release/git",
+    "semantic-release-firefox",
+    "semantic-release-chrome"
+  ],
+  "verifyConditions": [
+    "semantic-release-firefox",
+    "semantic-release-chrome",
+    "@semantic-release/github"
+  ],
+  "prepare": [
+    {
+      "path": "semantic-release-chrome",
+      "asset": "build/chome-extension.zip",
+      "distFolder": "extension"
+    },
+    {
+      "path": "semantic-release-firefox",
+      "xpiPath": "build/firefox-extension.xpi",
+      "distFolder": "extension"
+    }
+  ],
+  "publish": [
+    {
+      "path": "semantic-release-chrome",
+      "asset": "build/chome-extension.zip",
+      "extensionId": "mgglinkjbpmncolojlkopolokmcnneil",
+      "target": "trustedTesters"
+    },
+    {
+      "path": "semantic-release-firefox",
+      "xpiPath": "build/firefox-extension.xpi",
+      "addOnSlug": "f3b53deae55c4b6cb2d1"
+    },
+    {
+      "path": "@semantic-release/github",
+      "assets": [
+        {
+          "path": "build/chome-extension.zip"
+        },
+        {
+          "path": "build/firefox-extension.xpi"
+        }
+      ]
+    }
+  ]
+}
