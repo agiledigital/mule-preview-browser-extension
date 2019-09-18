@@ -65,7 +65,7 @@ clean:
 	extension/dist \
 	node_modules \
 	web-ext-artifacts \
-	libs/reagent/target #\
-	#dependencies
+	libs/reagent/target \
+	dependencies
 
 .PHONY: clean
