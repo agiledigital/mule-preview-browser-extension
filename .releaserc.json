@@ -6,48 +6,32 @@
     "@semantic-release/changelog",
     "@semantic-release/github",
     "@semantic-release/git",
-    "semantic-release-firefox",
-    "semantic-release-chrome"
+    ["semantic-release-firefox-add-on", {
+      "extensionId": "mgglinkjbpmncolojlkopolokmcnneil",
+      "xpiPath": "build/firefox-extension.xpi",
+      "sourceDir": "extension",
+      "channel": "unlisted"
+
+    }],
+    ["semantic-release-chrome", {
+      "asset": "build/chome-extension.zip",
+      "extensionId": "mgglinkjbpmncolojlkopolokmcnneil",
+      "target": "trustedTesters",
+      "distFolder": "extension"
+    }]
   ],
   "verifyConditions": [
-    "semantic-release-firefox",
+    "semantic-release-firefox-add-on",
     "semantic-release-chrome",
     "@semantic-release/github"
   ],
   "prepare": [
-    {
-      "path": "semantic-release-chrome",
-      "asset": "build/chome-extension.zip",
-      "distFolder": "extension"
-    },
-    {
-      "path": "semantic-release-firefox",
-      "xpiPath": "build/firefox-extension.xpi",
-      "distFolder": "extension"
-    }
+    "semantic-release-chrome",
+    "semantic-release-firefox-add-on"
   ],
   "publish": [
-    {
-      "path": "semantic-release-chrome",
-      "asset": "build/chome-extension.zip",
-      "extensionId": "mgglinkjbpmncolojlkopolokmcnneil",
-      "target": "trustedTesters"
-    },
-    {
-      "path": "semantic-release-firefox",
-      "xpiPath": "build/firefox-extension.xpi",
-      "addOnSlug": "f3b53deae55c4b6cb2d1"
-    },
-    {
-      "path": "@semantic-release/github",
-      "assets": [
-        {
-          "path": "build/chome-extension.zip"
-        },
-        {
-          "path": "build/firefox-extension.xpi"
-        }
-      ]
-    }
+    "semantic-release-chrome",
+    "semantic-release-firefox-add-on",
+    "@semantic-release/github"
   ]
 }
