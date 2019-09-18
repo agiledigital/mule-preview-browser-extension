@@ -1,7 +1,7 @@
 # Mule Preview Browser Extension
 
 [![GitHub License](https://img.shields.io/github/license/agiledigital/mule-preview-browser-extension.svg)](https://github.com/agiledigital/mule-preview-browser-extension/blob/master/LICENSE)
-[![Build Status](https://travis-ci.com/agiledigital/mule-preview-browser-extension.svg?branch=master)](https://travis-ci.com/agiledigital/mule-preview-browser-extension)
+[![CircleCI](https://circleci.com/gh/agiledigital/mule-preview-browser-extension.svg?style=svg)](https://circleci.com/gh/agiledigital/mule-preview-browser-extension)
 [![Known Vulnerabilities](https://snyk.io//test/github/agiledigital/mule-preview-browser-extension/badge.svg)](https://snyk.io//test/github/agiledigital/mule-preview-browser-extension)
 [![Maintainability](https://api.codeclimate.com/v1/badges/ce5e7ca1a6ef3cc5b6ce/maintainability)](https://codeclimate.com/github/agiledigital/mule-preview-browser-extension/maintainability)
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/agiledigital/mule-preview-browser-extension)
