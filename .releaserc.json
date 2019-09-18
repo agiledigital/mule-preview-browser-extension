@@ -8,8 +8,8 @@
       "extensionId": "{97e708a3-e672-4f4a-b35a-2020f27cf5d9}",
       "targetXpi": "build/firefox-extension.xpi",
       "sourceDir": "extension",
-      "channel": "unlisted"
-
+      "channel": "unlisted",
+      "artifactsDir": "."
     }],
     ["semantic-release-chrome", {
       "asset": "build/chome-extension.zip",
