@@ -18,6 +18,6 @@
       "distFolder": "extension"
     }],
     "@semantic-release/github",
-    "@semantic-release/git",
+    "@semantic-release/git"
   ]
 }
