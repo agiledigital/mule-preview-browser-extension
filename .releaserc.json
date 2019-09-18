@@ -8,7 +8,7 @@
     "@semantic-release/git",
     ["semantic-release-firefox-add-on", {
       "extensionId": "mgglinkjbpmncolojlkopolokmcnneil",
-      "xpiPath": "build/firefox-extension.xpi",
+      "targetXpi": "build/firefox-extension.xpi",
       "sourceDir": "extension",
       "channel": "unlisted"
 
