@@ -98,7 +98,7 @@
     ]
   },
   "dependencies": {
-    "@agiledigital/mule-preview": "^1.0.17",
+    "@agiledigital/mule-preview": "^1.0.18",
     "cross-fetch": "^3.0.4",
     "webextension-polyfill": "^0.4.0"
   },
