@@ -1,3 +1,10 @@
+## [1.0.14](https://github.com/NoxHarmonium/mule-preview/compare/v1.0.13...v1.0.14) (2019-09-18)
+
+
+### Bug Fixes
+
+* fix the Firefox extension ID again ([584fe1e](https://github.com/NoxHarmonium/mule-preview/commit/584fe1e)), closes [#66](https://github.com/NoxHarmonium/mule-preview/issues/66)
+
 ## [1.0.13](https://github.com/NoxHarmonium/mule-preview/compare/v1.0.12...v1.0.13) (2019-09-18)
 
 
