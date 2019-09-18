@@ -27,7 +27,7 @@ node_modules/.installed: package.json
 	mkdir -p extension/public/css
 	mkdir -p extension/public/img
 	rm -f extension/public/css/* extension/public/img/*.{png,svg}
-	cp -r node_modules/@agiledigital/mule-preview/public/css/ extension/public/css
+	cp -r node_modules/@agiledigital/mule-preview/public/css/ extension/public/
 	cp node_modules/@agiledigital/mule-preview/public/img/* extension/public/img/
 
 extension/public/mappings.json: $(ANYPOINT_STUDIO_INSTALLATION)/.timestamp dependencies/$(METADATA_EXTRACTOR_JAR)
