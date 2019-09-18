@@ -1,3 +1,11 @@
+## [1.0.16](https://github.com/NoxHarmonium/mule-preview/compare/v1.0.15...v1.0.16) (2019-09-18)
+
+
+### Bug Fixes
+
+* fix css copy path ([7e74250](https://github.com/NoxHarmonium/mule-preview/commit/7e74250)), closes [#66](https://github.com/NoxHarmonium/mule-preview/issues/66)
+* remove temporary comments ([48be516](https://github.com/NoxHarmonium/mule-preview/commit/48be516)), closes [#66](https://github.com/NoxHarmonium/mule-preview/issues/66)
+
 ## [1.0.15](https://github.com/NoxHarmonium/mule-preview/compare/v1.0.14...v1.0.15) (2019-09-18)
 
 
