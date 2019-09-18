@@ -1,3 +1,10 @@
+## [1.0.17](https://github.com/NoxHarmonium/mule-preview/compare/v1.0.16...v1.0.17) (2019-09-18)
+
+
+### Bug Fixes
+
+* override artifacts directory ([98aa98a](https://github.com/NoxHarmonium/mule-preview/commit/98aa98a)), closes [#66](https://github.com/NoxHarmonium/mule-preview/issues/66)
+
 ## [1.0.16](https://github.com/NoxHarmonium/mule-preview/compare/v1.0.15...v1.0.16) (2019-09-18)
 
 
