@@ -5,7 +5,7 @@
     "@semantic-release/release-notes-generator",
     "@semantic-release/changelog",
     ["semantic-release-firefox-add-on", {
-      "extensionId": "f3b53deae55c4b6cb2d1",
+      "extensionId": "97e708a3-e672-4f4a-b35a-2020f27cf5d9",
       "targetXpi": "build/firefox-extension.xpi",
       "sourceDir": "extension",
       "channel": "unlisted"
