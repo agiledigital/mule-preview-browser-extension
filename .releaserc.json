@@ -19,19 +19,5 @@
       "target": "trustedTesters",
       "distFolder": "extension"
     }]
-  ],
-  "verifyConditions": [
-    "semantic-release-firefox-add-on",
-    "semantic-release-chrome",
-    "@semantic-release/github"
-  ],
-  "prepare": [
-    "semantic-release-chrome",
-    "semantic-release-firefox-add-on"
-  ],
-  "publish": [
-    "semantic-release-chrome",
-    "semantic-release-firefox-add-on",
-    "@semantic-release/github"
   ]
 }
