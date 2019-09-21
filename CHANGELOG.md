@@ -1,3 +1,10 @@
+## [1.0.18](https://github.com/NoxHarmonium/mule-preview/compare/v1.0.17...v1.0.18) (2019-09-21)
+
+
+### Bug Fixes
+
+* fix rendering issue in Firefox ([c7fe872](https://github.com/NoxHarmonium/mule-preview/commit/c7fe872)), closes [#72](https://github.com/NoxHarmonium/mule-preview/issues/72)
+
 ## [1.0.17](https://github.com/NoxHarmonium/mule-preview/compare/v1.0.16...v1.0.17) (2019-09-18)
 
 
