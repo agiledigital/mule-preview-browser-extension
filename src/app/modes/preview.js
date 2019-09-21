@@ -1,6 +1,8 @@
+import React from "react";
+import ReactDOM from "react-dom";
+import { MulePreviewContent } from "@agiledigital/mule-preview";
 import browser from "webextension-polyfill";
 import fetch from "cross-fetch";
-import { mountPreviewOnElement } from "@agiledigital/mule-preview";
 import { getFileRawUrlFromContentView } from "../scms/bitbucket/ui";
 import { getMulePreviewElement, createContainerElement } from "../ui";
 
@@ -20,10 +22,12 @@ const startPreview = () => {
     .then(content => {
       const mulePreviewElement = createContainerElement();
       element.appendChild(mulePreviewElement);
-      mountPreviewOnElement(
-        mulePreviewElement,
-        content,
-        browser.runtime.getURL("public/")
+      ReactDOM.render(
+        <MulePreviewContent
+          contentString={content}
+          contentRoot={browser.runtime.getURL("public/")}
+        />,
+        mulePreviewElement
       );
     })
     .catch(err => {

@@ -22,13 +22,14 @@
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
     "@babel/plugin-syntax-import-meta": "^7.0.0",
     "@babel/preset-env": "^7.6.0",
+    "@babel/preset-react": "^7.0.0",
     "@semantic-release/changelog": "^3.0.4",
     "@semantic-release/commit-analyzer": "^6.3.0",
     "@semantic-release/git": "^7.0.16",
-    "@semantic-release/github": "^5.4.3",
+    "@semantic-release/github": "^5.4.4",
     "@semantic-release/npm": "^5.1.15",
     "@semantic-release/release-notes-generator": "^7.3.0",
-    "addons-linter": "^1.12.1",
+    "addons-linter": "^1.14.0",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.0",
     "chrome-webstore-upload-cli": "^1.2.0",
@@ -39,7 +40,8 @@
     "eslint": "^6.3.0",
     "eslint-config-prettier": "^6.2.0",
     "eslint-loader": "^2.2.1",
-    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.14.3",
     "file-loader": "^4.2.0",
     "install": "^0.13.0",
     "mini-css-extract-plugin": "^0.8.0",
@@ -63,11 +65,11 @@
     "url-loader": "^2.1.0",
     "web-ext": "^3.1.0",
     "webpack": "^4.39.3",
-    "webpack-cli": "^3.3.8"
+    "webpack-cli": "^3.3.9"
   },
   "scripts": {
     "prebuild": "rimraf ./extension/dist/ && rimraf .cache && rimraf build/*",
-    "watch-extension": "web-ext run -s extension/",
+    "watch-extension": "web-ext run -s extension/ --verbose",
     "watch-webpack": "webpack --config webpack.config.js -w -d",
     "start": "npm run prebuild && concurrently --kill-others \"npm run watch-extension\" \"npm run watch-webpack\"",
     "build": "npm run prebuild && webpack --config webpack.production.config.js -p",
@@ -100,8 +102,10 @@
     ]
   },
   "dependencies": {
-    "@agiledigital/mule-preview": "^1.0.18",
+    "@agiledigital/mule-preview": "^2.0.0",
     "cross-fetch": "^3.0.4",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "webextension-polyfill": "^0.4.0"
   },
   "engines": {

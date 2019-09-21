@@ -1,8 +1,10 @@
-import { mountDiffOnElement } from "@agiledigital/mule-preview";
+import React from "react";
+import { MulePreviewDiffContent } from "@agiledigital/mule-preview";
 import browser from "webextension-polyfill";
 import { getFileContentFromDiff } from "../scms/bitbucket/fetch";
 import { getBitbucketData } from "../scms/bitbucket/ui";
 import { getMulePreviewElement, createContainerElement } from "../ui";
+import ReactDOM from "react-dom";
 
 const handleBitbucketData = bitbucketData => {
   if (!bitbucketData.valid) {
@@ -16,11 +18,12 @@ const handleFileContent = ({ fileA, fileB }) => {
 
   const mulePreviewElement = createContainerElement();
   element.appendChild(mulePreviewElement);
-  mountDiffOnElement(
-    mulePreviewElement,
-    fileA,
-    fileB,
-    browser.runtime.getURL("public/")
+  ReactDOM.render(
+    <MulePreviewDiffContent
+      contentStrings={[fileA, fileB]}
+      contentRoot={browser.runtime.getURL("public/")}
+    />,
+    mulePreviewElement
   );
 };
 
