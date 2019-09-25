@@ -102,7 +102,7 @@
     ]
   },
   "dependencies": {
-    "@agiledigital/mule-preview": "^2.0.0",
+    "@agiledigital/mule-preview": "^2.1.0",
     "cross-fetch": "^3.0.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
