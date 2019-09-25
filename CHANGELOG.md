@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/NoxHarmonium/mule-preview/compare/v1.0.18...v1.1.0) (2019-09-25)
+
+
+### Features
+
+* update to mule-preview 2.1.0 ([7e1cb20](https://github.com/NoxHarmonium/mule-preview/commit/7e1cb20))
+
 ## [1.0.18](https://github.com/NoxHarmonium/mule-preview/compare/v1.0.17...v1.0.18) (2019-09-21)
 
 
