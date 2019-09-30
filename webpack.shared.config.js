@@ -1,5 +1,6 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { TsConfigPathsPlugin } = require("awesome-typescript-loader");
 
 module.exports = {
   entry: {
@@ -14,7 +15,8 @@ module.exports = {
   },
 
   resolve: {
-    extensions: [".js", ".json", ".scss", ".css"]
+    extensions: [".js", ".jsx", ".json", ".scss", ".css", ".ts", ".tsx"],
+    plugins: [new TsConfigPathsPlugin()]
   },
 
   node: {
@@ -25,7 +27,7 @@ module.exports = {
     rules: [
       {
         enforce: "pre",
-        test: /\.js$/,
+        test: /\.jsx?$/,
         loader: "eslint-loader",
         include: [/browser-plugin\/src/],
         options: {
@@ -33,15 +35,25 @@ module.exports = {
         }
       },
       {
-        test: /\.js$/,
-        use: ["source-map-loader"],
+        test: /\.tsx?$/,
         enforce: "pre",
-        include: [/mule-preview/],
+        use: [
+          {
+            loader: "tslint-loader",
+            options: { typeCheck: true, failOnHint: true }
+          }
+        ]
+      },
+      {
+        test: /\.(t|j)sx?$/,
+        loader: ["awesome-typescript-loader?module=es6"],
         exclude: [/node_modules/]
       },
       {
         test: /\.js$/,
-        loader: "babel-loader",
+        use: ["source-map-loader"],
+        enforce: "pre",
+        include: [/mule-preview/],
         exclude: [/node_modules/]
       },
       {
