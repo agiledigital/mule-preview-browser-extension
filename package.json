@@ -81,7 +81,7 @@
     "watch-extension": "web-ext run -s extension/ --verbose",
     "watch-webpack": "webpack --config webpack.config.js -w -d",
     "start": "npm run prebuild && concurrently --kill-others \"npm run watch-extension\" \"npm run watch-webpack\"",
-    "build": "npm run prebuild && webpack --config webpack.production.config.js -p",
+    "build": "npm run prebuild && npm run lint && npm run format-check && npm run type-coverage && webpack --config webpack.production.config.js -p",
     "lint": "npx stylelint --fix \"src/**/*.scss\" \"src/**/*.css\" \"src/**/*.html\" && tslint --fix -p tsconfig.json -c tslint.json",
     "release": "semantic-release",
     "format": "prettier --write '{src,test}/**/*.{ts,tsx,js,jsx}'",
@@ -132,6 +132,6 @@
     }
   },
   "typeCoverage": {
-    "atLeast": 84.95
+    "atLeast": 99.79
   }
 }
