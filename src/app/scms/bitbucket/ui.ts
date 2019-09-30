@@ -38,7 +38,7 @@ export const getCurrentFile = () => {
   return urlComponents[1];
 };
 
-export const getBitbucketData = async () => {
+export const getBitbucketData = async (): Promise<ScraperResponse> => {
   return new Promise((resolve, reject) => {
     document.addEventListener(messages.BitbucketDataScraped, ((
       event: CustomEvent<ScraperResponse>

@@ -104,3 +104,8 @@ export type DiffPaths = {
   readonly fromFilePath: string;
   readonly toFilePath: string;
 };
+
+export type DiffContent = {
+  readonly fileA?: string;
+  readonly fileB?: string;
+};

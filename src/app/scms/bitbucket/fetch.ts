@@ -1,6 +1,6 @@
 import fetch from "cross-fetch";
 import { ValidScraperResponse } from "~app/types/scraper";
-import { Change, ChangesResponse } from "./types";
+import { Change, ChangesResponse, DiffContent } from "./types";
 
 /**
  * Functions to fetch files from Bitbucket to preview and diff
@@ -61,7 +61,7 @@ const fetchRawFilesFromHashes = (
     fileB
   }));
 
-export const getFileContentFromDiff = ({
+export const getFileContentFromDiff = async ({
   path,
   projectCode,
   repoName,
@@ -69,7 +69,7 @@ export const getFileContentFromDiff = ({
   sourceCommit,
   targetRepoId,
   targetCommit
-}: ValidScraperResponse) => {
+}: ValidScraperResponse): Promise<DiffContent | undefined> => {
   const absoluteUrl = `/rest/api/latest/projects/${projectCode}/repos/${repoName}/compare/changes?from=${sourceCommit}&fromRepo=${sourceRepoId}&to=${targetCommit}&toRepo=${targetRepoId}&start=0&limit=1000`;
   return fetch(new URL(absoluteUrl, document.URL).toString())
     .then((response: Response) => response.json())

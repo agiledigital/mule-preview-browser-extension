@@ -1,20 +1,26 @@
-import React from "react";
 import { MulePreviewDiffContent } from "@agiledigital/mule-preview";
-import browser from "webextension-polyfill";
+import * as React from "react";
+import * as ReactDOM from "react-dom";
+import { browser } from "webextension-polyfill-ts";
+import { DiffContent } from "~app/scms/bitbucket/types";
+import { ScraperResponse } from "~app/types/scraper";
 import { getFileContentFromDiff } from "../scms/bitbucket/fetch";
 import { getBitbucketData } from "../scms/bitbucket/ui";
-import { getMulePreviewElement, createContainerElement } from "../ui";
-import ReactDOM from "react-dom";
+import { createContainerElement, getMulePreviewElement } from "../ui";
 
-const handleBitbucketData = bitbucketData => {
+const handleBitbucketData = (bitbucketData: ScraperResponse) => {
   if (!bitbucketData.valid) {
     throw new Error("Could not fetch Bitbucket data");
   }
   return getFileContentFromDiff(bitbucketData);
 };
 
-const handleFileContent = ({ fileA, fileB }) => {
+const handleFileContent = ({ fileA, fileB }: DiffContent) => {
   const element = document.querySelector("body");
+
+  if (element === null) {
+    throw new Error("Could not find body element");
+  }
 
   const mulePreviewElement = createContainerElement();
   element.appendChild(mulePreviewElement);
@@ -38,15 +44,16 @@ const startDiff = () => {
   );
   getBitbucketData()
     .then(handleBitbucketData)
-    .then(handleFileContent)
-    .catch(err => {
-      console.error(err);
+    .then(content => {
+      if (content !== undefined) {
+        handleFileContent(content);
+      }
     });
 };
 
 export const stopDiff = () => {
   const element = getMulePreviewElement();
-  if (element) {
+  if (element !== null) {
     element.remove();
   }
 };
