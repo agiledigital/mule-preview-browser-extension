@@ -90,7 +90,8 @@
     "lint": "eslint --fix src && npx stylelint --fix \"src/**/*.scss\" \"src/**/*.css\" \"src/**/*.html\" && tslint --fix -p tsconfig.json -c tslint.json",
     "release": "semantic-release",
     "format": "prettier --write '{src,test}/**/*.{ts,tsx,js,jsx}'",
-    "format-check": "prettier-check src/**/*"
+    "format-check": "prettier-check src/**/*",
+    "type-coverage": "type-coverage --strict --detail --ignore-catch"
   },
   "repository": {
     "type": "git",
@@ -131,5 +132,8 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "typeCoverage": {
+    "atLeast": 84.95
   }
 }

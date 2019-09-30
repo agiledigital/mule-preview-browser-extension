@@ -18,13 +18,15 @@ jobs:
           keys:
             - v2-dependencies-{{ checksum "package.json" }}
 
+      - run: npm run format-check
+      - run: npm run lint
+      - run: npm run type-coverage
       - run: make
 
       - save_cache:
           paths:
             - ./node_modules
           key: v2-dependencies-{{ checksum "package.json" }}
-
 
       - persist_to_workspace:
           root: ~/repo
