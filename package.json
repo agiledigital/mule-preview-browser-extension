@@ -99,7 +99,10 @@
   },
   "keywords": [
     "extension",
-    "extension-boilerplate",
+    "mulesoft",
+    "scm",
+    "diff",
+    "bitbucket",
     "chrome-extension",
     "firefox-addon"
   ],

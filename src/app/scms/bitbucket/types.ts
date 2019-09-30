@@ -53,3 +53,54 @@ export type DiffPageState = CommonPageState & {
     readonly attributes: Branch;
   };
 };
+
+export type ChangesResponseProperties = {
+  readonly changeScope: string;
+};
+
+export type ChangePath = {
+  readonly components: readonly string[];
+  readonly parent: string;
+  readonly name: string;
+  readonly extension: string;
+  readonly toString: string;
+};
+
+export type ChangeLinks = {
+  readonly self: readonly unknown[];
+};
+
+export type ChangeProperties = {
+  readonly gitChangeType: string;
+};
+
+export type Change = {
+  readonly contentId: string;
+  readonly fromContentId: string;
+  readonly path: ChangePath;
+  readonly executable: boolean;
+  readonly percentUnchanged: number;
+  readonly type: string;
+  readonly nodeType: string;
+  readonly srcExecutable: boolean;
+  readonly links: ChangeLinks;
+  readonly properties: ChangeProperties;
+  readonly srcPath?: ChangePath;
+};
+
+export type ChangesResponse = {
+  readonly fromHash: string;
+  readonly toHash: string;
+  readonly properties: ChangesResponseProperties;
+  readonly values: readonly Change[];
+  readonly size: number;
+  readonly isLastPage: boolean;
+  readonly start: number;
+  readonly limit: number;
+  readonly nextPageStart?: number;
+};
+
+export type DiffPaths = {
+  readonly fromFilePath: string;
+  readonly toFilePath: string;
+};
