@@ -12,8 +12,7 @@
     "target": "es6",
     "outDir": "extension/dist",
     "isolatedModules": true,
-    "strict": true,
-    "typeRoots": ["node_modules/@types", "node_modules/web-ext-types"]
+    "strict": true
   },
   "include": ["src/**/*"],
   "awesomeTypescriptLoaderOptions": {

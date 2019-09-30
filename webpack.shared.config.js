@@ -15,7 +15,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: [".js", ".jsx", ".json", ".scss", ".css", ".ts", ".tsx"],
+    extensions: [".json", ".scss", ".css", ".ts", ".tsx"],
     plugins: [new TsConfigPathsPlugin()]
   },
 
@@ -25,15 +25,6 @@ module.exports = {
 
   module: {
     rules: [
-      {
-        enforce: "pre",
-        test: /\.jsx?$/,
-        loader: "eslint-loader",
-        include: [/browser-plugin\/src/],
-        options: {
-          cache: true
-        }
-      },
       {
         test: /\.tsx?$/,
         enforce: "pre",
