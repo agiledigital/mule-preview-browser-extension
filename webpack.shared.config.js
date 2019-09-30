@@ -6,7 +6,7 @@ module.exports = {
   entry: {
     main: path.resolve(__dirname, "src/app/main.js"),
     background: path.resolve(__dirname, "src/app/background.js"),
-    scraper: path.resolve(__dirname, "src/app/scraper.js")
+    scraper: path.resolve(__dirname, "src/app/scraper.ts")
   },
 
   output: {

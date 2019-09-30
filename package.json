@@ -77,6 +77,7 @@
     "typescript": "^3.6.3",
     "url-loader": "^2.1.0",
     "web-ext": "^3.2.0",
+    "webextension-polyfill-ts": "^0.10.0",
     "webpack": "^4.41.0",
     "webpack-cli": "^3.3.9"
   },
@@ -86,8 +87,10 @@
     "watch-webpack": "webpack --config webpack.config.js -w -d",
     "start": "npm run prebuild && concurrently --kill-others \"npm run watch-extension\" \"npm run watch-webpack\"",
     "build": "npm run prebuild && webpack --config webpack.production.config.js -p",
-    "lint": "eslint --fix src && npx stylelint --fix \"src/**/*.scss\" \"src/**/*.css\" \"src/**/*.html\"",
-    "release": "semantic-release"
+    "lint": "eslint --fix src && npx stylelint --fix \"src/**/*.scss\" \"src/**/*.css\" \"src/**/*.html\" && tslint --fix -p tsconfig.json -c tslint.json",
+    "release": "semantic-release",
+    "format": "prettier --write '{src,test}/**/*.{ts,tsx,js,jsx}'",
+    "format-check": "prettier-check src/**/*"
   },
   "repository": {
     "type": "git",
@@ -118,8 +121,7 @@
     "@agiledigital/mule-preview": "^2.1.0",
     "cross-fetch": "^3.0.4",
     "react": "^16.10.1",
-    "react-dom": "^16.10.1",
-    "webextension-polyfill": "^0.4.0"
+    "react-dom": "^16.10.1"
   },
   "engines": {
     "node": ">= 10.0.0"

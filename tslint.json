@@ -15,7 +15,13 @@
     "interface-over-type-literal": false,
     "interface-name": false,
     "object-literal-sort-keys": false,
-    "no-expression-statement": false
+    "no-expression-statement": false,
+    "no-if-statement": false,
+    "no-throw": false,
+    "no-console": false
   },
-  "rulesDirectory": []
+  "rulesDirectory": [],
+  "linterOptions": {
+    "exclude": ["**/*.js"]
+  }
 }

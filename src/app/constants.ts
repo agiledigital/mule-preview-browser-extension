@@ -1,6 +1,6 @@
-export const messages = Object.freeze({
+export const messages: Readonly<Record<string, string>> = {
   ToggleDiff: "ToggleDiff",
   Reset: "Reset",
   Supported: "Supported",
   BitbucketDataScraped: "BitbucketDataScraped"
-});
+};
