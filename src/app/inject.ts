@@ -6,10 +6,13 @@
  * @param  {type} tag The tag as string, where the script will be append (default: 'body').
  * @see    {@link http://stackoverflow.com/questions/20499994/access-window-variable-from-content-script}
  */
-export const injectScript = (file_path, tag) => {
-  var node = document.getElementsByTagName(tag)[0];
-  var script = document.createElement("script");
+export const injectScript = (
+  filePath: string,
+  tag: string
+): HTMLScriptElement => {
+  const node = document.getElementsByTagName(tag)[0];
+  const script = document.createElement("script");
   script.setAttribute("type", "text/javascript");
-  script.setAttribute("src", file_path);
-  node.appendChild(script);
+  script.setAttribute("src", filePath);
+  return node.appendChild(script);
 };

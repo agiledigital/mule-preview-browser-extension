@@ -1,11 +1,12 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { TsConfigPathsPlugin } = require("awesome-typescript-loader");
 
 module.exports = {
   entry: {
-    main: path.resolve(__dirname, "src/app/main.js"),
-    background: path.resolve(__dirname, "src/app/background.js"),
-    scraper: path.resolve(__dirname, "src/app/scraper.js")
+    main: path.resolve(__dirname, "src/app/main.ts"),
+    background: path.resolve(__dirname, "src/app/background.ts"),
+    scraper: path.resolve(__dirname, "src/app/scraper.ts")
   },
 
   output: {
@@ -14,7 +15,8 @@ module.exports = {
   },
 
   resolve: {
-    extensions: [".js", ".json", ".scss", ".css"]
+    extensions: [".js", ".jsx", ".json", ".scss", ".css", ".ts", ".tsx"],
+    plugins: [new TsConfigPathsPlugin()]
   },
 
   node: {
@@ -24,24 +26,25 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.tsx?$/,
         enforce: "pre",
-        test: /\.js$/,
-        loader: "eslint-loader",
-        include: [/browser-plugin\/src/],
-        options: {
-          cache: true
-        }
+        use: [
+          {
+            loader: "tslint-loader",
+            options: { typeCheck: true, failOnHint: true }
+          }
+        ]
+      },
+      {
+        test: /\.(t|j)sx?$/,
+        loader: ["awesome-typescript-loader?module=es6"],
+        exclude: [/node_modules/]
       },
       {
         test: /\.js$/,
         use: ["source-map-loader"],
         enforce: "pre",
         include: [/mule-preview/],
-        exclude: [/node_modules/]
-      },
-      {
-        test: /\.js$/,
-        loader: "babel-loader",
         exclude: [/node_modules/]
       },
       {

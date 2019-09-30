@@ -1,6 +1,7 @@
-import browser from "webextension-polyfill";
-import { injectScript } from "../../inject";
+import { browser } from "webextension-polyfill-ts";
+import { ScraperResponse } from "~app/types/scraper";
 import { messages } from "../../constants";
+import { injectScript } from "../../inject";
 
 /**
  * Functions to get the state of the Bitbucket UI
@@ -24,8 +25,10 @@ export const getCurrentFile = () => {
   // this is the best way I can find to determine the file path of the
   // file being currently diffed.
   // Not ideal but will have to do for now.
-  const diffElement = document.querySelector("a.difftree-file.jstree-clicked");
-  if (diffElement == null) {
+  const diffElement = document.querySelector<HTMLAnchorElement>(
+    "a.difftree-file.jstree-clicked"
+  );
+  if (diffElement === null) {
     throw new Error("[Mule Preview] Cannot determine diff target from DOM");
   }
   const urlComponents = diffElement.href.split("#");
@@ -35,14 +38,14 @@ export const getCurrentFile = () => {
   return urlComponents[1];
 };
 
-export const getBitbucketData = async () => {
+export const getBitbucketData = async (): Promise<ScraperResponse> => {
   return new Promise((resolve, reject) => {
-    document.addEventListener(messages.BitbucketDataScraped, function({
-      detail
-    }) {
+    document.addEventListener(messages.BitbucketDataScraped, ((
+      event: CustomEvent<ScraperResponse>
+    ) => {
       console.log(`Recieved [${messages.BitbucketDataScraped}] event!`);
-      resolve(detail);
-    });
+      resolve(event.detail);
+    }) as EventListener);
     setTimeout(
       () => reject(new Error("Took too long to scrape Bitbucket data")),
       1000

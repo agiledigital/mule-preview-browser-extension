@@ -1,6 +1,7 @@
-import browser from "webextension-polyfill";
+import { browser, Runtime } from "webextension-polyfill-ts";
 import { messages } from "./constants";
 import { resetTab, toggleDiffOnTab } from "./messenging";
+import { Message } from "./types/messenging";
 
 const tabEnabledSet = new Set();
 
@@ -11,7 +12,9 @@ browser.tabs.onUpdated.addListener(async () => {
     active: true
   });
   const currentTabId = tabArray[0].id;
-  await resetTab(currentTabId);
+  if (currentTabId !== undefined) {
+    await resetTab(currentTabId);
+  }
 });
 
 const startDiff = async () => {
@@ -20,7 +23,9 @@ const startDiff = async () => {
     active: true
   });
   const currentTabId = tabArray[0].id;
-  await toggleDiffOnTab(currentTabId);
+  if (currentTabId !== undefined) {
+    await toggleDiffOnTab(currentTabId);
+  }
 };
 
 browser.browserAction.disable();
@@ -50,22 +55,28 @@ const updateButtonState = async () => {
   }
 };
 
-browser.runtime.onMessage.addListener(function(message, sender) {
-  const senderTabId = sender.tab.id;
-  console.log(
-    `Received message from [${senderTabId}]: [${JSON.stringify(message)}]`
-  );
-  if (message.type === messages.Supported && message.value) {
-    console.log("Adding tab to enabled set!");
-    tabEnabledSet.add(senderTabId);
-    console.log(tabEnabledSet);
-  } else {
-    console.log("Removing tab from enabled set!");
-    tabEnabledSet.delete(senderTabId);
-    console.log(tabEnabledSet);
+browser.runtime.onMessage.addListener(
+  async (rawMessage: unknown, sender: Runtime.MessageSender) => {
+    const message = rawMessage as Message;
+    if (sender.tab === undefined) {
+      return;
+    }
+    const senderTabId = sender.tab.id;
+    console.log(
+      `Received message from [${senderTabId}]: [${JSON.stringify(message)}]`
+    );
+    if (message.type === messages.Supported && message.value === true) {
+      console.log("Adding tab to enabled set!");
+      tabEnabledSet.add(senderTabId);
+      console.log(tabEnabledSet);
+    } else {
+      console.log("Removing tab from enabled set!");
+      tabEnabledSet.delete(senderTabId);
+      console.log(tabEnabledSet);
+    }
+    updateButtonState();
+    return false;
   }
-  updateButtonState();
-  return false;
-});
+);
 
 browser.tabs.onActivated.addListener(updateButtonState);

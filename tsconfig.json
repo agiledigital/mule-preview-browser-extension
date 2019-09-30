@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "baseUrl": "./src",
+    "allowJs": true,
+    "checkJs": false,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "paths": {
+      "~*": ["./*"]
+    },
+    "target": "es6",
+    "outDir": "extension/dist",
+    "isolatedModules": true,
+    "strict": true
+  },
+  "include": ["src/**/*"],
+  "awesomeTypescriptLoaderOptions": {
+    "useBabel": true,
+    "babelCore": "@babel/core"
+  },
+  "useCache": true
+}

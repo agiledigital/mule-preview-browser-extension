@@ -1,17 +1,18 @@
-import browser from "webextension-polyfill";
+import { browser, Runtime } from "webextension-polyfill-ts";
+import "../scss/extension.scss";
+import { messages } from "./constants";
+import { setTabSupportsMulePreview } from "./messenging";
+import { isDiffMode, stopDiff, toggleDiff } from "./modes/diff";
+import { isPreviewMode, togglePreview } from "./modes/preview";
 import {
   getBitbucketDiffElement,
-  isRunningInBitbucket,
-  getBitbucketFilePreviewElement
+  getBitbucketFilePreviewElement,
+  isRunningInBitbucket
 } from "./scms/bitbucket/ui";
-import { messages } from "./constants";
-import { toggleDiff, stopDiff, isDiffMode } from "./modes/diff";
-import { isPreviewMode, togglePreview } from "./modes/preview";
-import "../scss/extension.scss";
-import { setTabSupportsMulePreview } from "./messenging";
+import { Message } from "./types/messenging";
 
-const bitbucketPollPeriod = 1000; //ms
-const timeout = bitbucketPollPeriod * 10; //ms
+const bitbucketPollPeriod = 1000; // ms
+const timeout = bitbucketPollPeriod * 10; // ms
 const startTime = new Date().getTime();
 
 console.log("[Mule Preview] Plugin Initialising");
@@ -19,24 +20,27 @@ console.log("[Mule Preview] Plugin Initialising");
 const getRuntime = () => new Date().getTime() - startTime;
 const isTimedOut = () => getRuntime() > timeout;
 
-browser.runtime.onMessage.addListener(function(message, sender) {
-  console.log(
-    `[Mule Preview] Received message from [${sender}]: [${JSON.stringify(
-      message
-    )}]`
-  );
-  if (message.type === messages.ToggleDiff) {
-    if (getBitbucketDiffElement() !== null) {
-      toggleDiff();
+browser.runtime.onMessage.addListener(
+  async (rawMessage: unknown, sender: Runtime.MessageSender) => {
+    const message = rawMessage as Message;
+    console.log(
+      `[Mule Preview] Received message from [${sender}]: [${JSON.stringify(
+        message
+      )}]`
+    );
+    if (message.type === messages.ToggleDiff) {
+      if (getBitbucketDiffElement() !== null) {
+        toggleDiff();
+      }
+      if (getBitbucketFilePreviewElement() !== null) {
+        togglePreview();
+      }
+    } else if (message.type === messages.Reset) {
+      reset();
     }
-    if (getBitbucketFilePreviewElement() !== null) {
-      togglePreview();
-    }
-  } else if (message.type === messages.Reset) {
-    reset();
+    return true; // Enable async
   }
-  return true; // Enable async
-});
+);
 
 const onReady = () => {
   console.log("[Mule Preview] Bitbucket ready. Enabling button");

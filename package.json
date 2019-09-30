@@ -4,7 +4,7 @@
   "description": "Overlays the Mule Preview plugin over SCM web applications",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.6.0",
+    "@babel/core": "^7.6.2",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
     "@babel/plugin-proposal-decorators": "^7.6.0",
     "@babel/plugin-proposal-do-expressions": "^7.6.0",
@@ -21,7 +21,7 @@
     "@babel/plugin-proposal-throw-expressions": "^7.0.0",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
     "@babel/plugin-syntax-import-meta": "^7.0.0",
-    "@babel/preset-env": "^7.6.0",
+    "@babel/preset-env": "^7.6.2",
     "@babel/preset-react": "^7.0.0",
     "@semantic-release/changelog": "^3.0.4",
     "@semantic-release/commit-analyzer": "^6.3.0",
@@ -29,7 +29,10 @@
     "@semantic-release/github": "^5.4.4",
     "@semantic-release/npm": "^5.1.15",
     "@semantic-release/release-notes-generator": "^7.3.0",
+    "@types/react": "^16.9.3",
+    "@types/react-dom": "^16.9.1",
     "addons-linter": "^1.14.0",
+    "awesome-typescript-loader": "^5.2.1",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.0",
     "chrome-webstore-upload-cli": "^1.2.0",
@@ -37,18 +40,15 @@
     "core-js": "^3.2.1",
     "css-loader": "^3.2.0",
     "cz-conventional-changelog": "^3.0.2",
-    "eslint": "^6.3.0",
-    "eslint-config-prettier": "^6.2.0",
-    "eslint-loader": "^2.2.1",
-    "eslint-plugin-prettier": "^3.1.1",
-    "eslint-plugin-react": "^7.14.3",
     "file-loader": "^4.2.0",
+    "hard-source-webpack-plugin": "^0.13.1",
     "install": "^0.13.0",
     "mini-css-extract-plugin": "^0.8.0",
     "node-libs-browser": "^2.2.1",
     "node-sass": "^4.6.0",
     "npm": "^6.11.3",
     "prettier": "^1.18.2",
+    "prettier-check": "^2.0.0",
     "prettier-stylelint": "^0.4.2",
     "rimraf": "^2.7.1",
     "sass-loader": "^7.3.1",
@@ -58,13 +58,22 @@
     "source-map-loader": "github:noxharmonium/source-map-loader",
     "style-loader": "^0.23.1",
     "stylelint": "^10.1.0",
-    "stylelint-config-prettier": "^5.2.0",
+    "stylelint-config-prettier": "^5.3.0",
     "stylelint-config-standard": "^18.3.0",
     "stylelint-prettier": "^1.1.1",
     "stylelint-webpack-plugin": "^0.10.5",
+    "tslint": "^5.20.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-immutable": "^6.0.1",
+    "tslint-loader": "^3.5.4",
+    "tslint-sonarts": "^1.9.0",
+    "type-coverage": "^2.3.0",
+    "typescript": "^3.6.3",
     "url-loader": "^2.1.0",
-    "web-ext": "^3.1.0",
-    "webpack": "^4.39.3",
+    "web-ext": "^3.2.0",
+    "webextension-polyfill-ts": "^0.10.0",
+    "webpack": "^4.41.0",
     "webpack-cli": "^3.3.9"
   },
   "scripts": {
@@ -72,9 +81,12 @@
     "watch-extension": "web-ext run -s extension/ --verbose",
     "watch-webpack": "webpack --config webpack.config.js -w -d",
     "start": "npm run prebuild && concurrently --kill-others \"npm run watch-extension\" \"npm run watch-webpack\"",
-    "build": "npm run prebuild && webpack --config webpack.production.config.js -p",
-    "lint": "eslint --fix src && npx stylelint --fix \"src/**/*.scss\" \"src/**/*.css\" \"src/**/*.html\"",
-    "release": "semantic-release"
+    "build": "npm run prebuild && npm run lint && npm run format-check && npm run type-coverage && webpack --config webpack.production.config.js -p",
+    "lint": "npx stylelint --fix \"src/**/*.scss\" \"src/**/*.css\" \"src/**/*.html\" && tslint --fix -p tsconfig.json -c tslint.json",
+    "release": "semantic-release",
+    "format": "prettier --write '{src,test}/**/*.{ts,tsx,js,jsx}'",
+    "format-check": "prettier-check src/**/*",
+    "type-coverage": "type-coverage --strict --detail --ignore-catch"
   },
   "repository": {
     "type": "git",
@@ -82,7 +94,10 @@
   },
   "keywords": [
     "extension",
-    "extension-boilerplate",
+    "mulesoft",
+    "scm",
+    "diff",
+    "bitbucket",
     "chrome-extension",
     "firefox-addon"
   ],
@@ -104,9 +119,8 @@
   "dependencies": {
     "@agiledigital/mule-preview": "^2.1.0",
     "cross-fetch": "^3.0.4",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "webextension-polyfill": "^0.4.0"
+    "react": "^16.10.1",
+    "react-dom": "^16.10.1"
   },
   "engines": {
     "node": ">= 10.0.0"
@@ -116,5 +130,8 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "typeCoverage": {
+    "atLeast": 99.79
   }
 }

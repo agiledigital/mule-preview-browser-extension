@@ -1,10 +1,10 @@
-import React from "react";
-import ReactDOM from "react-dom";
 import { MulePreviewContent } from "@agiledigital/mule-preview";
-import browser from "webextension-polyfill";
 import fetch from "cross-fetch";
+import * as React from "react";
+import * as ReactDOM from "react-dom";
+import { browser } from "webextension-polyfill-ts";
 import { getFileRawUrlFromContentView } from "../scms/bitbucket/ui";
-import { getMulePreviewElement, createContainerElement } from "../ui";
+import { createContainerElement, getMulePreviewElement } from "../ui";
 
 const startPreview = () => {
   if (getMulePreviewElement() !== null) {
@@ -16,6 +16,11 @@ const startPreview = () => {
     "[Mule Preview] Bitbucket detected. Will attempt to load overlay."
   );
   const element = document.querySelector("body");
+
+  if (element === null) {
+    throw new Error("Could not find body element");
+  }
+
   const url = getFileRawUrlFromContentView();
   return fetch(url)
     .then(response => response.text())
@@ -37,7 +42,7 @@ const startPreview = () => {
 
 export const stopPreview = () => {
   const element = getMulePreviewElement();
-  if (element) {
+  if (element !== null) {
     element.remove();
   }
 };
