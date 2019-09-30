@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/NoxHarmonium/mule-preview/compare/v1.1.0...v1.2.0) (2019-09-30)
+
+
+### Features
+
+* introduces TypeScript to the project ([82a3edc](https://github.com/NoxHarmonium/mule-preview/commit/82a3edc)), closes [#69](https://github.com/NoxHarmonium/mule-preview/issues/69)
+
 # [1.1.0](https://github.com/NoxHarmonium/mule-preview/compare/v1.0.18...v1.1.0) (2019-09-25)
 
 
