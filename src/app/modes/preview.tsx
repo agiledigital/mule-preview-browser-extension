@@ -1,12 +1,11 @@
 import { MulePreviewContent } from "@agiledigital/mule-preview";
-import fetch from "cross-fetch";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { browser } from "webextension-polyfill-ts";
-import { getFileRawUrlFromContentView } from "../scms/bitbucket/ui";
-import { createContainerElement, getMulePreviewElement } from "../ui";
+import { ScmModule } from "~app/types/scms";
+import { createContainerElement, getMulePreviewElement } from "~app/ui";
 
-const startPreview = () => {
+const startPreview = async (scmModule: ScmModule) => {
   if (getMulePreviewElement() !== null) {
     console.log("[Mule Preview] Already loaded. Will not load again.");
     return;
@@ -21,23 +20,17 @@ const startPreview = () => {
     throw new Error("Could not find body element");
   }
 
-  const url = getFileRawUrlFromContentView();
-  return fetch(url)
-    .then(response => response.text())
-    .then(content => {
-      const mulePreviewElement = createContainerElement();
-      element.appendChild(mulePreviewElement);
-      ReactDOM.render(
-        <MulePreviewContent
-          contentString={content}
-          contentRoot={browser.runtime.getURL("public/")}
-        />,
-        mulePreviewElement
-      );
-    })
-    .catch(err => {
-      console.error(err);
-    });
+  return scmModule.getPreviewContent().then(content => {
+    const mulePreviewElement = createContainerElement();
+    element.appendChild(mulePreviewElement);
+    ReactDOM.render(
+      <MulePreviewContent
+        contentString={content}
+        contentRoot={browser.runtime.getURL("public/")}
+      />,
+      mulePreviewElement
+    );
+  });
 };
 
 export const stopPreview = () => {
@@ -47,11 +40,11 @@ export const stopPreview = () => {
   }
 };
 
-export const togglePreview = () => {
+export const togglePreview = (scmModule: ScmModule) => {
   const element = getMulePreviewElement();
   if (element === null) {
     console.log("[Mule Preview] No existing element. Starting preview");
-    startPreview();
+    startPreview(scmModule);
   } else {
     console.log("[Mule Preview] Existing element found. Stopping preview");
     stopPreview();

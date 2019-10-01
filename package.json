@@ -2,7 +2,7 @@
   "name": "mule-preview-browser-extension",
   "version": "1.0.10",
   "description": "Overlays the Mule Preview plugin over SCM web applications",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "devDependencies": {
     "@babel/core": "^7.6.2",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
@@ -23,6 +23,7 @@
     "@babel/plugin-syntax-import-meta": "^7.0.0",
     "@babel/preset-env": "^7.6.2",
     "@babel/preset-react": "^7.0.0",
+    "@codechecks/client": "^0.1.10",
     "@semantic-release/changelog": "^3.0.4",
     "@semantic-release/commit-analyzer": "^6.3.0",
     "@semantic-release/git": "^7.0.16",
@@ -69,6 +70,7 @@
     "tslint-loader": "^3.5.4",
     "tslint-sonarts": "^1.9.0",
     "type-coverage": "^2.3.0",
+    "typecov": "^0.2.1",
     "typescript": "^3.6.3",
     "url-loader": "^2.1.0",
     "web-ext": "^3.2.0",
@@ -120,18 +122,18 @@
     "@agiledigital/mule-preview": "^2.1.0",
     "cross-fetch": "^3.0.4",
     "react": "^16.10.1",
-    "react-dom": "^16.10.1"
+    "react-dom": "^16.10.1",
+    "total-functions": "0.0.3"
   },
   "engines": {
     "node": ">= 10.0.0"
   },
-  "browserslist": "defaults",
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
   },
   "typeCoverage": {
-    "atLeast": 99.79
+    "atLeast": 100
   }
 }
