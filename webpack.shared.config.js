@@ -6,7 +6,7 @@ module.exports = {
   entry: {
     main: path.resolve(__dirname, "src/app/main.ts"),
     background: path.resolve(__dirname, "src/app/background.ts"),
-    scraper: path.resolve(__dirname, "src/app/scraper.ts")
+    "bitbucket-scraper": path.resolve(__dirname, "src/app/scms/bitbucket-server/scraper.ts")
   },
 
   output: {

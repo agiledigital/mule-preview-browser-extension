@@ -1,13 +1,8 @@
 import { browser, Runtime } from "webextension-polyfill-ts";
-import { messages } from "~app/constants";
 import { setTabSupportsMulePreview } from "~app/messenging";
-import { isDiffMode, stopDiff, toggleDiff } from "~app/modes/diff";
-import { isPreviewMode, togglePreview } from "~app/modes/preview";
-import {
-  getBitbucketDiffElement,
-  getBitbucketFilePreviewElement,
-  isRunningInBitbucket
-} from "~app/scms/bitbucket/ui";
+import { stopDiff, toggleDiff } from "~app/modes/diff";
+import { togglePreview } from "~app/modes/preview";
+import { bitbucketServerScmModule } from "~app/scms/bitbucket-server";
 import { Message } from "~app/types/messenging";
 import "../scss/extension.scss";
 
@@ -28,14 +23,15 @@ browser.runtime.onMessage.addListener(
         message
       )}]`
     );
-    if (message.type === messages.ToggleDiff) {
-      if (getBitbucketDiffElement() !== null) {
-        toggleDiff();
+    const mode = await bitbucketServerScmModule.determineScmMode();
+    if (message.type === "ToggleDiff") {
+      if (mode === "Diff") {
+        toggleDiff(bitbucketServerScmModule);
       }
-      if (getBitbucketFilePreviewElement() !== null) {
-        togglePreview();
+      if (mode === "Preview") {
+        togglePreview(bitbucketServerScmModule);
       }
-    } else if (message.type === messages.Reset) {
+    } else if (message.type === "Reset") {
       reset();
     }
     return true; // Enable async
@@ -49,10 +45,7 @@ const onReady = () => {
 
 const startReadyPolling = () => {
   const readyPoller = setInterval(() => {
-    if (
-      getBitbucketDiffElement() !== null ||
-      getBitbucketFilePreviewElement() !== null
-    ) {
+    if (bitbucketServerScmModule.isReady()) {
       console.log("[Mule Preview] Ready!");
       clearInterval(readyPoller);
       onReady();
@@ -64,12 +57,13 @@ const startReadyPolling = () => {
   }, bitbucketPollPeriod);
 };
 
-const reset = () => {
+const reset = async () => {
   stopDiff();
   // Reset button
-  setTabSupportsMulePreview(false);
+  await setTabSupportsMulePreview(false);
 
-  if (isRunningInBitbucket() && (isDiffMode() || isPreviewMode())) {
+  const supported = await bitbucketServerScmModule.isSupported();
+  if (supported) {
     console.log(
       "[Mule Preview] I'm pretty sure this is the right place but I have to wait for the element to be ready."
     );

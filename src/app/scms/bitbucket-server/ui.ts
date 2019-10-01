@@ -1,7 +1,6 @@
 import { browser } from "webextension-polyfill-ts";
-import { messages } from "~app/constants";
 import { injectScript } from "~app/inject";
-import { ScraperResponse } from "~app/types/scraper";
+import { ScraperResponse } from "./types";
 
 /**
  * Functions to get the state of the Bitbucket UI
@@ -40,17 +39,17 @@ export const getCurrentFile = () => {
 
 export const getBitbucketData = async (): Promise<ScraperResponse> => {
   return new Promise((resolve, reject) => {
-    document.addEventListener(messages.BitbucketDataScraped, ((
+    document.addEventListener("BitbucketDataScraped", ((
       event: CustomEvent<ScraperResponse>
     ) => {
-      console.log(`Recieved [${messages.BitbucketDataScraped}] event!`);
+      console.log(`Recieved ["BitbucketDataScraped"] event!`);
       resolve(event.detail);
     }) as EventListener);
     setTimeout(
       () => reject(new Error("Took too long to scrape Bitbucket data")),
       1000
     );
-    injectScript(browser.extension.getURL("dist/scraper.js"), "body");
+    injectScript(browser.extension.getURL("dist/bitbucket-scraper.js"), "body");
   });
 };
 

@@ -1,6 +1,11 @@
 import fetch from "cross-fetch";
-import { Change, ChangesResponse, DiffContent } from "~app/scms/bitbucket/types";
-import { ValidScraperResponse } from "~app/types/scraper";
+import {
+  Change,
+  ChangesResponse,
+  ScraperResponse,
+  ValidScraperResponse
+} from "~app/scms/bitbucket-server/types";
+import { DiffContent } from "~app/types/scms";
 
 /**
  * Functions to fetch files from Bitbucket to preview and diff
@@ -87,4 +92,17 @@ export const getFileContentFromDiff = async ({
         );
       }
     });
+};
+
+export const handleBitbucketData = async (
+  bitbucketData: ScraperResponse
+): Promise<DiffContent> => {
+  if (!bitbucketData.valid) {
+    throw new Error("Could not fetch Bitbucket data");
+  }
+  const diffContent = await getFileContentFromDiff(bitbucketData);
+  if (diffContent === undefined) {
+    throw new Error("Could not fetch Bitbucket diff");
+  }
+  return diffContent;
 };

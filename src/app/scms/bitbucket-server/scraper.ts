@@ -1,10 +1,11 @@
-import { messages } from "~app/constants";
 import {
   CommonPageState,
+  DiffDetails,
   DiffPageState,
-  PullRequestPageState
-} from "~app/scms/bitbucket/types";
-import { DiffDetails, ScraperResponse } from "~app/types/scraper";
+  PullRequestPageState,
+  ScraperResponse
+} from "~app/scms/bitbucket-server/types";
+import { MessageType } from "~app/types/messenging";
 
 // Note: Code in this file has to be injected into the target
 // browser so it should be free of dependencies and small as possible
@@ -96,7 +97,7 @@ import { DiffDetails, ScraperResponse } from "~app/types/scraper";
   const payload = preparePayload(bitbucketPageState);
 
   document.dispatchEvent(
-    new CustomEvent(messages.BitbucketDataScraped, {
+    new CustomEvent("BitbucketDataScraped" as MessageType, {
       detail: payload
     })
   );

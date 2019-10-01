@@ -1,5 +1,4 @@
 import { browser, Runtime } from "webextension-polyfill-ts";
-import { messages } from "~app/constants";
 import { resetTab, toggleDiffOnTab } from "~app/messenging";
 import { Message } from "~app/types/messenging";
 
@@ -65,7 +64,7 @@ browser.runtime.onMessage.addListener(
     console.log(
       `Received message from [${senderTabId}]: [${JSON.stringify(message)}]`
     );
-    if (message.type === messages.Supported && message.value === true) {
+    if (message.type === "Supported" && message.value === true) {
       console.log("Adding tab to enabled set!");
       tabEnabledSet.add(senderTabId);
       console.log(tabEnabledSet);

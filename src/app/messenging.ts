@@ -1,5 +1,4 @@
 import { browser } from "webextension-polyfill-ts";
-import { messages } from "~app/constants";
 import { Message } from "~app/types/messenging";
 
 const sendMessageRobust = async (currentTabId: number, message: Message) =>
@@ -7,19 +6,18 @@ const sendMessageRobust = async (currentTabId: number, message: Message) =>
     console.warn(`Could not send message: [${error}]. Ignoring...`);
   });
 
-export const setTabSupportsMulePreview = async (supported: boolean) => {
-  await browser.runtime.sendMessage({
-    type: messages.Supported,
+export const setTabSupportsMulePreview = async (supported: boolean) =>
+  browser.runtime.sendMessage({
+    type: "Supported",
     value: supported
   });
-};
 
 export const resetTab = async (tabId: number) =>
   sendMessageRobust(tabId, {
-    type: messages.Reset
+    type: "Reset"
   });
 
 export const toggleDiffOnTab = async (tabId: number) =>
   sendMessageRobust(tabId, {
-    type: messages.ToggleDiff
+    type: "ToggleDiff"
   });

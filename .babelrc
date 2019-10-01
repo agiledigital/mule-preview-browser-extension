@@ -1,6 +1,25 @@
 {
   "presets": [
-    ["@babel/preset-env", { "useBuiltIns": "usage", "corejs": 3 }],
+    [
+      "@babel/preset-env",
+      {
+        "corejs": 3,
+        "debug": false,
+        "exclude": [
+          "es.promise",
+          "es.promise.finally"
+        ],
+        "loose": true,
+        "spec": true,
+        "targets": {
+          "browsers": [
+            "last 2 Chrome versions",
+            "last 2 Firefox versions"
+          ]
+        },
+        "useBuiltIns": "usage"
+      }
+    ],
     "@babel/preset-react"
   ],
   "plugins": [
