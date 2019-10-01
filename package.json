@@ -2,7 +2,7 @@
   "name": "mule-preview-browser-extension",
   "version": "1.0.10",
   "description": "Overlays the Mule Preview plugin over SCM web applications",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "devDependencies": {
     "@babel/core": "^7.6.2",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
