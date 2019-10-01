@@ -120,7 +120,8 @@
     "@agiledigital/mule-preview": "^2.1.0",
     "cross-fetch": "^3.0.4",
     "react": "^16.10.1",
-    "react-dom": "^16.10.1"
+    "react-dom": "^16.10.1",
+    "total-functions": "0.0.3"
   },
   "engines": {
     "node": ">= 10.0.0"

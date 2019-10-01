@@ -23,7 +23,7 @@ import {
  * but has not be tested on those versions.
  */
 export const bitbucketServerScmModule: ScmModule = {
-  isSupported: async (): Promise<boolean> => {
+  isSupported: (): boolean => {
     const metaTag = document.querySelector("meta[name=application-name]");
     return metaTag === null
       ? false

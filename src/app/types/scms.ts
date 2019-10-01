@@ -28,7 +28,7 @@ export type ScmModule = {
    * This should be a short running task that does not do anything too
    * intensive as it will be called every time a page is loaded.
    */
-  readonly isSupported: () => Promise<boolean>;
+  readonly isSupported: () => boolean;
 
   /**
    * Polled by the host extension to make sure that the page has completely

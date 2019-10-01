@@ -24,8 +24,8 @@ declare module "@agiledigital/mule-preview" {
     readonly contentRoot: string;
   }
 
-  const MulePreviewDiffUrl: React.SFC<MulePreviewDiffUrlProps>;
-  const MulePreviewDiffContent: React.SFC<MulePreviewDiffContentProps>;
-  const MulePreviewUrl: React.SFC<MulePreviewUrlProps>;
-  const MulePreviewContent: React.SFC<MulePreviewContentProps>;
+  const MulePreviewDiffUrl: React.FC<MulePreviewDiffUrlProps>;
+  const MulePreviewDiffContent: React.FC<MulePreviewDiffContentProps>;
+  const MulePreviewUrl: React.FC<MulePreviewUrlProps>;
+  const MulePreviewContent: React.FC<MulePreviewContentProps>;
 }
