@@ -1,15 +1,15 @@
 import { browser, Runtime } from "webextension-polyfill-ts";
-import "../scss/extension.scss";
-import { messages } from "./constants";
-import { setTabSupportsMulePreview } from "./messenging";
-import { isDiffMode, stopDiff, toggleDiff } from "./modes/diff";
-import { isPreviewMode, togglePreview } from "./modes/preview";
+import { messages } from "~app/constants";
+import { setTabSupportsMulePreview } from "~app/messenging";
+import { isDiffMode, stopDiff, toggleDiff } from "~app/modes/diff";
+import { isPreviewMode, togglePreview } from "~app/modes/preview";
 import {
   getBitbucketDiffElement,
   getBitbucketFilePreviewElement,
   isRunningInBitbucket
-} from "./scms/bitbucket/ui";
-import { Message } from "./types/messenging";
+} from "~app/scms/bitbucket/ui";
+import { Message } from "~app/types/messenging";
+import "../scss/extension.scss";
 
 const bitbucketPollPeriod = 1000; // ms
 const timeout = bitbucketPollPeriod * 10; // ms

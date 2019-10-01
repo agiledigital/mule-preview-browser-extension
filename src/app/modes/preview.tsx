@@ -3,8 +3,8 @@ import fetch from "cross-fetch";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { browser } from "webextension-polyfill-ts";
-import { getFileRawUrlFromContentView } from "../scms/bitbucket/ui";
-import { createContainerElement, getMulePreviewElement } from "../ui";
+import { getFileRawUrlFromContentView } from "~app/scms/bitbucket/ui";
+import { createContainerElement, getMulePreviewElement } from "~app/ui";
 
 const startPreview = () => {
   if (getMulePreviewElement() !== null) {

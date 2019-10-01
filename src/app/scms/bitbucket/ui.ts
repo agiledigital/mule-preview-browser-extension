@@ -1,7 +1,7 @@
 import { browser } from "webextension-polyfill-ts";
+import { messages } from "~app/constants";
+import { injectScript } from "~app/inject";
 import { ScraperResponse } from "~app/types/scraper";
-import { messages } from "../../constants";
-import { injectScript } from "../../inject";
 
 /**
  * Functions to get the state of the Bitbucket UI

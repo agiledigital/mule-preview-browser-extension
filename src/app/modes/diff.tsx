@@ -2,11 +2,11 @@ import { MulePreviewDiffContent } from "@agiledigital/mule-preview";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { browser } from "webextension-polyfill-ts";
+import { getFileContentFromDiff } from "~app/scms/bitbucket/fetch";
 import { DiffContent } from "~app/scms/bitbucket/types";
+import { getBitbucketData } from "~app/scms/bitbucket/ui";
 import { ScraperResponse } from "~app/types/scraper";
-import { getFileContentFromDiff } from "../scms/bitbucket/fetch";
-import { getBitbucketData } from "../scms/bitbucket/ui";
-import { createContainerElement, getMulePreviewElement } from "../ui";
+import { createContainerElement, getMulePreviewElement } from "~app/ui";
 
 const handleBitbucketData = (bitbucketData: ScraperResponse) => {
   if (!bitbucketData.valid) {

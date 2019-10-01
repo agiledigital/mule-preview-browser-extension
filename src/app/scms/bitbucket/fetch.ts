@@ -1,6 +1,6 @@
 import fetch from "cross-fetch";
+import { Change, ChangesResponse, DiffContent } from "~app/scms/bitbucket/types";
 import { ValidScraperResponse } from "~app/types/scraper";
-import { Change, ChangesResponse, DiffContent } from "./types";
 
 /**
  * Functions to fetch files from Bitbucket to preview and diff

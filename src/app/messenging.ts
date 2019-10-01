@@ -1,6 +1,6 @@
 import { browser } from "webextension-polyfill-ts";
-import { messages } from "./constants";
-import { Message } from "./types/messenging";
+import { messages } from "~app/constants";
+import { Message } from "~app/types/messenging";
 
 const sendMessageRobust = async (currentTabId: number, message: Message) =>
   browser.tabs.sendMessage(currentTabId, message).catch((error: unknown) => {

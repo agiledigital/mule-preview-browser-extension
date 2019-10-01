@@ -1,10 +1,10 @@
-import { messages } from "./constants";
+import { messages } from "~app/constants";
 import {
   CommonPageState,
   DiffPageState,
   PullRequestPageState
-} from "./scms/bitbucket/types";
-import { DiffDetails, ScraperResponse } from "./types/scraper";
+} from "~app/scms/bitbucket/types";
+import { DiffDetails, ScraperResponse } from "~app/types/scraper";
 
 // Note: Code in this file has to be injected into the target
 // browser so it should be free of dependencies and small as possible

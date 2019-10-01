@@ -1,7 +1,7 @@
 import { browser, Runtime } from "webextension-polyfill-ts";
-import { messages } from "./constants";
-import { resetTab, toggleDiffOnTab } from "./messenging";
-import { Message } from "./types/messenging";
+import { messages } from "~app/constants";
+import { resetTab, toggleDiffOnTab } from "~app/messenging";
+import { Message } from "~app/types/messenging";
 
 const tabEnabledSet = new Set();
 
