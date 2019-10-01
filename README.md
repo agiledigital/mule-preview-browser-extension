@@ -11,10 +11,9 @@
 ## Summary
 
 This project takes the [Mule Preview client](https://github.com/agiledigital/mule-preview)
-library and uses it to overlay a visual diff of Mule XML in Bitbucket Server
-with a graphical diff.
+library and uses it to overlay a visual diff of Mule XML in Bitbucket Server.
 
-It also will show visual previews of Mule files.
+It also will show visual previews of Mule XML files.
 
 ![Recording of using Mule Preview](doc/example.gif "Recording of using Mule Preview")
 
@@ -45,6 +44,8 @@ Tested on Atlassian Bitbucket (Server) v6.1.1
 It does not support any other SCMs at this point (including Bitbucket Cloud) but support is in the works.
 
 Please raise an issue (or a PR!) if there is not already one open to support your favourite web based SCM.
+
+The priority of issues are on the [Mule Preview project kanban](https://github.com/orgs/agiledigital/projects/1)
 
 ## Setup
 
