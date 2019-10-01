@@ -2,6 +2,7 @@
 
 [![GitHub License](https://img.shields.io/github/license/agiledigital/mule-preview-browser-extension.svg)](https://github.com/agiledigital/mule-preview-browser-extension/blob/master/LICENSE)
 [![CircleCI](https://circleci.com/gh/agiledigital/mule-preview-browser-extension.svg?style=svg)](https://circleci.com/gh/agiledigital/mule-preview-browser-extension)
+[![type-coverage](https://img.shields.io/badge/dynamic/json.svg?label=type-coverage&prefix=%E2%89%A5&suffix=%&query=$.typeCoverage.atLeast&uri=https%3A%2F%2Fraw.githubusercontent.com%2Fagiledigital%2Fmule-preview-browser-extension%2Fmaster%2Fpackage.json)](https://github.com/plantain-00/type-coverage)
 [![Known Vulnerabilities](https://snyk.io//test/github/agiledigital/mule-preview-browser-extension/badge.svg)](https://snyk.io//test/github/agiledigital/mule-preview-browser-extension)
 [![Maintainability](https://api.codeclimate.com/v1/badges/ce5e7ca1a6ef3cc5b6ce/maintainability)](https://codeclimate.com/github/agiledigital/mule-preview-browser-extension/maintainability)
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/agiledigital/mule-preview-browser-extension)
