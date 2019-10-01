@@ -22,6 +22,7 @@ jobs:
 
       - run: make
       - run: fossa
+      - run: npx codechecks
 
       - save_cache:
           paths:
