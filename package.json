@@ -89,7 +89,9 @@
     "release": "semantic-release",
     "format": "prettier --write '{src,test}/**/*.{ts,tsx,js,jsx}'",
     "format-check": "prettier-check src/**/*",
-    "type-coverage": "type-coverage --strict --detail --ignore-catch"
+    "type-coverage": "type-coverage --strict --detail --ignore-catch",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -124,7 +126,8 @@
     "cross-fetch": "^3.0.4",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
-    "total-functions": "0.0.3"
+    "total-functions": "0.0.3",
+    "snyk": "^1.230.5"
   },
   "engines": {
     "node": ">= 10.0.0"
@@ -136,5 +139,6 @@
   },
   "typeCoverage": {
     "atLeast": 100
-  }
+  },
+  "snyk": true
 }
