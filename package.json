@@ -127,7 +127,7 @@
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
     "total-functions": "0.0.3",
-    "snyk": "^1.230.5"
+    "snyk": "^1.258.2"
   },
   "engines": {
     "node": ">= 10.0.0"
