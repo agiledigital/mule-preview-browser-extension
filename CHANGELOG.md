@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/NoxHarmonium/mule-preview/compare/v1.2.2...v1.2.3) (2020-01-08)
+
+
+### Bug Fixes
+
+* update dependencies ([05dea3d](https://github.com/NoxHarmonium/mule-preview/commit/05dea3df9ba5892e88923bd606317961d483767b))
+
 ## [1.2.2](https://github.com/NoxHarmonium/mule-preview/compare/v1.2.1...v1.2.2) (2019-12-12)
 
 
