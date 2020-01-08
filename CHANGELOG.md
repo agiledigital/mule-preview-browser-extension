@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/NoxHarmonium/mule-preview/compare/v1.2.3...v1.2.4) (2020-01-08)
+
+
+### Bug Fixes
+
+* force deploy ([ed2a3b1](https://github.com/NoxHarmonium/mule-preview/commit/ed2a3b1291bfaf943b0b93d3b2673d943cac84e7))
+
 ## [1.2.3](https://github.com/NoxHarmonium/mule-preview/compare/v1.2.2...v1.2.3) (2020-01-08)
 
 
