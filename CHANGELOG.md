@@ -1,3 +1,10 @@
+## [1.2.6](https://github.com/NoxHarmonium/mule-preview/compare/v1.2.5...v1.2.6) (2020-02-21)
+
+
+### Bug Fixes
+
+* package.json & package-lock.json to reduce vulnerabilities ([a8a1d75](https://github.com/NoxHarmonium/mule-preview/commit/a8a1d75185fc342b701325ab56121116449ec41f))
+
 ## [1.2.5](https://github.com/NoxHarmonium/mule-preview/compare/v1.2.4...v1.2.5) (2020-01-22)
 
 
