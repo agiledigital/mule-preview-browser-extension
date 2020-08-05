@@ -1,3 +1,10 @@
+## [1.2.8](https://github.com/NoxHarmonium/mule-preview/compare/v1.2.7...v1.2.8) (2020-08-05)
+
+
+### Bug Fixes
+
+* make web_accessable_resouces more permissive ([151800e](https://github.com/NoxHarmonium/mule-preview/commit/151800eaa7e0fe055a2f4c5ac6b0f31a9aac1f2a)), closes [#92](https://github.com/NoxHarmonium/mule-preview/issues/92)
+
 ## [1.2.7](https://github.com/NoxHarmonium/mule-preview/compare/v1.2.6...v1.2.7) (2020-08-05)
 
 
