@@ -56,6 +56,7 @@ const updateButtonState = async () => {
 
 browser.runtime.onMessage.addListener(
   async (rawMessage: unknown, sender: Runtime.MessageSender) => {
+    // type-coverage:ignore-next-line
     const message = rawMessage as Message;
     if (sender.tab === undefined) {
       return;

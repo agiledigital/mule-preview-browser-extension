@@ -39,12 +39,14 @@ export const getCurrentFile = () => {
 
 export const getBitbucketData = async (): Promise<ScraperResponse> => {
   return new Promise((resolve, reject) => {
+    // TODO: Work out why there is a force cast to EventListener here
+    // type-coverage:ignore-next-line
     document.addEventListener("BitbucketDataScraped", ((
       event: CustomEvent<ScraperResponse>
     ) => {
-      console.log(`Recieved ["BitbucketDataScraped"] event!`);
+      console.log(`Received ["BitbucketDataScraped"] event!`);
       resolve(event.detail);
-    }) as EventListener);
+    }) as EventListener); 
     setTimeout(
       () => reject(new Error("Took too long to scrape Bitbucket data")),
       1000
