@@ -16,6 +16,7 @@ export const init = (bitbucketServerScmModule: ScmModule) => {
 
   browser.runtime.onMessage.addListener(
     async (rawMessage: unknown, sender: Runtime.MessageSender) => {
+      // type-coverage:ignore-next-line
       const message = rawMessage as Message;
       console.log(
         `[Mule Preview] Received message from [${sender}]: [${JSON.stringify(

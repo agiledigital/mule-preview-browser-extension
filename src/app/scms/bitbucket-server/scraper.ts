@@ -11,8 +11,9 @@ import { MessageType } from "~app/types/messenging";
 // browser so it should be free of dependencies and small as possible
 (() => {
   const isPullRequest = (
-    pageState: unknown
+    pageState: CommonPageState
   ): pageState is PullRequestPageState => {
+    // type-coverage:ignore-next-line
     const prPageState = pageState as PullRequestPageState;
     return (
       prPageState.getPullRequest !== undefined &&
@@ -20,7 +21,8 @@ import { MessageType } from "~app/types/messenging";
     );
   };
 
-  const isDiff = (pageState: unknown): pageState is DiffPageState => {
+  const isDiff = (pageState: CommonPageState): pageState is DiffPageState => {
+    // type-coverage:ignore-next-line
     const diffPageState = pageState as DiffPageState;
     return (
       diffPageState.getSourceRepository !== undefined &&
