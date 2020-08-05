@@ -1,3 +1,12 @@
+## [1.2.7](https://github.com/NoxHarmonium/mule-preview/compare/v1.2.6...v1.2.7) (2020-08-05)
+
+
+### Bug Fixes
+
+* package.json, package-lock.json & .snyk to reduce vulnerabilities ([06f7d68](https://github.com/NoxHarmonium/mule-preview/commit/06f7d6815185741b744e1637d6d0d2f62f0742ac))
+* package.json, package-lock.json & .snyk to reduce vulnerabilities ([9751565](https://github.com/NoxHarmonium/mule-preview/commit/9751565d84a4d4229cf43fb7a851b4de2ecc079d))
+* package.json, package-lock.json & .snyk to reduce vulnerabilities ([a938e0b](https://github.com/NoxHarmonium/mule-preview/commit/a938e0bf507d65ceb91ccf5149713fffcda8b9e0))
+
 ## [1.2.6](https://github.com/NoxHarmonium/mule-preview/compare/v1.2.5...v1.2.6) (2020-02-21)
 
 
