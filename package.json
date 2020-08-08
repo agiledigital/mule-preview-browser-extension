@@ -47,8 +47,8 @@
     "install": "^0.13.0",
     "mini-css-extract-plugin": "^0.8.2",
     "node-libs-browser": "^2.2.1",
-    "node-sass": "^4.13.0",
-    "npm": "^6.13.4",
+    "node-sass": "^4.14.1",
+    "npm": "^6.14.7",
     "prettier": "^1.19.1",
     "prettier-check": "^2.0.0",
     "prettier-stylelint": "^0.4.2",
@@ -56,7 +56,7 @@
     "sass-loader": "^7.3.1",
     "semantic-release": "^15.14.0",
     "semantic-release-chrome": "^1.1.3",
-    "semantic-release-firefox-add-on": "^0.1.0",
+    "semantic-release-firefox-add-on": "^0.2.6",
     "source-map-loader": "^1.0.1",
     "style-loader": "^0.23.1",
     "stylelint": "^10.1.0",
@@ -70,7 +70,7 @@
     "tslint-immutable": "^6.0.1",
     "tslint-loader": "^3.5.4",
     "tslint-sonarts": "^1.9.0",
-    "type-coverage": "^2.4.0",
+    "type-coverage": "^2.9.0",
     "typecov": "^0.2.1",
     "typescript": "^3.7.4",
     "url-loader": "^2.3.0",
@@ -95,7 +95,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/NoxHarmonium/mule-preview"
+    "url": "https://github.com/NoxHarmonium/mule-preview-browser-extension"
   },
   "keywords": [
     "extension",
@@ -122,7 +122,7 @@
     ]
   },
   "dependencies": {
-    "@agiledigital/mule-preview": "^2.2.2",
+    "@agiledigital/mule-preview": "^2.2.5",
     "cross-fetch": "^3.0.4",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
