@@ -130,7 +130,7 @@
     "total-functions": "0.0.3"
   },
   "engines": {
-    "node": ">= 10.0.0"
+    "node": ">= 12.0.0"
   },
   "config": {
     "commitizen": {
