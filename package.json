@@ -95,7 +95,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/NoxHarmonium/mule-preview-browser-extension"
+    "url": "https://github.com/agiledigital/mule-preview-browser-extension"
   },
   "keywords": [
     "extension",
@@ -107,9 +107,9 @@
     "firefox-addon"
   ],
   "bugs": {
-    "url": "https://github.com/NoxHarmonium/mule-preview-browser-extension/issues"
+    "url": "https://github.com/agiledigital/mule-preview-browser-extension/issues"
   },
-  "homepage": "https://github.com/NoxHarmonium/mule-preview-browser-extension",
+  "homepage": "https://github.com/agiledigital/mule-preview-browser-extension",
   "standard": {
     "globals": [
       "browser",
