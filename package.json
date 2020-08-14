@@ -39,7 +39,7 @@
     "babel-loader": "^8.0.0",
     "chrome-webstore-upload-cli": "^1.2.0",
     "concurrently": "^4.1.2",
-    "core-js": "^3.6.2",
+    "core-js": "^3.6.5",
     "css-loader": "^3.4.1",
     "cz-conventional-changelog": "^3.0.2",
     "file-loader": "^6.0.0",
