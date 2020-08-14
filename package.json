@@ -72,7 +72,7 @@
     "tslint-sonarts": "^1.9.0",
     "type-coverage": "^2.9.0",
     "typecov": "^0.2.1",
-    "typescript": "^3.7.4",
+    "typescript": "^3.9.7",
     "url-loader": "^4.1.0",
     "web-ext": "^3.2.1",
     "webextension-polyfill-ts": "^0.10.0",
