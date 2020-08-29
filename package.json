@@ -123,7 +123,7 @@
   },
   "dependencies": {
     "@agiledigital/mule-preview": "^2.2.5",
-    "cross-fetch": "^3.0.4",
+    "cross-fetch": "^3.0.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "snyk": "^1.385.2",
