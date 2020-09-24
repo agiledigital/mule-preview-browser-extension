@@ -39,7 +39,7 @@ This browser extension supports both Firefox and Chrome.
 
 Supports Mule 3.x (Anypoint 6.x) but support for later versions is planned.
 
-Tested on Atlassian Bitbucket (Server) v6.1.1
+Tested on Atlassian Bitbucket (Server) v6.1.1 and v6.10.1
 
 It does not support any other SCMs at this point (including Bitbucket Cloud) but support is in the works.
 
