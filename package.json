@@ -125,7 +125,7 @@
     "@agiledigital/mule-preview": "^2.2.5",
     "cross-fetch": "^3.0.6",
     "react": "^16.14.0",
-    "react-dom": "^16.14.0",
+    "react-dom": "^17.0.1",
     "snyk": "^1.389.0",
     "total-functions": "3.0.0"
   },
