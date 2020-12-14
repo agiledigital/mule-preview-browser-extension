@@ -76,7 +76,7 @@
     "url-loader": "^4.1.1",
     "web-ext": "^5.4.1",
     "webextension-polyfill-ts": "^0.22.0",
-    "webpack": "^4.41.5",
+    "webpack": "^5.10.1",
     "webpack-cli": "^3.3.12"
   },
   "scripts": {
