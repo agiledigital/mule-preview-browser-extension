@@ -126,7 +126,7 @@
     "cross-fetch": "^3.0.6",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "snyk": "^1.485.0",
+    "snyk": "^1.491.0",
     "total-functions": "3.0.0"
   },
   "engines": {
