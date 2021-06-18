@@ -32,7 +32,7 @@
     "@semantic-release/release-notes-generator": "^9.0.3",
     "@types/agiledigital__mule-preview": "^2.1.1",
     "@types/react": "^17.0.11",
-    "@types/react-dom": "^17.0.7",
+    "@types/react-dom": "^17.0.8",
     "addons-linter": "^3.8.0",
     "awesome-typescript-loader": "^5.2.1",
     "babel-eslint": "^10.1.0",
