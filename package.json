@@ -47,7 +47,7 @@
     "install": "^0.13.0",
     "mini-css-extract-plugin": "^1.6.2",
     "node-libs-browser": "^2.2.1",
-    "node-sass": "^5.0.0",
+    "node-sass": "^7.0.0",
     "npm": "^7.20.3",
     "prettier": "^1.19.1",
     "prettier-check": "^2.0.0",
